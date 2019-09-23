@@ -24,14 +24,15 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
     public function rules()
     {
         return [
-            [['role_id', 'status', 'contact_no'], 'integer'],
-            [['role_id', 'email', 'password', 'user_name', 'address', 'status', 'restaurant_id', 'contact_no'], 'required', 'on' => 'create'],
-            [['role_id', 'email', 'user_name', 'address', 'status', 'contact_no'], 'required', 'on' => 'update'],
-            [['created_at', 'updated_at', 'name', 'contact_no', 'birthdate', 'anniversary'], 'safe'],
+            [['role_id', 'status', 'age'], 'integer'],
+            [['role_id', 'email', 'password', 'user_name', 'city', 'status', 'gender', 'age', 'education'], 'required', 'on' => 'create'],
+            [['role_id', 'email', 'user_name', 'city', 'status', 'age', 'gender', 'education'], 'required', 'on' => 'update'],
+            [['created_at', 'updated_at', 'name', 'age'], 'safe'],
             [['email'], 'email'],
-            ['contact_no', 'is10NumbersOnly'],
+            [['years_hopr'], "number"],
+            ['age', 'is3NumbersOnly'],
             ['email', 'validateEmail'],
-            [['email', 'password', 'user_name'], 'string', 'max' => 255],
+            [['email', 'password', 'user_name', 'education', 'city', 'standing_commitee'], 'string', 'max' => 255],
         ];
     }
 
@@ -44,10 +45,10 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
         }
     }
 
-    public function is10NumbersOnly($attribute)
+    public function is3NumbersOnly($attribute)
     {
-        if (!preg_match('/^[0-9]{10}$/', $this->$attribute)) {
-            $this->addError($attribute, 'Invalid contact Number.');
+        if (!preg_match('/^[0-9]{3}$/', $this->$attribute)) {
+            $this->addError($attribute, 'Invalid Age.');
         }
     }
 
@@ -77,10 +78,12 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
             'password' => 'Password',
             'user_name' => 'User Name',
             'status' => 'Status',
-            'address' => 'Address',
+            'city' => 'Current City',
+            'education' => 'Education',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'fullName' => 'Name',
+            'years_hopr' => 'Years in HOPR',
+            'standing_commitee' => 'Standing Commitee',
         ];
     }
 
