@@ -25,13 +25,19 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
     {
         return [
             [['role_id', 'status', 'age'], 'integer'],
-            [['role_id', 'email', 'password', 'user_name', 'city', 'status', 'gender', 'age', 'education'], 'required', 'on' => 'create'],
-            [['role_id', 'email', 'user_name', 'city', 'status', 'age', 'gender', 'education'], 'required', 'on' => 'update'],
+            [['role_id', 'email', 'password', 'user_name', 'city', 'status', 'gender', 'age', 'education'], 'required'],
             [['created_at', 'updated_at', 'name', 'age'], 'safe'],
             [['email'], 'email'],
             [['years_hopr'], "number"],
-            ['age', 'is3NumbersOnly'],
+            [['years_hopr', 'standing_commitee'], 'required', 'when' => function ($model) {
+                return $model->role_id == Yii::$app->params['userroles']['user_agent'];
+            }, 'whenClient' => "function (attribute, value) {
+                return $('#users-role_id').val() == '" . Yii::$app->params['userroles']['user_agent'] . "';
+            }", ],
+            // ['age', 'is3NumbersOnly'],
             ['email', 'validateEmail'],
+            //[['photo'], 'image', 'skipOnEmpty' => true, 'extensions' => 'jpg, jpeg, gif, png', 'on' => 'update'],
+
             [['email', 'password', 'user_name', 'education', 'city', 'standing_commitee'], 'string', 'max' => 255],
         ];
     }

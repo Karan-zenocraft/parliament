@@ -2,8 +2,8 @@
 
 namespace common\models\base;
 
-use common\models\UserRules;
 use Yii;
+use common\models\UserRules;
 
 /**
  * This is the model class for table "user_rules_menu".
@@ -38,7 +38,7 @@ class UserRulesMenuBase extends \yii\db\ActiveRecord
             [['category'], 'string'],
             [['parent_id', 'user_rules_id', 'position', 'status'], 'integer'],
             [['user_rules_id', 'label', 'url', 'position'], 'required'],
-            [['label', 'url'], 'string', 'max' => 255],
+            [['label', 'url'], 'string', 'max' => 255]
         ];
     }
 
