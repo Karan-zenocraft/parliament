@@ -56,6 +56,8 @@ class SiteController extends FrontCoreController
      */
     public function actionLogin()
     {
+        $this->layout = "landingpage";
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

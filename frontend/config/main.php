@@ -27,7 +27,7 @@ return [
             'identityClass' => 'common\models\Users',
             'enableAutoLogin' => false,
             'authTimeout' => 300,
-            'loginUrl' => ['site/index'],
+            'loginUrl' => ['login'],
             'idParam' => '_frontend',
         ],
         'log' => [
@@ -67,6 +67,7 @@ return [
             'showScriptName' => false,
             'scriptUrl' => ($_SERVER['HTTP_HOST'] == "localhost") ? '/parliament' : '',
             'rules' => [
+                'login' => 'site/login',
                 'home' => 'site/index',
             ],
         ],
