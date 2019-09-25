@@ -40,12 +40,12 @@ use yii\widgets\ActiveForm;
             <?=$form->field($model, 'photo')->fileInput(['id' => 'photo', 'value' => $model->photo]);?>
             </div>
             <div class="span3 style_input_width">
-            <?=$form->field($model, 'gender')->radioList(['female' => 'Female', 'male' => 'Male']);?>
+            <?=$form->field($model, 'gender')->radioList(Yii::$app->params['gender']);?>
         </div>
         </div>
         <div class="row">
 <div class="span3">
-    <img id="image" width="100px" hieght="100px" src="<?php echo Yii::getAlias('@web') . "/../uploads/" . $model->photo; ?>" alt="" />
+    <img id="image" width="100px" hieght="100px" src="<?php echo Yii::getAlias('@web') . "/../frontend/web/uploads/" . $model->photo; ?>" alt="" />
     </div>
 </div>
 <div class="row pickup_row">

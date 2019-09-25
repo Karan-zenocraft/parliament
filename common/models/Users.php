@@ -89,6 +89,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'years_hopr' => 'Years in HOPR',
+            'gender' => 'Gender',
             'standing_commitee' => 'Standing Commitee',
         ];
     }

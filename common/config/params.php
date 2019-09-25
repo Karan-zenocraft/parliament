@@ -16,4 +16,8 @@ return [
     ],
     'user_status' => array('1' => 'Active', '0' => 'In-Active'),
     'user_status_value' => array('active' => '1', 'in_active' => '0'),
+    'gender' => [
+        '1' => 'Female',
+        '2' => 'Male',
+    ],
 ];

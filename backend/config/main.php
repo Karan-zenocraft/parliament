@@ -56,6 +56,10 @@ return [
             'rules' => [
                 'login' => 'site/login',
                 'dashboard' => 'site/index',
+                'manage-users' => 'users/index',
+                'create-user' => 'users/create',
+                'update-user/<id>' => 'users/update',
+                'delete-user/<id>' => 'users/delete',
             ],
         ],
         'request' => [

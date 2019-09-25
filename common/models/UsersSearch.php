@@ -2,9 +2,10 @@
 
 namespace common\models;
 
+use common\models\Users;
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Users;
 
 /**
  * UsersSearch represents the model behind the search form of `common\models\Users`.
@@ -40,7 +41,7 @@ class UsersSearch extends Users
      */
     public function search($params)
     {
-        $query = Users::find();
+        $query = Users::find()->where("role_id != " . Yii::$app->params['userroles']['admin']);
 
         // add conditions that should always apply here
 

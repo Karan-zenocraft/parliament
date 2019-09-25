@@ -55,19 +55,43 @@ $this->params['breadcrumbs'][] = $this->title;
         // ['class' => 'yii\grid\SerialColumn'],
 
         //  'id',
-        'role_id',
+        [
+            'attribute' => 'role_id',
+            'header' => 'Role',
+            'filterOptions' => ["style" => "width:17%;"],
+            'headerOptions' => ["style" => "width:17%;"],
+            'contentOptions' => ["style" => "width:17%;"],
+            'value' => function ($data) use ($UserRolesDropdown) {
+                return !empty($UserRolesDropdown[$data->role_id]) ? $UserRolesDropdown[$data->role_id] : '';
+            },
+        ],
         'email:email',
-        'password',
         'user_name',
-        //'city:ntext',
-        //'age',
-        //'gender',
-        //'education',
-        //'years_hopr',
+        'city:ntext',
+        'age',
+        [
+            'attribute' => 'gender',
+            'headerOptions' => ["style" => "width:13%;"],
+            'contentOptions' => ["style" => "width:13%;"],
+            'value' => function ($data) {
+                return Yii::$app->params['gender'][$data->gender];
+            },
+        ],
+        'education',
+        //  'years_hopr',
         //'password_reset_token:ntext',
         //'badge_count',
         //'standing_commitee',
-        //'status',
+        [
+            'attribute' => 'status',
+            'filter' => Yii::$app->params['user_status'],
+            'filterOptions' => ["style" => "width:13%;"],
+            'headerOptions' => ["style" => "width:13%;"],
+            'contentOptions' => ["style" => "width:13%;"],
+            'value' => function ($data) {
+                return Yii::$app->params['user_status'][$data->status];
+            },
+        ],
         //'created_at',
         //'updated_at',
 

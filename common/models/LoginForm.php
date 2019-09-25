@@ -56,9 +56,9 @@ class LoginForm extends Model
                 $this->addError($attribute, Yii::t('app', 'Your account has been deactivated, please contact to administrator.'));
             } else if ($user->role_id == Yii::$app->params['userroles']['admin']) {
                 $this->addError($attribute, Yii::t('app', 'You are not authorize to login here'));
-            } else if (!$user || $user->is_code_verified != "1") {
-                $this->addError($attribute, Yii::t('app', 'Your email is not verfied. Please verify Your Email.'));
-            } else {
+            } /*else if (!$user || $user->is_code_verified != "1") {
+            $this->addError($attribute, Yii::t('app', 'Your email is not verfied. Please verify Your Email.'));
+            }*/else {
                 //$user->last_login = date('Y-m-d H:i:s');
                 //$user->is_logged_in = '1';
                 //$user->save();

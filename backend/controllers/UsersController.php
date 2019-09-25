@@ -41,10 +41,11 @@ class UsersController extends AdminCoreController
     {
         $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $UserRolesDropdown = ArrayHelper::map(UserRoles::find()->where("id !=" . Yii::$app->params['userroles']['admin'])->asArray()->all(), 'id', 'role_name');
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'UserRolesDropdown' => $UserRolesDropdown,
         ]);
     }
 
@@ -78,6 +79,12 @@ class UsersController extends AdminCoreController
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
             $model->password = md5($_REQUEST['Users']['password']);
+            $file = \yii\web\UploadedFile::getInstance($model, 'photo');
+            if (!empty($file)) {
+                $file_name = $file->basename . "_" . uniqid() . "." . $file->extension;
+                $model->photo = $file_name;
+                $file->saveAs(Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_name);
+            }
             $model->save(false);
             ///////////////////////////////////////////////////////////
             //Get email template into database for user registration
@@ -114,13 +121,34 @@ class UsersController extends AdminCoreController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $old_image = $model->photo;
         $UserRolesDropdown = ArrayHelper::map(UserRoles::find()->where("id !=" . Yii::$app->params['userroles']['admin'])->asArray()->all(), 'id', 'role_name');
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->role_id == Yii::$app->params['userroles']['MP']) {
+            $postData = Yii::$app->request->post();
+            $model->password = md5($postData['Users']['password']);
+
+            if ($postData['Users']['role_id'] == Yii::$app->params['userroles']['MP']) {
                 $model->years_hopr = "";
                 $model->standing_commitee = "";
-                $model->save();
+            } else {
+                $model->years_hopr = $postData['Users']['years_hopr'];
+                $model->standing_commitee = $postData['Users']['standing_commitee'];
             }
+            $file = \yii\web\UploadedFile::getInstance($model, 'photo');
+            if (!empty($file)) {
+                $delete = $model->oldAttributes['photo'];
+                $file_name = $file->basename . "_" . uniqid() . "." . $file->extension;
+
+                $model->photo = $file_name;
+                if (!empty($old_image) && file_exists(Yii::getAlias('@root') . '/frontend/web/uploads/' . $old_image)) {
+                    unlink(Yii::getAlias('@root') . '/frontend/web/uploads/' . $old_image);
+                }
+                $file->saveAs(Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_name, false);
+                $model->photo = $file_name;
+            } else {
+                $model->photo = $old_image;
+            }
+            $model->save();
             Yii::$app->session->setFlash('success', Yii::getAlias('@user_add_message'));
 
             return $this->redirect(['users/index']);

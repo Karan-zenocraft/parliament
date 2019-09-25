@@ -2,10 +2,11 @@
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Users */
-
-$this->title = 'Create Users';
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('app', 'Create {modelClass}', [
+    'modelClass' => 'User',
+]);
+$this->params['breadcrumbs'][] = ['label' => 'Manage Users', 'url' => ['users/index']];
+$this->params['breadcrumbs'][] = 'Create';
 ?>
 <div class="users-create email-format-create">
 
