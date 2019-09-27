@@ -26,7 +26,7 @@ class ParliamentAsset extends AssetBundle
     public $js = [
         //'js/jquery.min.js',
         'js/common.js',
-        'js/jquery.min.js',
+        //'js/jquery.min.js',
 
     ];
     public $depends = [

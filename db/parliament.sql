@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 25, 2019 at 02:15 PM
+-- Generation Time: Sep 27, 2019 at 07:43 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -19,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `parliament`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answers`
+--
+
+CREATE TABLE `answers` (
+  `id` bigint(20) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  `answer_text` varchar(255) NOT NULL,
+  `mp_id` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` bigint(20) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  `comment_text` varchar(255) NOT NULL,
+  `user_agent_id` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -69,6 +99,35 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` bigint(20) NOT NULL,
+  `user_agent_id` bigint(20) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `mp_id` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shares`
+--
+
+CREATE TABLE `shares` (
+  `id` bigint(20) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  `user_agent_id` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -101,7 +160,7 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_res
 
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
-  `role_id` int(11) DEFAULT NULL,
+  `role_id` bigint(20) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,
@@ -125,7 +184,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `role_id`, `email`, `password`, `user_name`, `city`, `age`, `gender`, `photo`, `education`, `years_hopr`, `password_reset_token`, `badge_count`, `standing_commitee`, `status`, `created_at`, `updated_at`) VALUES
 (1, 1, 'testingforproject0@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'parliament_admin', 'test', 12, NULL, 'bk1_5d8b08ac2cdd3.jpg', 'rrrrr', NULL, '', 0, '', 1, '2019-05-03 10:09:57', '2019-09-25 06:26:52'),
-(2, 2, 'rutusha1212joshi@gmail.com', 'e6e061838856bf47e1de730719fb2609', 'Rutusha', 'test', 12, 1, 'crs-fvicn-1_5d8b08d644ddd.png', 'MECE', NULL, NULL, 0, '', 1, '2019-05-03 10:09:57', '2019-09-25 08:20:59'),
+(2, 2, 'rutusha1212joshi@gmail.com', '0192023a7bbd73250516f069df18b500', 'Rutusha', 'test', 12, 1, 'crs-fvicn-1_5d8b08d644ddd.png', 'MECE', NULL, NULL, 0, '', 1, '2019-05-03 10:09:57', '2019-09-25 13:36:05'),
 (6, 2, 'rutusha.joshi@zenocraft.com', '21232f297a57a5a743894a0e4a801fc3', 'test', 'ahmedabad', 29, 2, NULL, 'e', NULL, NULL, NULL, '', 1, '2019-09-24 14:30:02', '2019-09-25 07:17:23'),
 (8, 3, 'jay.varan@zenocraft.com', 'c3284d0f94606de1fd2af172aba15bf3', 'jay', 'ahmedabad', 29, 2, 'business-3370832_1280_5d8b05ac72aac.jpg', 'BECE', 3, NULL, NULL, 'TRTW', 1, '2019-09-25 06:14:04', '2019-09-25 07:37:59'),
 (9, 2, 'chiefsrs123@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'chiefs', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, '', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03');
@@ -172,8 +231,8 @@ CREATE TABLE `user_rules` (
 
 INSERT INTO `user_rules` (`id`, `role_id`, `privileges_controller`, `privileges_actions`, `permission`, `permission_type`) VALUES
 (1, 1, 'SiteController', 'index,logout,change-password,forgot-password', 'allow', 'admin'),
-(2, 2, 'SiteController', 'logout,change-password,forgot-password', 'allow', 'MP'),
-(3, 3, 'SiteController', 'logout,change-password,forgot-password', 'allow', 'user_agent'),
+(2, 2, 'SiteController', 'logout,change-password,forgot-password,index', 'allow', 'MP'),
+(3, 3, 'SiteController', 'logout,change-password,forgot-password,index', 'allow', 'user_agent'),
 (4, 1, 'UsersController', 'create,update,delete,view,index', 'allow', 'admin');
 
 -- --------------------------------------------------------
@@ -207,6 +266,22 @@ INSERT INTO `user_rules_menu` (`id`, `category`, `parent_id`, `user_rules_id`, `
 --
 
 --
+-- Indexes for table `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `MP` (`mp_id`),
+  ADD KEY `question_id` (`question_id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `user_agent_id` (`user_agent_id`);
+
+--
 -- Indexes for table `email_format`
 --
 ALTER TABLE `email_format`
@@ -217,6 +292,22 @@ ALTER TABLE `email_format`
 --
 ALTER TABLE `migration`
   ADD PRIMARY KEY (`version`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_agent` (`user_agent_id`),
+  ADD KEY `MPs` (`mp_id`);
+
+--
+-- Indexes for table `shares`
+--
+ALTER TABLE `shares`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `user_agent_id` (`user_agent_id`);
 
 --
 -- Indexes for table `user`
@@ -260,10 +351,30 @@ ALTER TABLE `user_rules_menu`
 --
 
 --
+-- AUTO_INCREMENT for table `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `email_format`
 --
 ALTER TABLE `email_format`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `shares`
+--
+ALTER TABLE `shares`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --
@@ -292,6 +403,34 @@ ALTER TABLE `user_rules_menu`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `MP` FOREIGN KEY (`mp_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `questions` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `question_id` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_agent_id` FOREIGN KEY (`user_agent_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `MPs` FOREIGN KEY (`mp_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_agent` FOREIGN KEY (`user_agent_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shares`
+--
+ALTER TABLE `shares`
+  ADD CONSTRAINT `question` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `useragent` FOREIGN KEY (`user_agent_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
