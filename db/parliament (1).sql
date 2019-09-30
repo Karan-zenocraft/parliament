@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 27, 2019 at 07:43 PM
+-- Generation Time: Sep 30, 2019 at 07:44 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -46,6 +46,8 @@ CREATE TABLE `comments` (
   `question_id` bigint(20) NOT NULL,
   `comment_text` varchar(255) NOT NULL,
   `user_agent_id` bigint(20) NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT '1',
+  `is_delete` smallint(6) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -105,8 +107,35 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 CREATE TABLE `questions` (
   `id` bigint(20) NOT NULL,
   `user_agent_id` bigint(20) NOT NULL,
-  `question` varchar(255) NOT NULL,
+  `question` varchar(600) NOT NULL,
   `mp_id` bigint(20) NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT '1',
+  `is_delete` smallint(6) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `user_agent_id`, `question`, `mp_id`, `status`, `is_delete`, `created_at`, `updated_at`) VALUES
+(1, 6, 'testing testing testging testing testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting?', 2, 1, 0, '2019-09-30 08:36:13', '2019-09-30 08:36:13'),
+(2, 6, 'I want to change the road of my area which is test area. Please let me know when will it will be done?', 2, 1, 0, '2019-09-30 10:01:07', '2019-09-30 10:01:07'),
+(3, 6, 'Hi this is Rutusha Joshi I want to muncipal coraporation aware of my problem which is very dirty water coming in my area please do something on this.', 2, 1, 0, '2019-09-30 10:02:46', '2019-09-30 10:02:46'),
+(4, 6, 'testing for the project ', 2, 1, 0, '2019-09-30 10:29:11', '2019-09-30 10:29:11'),
+(5, 2, 'Ruutuuuuu tutut tutu tutut tutu tututu?', 2, 1, 0, '2019-09-30 10:29:45', '2019-09-30 10:29:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_louder`
+--
+
+CREATE TABLE `question_louder` (
+  `id` bigint(20) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -302,6 +331,14 @@ ALTER TABLE `questions`
   ADD KEY `MPs` (`mp_id`);
 
 --
+-- Indexes for table `question_louder`
+--
+ALTER TABLE `question_louder`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question` (`question_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `shares`
 --
 ALTER TABLE `shares`
@@ -369,6 +406,11 @@ ALTER TABLE `email_format`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `question_louder`
+--
+ALTER TABLE `question_louder`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `shares`
@@ -424,6 +466,13 @@ ALTER TABLE `comments`
 ALTER TABLE `questions`
   ADD CONSTRAINT `MPs` FOREIGN KEY (`mp_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `user_agent` FOREIGN KEY (`user_agent_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `question_louder`
+--
+ALTER TABLE `question_louder`
+  ADD CONSTRAINT `qquestion` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `shares`
