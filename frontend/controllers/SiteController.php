@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\LoginForm;
+use common\models\Questions;
 use frontend\components\FrontCoreController;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
@@ -26,18 +27,18 @@ class SiteController extends FrontCoreController
     /**
      * {@inheritdoc}
      */
-    public function actions()
+    /* public function actions()
     {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
+    return [
+    'error' => [
+    'class' => 'yii\web\ErrorAction',
+    ],
+    'captcha' => [
+    'class' => 'yii\captcha\CaptchaAction',
+    'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+    ],
+    ];
+    }*/
 
     /**
      * Displays homepage.
@@ -46,7 +47,21 @@ class SiteController extends FrontCoreController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Questions();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->user_agent_id = Yii::$app->user->id;
+            $model->mp_id = 2;
+            $model->save();
+            // Yii::$app->session->setFlash('success', Yii::getAlias('@question_add_message'));
+            return $this->redirect(['site/index', 'model' => $model]);
+        }
+        $questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
+
+        return $this->render('index', [
+            'model' => $model,
+            'questions' => $questions,
+        ]);
     }
 
     /**
