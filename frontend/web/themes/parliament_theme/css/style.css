@@ -73,4 +73,6 @@ header .HeaderRight .Profile span{margin: 0;font-size: 21px;line-height: 28px;le
 .Login .LoginBottom ul li a:hover{color: #ffffff;transition: 0.25s ease;}
 .Login .LoginBottom ul li:first-child{margin-left: 0;}
 
-.help-block-error{font-size: 15px;color: #a94442bd!important;margin: 0px;}
+
+header .HeaderRight .Profile img{transform: scale(1.0);transition: 0.25s ease;}
+header .HeaderRight .Profile:hover img{transform: scale(1.1);transition: 0.25s ease;}

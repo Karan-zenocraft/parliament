@@ -7,8 +7,10 @@ use frontend\assets\ParliamentAsset;
 /* @var $this \yii\web\View */
 /* @var $content string */
 use yii\widgets\Breadcrumbs;
+$this->registerCssFile('@web/themes/parliament_theme/css/style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerCssFile('@web/themes/parliament_theme/css/responsive.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerCssFile('@web/themes/parliament_theme/css/inner-responsive.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ParliamentAsset::register($this);
-
 //CommonAppAsset::register( $this );
 ?>
 <?php $this->beginPage()?>
@@ -22,7 +24,7 @@ ParliamentAsset::register($this);
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);" />
-    <link rel="icon" href="./image/Logo1.png" type="image/png" sizes="64x64">
+    <link rel="icon" href="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" type="image/png" sizes="64x64">
     <meta name="theme-color" content="linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);" />
 
 <?php $this->head();?>

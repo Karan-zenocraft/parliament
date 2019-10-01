@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\models\LoginForm;
 use common\models\Questions;
+use common\models\Users;
 use frontend\components\FrontCoreController;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
@@ -39,13 +40,37 @@ class SiteController extends FrontCoreController
     ],
     ];
     }*/
+    public function actionIndex()
+    {
+        $this->layout = "homefeed";
+        $model = new Questions();
+        $mpArr = Users::find()
+            ->select(['user_name as value', 'id as id'])
+            ->where(['role_id' => Yii::$app->params['userroles']['MP'], "status" => Yii::$app->params['user_status_value']['active']])
+            ->asArray()
+            ->all();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $postData = Yii::$app->request->post();
+            $model->user_agent_id = Yii::$app->user->id;
+            $model->mp_id = $postData['Questions']['mp_id'];
+            $model->save();
+            // Yii::$app->session->setFlash('success', Yii::getAlias('@question_add_message'));
+            return $this->redirect(['site/index', 'model' => $model]);
+        }
+        $questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
 
+        return $this->render('index', [
+            'model' => $model,
+            'questions' => $questions,
+            'mp' => $mpArr,
+        ]);
+    }
     /**
      * Displays homepage.
      *
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex_old()
     {
         $model = new Questions();
 

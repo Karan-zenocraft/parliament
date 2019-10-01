@@ -19,18 +19,24 @@ class ParliamentAsset extends AssetBundle
     public $baseUrl = '@web/themes/parliament_theme/';
     public $sourcePath = '@webroot/themes/parliament_theme/';
     public $css = [
-        'css/style.css',
-        'css/responsive.css',
+        //'css/style.css',
+        // 'css/responsive.css',
         'css/bootstrap.min.css',
+        //'css/w3.css',
+        'css/font-awesome.min.css',
+        //'css/inner-style.css',
+        //'css/inner-responsive.css',
+        'css/font-awesome.min-4.7.0.css',
     ];
     public $js = [
         //'js/jquery.min.js',
+        //'js/3.3.1_jquery.min.js',
+        'js/4.2.1_bootstrap.min.js',
         'js/common.js',
-        //'js/jquery.min.js',
 
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        // 'yii\web\YiiAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }

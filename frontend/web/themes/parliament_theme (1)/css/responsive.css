@@ -1,0 +1,157 @@
+
+@media (min-width: 1900px) and (max-width: 2000px) {
+    
+    .Login .LoginLeft .Form {padding-left: 120px!important;}
+    .Login .LoginBottom ul {padding-left: 120px!important;}
+}
+@media (min-width: 1800px) and (max-width: 1899px) {
+    
+    .Login .LoginLeft .Form {padding-left: 100px!important;}
+    .Login .LoginBottom ul {padding-left: 100px!important;}
+}
+@media (min-width: 1700px) and (max-width: 1799px) {
+    
+    .Login .LoginLeft .Form {padding-left: 60px!important;}
+    .Login .LoginBottom ul {padding-left: 60px!important;}
+     header .HeaderRight h1{font-size: 27px;line-height: 45px;}
+}
+
+
+@media (min-width: 1200px) and (max-width: 1919px) {
+    
+    
+    header .HeaderLeft{padding: 0px 15px}
+    header .HeaderRight h1{font-size: 27px;line-height: 45px;margin-top: 40px;margin-bottom: 20px;}
+    header .HeaderRight{padding-right: 15px}
+    header .HeaderRight .Profile{}
+    header .HeaderRight .Profile img{margin-right: 0px;width: 30%}
+    header .HeaderRight .Profile .ProfileTitle{margin-left: 20px;}
+    header .HeaderRight .Profile p{font-size: 20px;line-height: 40px;}
+    header .HeaderRight .Profile span{font-size: 14px;line-height: 18px;}
+    header .HeaderRight .Representative{width: 100%}
+     header .HeaderRight .Representative .row{display: block;width: 100%}
+    header .HeaderRight h2 {font-size: 34px;line-height: 70px;margin-top: 35px;margin-bottom: 20px;}
+    .Login .LoginLeft .Form{padding-left: 50px;}
+    .Login .LoginRight h1{font-size: 40px;line-height: 60px}
+    .Login .LoginBottom ul{padding-left: 50px;}
+    .Login .LoginBottom ul li{margin: 0px 14px;}
+    .Login .LoginBottom ul li a{font-size: 16px;line-height: 18px;}
+}
+    
+@media (min-width: 1025px) and (max-width: 1199px) {
+    
+    .Login .LoginLeft{margin: auto}
+    header .HeaderRight h1{font-size: 41px;line-height: 85px;margin-top: 0px;}
+     header .HeaderRight .Representative{width: 100%}
+    header .HeaderRight{padding-right: 15px;}
+    header .HeaderRight .Profile p {font-size: 30px;line-height: 55px;}
+    header .HeaderRight .Profile span {font-size: 20px;line-height: 25px;}
+    header .HeaderRight h2 {font-size: 34px;line-height: 70px;margin-top: 60px;margin-bottom: 20px;}
+    .Login .LoginLeft .Form{padding-left: unset;}
+    .Login .LoginRight h1 {font-size: 41px;line-height: 65px;margin-top: 70px;}
+    .Login .LoginLeft .Form table{text-align: center}
+    .Login .LoginBottom ul{padding-left: unset;justify-content: space-between!important}
+    .Login .LoginBottom ul li:first-child{margin-left: 30px;}
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+    header .HeaderRight h1{font-size: 40px;line-height: 80px;margin-bottom: 35px;margin-top: 0px;}
+    header .HeaderRight .Representative{padding-left:0}
+    header .HeaderRight .Representative .row{display: block;width: 100%}
+    header .HeaderRight .Profile{display: block!important;width: 100%;text-align: center;}
+     header .HeaderRight .Profile .ProfileTitle {text-align: center;margin: auto;}
+    header .HeaderRight .Profile p {font-size: 28px;line-height: 50px;}
+    header .HeaderRight .Profile span{font-size: 18px;line-height: 23px;}
+    header .HeaderRight .Profile img{margin-right: unset;}
+    header .HeaderRight h2{font-size: 30px;line-height: 65px;margin-top: 60px;margin-bottom: 20px;}
+    .Login .LoginLeft .Form table tr td{width: 100%;}
+     .Login .LoginLeft .Form {padding-left: 0px;}
+    header .HeaderRight .Representative{width: 100%}
+    header .HeaderRight{padding-right: 15px;}
+    .Login .LoginRight h1{font-size: 30px;line-height: 50px;}
+    .Login .LoginRight, .Login .LoginLeft{margin-bottom: 50px;margin-top: 50px;}
+    .Login .LoginBottom ul{padding-left: unset;}
+    .Login .LoginBottom ul{justify-content: space-between!important}
+    .Login .LoginBottom ul li:first-child{margin-left: 30px;}
+    .Login .LoginLeft{margin: auto}
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+    
+header .HeaderRight h1{font-size: 32px;margin-top: 15px;margin-bottom: 30px;line-height: 50px;}
+    header .HeaderRight .Profile p {font-size: 24px;line-height: 44px;}
+    header .HeaderRight .Profile span {font-size: 16px;line-height: 20px;}
+    header .HeaderRight .Profile img{margin: auto;}
+    header .HeaderRight .Representative{padding-left: unset;}
+    header .HeaderRight .Profile .ProfileTitle {text-align: center;margin: auto;}
+    header .HeaderRight .Profile{margin-bottom: 40px;}
+    header .HeaderRight .Representative{padding-top: 30px;padding-bottom: 0px;}
+    header .HeaderRight .Profile{display: block!important;width: 100%;text-align: center;}
+     header .HeaderRight .Representative .row{display: block;width: 100%}
+    .Login .LoginLeft .Form table tr td{width: 100%;}
+     header .HeaderRight h2{margin-top: 65px;margin-bottom: 15px;font-size: 28px;line-height: 50px;}
+    .Login .LoginRight h1{font-size: 34px;margin-top: 0px;margin-bottom: 0px;line-height: 50px;}
+    .Login .LoginBottom ul li{margin: 0px 24px;}
+    .Login .LoginBottom ul li:first-child{margin-left:24px;}
+    .Login .LoginBottom ul{justify-content: space-between!important}
+   
+}
+
+@media (min-width: 577px) {
+ .Login .LoginLeft .Form table .Password-sm{display: none;} 
+    
+}
+
+
+@media (min-width: 320px) and (max-width: 382px){
+    .Login .LoginBottom ul li:first-child {margin-left: 8px!important;}
+    .Login .LoginBottom ul li{margin: 0px 8px!important;}
+     .Login .LoginBottom ul li a{font-size: 10px!important;}
+    .Login .LoginBottom ul{justify-content: space-between}
+    
+    
+    
+}
+
+@media (min-width: 320px) and (max-width: 576px){
+    header .HeaderRight .Representative{display: block!important;}
+    header .HeaderRight .Profile img {margin-right: unset;margin: auto}
+    
+    header .HeaderRight .Profile{display: block!important;width: 100%;text-align: center;}
+    header .HeaderRight .Profile{margin-bottom: 30px;}
+    .Login .LoginRight h1{font-size: 30px;}
+    header .HeaderRight h1{font-size: 31px;margin-top:35px;margin-bottom: 35px;line-height: 46px}
+    header .HeaderRight .Profile p{font-size: 20px;line-height: 36px}
+    header .HeaderRight .Profile span{font-size: 14px;line-height: 18px;}
+    header .HeaderLeft{padding: 0px 15px;}
+    header .HeaderRight .Representative{padding-left: 0;padding-right: 0;}
+    header .HeaderRight .Profile .ProfileTitle{display: block;margin: auto;margin-top: 5px;}
+    .Login .LoginLeft .Form table tr td{width: 100%;display: flex;}
+    .Login .LoginLeft .Form table input{max-width: unset;}
+    .Login .LoginLeft .Form table tr:last-child{display: flex;flex-direction: column;}
+    .Login .LoginLeft .Form table tr:last-child td:first-child{display: flex;order: 1;}
+    .Login .LoginLeft .Form table tr:last-child td:last-child{display: flex;order: 0;}
+    .Login .LoginLeft .Form table .LoginButton{margin-left: unset;margin: auto;margin-top: 20px;}
+    .Login .LoginLeft .Form table .ForgotButton{margin: auto;margin-top: 20px;}
+   .Login .LoginBottom ul li:first-child {margin-left: 13px;}
+    .Login .LoginBottom ul li{margin: 0px 13px;}
+     .Login .LoginBottom ul li a{font-size: 14px;}
+    .Login .LoginBottom ul{justify-content: center!important}
+   
+    header .HeaderRight h2{margin-top: 60px;margin-bottom: 10px;font-size: 20px;line-height: 40px;}
+    .Login .LoginLeft .Form table .Password-md{display: none;}
+    .Login .LoginLeft .Form table label{font-size: 16px;line-height: 18px;}
+    .Login .LoginLeft .Form table input{margin-bottom: 25px;}
+    .Login .LoginRight h1{font-size: 25px;margin-top:0px;margin-bottom: 0px;line-height: 46px}
+    .Login .LoginRight, .Login .LoginLeft{margin-bottom: 40px;}
+}
+  
+@media only screen and (max-width: 768px){
+    header .HeaderRight .Representative{width: 100%;border-radius: 50px;}
+    .Login .LoginBottom ul{padding-left: unset;}
+    .Login .LoginLeft .Form {padding-left: unset;}
+    header .HeaderRight{padding-right: 15px;}
+    
+}

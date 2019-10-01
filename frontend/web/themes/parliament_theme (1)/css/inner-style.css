@@ -1,0 +1,209 @@
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../font/SegoeUI-Regular.woff2') format('woff2'),
+        url('../font/SegoeUI-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../font/SegoeUI-Light.woff2') format('woff2'),
+        url('../font/SegoeUI-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../font/SegoeUI-Bold.woff2') format('woff2'),
+        url('../font/SegoeUI-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+#scroll {position:fixed;right:40px;bottom:20px;cursor:pointer;width:40px;height:40px;background-color:transparent;text-indent:-9999px;display:none;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:6px;border: 1px solid #a7a7a7; }
+#scroll:hover{}
+#scroll span {position:absolute;top:50%;left:50%;margin-left:-8px;margin-top:-12px;height:0;width:0;border:8px solid transparent;border-bottom-color:#ffffffb8;}
+#scroll:hover {background-color:transparent;border-color:#D17C0D;transition: 0.25s ease; opacity:1;filter:"alpha(opacity=100)";-ms-filter:"alpha(opacity=100)";}
+#scroll:hover span{border-bottom-color:#D17C0D;transition: 0.25s ease;}
+
+.scrollbar-dusty-grass::-webkit-scrollbar-thumb {border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-image: -webkit-linear-gradient(330deg, #10313E 0%, #020000 100%);background-image: linear-gradient(120deg, #10313E 0%, #020000 100%); }
+.thin::-webkit-scrollbar {width: 6px; }
+
+a:hover{text-decoration: none!important}
+
+header{padding-top: 80px;background: #10303F;}
+header .HeaderTop h1{font-size: 20px;line-height: 40px;font-family: 'Segoe UI';font-weight: 300;color: #FFFFFF;text-transform: uppercase;margin-bottom: 0px;margin-top: 0px;   }
+header .HeaderBottomCenter .SearchInput{padding: 6px;width: 495px;color: #000;border: 5px solid #d7c1c1a3;outline:5px solid #41545D;font-size: 20px;line-height: 19px;font-family: 'Segoe UI';font-weight: 400;}
+header .HeaderBottomCenter .Search .fa-search{position: absolute;right: 5px;top: 0;padding: 10px;transform: rotate(90deg);font-size: 30px;}
+header .HeaderBottomCenter .Search{position: relative;margin-left: auto}
+header .HeaderBottomCenter .Icons .fa-bell{font-size: 55px;color: #ffffff;margin: 0px 20px;margin-bottom: 20px}
+header .HeaderBottomCenter .Icons .fa-cog{font-size: 55px;color: #ffffff;margin: 0px 20px;margin-bottom: 20px;}
+header .HeaderBottomCenter .Icons .badge-Box{position: relative;}
+header .HeaderBottomCenter .Icons .badge-Box .badge {position: absolute;right: 9px;bottom: 25px;font-size: 40%!important;border-radius: 50px;}
+header .HeaderBottomCenter .Icons .badge-Box .badge-secondary {color: #fff;background-color: #D17C0D!important;}
+header .HeaderBottomCenter .Icons{margin-right: 50px;margin-left: auto}
+header .HeaderBottomCenter .Icon{margin-left: unset;visibility: hidden;}
+header .HeaderBottomCenter{position: relative;margin-bottom: -50px;}
+header .HeaderBottomCenter .People{margin-right: 20px;}
+
+
+
+
+
+.Main .MainLeft{background:#E4E4E4;padding-right: 46px;padding-top: 55px;padding-left: 0px;position: relative;}
+.Main .MainLeft .MainLeftInner{background: #10303F;padding-top: 70px;border: 2px solid #423050;height: 100%;padding-left: 30px;
+padding-right: 30px;}
+.Main .MainLeft .MainLeftInner .RemainingQuestion p{font-size: 19px;line-height: 28px;font-family: 'Segoe UI';font-weight: 400;color: #D17C0D;margin-bottom: 0px}
+.Main .MainLeft .MainLeftInner .RemainingQuestion .Msg{margin-top: auto;margin-bottom: auto;margin-right: 10px;}
+.Main .MainLeft .MainLeftInner .RemainingQuestion{padding-right: 45px;margin-bottom: 65px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox{padding: 15px 15px;border: 4px solid #580816;border-radius: 30px;background: #ffffff;margin-bottom: 65px;}
+.Main .MainLeft .LastQuestion p{font-size: 20px;font-weight: bold;line-height: 27px;font-family: 'Segoe UI';text-align: center;color: #ffffff;margin-bottom: 10px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox p{color: #10303F;font-size: 10px;line-height: 13px;font-weight: bold;font-family: 'Segoe UI';margin-bottom: 0px;text-align: left;}
+.Main .MainLeft .LastQuestion .LastQuestionBox p span{color:#707070;font-size: 9px;line-height: 8px;font-weight: 400;font-family: 'Segoe UI';}
+.Main .MainLeft .LastQuestion .LastQuestionBox .User .ProfileName{margin-left: 7px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 7px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName p span{color: #0D5D83;text-align: right!important}
+.Main .MainLeft .LastQuestion .LastQuestionBox .MPProfileName p{text-align: right}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Comments p{font-size: 18px;line-height: 22px;font-weight: 400;font-family: 'Segoe UI';color: #0D0D0D;display: inline;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Comments button{text-decoration: none;cursor: pointer;font-size: 12px;font-weight: bold;line-height: 15px;color: #10303F;margin-left: 5px;font-family: 'Segoe UI';background: transparent;border: none;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Comments button:focus{outline: none;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Comments #more{display: none}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1{margin-bottom: 10px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row2{margin-bottom: 25px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social{padding: 0px 20px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social i{color: #10303F}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social span{font-size: 11px;font-weight: 400;line-height: 14px;color: #10303F;font-family: 'Segoe UI';margin-left: 3px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social .Loud{cursor: pointer}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social .Loud i{transform: rotate(90deg);}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social .LoadBG i{color: #000;font-weight: 600}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social .LoadBG span{color: #000;font-weight: 600;}
+.Main .MainLeft .MainLeftInner .ListOfQuestions ul{padding: 0;margin: 0;list-style-type: none;}
+.Main .MainLeft .MainLeftInner .ListOfQuestions ul li{position: relative;padding-left: 25px;cursor: pointer}
+.Main .MainLeft .MainLeftInner .ListOfQuestions ul li:before{position: absolute;content: "\f06e";display: inline-block;font: normal normal normal 14px/1 FontAwesome;font-size: inherit;text-rendering: auto;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;left: 0;top: 5px;color: #EEE6E6; }
+
+.Main .MainLeft .MainLeftInner .ListOfQuestions ul li a{text-decoration: none;color: #EEE6E6;font-size: 20px;line-height: 27px;font-weight: bold;font-family: 'Segoe UI';cursor: pointer}
+
+.Main .MainLeft .Inner-Logo{position: absolute;left: 0;right: 0;margin: auto;top: -130px;}
+.Main .MainCenter{border: 1px solid #707070;padding: 0px;}
+.Main .MainCenter .Nav1{margin-top: 20px;margin-bottom: 25px;padding: 0px 15px;}
+.Main .MainCenter .Nav1 ul{margin: 0;padding: 0;border: none}
+.Main .MainCenter .Nav1 ul li{box-shadow:5px 10px 40px 0px #00000066;cursor: pointer}
+.Main .MainCenter .Nav1 ul li a{list-style-type: none;color: #707070;font-size: 18px;font-weight: 400;line-height: 15px;font-family: 'Segoe UI';}
+.Main .MainCenter .Nav1 ul li:hover{background: #D17C0D;color: #fff;transition: 0.25s ease;}
+.Main .MainCenter .Nav1 ul li:hover a{color: #fff;transition: 0.25s ease;}
+.Main .MainCenter .Nav1 ul li .active{background: #D17C0D;color: #fff;}
+.Main .MainCenter .Nav1 ul li a{text-decoration: none;padding: 7px 60px;color: #707070;background: #000;}
+.Main .MainCenter .Ask{border-radius: 85px;border:10px solid #10303F;background: #ECECEC;padding-bottom: 45px;padding-left: 15px;
+padding-right: 15px;margin-bottom: 10px;}
+.Main .MainCenter .Ask .Address{float: right;margin-right: 40px;margin-top: 5px;width: 420px;height: 41px;width: 420px;border-radius: 50px;border: 1px solid #7070708f;background: #E5E2E2;padding-left: 15px;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;font-family: 'Segoe UI'; }
+.Main .MainCenter .Ask .AskQuestion{margin-top: 5px;height: 295px;width: 100%;border-radius: 50px;border: 1px solid #7070708f;background: #D4D4D4;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;text-align: center}
+.Main .MainCenter .Ask .AskQuestion:focus,.Main .MainCenter .Ask .Address:focus{outline: none;background: #ffffff6b;transition: 0.25s ease;}
+.Main .MainCenter .Ask .AskButton{background: #D17C0D;color: #10303F;border: 1px solid #707070;border-radius: 50px;padding: 5px 31px;float: right;margin-right: 40px;margin-top: 5px;font-size: 16px;font-family: 'Segoe UI';line-height: 22px}
+.Main .MainCenter .Ask .AskButton:hover{background: #fff;color: #D17C0D;transition: 0.25s ease;}
+.Main .MainRight{background: #E4E4E4;z-index: -9}
+.Main .MainRight nav{padding: 100px 65px 0px 50px;}
+.Main .MainRight nav ul{padding: 0px;margin: 0px;}
+.Main .MainRight nav ul li{list-style-type: none;margin-bottom: 30px;padding-bottom: 10px;border-bottom: 1px solid #707070;}
+.Main .MainRight nav ul li a{font-size: 20px;line-height: 22px;font-weight: bold;color: #D17C0D;}
+.Main .MainRight nav ul li:hover a{color: #333;transition: 0.25s ease;}
+.Main .MainCenter .FilterBar{padding: 10px 15px;background: #000;color: #fff;}
+.Main .MainCenter .FilterBar .Nav2 ul li{margin: 0px 40px;}
+.Main .MainCenter .FilterBar .Nav2 ul{border: none;}
+.Main .MainCenter .FilterBar .Nav2 ul li a{font-size: 16px;color: #fff;line-height: 18px;font-weight: bold;font-family: 'Segoe UI'; }
+.Main .MainCenter .FilterBar .SearchMps .SearchMp{padding: 6px;width: 244px;color: #000;border: 5px solid #d7c1c1a3;outline: 5px solid #a5a5a5;font-size: 15px;line-height: 7px;height: 34px;font-family: 'Segoe UI';font-weight: 400;}
+.Main .MainCenter .FilterBar .SearchMps{position: relative;}
+.Main .MainCenter .FilterBar .SearchMps .fa-search{position: absolute;right: 5px;top: 0;padding: 7px;transform: rotate(90deg);font-size: 20px;color: #707070;}
+.Main .MainCenter .FilterBar span{font-size: 16px;line-height: 18px;color: #a5a5a5;font-weight: bold;font-family: 'Segoe UI'; }
+.Main .MainCenter .tab-content .QuestionAnswer{background: #E4E4E4;padding-bottom: 15px;}
+.Main .MainCenter .tab-content .QuestionAnswer .Public h3{border-bottom: 3px solid #707070!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .Public{padding-top: 20px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerTitle h3{font-size: 20px;line-height: 22px;font-weight: 400;color: #10303F;font-family: 'Segoe UI';text-align: center;text-transform: uppercase;opacity: .6;margin: 0;padding: 10px 0px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox1{margin-top: 0px!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox{background: #fff;border-radius: 60px; margin-top: 30px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Top{padding-left: 40px;padding-top: 10px;padding-bottom: 5px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox{padding: 0px 20px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{font-size: 18px;font-weight: bold;line-height: 30px;font-family: 'Segoe UI';color: #0D5D83}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Top .OnhoverGroup{position: relative}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{display: none;transition: 0.25s ease;transition: 0.25s ease;
+    position: absolute;left: 0;right: 36%;margin: auto;padding: 0;background: #10303F;width: 170px;list-style-type: none;padding: 12px;margin-top: -5px;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{color: #fff;font-size: 14px;line-height: 20px;font-family: 'Segoe UI';}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPOnhover{position: relative;}
+/*.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPOnhover:hover .OnhoverMP{display: block!imporatnt;transition: 0.25s ease;position: absolute;left: 0;top:0;background: #10303F;}*/
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Title{font-size: 18px;font-weight: bold;line-height: 30px;font-family: 'Segoe UI';color: #7A8990}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox{padding-top: 10px;padding-bottom: 10px;background: #ffffff;border-radius: 50px;border: 4px solid #580816;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{margin-bottom: 15px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile  .UserTitle p{margin: 0;color: #10303F;font-weight: bold;font-size: 16px;line-height: 19px;font-family: 'Segoe UI';}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile  .UserTitle span{margin: 0;color: #a5a5a5;font-weight: 400;font-size: 12px;line-height: 15px;font-family: 'Segoe UI';}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile  .UserTitle{margin-left: 15px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .Title{margin: 0;color:   #10303F;font-weight: bold;font-size: 20px;line-height: 24px;font-family: 'Segoe UI';margin-right: 7px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .MP{margin: 0;color: #0D5D83;font-weight: bold;font-size: 18px;line-height: 30px;font-family: 'Segoe UI';margin-right: 15px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .AskFollowUp i{font-size: 24px;line-height: 23px;color: #10303F;margin-right: 10px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .AskFollowUp span{font-size: 14px;line-height: 18px;color:#10303F;font-family: 'Segoe UI';font-weight: bold; }
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon{position: relative;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1{display: none;left: -120px;top: 10px;position: absolute;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Option1{display: block!important}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu2{display: none;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .MenuShow{display: block}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul{padding: 0;margin: 0;list-style: none;box-shadow: 5px 10px 40px 0px #00000066;z-index: 99999;background: #fff}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li{border-bottom: 1px solid #A59F9F;width: 100%;padding: 6px 65px 6px 8px;z-index: 99999;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li a{text-decoration: none;font-size: 18px;font-weight: 400;line-height: 30px;color: #010B0F;font-family: 'Segoe UI';}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul .active1 a{color: #EE0C0C}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments #more1{display: none}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p{font-size: 21px;line-height: 24px;font-weight: 400;color: #0D0D0D;font-family: 'Segoe UI';display: inline;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments button{background: transparent;border: none;font-size: 16px;color: #10303F;line-height: 19px;font-weight: bold;font-family: 'Segoe UI';}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments button:focus{outline: none}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2{margin-bottom: 25px;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3{margin-bottom: 0px;padding-left: 35px;padding-right: 85px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud a{padding: 3px 10px;background: #0e2e3e1f;border-radius: 40px;cursor: pointer}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .Numbers{font-weight: 400;position: relative;padding-left: 8px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .Numbers:before{content: '';position: absolute;left: 0;top: 0;background: #0E2E3E;height: 18px;width: 2px;bottom: 0;margin: auto;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud span{font-size: 14px;line-height: 18px;font-weight: bold;font-family: 'Segoe UI';color: #10303F;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Comments span{font-size: 14px;font-weight: bold;line-height: 18px;color: #10303F;text-transform: uppercase;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Comments .Numbers{font-weight: 400;margin-left: 8px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Comments i{font-size: 20px;color: #10303F;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Share i{font-size: 20px;color:#10303F;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Share span{font-size: 14px;font-weight: bold;line-height: 18px;color: #10303F;text-transform: uppercase;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Share .Numbers{font-weight: 400;margin-left: 8px;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .MadeLouder i{transform: rotate(90deg);color: #10303F;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .MadeLouderBG{background: #0E2E3E;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .MadeLouderBG span, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .MadeLouderBG i{color: #E9F0F3}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .MadeLouderBG .Numbers:before{background: #E9F0F3}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion a{padding: 3px 10px;background: #0e2e3e1f;border-radius: 40px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion a{font-size: 14px;
+    line-height: 18px;font-weight: bold;font-family: 'Segoe UI';color: #10303F;text-transform: uppercase;}
+
+.carousel-caption{position: unset!important;color: #000!important;padding-top: 0px!important;padding-bottom: 0px!important}
+.carousel-inner{background: #10303F}
+.carousel-caption .Row1{padding: 0px 50px;padding-top: 55px;}
+.carousel-caption .Row1:last-child{padding-bottom: 55px;}
+.carousel-caption .Row1 .RowBox{margin: auto;}
+.carousel-caption .Row1 .RowBox .Dimmer:before{content: '';position: absolute;top: 0;left: 0;height: 117px;width: 117px;background: #000;border-radius: 100%;z-index: 9999;opacity: .5}
+.carousel-caption .Row1 .RowBox .Dimmer{position: relative;}
+.carousel-caption .Row1 .RowBox .RowTitle{text-align: left;margin-left: 10px;}
+.carousel-caption .Row1 .RowBox .RowTitle p{font-size: 18px;color: #fff;line-height: 30px;font-weight: 400; margin-bottom: 0px;font-family: 'Segoe UI';}
+.carousel-caption .Row1 .RowBox .RowTitle p span{font-size: 11px;color: #a5a5a5;line-height: 18px;font-weight: 400; margin-bottom: 0px;font-family: 'Segoe UI';}
+.carousel-caption .Row1 .RowBox .RowTitle p:last-child{line-height: 0;}
+
+.carousel-control-next-icon{background-image:url("../image/slider-arrow.png")!important;}
+.carousel-control-next-icon, .carousel-control-prev-icon{width: 21%!important;height: 11%!important;z-index: 999999999!important;position: absolute;right: 0px;left: 90px;margin: 15% 0%;}
+.carousel-control-next, .carousel-control-prev{opacity: 1!important}
+.carousel-control-prev{display: none!important;}
+/*.carousel-caption .Row1 .RowBox:hover .SliderImage{transform: scale(1.1);transition: 0.25s ease;}*/
+/*.carousel-caption .Row1 .RowBox .SliderImage{position: relative;transform: scale(1.0);overflow: hidden}*/
+
+
