@@ -214,7 +214,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .carousel-inner{background: #10303F}
 .carousel-caption .Row1{padding: 0px 50px;padding-top: 55px;}
 .carousel-caption .Row1:last-child{padding-bottom: 55px;}
-.carousel-caption .Row1 .RowBox{margin: auto;}
+.carousel-caption .Row1 .RowBox{max-width: 219px;}
 .carousel-caption .Row1 .RowBox .Dimmer:before{content: '';position: absolute;top: 0;left: 0;height: 117px;width: 117px;background: #000;border-radius: 100%;z-index: 9999;opacity: .5}
 .carousel-caption .Row1 .RowBox .Dimmer{position: relative;}
 .carousel-caption .Row1 .RowBox .RowTitle{text-align: left;margin-left: 10px;}
@@ -223,10 +223,14 @@ padding-right: 15px;margin-bottom: 10px;}
 .carousel-caption .Row1 .RowBox .RowTitle p:last-child{line-height: 0;}
 
 .carousel-control-next-icon{background-image:url("../image/slider-arrow.png")!important;}
-.carousel-control-next-icon, .carousel-control-prev-icon{width: 21%!important;height: 11%!important;z-index: 999999999!important;position: absolute;right: 0px;left: 90px;margin: 15% 0%;}
+.carousel-control-next-icon, .carousel-control-prev-icon{
+  z-index: 999999999!important;position: absolute;right: 0px;left: 75px;margin: 15% 0%;}
 .carousel-control-next, .carousel-control-prev{opacity: 1!important}
-.carousel-control-prev{display: none!important;}
-/*.carousel-caption .Row1 .RowBox:hover .SliderImage{transform: scale(1.1);transition: 0.25s ease;}*/
-/*.carousel-caption .Row1 .RowBox .SliderImage{position: relative;transform: scale(1.0);overflow: hidden}*/
-
-
+#carouselExampleControls .next_button{margin: 0;padding: 0;list-style-type: none;}
+.carousel-control-prev-icon{position: absolute;left: 0!important;background-image:url("../image/slider-arrow.png")!important;transform: rotate(180deg);margin-left: 5px;}
+.carousel-control-next .prev span{display: none;}
+.prev_button{padding: 0;margin: 0;}
+.prev_button li{list-style-type:none;}
+.carousel-control-next .prev{display:none}
+.carousel-control-next{margin: 0;padding: 0;list-style-type: none;}
+.carousel-control-next .disabled, .carousel-control-prev .disabled{display: none;}

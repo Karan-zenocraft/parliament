@@ -88,7 +88,7 @@ $(document).ready(function() {
         $(document).ready(function() {
             $('.DimmerBox').click(function() {
                 // $('.DimmerBox').removeClass("Dimmer");
-                $(this).addClass("Dimmer");
+                $(this).toggleClass("Dimmer");
                
                 
             });
@@ -134,5 +134,16 @@ $(document).ready(function(){
     $("#Load2").toggleClass("LoadBG");
   });
 });
-
-
+$("#engagement").click(function(){
+    $.ajax({
+       url: "site/engagement",
+       type: 'post',
+       data: {
+                 searchname: 123, 
+             },
+       success: function (data) {
+          console.log(data);
+          return false;
+       }
+  });
+});

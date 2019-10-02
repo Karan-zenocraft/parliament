@@ -2,6 +2,10 @@
 
 namespace common\models;
 
+use common\models\Answers;
+use common\models\QuestionLouder;
+use common\models\Questions;
+use common\models\Shares;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\base\Security;
@@ -33,7 +37,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
                 return $model->role_id == Yii::$app->params['userroles']['user_agent'];
             }, 'whenClient' => "function (attribute, value) {
                 return $('#users-role_id').val() == '" . Yii::$app->params['userroles']['user_agent'] . "';
-            }", ],
+            }"],
             // ['age', 'is3NumbersOnly'],
             ['email', 'validateEmail'],
             //[['photo'], 'image', 'skipOnEmpty' => true, 'extensions' => 'jpg, jpeg, gif, png', 'on' => 'update'],
@@ -201,7 +205,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
      */
     public function generatePasswordResetToken()
     {
-        $user = new \common\models\Users;
+        $user = new \common\models\Users();
         $user->password_reset_token = Security::generateRandomString() . '_' . time();
         return $user->password_reset_token;
     }
@@ -233,10 +237,10 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
     /**
      * Get list of all QA Users
      */
-    public static function QaUsersDropDownArr()
+    public static function MpUsersDropDownArr()
     {
 
-        $snQaUsers = ArrayHelper::map(Users::find()->where(['role_id' => Yii::$app->params['userroles']['qa'], 'status' => '1'])->asArray()->all(), 'id', function ($user) {
+        $snQaUsers = ArrayHelper::map(Users::find()->where(['role_id' => Yii::$app->params['userroles']['MP'], 'status' => '1'])->asArray()->all(), 'id', function ($user) {
             return $user['user_name'];
         });
         return $snQaUsers;
@@ -249,5 +253,26 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
         }
         return !empty($snUserDetails) ? $snUserDetails->user_name : '';
     }
+    public function getAnswers()
+    {
+        //return 'users';
+        return $this->hasMany(Answers::className(), ['mp_id' => 'id']);
+    }
 
+    public function getComments()
+    {
+        return $this->hasMany(Comments::className(), ['user_agent_id' => 'id']);
+    }
+    public function getShares()
+    {
+        return $this->hasMany(Shares::className(), ['user_agent_id' => 'id']);
+    }
+    public function getQuestions0()
+    {
+        return $this->hasMany(Questions::className(), ['user_agent_id' => 'id']);
+    }
+    public function getQuestionLouders()
+    {
+        return $this->hasMany(QuestionLouder::className(), ['user_id' => 'id']);
+    }
 }

@@ -13,6 +13,7 @@ use frontend\models\SignupForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\Pagination;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 
@@ -21,6 +22,11 @@ use yii\web\Controller;
  */
 class SiteController extends FrontCoreController
 {
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
     /**
      * {@inheritdoc}
      */
@@ -49,6 +55,16 @@ class SiteController extends FrontCoreController
             ->where(['role_id' => Yii::$app->params['userroles']['MP'], "status" => Yii::$app->params['user_status_value']['active']])
             ->asArray()
             ->all();
+        $query = Users::find()
+            ->joinWith(['answers', 'comments', 'shares'])
+            ->select(['users.*', 'COUNT(answers.id) AS answer_count', 'COUNT(comments.id) AS comment_count', 'COUNT(shares.id) AS share_count'])
+            ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']])
+            ->groupBy(['users.id'])
+            ->orderBy(['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC]);
+        $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3]);
+        $models = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $postData = Yii::$app->request->post();
             $model->user_agent_id = Yii::$app->user->id;
@@ -63,6 +79,8 @@ class SiteController extends FrontCoreController
             'model' => $model,
             'questions' => $questions,
             'mp' => $mpArr,
+            'models' => $models,
+            'pagination' => $pagination,
         ]);
     }
     /**
@@ -270,5 +288,9 @@ class SiteController extends FrontCoreController
         return $this->render('resendVerificationEmail', [
             'model' => $model,
         ]);
+    }
+    public function actionEngagement()
+    {
+        p(1323);
     }
 }

@@ -71,7 +71,10 @@
     .carousel-caption .Row1 .RowBox .RowTitle{margin-left: 0px;}
     .carousel-caption .Row1 .RowBox .RowTitle p{font-size: 14px;line-height: 24px;}
     .carousel-caption .Row1 .RowBox .RowTitle p span br{display: none}
-    .carousel-control-next-icon, .carousel-control-prev-icon{width: 20%!important;height: 7%!important;right: 0px;left: 71px;margin: 0% 0%;}
+    .prev_button{padding: 0;margin: 0;}
+    .prev_button li{list-style-type:none;}
+    .prev_button li:last-child{display: none;}
+    
     .carousel-caption .Row1 .RowBox .Dimmer:before{height: 50.63px;width: 50.63px;margin: auto;right: 0;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerTitle h3{font-size: 14px;padding: 5px 0px;line-height: 21px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile .UserTitle{margin-left: 5px;}
