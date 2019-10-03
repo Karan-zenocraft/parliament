@@ -14,6 +14,7 @@ use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\Pagination;
+use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 
@@ -50,18 +51,20 @@ class SiteController extends FrontCoreController
     {
         $this->layout = "homefeed";
         $model = new Questions();
-        $mpArr = Users::find()
-            ->select(['user_name as value', 'id as id'])
-            ->where(['role_id' => Yii::$app->params['userroles']['MP'], "status" => Yii::$app->params['user_status_value']['active']])
-            ->asArray()
-            ->all();
+        /* $mpArr = Users::find()
+        ->select(['user_name as value', 'id as id'])
+        ->where(['role_id' => Yii::$app->params['userroles']['MP'], "status" => Yii::$app->params['user_status_value']['active']])
+        ->asArray()
+        ->all();*/
+        $mpArr = ArrayHelper::map(Users::find()->orderBy('user_name')->asArray()->all(), 'id', 'user_name');
+        //p($mpArr);
         $query = Users::find()
             ->joinWith(['answers', 'comments', 'shares'])
             ->select(['users.*', 'COUNT(answers.id) AS answer_count', 'COUNT(comments.id) AS comment_count', 'COUNT(shares.id) AS share_count'])
             ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']])
             ->groupBy(['users.id'])
             ->orderBy(['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC]);
-        $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3]);
+        $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 12]);
         $models = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -292,5 +295,52 @@ class SiteController extends FrontCoreController
     public function actionEngagement()
     {
         p(1323);
+    }
+
+    public function actionCurrentCity()
+    {
+        if (!empty($_POST)) {
+            $query = Users::find()
+                ->select(['users.*'])
+                ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
+            if ($_POST['sort'] == "asc") {
+                $query->orderBy(['users.city' => SORT_ASC]);
+            } else {
+                $query->orderBy(['users.city' => SORT_DESC]);
+            }
+            $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 12]);
+            $models = $query->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+            echo "<div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
+            if (!empty($models)) {
+                $numOfCols = 3;
+                $rowCount = 0;
+                foreach ($models as $key => $value) {
+                    echo "<div class='RowBox d-flex align-items-center justify-content-start'><div class='DimmerBox'>";
+                    echo "<img src=" . Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png class='img-fluid SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
+                    $rowCount++;
+                    if ($rowCount % $numOfCols == 0) {
+                        echo "</div><div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
+                    }
+                }
+                echo " </div></div></div></div>";
+                echo \yii\widgets\LinkPager::widget([
+                    'pagination' => $pagination,
+                    'prevPageLabel' => '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span>',
+                    'maxButtonCount' => 0,
+                    'options' => ['class' => 'prev_button carousel-control-prev'],
+                ]);
+                echo \yii\widgets\LinkPager::widget([
+                    'pagination' => $pagination,
+                    'nextPageLabel' => '<span class="carousel-control-next-icon" aria-hidden="true"></span>',
+                    'maxButtonCount' => 0,
+                    'options' => ['class' => 'carousel-control-next'],
+                ]);
+
+            } else {
+                echo "No Data Found";
+            }
+        }
     }
 }

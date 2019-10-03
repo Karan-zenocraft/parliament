@@ -20,4 +20,6 @@ return [
         '1' => 'Female',
         '2' => 'Male',
     ],
+    'bsVersion' => '4.x',
+    'bsDependencyEnabled' => false,
 ];

@@ -147,3 +147,35 @@ $("#engagement").click(function(){
        }
   });
 });
+
+$("#CurrentCity").click(function(){
+  var sort = $("#sort").val();
+  if(sort == "asc"){
+    $("#sort").val("desc");
+  }else{
+    $("#sort").val("asc");
+  }
+    $.ajax({
+       url: "site/current-city",
+       type: 'post',
+       data: {
+                 sort:$("#sort").val(), 
+             },
+       success: function (data) {
+          $('#list_mp').replaceWith(data);
+       }
+  });
+});
+
+$(document).ready(function(){
+  $('#questions-mp_id').on('select2:select', function (e) {
+     var data = e.params.data;
+    var mp_id = "mp_"+data.id;
+    $("#"+mp_id).addClass("Dimmer");
+});
+  $('#questions-mp_id').on('select2:unselect', function (e) {
+     var data = e.params.data;
+    var mp_id = "mp_"+data.id;
+    $("#"+mp_id).removeClass("Dimmer");
+});
+ });
