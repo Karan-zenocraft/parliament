@@ -8,13 +8,14 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/inner-style.css">
-    <link rel="stylesheet" type="text/css" href="../css/inner-responsive.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/inner-responsive.css">
+    
     <link rel="icon" href="../image/Logo1.png" type="image/png" sizes="64x64">
     <meta name="theme-color" content="#000" />
     <link rel="stylesheet" href="../css/w3.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 
@@ -50,15 +51,39 @@
                     </div>
 
 
-
+                    
                     <div class="Icons">
+                      
+                        <img src="../image/Logo-sm.png" alt="" class="img-fluid OnlySm XsHidden">
                         <img src="../image/people.png" alt="" class="img-fluid People">
+                        <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
+                        <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
+                            
+                          
+                            
+                            
+                        </i>
                         
-                        <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span></i></span>
+                        
+                        
+                        </span>
+                        <ul class=" OnlySm  Nav3 UlNotification">
+                        <li class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <span>Mark All as Unread</span></li>
+                    <li><a href="">Chala Commented on your Question</a></li>
+                    <li><a href="">Maya Made a Question Louder</a></li>
+                      <li><a href="">Abebe Followed you</a></li>
+                        <li><a href="">Lily Shared your Question</a></li>
+                    </ul>  
+                        <i class="fa fa-search OnlySm"></i>
                         <i class="fa fa-cog"></i>
+                        <i class="fa fa-bars OnlySm"></i>
                     </div>
 
-
+                    
+                    
+                    
+                    
+                    
 
                 </div>
             </div>
@@ -159,12 +184,12 @@
                         
                         </div>
                 </div>
-                <div class="col-md-6 cus-md-6 MainCenter">
+                <div class="col-md-12 col-lg-6 cus-md-6 MainCenter">
                     <nav class="Nav1">
 
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <li><a href="#home" data-toggle="tab" class="active show">Home Feed</a></li>
+                            <li class="BGList"><a href="#home" data-toggle="tab" class="active show">Home Feed</a></li>
                             <li><a data-toggle="tab" href="#menu1" class="show">Unanswered</a></li>
                             <li><a data-toggle="tab" href="#menu2" class="show">Answered</a></li>
                             <li><a data-toggle="tab" href="#menu3" class="show">Citizens</a></li>
@@ -172,7 +197,8 @@
                     </nav>
 
                     <div class="tab-content clearfix">
-                        <div id="home" class="tab-pane active show">
+                        <div id="home" class="tab-pane active show Flex">
+                            
                             <div class="Ask">
                                 <input type="text" placeholder="Address for: " class="Address">
                                 <input type="text" placeholder="Ask your Question. Get involved" class="AskQuestion">
@@ -180,13 +206,13 @@
                             </div>
 
                             <div class="FilterBar d-flex align-items-end justify-content-between">
-                                <span>Filter: </span>
+                                <span>Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
                                 <nav class="Nav2">
-                                    <ul class="d-flex align-items-center justify-content-start nav nav-tabs">
-                                        <li><a href="#Engagement" data-toggle="tab" class="active show">Engagement </a></li>
-                                        <li><a data-toggle="tab" href="#CurrentCity" class="show">Current City</a></li>
-                                        <li><a data-toggle="tab" href="#Sex" class="show">Sex</a></li>
-                                        <li><a data-toggle="tab" href="#Age" class="show">Age</a></li>
+                                    <ul class="d-flex align-items-center justify-content-start nav">
+                                        <li class="FilterActive"><a >Engagement </a></li>
+                                        <li><a >Current City</a></li>
+                                        <li><a >Sex</a></li>
+                                        <li><a >Age</a></li>
                                     </ul>
 
                                 </nav>
@@ -206,7 +232,7 @@
       <!------slider slide1------------>
     <div class="carousel-item active">
  
-  <div class="carousel-caption d-none d-md-block">
+  <div class="carousel-caption d-md-block">
    
       
       <div class="row">
@@ -345,7 +371,7 @@
       <!------slider slide2------------>
     <div class="carousel-item ">
  
-  <div class="carousel-caption d-none d-md-block">
+  <div class="carousel-caption  d-md-block">
    
       
       <div class="row">
@@ -637,6 +663,7 @@
                                     
                                 </div>
 
+<!--
                                 <div id="CurrentCity" class="tab-pane fade">
                                     <h1>two</h1>
                                 </div>
@@ -647,6 +674,7 @@
                                 <div id="Age" class="tab-pane fade">
                                     <h1>four</h1>
                                 </div>
+-->
 
 
                             </div>
@@ -682,7 +710,8 @@
                             
                                
                                <div class="ViewMoreIcon">
-                                   <img src="../image/arrow-bottom.png" alt="" class="img-fluid ArrowBottom" id="one" >
+                                   <img src="../image/arrow-bottom.png" alt="" class="img-fluid ArrowBottom one">
+                                   <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
                                    <div class="Menu1">
                                    <ul class="d-flex align-items-center justify-content-center flex-column">
                                        <li class="active1"><a>Report</a></li>
@@ -716,6 +745,7 @@
                                 <div class="Loud" id="Load1">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
+                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                     <span class="Numbers">301</span>
                                 </a>
                                 </div>
@@ -806,6 +836,7 @@
                                 <div class="Loud">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
+                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                     <span class="Numbers">301</span>
                                 </a>
                                 </div>
@@ -834,7 +865,7 @@
                         <h3>PUBLIC Questions</h3>    
                         </div>
                            <div class="QuestionAnswerMainBox">
-                            <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a href="#"><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
+                            <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
                                
                                
                                <ul class="align-items-start justify-content-start flex-column OnhoverMP">
@@ -911,6 +942,7 @@
                                 <div class="Loud">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
+                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                     <span class="Numbers">301</span>
                                 </a>
                                 </div>
@@ -1019,7 +1051,59 @@
                            </div>
                             
                             
-                            
+<!--
+                            <div class="GiveAnswer">
+                            <div class="AskFollowUp">
+                               <div class="Profile">
+                                <img src="../image/user.png" alt="" class="img-fluid">
+                                <div class="UserTitle">
+                                    <a href="#"><p>Meskrem Hailu</p></a>
+                                </div>
+                                </div> 
+                                
+                                <div class="AskFollowUpTitle">
+                                <p>ask a follow up</p>
+                                
+                                </div>
+                                
+                                <div class="AskFollowUpAnswerBox">
+                                
+                                <textarea> Write Here...
+                                    
+                                    <div class="Limit">
+                                    <span>20</span>/<span>540</span>
+                                    </div>
+                                    </textarea>
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                                   <div class="AskFollowUpSubmit">
+                                    <a href="" class="">Submit</a></div> 
+                                    
+                                    
+                                    
+                                
+                                
+                                
+                            </div>
+                                
+                                
+                                <div class="comments">
+                                
+                                
+                                
+                                </div>
+    
+    
+                            </div>
+-->
+    
+                    
+    
+    
+    
                         </div>
 
                         </div>

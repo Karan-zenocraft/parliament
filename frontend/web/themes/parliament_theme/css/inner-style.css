@@ -21,27 +21,32 @@
     font-weight: bold;
     font-style: normal;
 }
+
+
 @font-face {
-   font-family: 'FontAwesome';
-   src: url('../font/FontAwesome.woff2') format('woff2'),
-       url('../font/FontAwesome.woff') format('woff');
-   font-weight: normal;
-   font-style: normal;
+    font-family: 'FontAwesome';
+    src: url('../font/FontAwesome.woff2') format('woff2'),
+        url('../font/FontAwesome.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-   font-family: 'FontAwesome';
-   src: url('../font/FontAwesome.woff2') format('woff2'),
-       url('../font/FontAwesome.woff') format('woff');
-   font-weight: normal;
-   font-style: normal;
+    font-family: 'FontAwesome';
+    src: url('../font/FontAwesome.woff2') format('woff2'),
+        url('../font/FontAwesome.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-   font-family: 'FontAwesome';
-   src: url('../font/FontAwesome.woff2') format('woff2'),
-       url('../font/FontAwesome.woff') format('woff');
-   font-weight: normal;
-   font-style: normal;
+    font-family: 'FontAwesome';
+    src: url('../font/FontAwesome.woff2') format('woff2'),
+        url('../font/FontAwesome.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
 
 
 #scroll {position:fixed;right:40px;bottom:20px;cursor:pointer;width:40px;height:40px;background-color:transparent;text-indent:-9999px;display:none;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:6px;border: 1px solid #10303F; }
@@ -66,6 +71,7 @@ header .HeaderBottomCenter .Icons .fa-cog{font-size: 55px;color: #ffffff;margin:
 header .HeaderBottomCenter .Icons .badge-Box{position: relative;}
 header .HeaderBottomCenter .Icons .badge-Box .badge {position: absolute;right: 9px;bottom: 25px;font-size: 40%!important;border-radius: 50px;}
 header .HeaderBottomCenter .Icons .badge-Box .badge-secondary {color: #fff;background-color: #D17C0D!important;}
+header .HeaderBottomCenter .Icons i{color: #fff;}
 header .HeaderBottomCenter .Icons{margin-right: 50px;margin-left: auto}
 header .HeaderBottomCenter .Icon{margin-left: unset;visibility: hidden;}
 header .HeaderBottomCenter{position: relative;margin-bottom: -50px;}
@@ -120,7 +126,7 @@ padding-right: 30px;}
 .Main .MainCenter .Nav1 ul li a{text-decoration: none;padding: 7px 60px;color: #707070;background: #000;}
 .Main .MainCenter .Ask{border-radius: 85px;border:10px solid #10303F;background: #ECECEC;padding-bottom: 45px;padding-left: 15px;
 padding-right: 15px;margin-bottom: 10px;}
-.Main .MainCenter .Ask .Address{float: right;margin-right: 40px;margin-top: 5px;width: 420px;height: 41px;width: 420px;border-radius: 50px;border: 1px solid #7070708f;background: #E5E2E2;padding-left: 15px;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;font-family: 'Segoe UI'; }
+.Main .MainCenter .Ask .Address{float: right;margin-right: 40px;margin-top: 5px;padding-right: 218px;height: 41px;border-radius: 50px;border: 1px solid #7070708f;background: #E5E2E2;padding-left: 15px;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;font-family: 'Segoe UI'; }
 .Main .MainCenter .Ask .AskQuestion{margin-top: 5px;height: 295px;width: 100%;border-radius: 50px;border: 1px solid #7070708f;background: #D4D4D4;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;text-align: center}
 .Main .MainCenter .Ask .AskQuestion:focus,.Main .MainCenter .Ask .Address:focus{outline: none;background: #ffffff6b;transition: 0.25s ease;}
 .Main .MainCenter .Ask .AskButton{background: #D17C0D;color: #10303F;border: 1px solid #707070;border-radius: 50px;padding: 5px 31px;float: right;margin-right: 40px;margin-top: 5px;font-size: 16px;font-family: 'Segoe UI';line-height: 22px}
@@ -140,7 +146,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .FilterBar .SearchMps .fa-search{position: absolute;right: 5px;top: 0;padding: 7px;transform: rotate(90deg);font-size: 20px;color: #707070;}
 .Main .MainCenter .FilterBar span{font-size: 16px;line-height: 18px;color: #a5a5a5;font-weight: bold;font-family: 'Segoe UI'; }
 .Main .MainCenter .tab-content .QuestionAnswer{background: #E4E4E4;padding-bottom: 15px;}
-.Main .MainCenter .tab-content .QuestionAnswer .Public h3{border-bottom: 3px solid #707070!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .Public h3{border-bottom: 1px solid #707070;}
 .Main .MainCenter .tab-content .QuestionAnswer .Public{padding-top: 20px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerTitle h3{font-size: 20px;line-height: 22px;font-weight: 400;color: #10303F;font-family: 'Segoe UI';text-align: center;text-transform: uppercase;opacity: .6;margin: 0;padding: 10px 0px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox1{margin-top: 0px!important;}
@@ -148,6 +154,10 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Top{padding-left: 40px;padding-top: 10px;padding-bottom: 5px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox{padding: 0px 20px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{font-size: 18px;font-weight: bold;line-height: 30px;font-family: 'Segoe UI';color: #0D5D83}
+
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Top .OnhoverGroup:hover .OnhoverMP{display: block;}
+
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Top .OnhoverGroup{position: relative}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{display: none;transition: 0.25s ease;transition: 0.25s ease;
     position: absolute;left: 0;right: 36%;margin: auto;padding: 0;background: #10303F;width: 170px;list-style-type: none;padding: 12px;margin-top: -5px;}
@@ -165,7 +175,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .MP{margin: 0;color: #0D5D83;font-weight: bold;font-size: 18px;line-height: 30px;font-family: 'Segoe UI';margin-right: 15px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .AskFollowUp i{font-size: 24px;line-height: 23px;color: #10303F;margin-right: 10px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .AskFollowUp span{font-size: 14px;line-height: 18px;color:#10303F;font-family: 'Segoe UI';font-weight: bold; }
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon{position: relative;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon{position: absolute;right: 5px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1{display: none;left: -120px;top: 10px;position: absolute;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Option1{display: block!important}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu2{display: none;}
@@ -182,7 +192,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments button:focus{outline: none}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2{margin-bottom: 25px;}
 
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3{margin-bottom: 0px;padding-left: 35px;padding-right: 85px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3{margin-bottom: 0px;padding-left: 20px;padding-right: 30px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud a{padding: 3px 10px;background: #0e2e3e1f;border-radius: 40px;cursor: pointer}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .Numbers{font-weight: 400;position: relative;padding-left: 8px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .Numbers:before{content: '';position: absolute;left: 0;top: 0;background: #0E2E3E;height: 18px;width: 2px;bottom: 0;margin: auto;}
@@ -204,17 +214,14 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .MadeLouderBG .Numbers:before{background: #E9F0F3}
 
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion a{padding: 3px 10px;background: #0e2e3e1f;border-radius: 40px;}
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion a{font-size: 14px;
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion a{font-size: 10px;
     line-height: 18px;font-weight: bold;font-family: 'Segoe UI';color: #10303F;text-transform: uppercase;}
-
-.AskQuestion placeholder{vertical-align: middle;text-align: center;}
-
 
 .carousel-caption{position: unset!important;color: #000!important;padding-top: 0px!important;padding-bottom: 0px!important}
 .carousel-inner{background: #10303F}
 .carousel-caption .Row1{padding: 0px 50px;padding-top: 55px;}
 .carousel-caption .Row1:last-child{padding-bottom: 55px;}
-.carousel-caption .Row1 .RowBox{max-width: 219px;}
+.carousel-caption .Row1 .RowBox{margin: auto;}
 .carousel-caption .Row1 .RowBox .Dimmer:before{content: '';position: absolute;top: 0;left: 0;height: 117px;width: 117px;background: #000;border-radius: 100%;z-index: 9999;opacity: .5}
 .carousel-caption .Row1 .RowBox .Dimmer{position: relative;}
 .carousel-caption .Row1 .RowBox .RowTitle{text-align: left;margin-left: 10px;}
@@ -223,11 +230,70 @@ padding-right: 15px;margin-bottom: 10px;}
 .carousel-caption .Row1 .RowBox .RowTitle p:last-child{line-height: 0;}
 
 .carousel-control-next-icon{background-image:url("../image/slider-arrow.png")!important;}
-.carousel-control-next-icon, .carousel-control-prev-icon{
-  z-index: 999999999!important;position: absolute;right: 0px;left: 75px;margin: 15% 0%;}
+.carousel-control-next-icon, .carousel-control-prev-icon{width: 21%!important;height: 11%!important;z-index: 999999999!important;position: absolute;right: 0px;left: 90px;margin: 15% 0%;}
 .carousel-control-next, .carousel-control-prev{opacity: 1!important}
-#carouselExampleControls .next_button{margin: 0;padding: 0;list-style-type: none;}
-.carousel-control-prev-icon{position: absolute;left: 0!important;background-image:url("../image/slider-arrow.png")!important;transform: rotate(180deg);margin-left: 5px;}
+.carousel-control-prev{display: none!important;}
+/*.carousel-caption .Row1 .RowBox:hover .SliderImage{transform: scale(1.1);transition: 0.25s ease;}*/
+/*.carousel-caption .Row1 .RowBox .SliderImage{position: relative;transform: scale(1.0);overflow: hidden}*/
+.Main  .MainCenter .Nav2 ul li{cursor: pointer}
+.Main  .MainCenter .Nav2 ul .FilterActive a{color: #D17C0D!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 35px;}
+
+
+.GiveAnswer .AskFollowUp{background: #fff;
+    border: 1px solid red;
+    border-radius: 50px;
+    margin-top: 20px;
+    padding: 20px 20px;}
+
+.GiveAnswer .AskFollowUp .Profile{display: flex;
+    align-items: center;
+    justify-content: flex-start;}
+
+.GiveAnswer .AskFollowUp .Profile .UserTitle{margin-left: 7px;}
+.GiveAnswer .AskFollowUp .Profile .UserTitle a p{margin: 0;}
+
+.GiveAnswer .AskFollowUpTitle{display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;}
+
+.GiveAnswer .AskFollowUpTitle p{margin: 0;}
+
+.GiveAnswer .AskFollowUpAnswerBox textarea{width: 100%;
+    border-radius: 50px;
+    padding-top: 10px;
+    padding-bottom: 200px;
+    padding-left: 15px;
+    padding-right: 15px;}
+
+.GiveAnswer .AskFollowUpSubmit{margin-bottom: 50px;}
+
+
+.GiveAnswer .AskFollowUpSubmit a{background: #D17C0D;
+    color: #10303F;
+    border: 1px solid #707070;
+    border-radius: 50px;
+    padding: 5px 31px;
+    float: right;
+    margin-right: 40px;
+    margin-top: 5px;
+    font-size: 16px;
+    font-family: 'Segoe UI';
+    line-height: 22px;}
+
+.carousel-control-next-icon{background-image:url("../image/slider-arrow.png")!important;position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;}
+.carousel-control-next-icon, .carousel-control-prev-icon{
+  z-index: 999999999!important;}
+.carousel-control-next, .carousel-control-prev{opacity: 1!important}
+#carouselExampleControls_Controls .next_button{margin: 0;padding: 0;list-style-type: none;}
+.carousel-control-prev-icon{position: absolute;left: 5px!important;background-image:url("../image/slider-arrow.png")!important;transform: rotate(180deg);top: 0;
+    bottom: 0;
+    margin: auto;}
 .carousel-control-next .prev span{display: none;}
 .prev_button{padding: 0;margin: 0;}
 .prev_button li{list-style-type:none;}
@@ -266,3 +332,22 @@ padding-right: 15px;margin-bottom: 10px;}
     color: #fff !important;
     background-color: #D17C0D !important;
 }
+
+.carousel-control-next, .carousel-control-prev{position: unset!important; 
+     top: unset!important; 
+    bottom: unset!important; 
+    z-index: unset!important; 
+    display: unset!important;
+     display: unset!important; 
+    -ms-flex-align: unset!important;
+    align-items: unset!important; 
+    left: unset!important;
+    -ms-flex-pack: unset!important;
+     justify-content: unset!important; 
+     width: unset!important; 
+     color: unset!important; 
+     text-align: unset!important; 
+     opacity: unset!important; 
+     transition: unset!important; }
+
+     

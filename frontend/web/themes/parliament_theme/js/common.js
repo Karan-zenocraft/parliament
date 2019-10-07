@@ -29,18 +29,77 @@ function myFunction1() {
     moreText.style.display = "inline";
   }
 }
- function countChar(val) {
-         $('#charNum').text(len+"/540");
-        var len = val.value.length;
-        if (len >= 540) {
-        val.value = val.value.substring(0, 540);
-          $('#charNum').text("540/540");
-          $('#charNum').css('color', 'red');
-        } else {
-          $('#charNum').css('color', 'black');
-          $('#charNum').text(len+"/540");
-        }
-      };
+function sortBy()
+{
+  var sort = $("#sort").val();
+  if(sort == "asc"){
+    $("#sort").val("desc");
+  }else{
+    $("#sort").val("asc");
+  }
+  return $("#sort").val();
+}
+function AjaxCallSort(dataValue)
+{
+    var sortdir = sortBy();
+    var search = $('#searchMP').val();
+      $("#page").val(1);
+    $('#sortby').val(dataValue);
+         console.log(dataValue+"-"+search+"-"+sortdir);
+
+    $.ajax({
+     url: "site/current-city",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: dataValue, 
+               sortdir:sortdir,
+               search : search,
+               page: 1
+
+           },
+     success: function (data) {
+       $('#list_mp').html(data);
+     }
+  });
+}
+function AjaxCallSearch()
+{
+   
+    var sortdir = $("#sort").val();
+    var sortby = $("#sortby").val();
+    var page = $("#page").val();
+    var search = $('#searchMP').val();
+     console.log(search+"-"+sortby+"-"+sortdir);
+
+    $.ajax({
+     url: "site/current-city",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: sortby, 
+               sortdir:sortdir,
+               search: search, 
+               page: page
+           },
+     success: function (data) {
+         $('#list_mp').html(data);
+     }
+  });
+}
+function getPage(flag)
+{
+  if(flag=='next'){
+     var page = $("#page").val();
+     $("#page").val(++page);
+  }
+  else
+  {
+    var page = $("#page").val();
+     $("#page").val(--page);
+  }
+  AjaxCallSearch();
+}
 $(document).ready(function() {
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
@@ -87,16 +146,181 @@ $(document).ready(function() {
 
         $(document).ready(function() {
             $('.DimmerBox').click(function() {
-                // $('.DimmerBox').removeClass("Dimmer");
-                $(this).toggleClass("Dimmer");
+                //$('.DimmerBox').removeClass("Dimmer");
+                $(this).addClass("Dimmer");
                
                 
             });
+            
+            
+            
+            $('.Icons i').click(function() {
+                $('.Icons i').removeClass("ActiveIcon");
+                $(this).addClass("ActiveIcon");
+               
+                
+            });
+            
+            
+             $('.Icons  .fa-bell').click(function() {
+                $('.Icons .fa-bell').addClass("NotificationBadgeCircle");
+                
+               
+                
+            });
+            
+            
+            
+          
+        });
+
+
+
+//$(".MainCenter .Nav1 ul").removeClassClass("UlHome");
+
+
+$(document).ready(function(){
+  $('.FilterBar span:first-child').click(function() {
+                $(".MainCenter .Nav1 ul").removeClass("UlHome");
+                $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
+              $(".MainCenter .Nav2 ul").toggleClass("UlFilter");
+                $(".FilterBar span:first-child i").toggleClass("Rotate");
+                
+            });
+    
+    
+    $("body").click(function() {
+                $(".MainCenter .Nav2 ul").removeClass("UlFilter");
+                 $(".FilterBar span:first-child i").removeClass("Rotate");
+
+            });
+
+
+            $(".FilterBar span:first-child").click(function() {
+                event.stopPropagation();
+                
+                
+            });
+    
+    
+
+        });
+
+ 
+
+$(document).ready(function(){
+$('.Nav1 .nav li').click(function() {
+                $('.Nav1 .nav li').removeClass("BGList");
+                $(this).addClass("BGList");
+               
+                
+            });
+
+});
+
+
+$(document).ready(function(){
+$('.Nav2 .nav li').click(function() {
+                $('.Nav2 .nav li').removeClass("FilterActive");
+                $(this).addClass("FilterActive");
+               
+                
+            });
+
+});
+
+
+$(document).ready(function(){
+    
+    $('.Nav1 .nav li').click(function() {
+
+$('.Icons .fa-rss-square').addClass("ActiveIcon");
+
+ });
+    
+    });
+
+$(document).ready(function(){
+    
+    $('.Nav1 .nav li:first-child').click(function() {
+              
+                $('.tab-content #home').addClass("Flex");
+                
+               
+                
+            });
+    
+$('.Nav1 .nav li:last-child, .Nav1 .nav li:nth-child(2), .Nav1 .nav li:nth-child(3)').click(function() {
+              
+                $('.tab-content #home').removeClass("Flex");
+               
+                
+            });
+
+});
+
+
+
+
+
+
+$(document).ready(function(){
+  $('.Icons .fa-bell').click(function() {
+              $(".HeaderBottomCenter .Nav3").toggleClass("UlNotification");
+      
+                $(".MainCenter .Nav2 ul").removeClass("UlFilter");
+                $(".MainCenter .Nav1 ul").removeClass("UlHome");
+            });
+    
+    
+    $("body").click(function() {
+                $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
+
+
+            });
+
+
+            $(".Icons .fa-bell").click(function() {
+                event.stopPropagation();
+            });
+    
+     $(".HeaderBottomCenter .Nav3 li span:last-child").click(function() {
+                event.stopPropagation();
+            });
+    
+   
+
+        });
+
+
+
+$(document).ready(function(){
+  $('.Icons .fa-bars').click(function() {
+              $(".MainCenter .Nav1 ul").toggleClass("UlHome");
+                $(".MainCenter .Nav2 ul").removeClass("UlFilter");
+            $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
+            });
+    
+    
+    $("body").click(function() {
+                $(".MainCenter .Nav1 ul").removeClass("UlHome");
+
+
+            });
+
+
+            $(".Icons .fa-bars").click(function() {
+                event.stopPropagation();
+            });
+    
+    
+   
+
         });
 
 
 $(document).ready(function(){
-  $('#one').click(function() {
+  $('.one').click(function() {
               $(".Menu1").addClass("Option1");
             });
     
@@ -108,7 +332,7 @@ $(document).ready(function(){
             });
 
 
-            $("#one").click(function() {
+            $(".one").click(function() {
                 event.stopPropagation();
             });
 
@@ -117,7 +341,7 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-$(".OnhoverGroup").mouseenter(function() {
+$(".OnhoverGroup").hover(function() {
       $(".OnhoverMP").show();
 }).mouseleave(function() {
       $(".OnhoverMP").hide();
@@ -134,6 +358,42 @@ $(document).ready(function(){
     $("#Load2").toggleClass("LoadBG");
   });
 });
+
+
+//$(document).ready(function() {
+//            $('.Icons i').click(function() {
+//                $('i').removeClass("ActiveIcon");
+//                $(this).addClass("ActiveIcon");
+//            });
+//        });
+
+
+
+
+//   give answer
+
+
+
+$(document).ready(function(){
+  $(".AnswerQuestion a").click(function(){
+    $(".GiveAnswer").toggleClass("GiveAnswerBox");
+  });
+    
+    
+});
+
+ function countChar(val) {
+         $('#charNum').text(len+"/540");
+        var len = val.value.length;
+        if (len >= 540) {
+        val.value = val.value.substring(0, 540);
+          $('#charNum').text("540/540");
+          $('#charNum').css('color', 'red');
+        } else {
+          $('#charNum').css('color', 'black');
+          $('#charNum').text(len+"/540");
+        }
+      };
 $("#engagement").click(function(){
     $.ajax({
        url: "site/engagement",
@@ -178,4 +438,20 @@ $(document).ready(function(){
     var mp_id = "mp_"+data.id;
     $("#"+mp_id).removeClass("Dimmer");
 });
+$(".DimmerBox").click(function(){
+  var id = $(this).attr('id');
+  var mp = id.replace('mp_','');
+  //$('#questions-mp_id').val(mp); // Select the option with a value of '1'
+  var selectedValues = new Array();
+  var id = $("#questions-mp_id").val();
+  if(id == ""){
+    $('#questions-mp_id').val([mp]);
+    $('#questions-mp_id').trigger('change');
+  }else{
+    var val = id.push(mp);
+    $('#questions-mp_id').val(id);
+    $('#questions-mp_id').trigger('change');
+  }
+});
+
  });

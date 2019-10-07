@@ -1,11 +1,7 @@
 <?php
-
-///* @var $this \yii\web\View */
-/* @var $content string */
 use frontend\assets\ParliamentAsset;
 use yii\widgets\Breadcrumbs;
-/* @var $this \yii\web\View */
-/* @var $content string */
+
 $this->registerCssFile('@web/themes/parliament_theme/css/inner-style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 $this->registerCssFile('@web/themes/parliament_theme/css/inner-responsive.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ParliamentAsset::register($this);
@@ -15,7 +11,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 <?php $this->beginPage()?>
 <!DOCTYPE html>
 <html>
-
+<?php $this->head();?>
 <head>
     <title>Home Feed</title>
     <meta charset="UTF-8">
@@ -24,13 +20,10 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" type="image/png" sizes="64x64">
     <meta name="theme-color" content="#000" />
-    <?php $this->head();?>
 </head>
 
 <body class="example-1  scrollbar-dusty-grass square thin">
 <?php $this->beginBody()?>
-
-
     <a href="#" id="scroll" style="display: none;z-index: 99999;">
         <span></span></a>
 
@@ -42,31 +35,34 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                 </div>
             </div>
             <div class="row">
-
-
                 <div class="col-md-12 HeaderBottomCenter d-flex align-items-center justify-content-center flex-wrap">
                     <div class="Icons Icon">
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="img-fluid People">
                         <i class="fa fa-bell"></i>
                         <i class="fa fa-cog"></i>
                     </div>
-
-
                     <div class="Search">
                         <input type="text" placeholder="Search for Questions here" class="SearchInput"><i class="fa fa-search"></i>
                     </div>
-
-
-
                     <div class="Icons">
+
+                        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden">
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="img-fluid People">
-
-                        <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span></i></span>
+                        <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
+                        <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
+                        </i>
+                        </span>
+                        <ul class=" OnlySm  Nav3 UlNotification">
+                        <li class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <span>Mark All as Unread</span></li>
+                    <li><a href="">Chala Commented on your Question</a></li>
+                    <li><a href="">Maya Made a Question Louder</a></li>
+                      <li><a href="">Abebe Followed you</a></li>
+                        <li><a href="">Lily Shared your Question</a></li>
+                    </ul>
+                        <i class="fa fa-search OnlySm"></i>
                         <i class="fa fa-cog"></i>
+                        <i class="fa fa-bars OnlySm"></i>
                     </div>
-
-
-
                 </div>
             </div>
 
@@ -114,14 +110,8 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                             <p id="dots">...</p>
                             <p id="more">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything..</p>
                             <button onclick="myFunction()" id="myBtn">Read more</button>
-
-
-
-
                         </div>
                         </div>
-
-
                             <div class="Row3">
                             <div class="Social d-flex align-items-center justify-content-between">
                             <div class="Loud" id="Load2">
@@ -148,9 +138,6 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
                             </div>
                         </div>
-
-
-
                         </div>
 
                         <div class="ListOfQuestions">
@@ -161,17 +148,14 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         </ul>
 
                         </div>
-
-
-
                         </div>
                 </div>
-                <div class="col-md-6 cus-md-6 MainCenter">
+                <div class="col-md-12 col-lg-6 cus-md-6 MainCenter">
                     <nav class="Nav1">
 
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <li><a href="#home" data-toggle="tab" class="active show">Home Feed</a></li>
+                            <li class="BGList"><a href="#home" data-toggle="tab" class="active show">Home Feed</a></li>
                             <li><a data-toggle="tab" href="#menu1" class="show">Unanswered</a></li>
                             <li><a data-toggle="tab" href="#menu2" class="show">Answered</a></li>
                             <li><a data-toggle="tab" href="#menu3" class="show">Citizens</a></li>
@@ -184,7 +168,6 @@ Breadcrumbs::widget([
     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 ])
 ?><?php //echo Alert::widget() ?><?php echo $content ?>
-
 
 <div class="QuestionAnswer">
                         <div class="QuestionAnswerTitle">
@@ -216,7 +199,8 @@ Breadcrumbs::widget([
 
 
                                <div class="ViewMoreIcon">
-                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom" id="one" >
+                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one">
+                                   <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
                                    <div class="Menu1">
                                    <ul class="d-flex align-items-center justify-content-center flex-column">
                                        <li class="active1"><a>Report</a></li>
@@ -250,6 +234,7 @@ Breadcrumbs::widget([
                                 <div class="Loud" id="Load1">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
+                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                     <span class="Numbers">301</span>
                                 </a>
                                 </div>
@@ -340,6 +325,7 @@ Breadcrumbs::widget([
                                 <div class="Loud">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
+                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                     <span class="Numbers">301</span>
                                 </a>
                                 </div>
@@ -368,7 +354,7 @@ Breadcrumbs::widget([
                         <h3>PUBLIC Questions</h3>
                         </div>
                            <div class="QuestionAnswerMainBox">
-                            <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a href="#"><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
+                            <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
 
 
                                <ul class="align-items-start justify-content-start flex-column OnhoverMP">
@@ -379,14 +365,6 @@ Breadcrumbs::widget([
                                    <li><a href="#">Chala Banti</a></li>
                                    <li><a href="#">Feven Siraj</a></li>
                                 </ul>
-
-
-
-
-
-
-
-
 
                         <div class="QuestionAnswerBox">
                            <div class="Row1">
@@ -433,10 +411,6 @@ Breadcrumbs::widget([
                             <p id="dots1">...</p>
                             <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
                             <button onclick="myFunction1()" id="myBtn1">See More</button>
-
-
-
-
                         </div>
                             </div>
 
@@ -445,6 +419,7 @@ Breadcrumbs::widget([
                                 <div class="Loud">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
+                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                     <span class="Numbers">301</span>
                                 </a>
                                 </div>
@@ -460,12 +435,8 @@ Breadcrumbs::widget([
                                     <span>Share</span><span class="Numbers">100</span>
                                     </a>
                                 </div>
-
                             </div>
-
                             </div>
-
-
                         </div>
                            </div>
 
@@ -516,10 +487,6 @@ Breadcrumbs::widget([
                             <p id="dots1">...</p>
                             <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
                             <button onclick="myFunction1()" id="myBtn1">See More</button>
-
-
-
-
                         </div>
                             </div>
 
@@ -528,7 +495,6 @@ Breadcrumbs::widget([
                                 <div class="AnswerQuestion">
                                 <a href="#">
                                    Answer Question
-
                                 </a>
                                 </div>
                                 <div class="Comments">
@@ -543,16 +509,10 @@ Breadcrumbs::widget([
                                     <span>Share</span><span class="Numbers">100</span>
                                     </a>
                                 </div>
-
                             </div>
-
                             </div>
-
-
                         </div>
                            </div>
-
-
 
                         </div>
 
@@ -569,17 +529,6 @@ Breadcrumbs::widget([
                         <div id="menu3" class="tab-pane fade">
                             <h1>four</h1>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                 </div>
                 <div class="col-md-3 cus-md-3 MainRight">
@@ -596,9 +545,8 @@ Breadcrumbs::widget([
             </div>
         </div>
     </section>
-<?php $this->endBody();?>
+    <?php $this->endBody();?>
       <?php $this->endPage()?>
-
 </body>
 
 </html>

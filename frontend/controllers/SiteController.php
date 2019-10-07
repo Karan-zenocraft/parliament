@@ -17,6 +17,8 @@ use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * Site controller
@@ -50,6 +52,21 @@ class SiteController extends FrontCoreController
     public function actionIndex()
     {
         $this->layout = "homefeed";
+        $requestData = Yii::$app->request->get();
+        $where = [];
+        $dir = (!empty($requestData['sortdir']) && $requestData['sortdir'] == 'asc') ? SORT_ASC : SORT_DESC;
+        $orderBy = ['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC];
+
+        if (!empty($requestData['sortby'])) {
+            if ($requestData['sortby'] == 'age') {
+                $orderBy = ["users.age" => $dir];
+            } else if ($requestData['sortby'] == 'sex') {
+                $orderBy = ["users.gender" => $dir];
+            } else if ($requestData['sortby'] == 'city') {
+                $orderBy = ["users.city" => $dir];
+            }
+        }
+        //p($orderBy);
         $model = new Questions();
         /* $mpArr = Users::find()
         ->select(['user_name as value', 'id as id'])
@@ -61,20 +78,34 @@ class SiteController extends FrontCoreController
         $query = Users::find()
             ->joinWith(['answers', 'comments', 'shares'])
             ->select(['users.*', 'COUNT(answers.id) AS answer_count', 'COUNT(comments.id) AS comment_count', 'COUNT(shares.id) AS share_count'])
-            ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']])
-            ->groupBy(['users.id'])
-            ->orderBy(['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC]);
+            ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
+        if (!empty($requestData['search'])) {
+            $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
+        }
+
+        $query = $query->groupBy(['users.id'])
+            ->orderBy($orderBy);
         $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 12]);
         $models = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $model->validate()) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
             $postData = Yii::$app->request->post();
             $model->user_agent_id = Yii::$app->user->id;
-            $model->mp_id = $postData['Questions']['mp_id'];
+            $model->mp_id = implode(",", $postData['Questions']['mp_id']);
             $model->save();
             // Yii::$app->session->setFlash('success', Yii::getAlias('@question_add_message'));
-            return $this->redirect(['site/index', 'model' => $model]);
+            return ActiveForm::validate($model);
+        } else {
+            $errors = $model->errors;
+            if (!empty($errors) && !empty($errors['question'][0])) {
+                Yii::$app->session->setFlash('message', $errors['question'][0]); // its dislplays error msg on
+            }
+            if (!empty($errors) && !empty($errors['mp_id'][0])) {
+                Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays error msg on
+            }
+
         }
         $questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
 
@@ -84,11 +115,12 @@ class SiteController extends FrontCoreController
             'mp' => $mpArr,
             'models' => $models,
             'pagination' => $pagination,
+            'errors' => $errors,
         ]);
     }
     /**
      * Displays homepage.
-     *
+    v  hbb                                    bbbbbbc      *
      * @return mixed
      */
     public function actionIndex_old()
@@ -300,47 +332,65 @@ class SiteController extends FrontCoreController
     public function actionCurrentCity()
     {
         if (!empty($_POST)) {
+
+            $requestData = Yii::$app->request->post();
+            $dir = (!empty($requestData['sortdir']) && $requestData['sortdir'] == 'asc') ? SORT_ASC : SORT_DESC;
+            $orderBy = ['user_name' => SORT_ASC];
+
+            if (!empty($requestData['sortby'])) {
+                if ($requestData['sortby'] == 'age') {
+                    $orderBy = ["users.age" => $dir];
+                } else if ($requestData['sortby'] == 'sex') {
+                    $orderBy = ["users.gender" => $dir];
+                } else if ($requestData['sortby'] == 'city') {
+                    $orderBy = ["users.city" => $dir];
+                }
+            }
+            $page = $requestData['page'] * 3;
+            //p($requestData);
             $query = Users::find()
                 ->select(['users.*'])
                 ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
-            if ($_POST['sort'] == "asc") {
-                $query->orderBy(['users.city' => SORT_ASC]);
-            } else {
-                $query->orderBy(['users.city' => SORT_DESC]);
+
+            if (!empty($requestData['search'])) {
+                $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
             }
-            $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 12]);
-            $models = $query->offset($pagination->offset)
-                ->limit($pagination->limit)
+            $query = $query->orderBy($orderBy);
+            $totalCount = $query->count();
+            $models = $query->offset($page)
+                ->limit(3)
                 ->all();
-            echo "<div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
+
+            $retData = "<div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
             if (!empty($models)) {
                 $numOfCols = 3;
                 $rowCount = 0;
                 foreach ($models as $key => $value) {
-                    echo "<div class='RowBox d-flex align-items-center justify-content-start'><div class='DimmerBox'>";
-                    echo "<img src=" . Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png class='img-fluid SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
+                    $retData .= "<div class='RowBox d-flex align-items-center justify-content-start'><div class='DimmerBox'>";
+                    $retData .= "<img src=" . Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png class='img-fluid SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
                     $rowCount++;
                     if ($rowCount % $numOfCols == 0) {
-                        echo "</div><div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
+                        $retData .= "</div><div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
                     }
                 }
-                echo " </div></div></div></div>";
-                echo \yii\widgets\LinkPager::widget([
-                    'pagination' => $pagination,
-                    'prevPageLabel' => '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span>',
-                    'maxButtonCount' => 0,
-                    'options' => ['class' => 'prev_button carousel-control-prev'],
-                ]);
-                echo \yii\widgets\LinkPager::widget([
-                    'pagination' => $pagination,
-                    'nextPageLabel' => '<span class="carousel-control-next-icon" aria-hidden="true"></span>',
-                    'maxButtonCount' => 0,
-                    'options' => ['class' => 'carousel-control-next'],
-                ]);
+                $retData .= " </div></div></div></div>";
+                // $retData .= \yii\widgets\LinkPager::widget([
+                //     'pagination' => $pagination,
+                //     'prevPageLabel' => '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span>',
+                //     'maxButtonCount' => 0,
+                //     'options' => ['class' => 'prev_button carousel-control-prev'],
+                // ]);
+                // $retData .= \yii\widgets\LinkPager::widget([
+                //     'pagination' => $pagination,
+                //     'nextPageLabel' => '<span class="carousel-control-next-icon" aria-hidden="true"></span>',
+                //     'maxButtonCount' => 0,
+                //     'options' => ['class' => 'carousel-control-next'],
+                // ]);
 
             } else {
-                echo "No Data Found";
+                $retData .= "No Data Found";
             }
+            return json_encode($retData);
         }
     }
 }

@@ -63,7 +63,7 @@ class QuestionsBase extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_agent_id' => 'User Agent ID',
             'question' => 'Question',
-            'mp_id' => 'Mp ID',
+            'mp_id' => 'MP',
             'status' => 'Status',
             'is_delete' => 'Is Delete',
             'created_at' => 'Created At',

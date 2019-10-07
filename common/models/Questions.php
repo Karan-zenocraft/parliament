@@ -18,11 +18,12 @@ class Questions extends \common\models\base\QuestionsBase
     {
         return [
             [['question'], 'required'],
-            [['user_agent_id', 'mp_id', 'status', 'is_delete'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['mp_id'], 'required', "message" => "Please select atleast one MP"],
+            [['user_agent_id', 'status', 'is_delete'], 'integer'],
+            [['created_at', 'updated_at', 'mp_id'], 'safe'],
             [['question'], 'string', 'max' => 540],
-            [['mp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['mp_id' => 'id']],
-            [['user_agent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_agent_id' => 'id']],
+            //  [['mp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['mp_id' => 'id']],
+            //[['user_agent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_agent_id' => 'id']],
         ];
     }
 
