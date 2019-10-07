@@ -64,9 +64,10 @@ class SiteController extends FrontCoreController
                 $orderBy = ["users.gender" => $dir];
             } else if ($requestData['sortby'] == 'city') {
                 $orderBy = ["users.city" => $dir];
+            } else {
+                $orderBy = ['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC];
             }
         }
-        //p($orderBy);
         $model = new Questions();
         /* $mpArr = Users::find()
         ->select(['user_name as value', 'id as id'])
@@ -86,6 +87,11 @@ class SiteController extends FrontCoreController
         $query = $query->groupBy(['users.id'])
             ->orderBy($orderBy);
         $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 12]);
+        $totalCount = $pagination->totalCount;
+        $pageSize = $pagination->pageSize;
+        $total_pages = ceil($totalCount / $pageSize);
+        //p($pagination);
+
         $models = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -116,6 +122,7 @@ class SiteController extends FrontCoreController
             'models' => $models,
             'pagination' => $pagination,
             'errors' => $errors,
+            'total_pages' => $total_pages,
         ]);
     }
     /**
@@ -346,27 +353,39 @@ class SiteController extends FrontCoreController
                     $orderBy = ["users.city" => $dir];
                 }
             }
-            $page = $requestData['page'] * 3;
-            //p($requestData);
-            $query = Users::find()
-                ->select(['users.*'])
-                ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
-
-            if (!empty($requestData['search'])) {
-                $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
+            if (empty($requestData['sortby']) && empty($requestData['search'])) {
+                $orderBy = ['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC];
             }
-            $query = $query->orderBy($orderBy);
+            $page = ($requestData['page'] - 1) * 12;
+            // $page = 12;
+            if (empty($requestData['sortby']) && empty($requestData['search'])) {
+                $query = Users::find()
+                    ->joinWith(['answers', 'comments', 'shares'])
+                    ->select(['users.*', 'COUNT(answers.id) AS answer_count', 'COUNT(comments.id) AS comment_count', 'COUNT(shares.id) AS share_count'])
+                    ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
+                $query = $query->groupBy(['users.id'])
+                    ->orderBy($orderBy);
+
+            } else {
+                $query = Users::find()
+                    ->select(['users.*'])
+                    ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
+
+                if (!empty($requestData['search'])) {
+                    $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
+                }
+                $query = $query->orderBy($orderBy);
+            }
             $totalCount = $query->count();
             $models = $query->offset($page)
-                ->limit(3)
+                ->limit(12)
                 ->all();
-
             $retData = "<div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
             if (!empty($models)) {
                 $numOfCols = 3;
                 $rowCount = 0;
                 foreach ($models as $key => $value) {
-                    $retData .= "<div class='RowBox d-flex align-items-center justify-content-start'><div class='DimmerBox'>";
+                    $retData .= "<div class='RowBox d-flex align-items-center justify-content-start col-md-4 p-0'><div class='DimmerBox' id=" . "mp_" . $value['id'] . ">";
                     $retData .= "<img src=" . Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png class='img-fluid SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
                     $rowCount++;
                     if ($rowCount % $numOfCols == 0) {

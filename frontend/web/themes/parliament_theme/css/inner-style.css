@@ -221,7 +221,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .carousel-inner{background: #10303F}
 .carousel-caption .Row1{padding: 0px 50px;padding-top: 55px;}
 .carousel-caption .Row1:last-child{padding-bottom: 55px;}
-.carousel-caption .Row1 .RowBox{margin: auto;}
+.carousel-caption .Row1 .RowBox{/*margin: auto;*/}
 .carousel-caption .Row1 .RowBox .Dimmer:before{content: '';position: absolute;top: 0;left: 0;height: 117px;width: 117px;background: #000;border-radius: 100%;z-index: 9999;opacity: .5}
 .carousel-caption .Row1 .RowBox .Dimmer{position: relative;}
 .carousel-caption .Row1 .RowBox .RowTitle{text-align: left;margin-left: 10px;}

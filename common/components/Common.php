@@ -1034,7 +1034,7 @@ class Common
         $PrevPendingLeaveEnd = !empty($omLeavesQuotaPrevMonthEnd) ? $omLeavesQuotaPrevMonthEnd->total_leaves : 0;
         $omLeavesQuotaStartMonth = LeaveQuota::find()->where(['month' => $snStartDateMonth, 'year' => $snStartDateYear])->one();
         if (empty($omLeavesQuotaStartMonth)) {
-            $omLeaveQuota = new LeaveQuota;
+            $omLeaveQuota = new LeaveQuota();
             $omLeaveQuota->year = $snStartDateYear;
             $omLeaveQuota->month = $snStartDateMonth;
             $omLeaveQuota->total_leaves = Common::get_users_total_count();
@@ -1047,7 +1047,7 @@ class Common
         }
         $omLeavesQuotaEndMonth = LeaveQuota::find()->where(['month' => $snEndDateMonth, 'year' => $snEndDateYear])->one();
         if (empty($omLeavesQuotaEndMonth)) {
-            $omLeaveQuota = new LeaveQuota;
+            $omLeaveQuota = new LeaveQuota();
             $omLeaveQuota->year = $snEndDateYear;
             $omLeaveQuota->month = $snEndDateMonth;
             $omLeaveQuota->total_leaves = Common::get_users_total_count();
@@ -1091,7 +1091,7 @@ class Common
 
         $omLeavesQuotaStartMonth = LeaveQuota::find()->where(['month' => $snStartDateMonth, 'year' => $snStartDateYear])->one();
         if (empty($omLeavesQuotaStartMonth)) {
-            $omLeaveQuota = new LeaveQuota;
+            $omLeaveQuota = new LeaveQuota();
             $omLeaveQuota->year = $snStartDateYear;
             $omLeaveQuota->month = $snStartDateMonth;
             $omLeaveQuota->total_leaves = Common::get_users_total_count();
@@ -1123,7 +1123,7 @@ class Common
     public static function get_user_name($id)
     {
         $omUsers = Users::find()->where(['id' => $id])->one();
-        return !empty($omUsers) ? $omUsers->user_name . ' ' . $omUsers->last_name : '-';
+        return !empty($omUsers) ? $omUsers->user_name : "-";
     }
     //THIS FUNCTION RETURNS USER ROLE OF USER//
     public static function get_user_role($id, $flag)
@@ -1206,18 +1206,19 @@ class Common
         if ($flag == "Restaurants") {
             $snRestaurantsDetail = Restaurants::find()->where(['id' => $id])->one();
             $name = $snRestaurantsDetail->name;
+            return !empty($name) ? $name : '';
         }
         if ($flag == "RestaurantFloors") {
             $snRestaurantsDetail = RestaurantFloors::find()->where(['id' => $id])->one();
             $name = $snRestaurantsDetail->name;
+            return !empty($name) ? $name : '';
 
         }
         if ($flag == "Users") {
-            $snRestaurantsDetail = Users::find()->where(['id' => $id])->one();
-            $name = $snRestaurantsDetail->user_name . " " . $snRestaurantsDetail->last_name;
+            $snUserDetails = Users::find()->where(['id' => $id])->one();
+            return $snUserDetails;
 
         }
-        return !empty($name) ? $name : '';
     }
     //THIS FUNCTIONS FINDS ESTIMATED HOURS BY MILESTONE ID//
     public static function get_estimated_hours($milestone_id, $flag = '')
@@ -1820,7 +1821,7 @@ class Common
     }
     public function time_elapsed_string($datetime, $full = false)
     {
-        $now = new \DateTime;
+        $now = new \DateTime();
         $ago = new \DateTime($datetime);
         $diff = $now->diff($ago);
 

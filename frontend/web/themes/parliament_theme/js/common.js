@@ -45,7 +45,7 @@ function AjaxCallSort(dataValue)
     var search = $('#searchMP').val();
       $("#page").val(1);
     $('#sortby').val(dataValue);
-         console.log(dataValue+"-"+search+"-"+sortdir);
+         //console.log(dataValue+"-"+search+"-"+sortdir);
 
     $.ajax({
      url: "site/current-city",
@@ -70,7 +70,7 @@ function AjaxCallSearch()
     var sortby = $("#sortby").val();
     var page = $("#page").val();
     var search = $('#searchMP').val();
-     console.log(search+"-"+sortby+"-"+sortdir);
+     //console.log(search+"-"+sortby+"-"+sortdir);
 
     $.ajax({
      url: "site/current-city",
@@ -92,12 +92,15 @@ function getPage(flag)
   if(flag=='next'){
      var page = $("#page").val();
      $("#page").val(++page);
+     $(".carousel-control-next-icon").attr("page",page);
   }
   else
   {
     var page = $("#page").val();
      $("#page").val(--page);
+     $(".carousel-control-prev-icon").attr("page",page);
   }
+  $("#page").val(page);
   AjaxCallSearch();
 }
 $(document).ready(function() {
@@ -145,15 +148,12 @@ $(document).ready(function() {
 });
 
         $(document).ready(function() {
-            $('.DimmerBox').click(function() {
+        //  $('.DimmerBox').on('click', '.deletelanguage', function(){
+        $(document).on('click', '.DimmerBox', function () {
+           // $('.DimmerBox').click(function() {
                 //$('.DimmerBox').removeClass("Dimmer");
-                $(this).addClass("Dimmer");
-               
-                
-            });
-            
-            
-            
+                $(this).toggleClass("Dimmer"); 
+            });    
             $('.Icons i').click(function() {
                 $('.Icons i').removeClass("ActiveIcon");
                 $(this).addClass("ActiveIcon");
@@ -428,18 +428,21 @@ $("#CurrentCity").click(function(){
 });
 
 $(document).ready(function(){
-  $('#questions-mp_id').on('select2:select', function (e) {
+  //$('#questions-mp_id').on('select2:select', function (e) {
+$(document).on('select2:select', '#questions-mp_id', function (e) {
+
      var data = e.params.data;
     var mp_id = "mp_"+data.id;
     $("#"+mp_id).addClass("Dimmer");
 });
-  $('#questions-mp_id').on('select2:unselect', function (e) {
+$(document).on('select2:unselect', '#questions-mp_id', function (e) {
      var data = e.params.data;
     var mp_id = "mp_"+data.id;
     $("#"+mp_id).removeClass("Dimmer");
 });
-$(".DimmerBox").click(function(){
+$(document).on('click', '.DimmerBox', function () {
   var id = $(this).attr('id');
+  if($(this).hasClass("Dimmer") == true){
   var mp = id.replace('mp_','');
   //$('#questions-mp_id').val(mp); // Select the option with a value of '1'
   var selectedValues = new Array();
@@ -451,6 +454,14 @@ $(".DimmerBox").click(function(){
     var val = id.push(mp);
     $('#questions-mp_id').val(id);
     $('#questions-mp_id').trigger('change');
+  }}else{
+  var mp = id.replace('mp_','');
+  var id = $("#questions-mp_id").val();
+  if(id != ""){
+    var val= id.pop(mp);
+    $('#questions-mp_id').val(id);
+    $('#questions-mp_id').trigger('change');
+  }
   }
 });
 

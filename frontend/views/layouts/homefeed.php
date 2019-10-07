@@ -1,4 +1,6 @@
 <?php
+use common\components\Common;
+use common\models\Questions;
 use frontend\assets\ParliamentAsset;
 use yii\widgets\Breadcrumbs;
 
@@ -89,8 +91,9 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         <div class="User d-flex align-items-center justify-content center">
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid UserImage">
                         <div class="ProfileName">
-                        <p>Meskrem Hailu</p>
-                        <p><span>1 hour ago</span></p>
+                        <p><?php echo Common::get_user_name(Yii::$app->user->id); ?></p>
+                            <?php $question = Questions::find()->where(["user_agent_id" => Yii::$app->user->id])->orderBy(["id" => SORT_DESC])->one();?>
+                        <p><span><?php echo Common::time_elapsed_string($question->created_at); ?></span></p>
                         </div>
                         </div>
 
@@ -98,17 +101,34 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
                         <div class="MPProfileName">
                         <p>Unanswered for</p>
-                        <p><span>Cally Feeney</span></p>
-                        </div>
-                        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/mp.png" ?>" alt="" class="img-fluid MPImage">
+<?php $mps = $question->mp_id;
+$mpArr = explode(",", $mps);
+
+?>
+                        <p><span><?php
+$i = 0;
+foreach ($mpArr as $key => $mp) {
+    echo Common::get_user_name($mp);
+    $i++;
+    if ($i != count($mpArr)) {
+        echo ",";
+    }
+}
+?>
+                       </span></p> </div>
+                       <?php $userDetails = Common::get_name_by_id($mpArr[0], "Users");?>
+                        <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $userDetails['photo'] ?>" alt="" class="img-fluid MPImage">
                         </div>
                         </div>
 
                         <div class="Row2">
                         <div class="Comments">
-                            <p>When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything</p>
+                            <?php $stringCut = substr($question->question, 20);
+$endPoint = strrpos($stringCut, ' ');?>
+                            <p><?php echo $stringCut; ?></p>
                             <p id="dots">...</p>
-                            <p id="more">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything..</p>
+                            <?php $string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);?>
+                            <p id="more"><?php echo LEFT($string, 51); ?></p>
                             <button onclick="myFunction()" id="myBtn">Read more</button>
                         </div>
                         </div>
@@ -169,354 +189,8 @@ Breadcrumbs::widget([
 ])
 ?><?php //echo Alert::widget() ?><?php echo $content ?>
 
-<div class="QuestionAnswer">
-                        <div class="QuestionAnswerTitle">
-                        <h3>Questions and answers from members you follow</h3>
-                        </div>
 
-                    <div class="QuestionAnswerMainBox QuestionAnswerMainBox1">
-<!--                            <span class="MPName">Kebede Hailu</span><span class="Title"> Answered a Question</span>-->
-                        <div class="QuestionAnswerBox">
-                           <div class="Row1">
-                              <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
-                            <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
-                                <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                                <div class="UserTitle">
-                                    <a href="#"><p>Meskrem Hailu</p></a>
-                                    <span>1 hour ago</span>
-                                </div>
-                               </div>
-
-                               <div class="UnansweredBy d-flex flex-wrap align-items-center">
-                                   <a href="#"><span class="Title">Unanswered for</span></a><a href="#"><span class="MP">Cally Feeney</span></a>
-                                   <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                               </div>
-
-                               <div class="AskFollowUp d-flex flex-wrap align-items-center">
-                                  <i class="fa fa-spinner" aria-hidden="true"></i>
-                                   <span>ASK A FOLLOW UP</span>
-                               </div>
-
-
-                               <div class="ViewMoreIcon">
-                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one">
-                                   <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
-                                   <div class="Menu1">
-                                   <ul class="d-flex align-items-center justify-content-center flex-column">
-                                       <li class="active1"><a>Report</a></li>
-                                       <li><a >Retract</a></li>
-                                       <li><a >Hide</a></li>
-
-
-                                    </ul>
-                                   </div>
-                               </div>
-
-                                  </div>
-                            </div>
-
-                            <div class="Row2">
-
-                            <div class="Comments">
-                            <p>When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used</p>
-                            <p id="dots1">...</p>
-                            <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
-                            <button onclick="myFunction1()" id="myBtn1">See More</button>
-
-
-
-
-                        </div>
-                            </div>
-
-                            <div class="Row3">
-                            <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="Loud" id="Load1">
-                                <a>
-                                    <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
-                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
-                                    <span class="Numbers">301</span>
-                                </a>
-                                </div>
-
-                                <div class="Comments">
-                                    <a href="#">
-                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                                    <span>Comment</span><span class="Numbers">100</span>
-                                </a>
-                                </div>
-
-                                <div class="Share">
-                                <a href="#">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                    <span>Share</span><span class="Numbers">100</span>
-                                    </a>
-                                </div>
-
-                            </div>
-
-                            </div>
-
-
-                        </div>
-                           </div>
-
-
-
-                            <!-------box-2------------->
-
-
-                            <div class="QuestionAnswerMainBox">
-                            <div class="Top"><a href=""><span class="MPName">Kebede Hailu</span></a><span class="Title"> Answered a Question</span></div>
-                        <div class="QuestionAnswerBox">
-                           <div class="Row1">
-                              <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
-                            <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
-                                <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                                <div class="UserTitle">
-                                    <a href="#"><p>Meskrem Hailu</p></a>
-                                    <span>1 hour ago</span>
-                                </div>
-                               </div>
-
-                               <div class="UnansweredBy d-flex flex-wrap align-items-center">
-                                   <a href="#"><span class="Title">Answered by</span></a><a href="#"><span class="MP">Cally Feeney</span></a>
-                                   <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                               </div>
-
-                               <div class="AskFollowUp d-flex flex-wrap align-items-center">
-                                  <i class="fa fa-spinner" aria-hidden="true"></i>
-                                   <span>ASK A FOLLOW UP</span>
-                               </div>
-
-
-                               <div class="ViewMoreIcon">
-                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom">
-                                   <div class="Menu2">
-                                   <ul class="d-flex align-items-center justify-content-center flex-column">
-                                       <li class="active1"><a href="#">Report</a></li>
-                                       <li><a href="#">Retract</a></li>
-                                       <li><a href="#">Hide</a></li>
-
-
-                                    </ul>
-                                   </div>
-                               </div>
-
-                                  </div>
-                            </div>
-
-                            <div class="Row2">
-
-                            <div class="Comments">
-                            <p>When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used</p>
-                            <p id="dots1">...</p>
-                            <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
-                            <button onclick="myFunction1()" id="myBtn1">See More</button>
-
-
-
-
-                        </div>
-                            </div>
-
-                            <div class="Row3">
-                            <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="Loud">
-                                <a>
-                                    <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
-                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
-                                    <span class="Numbers">301</span>
-                                </a>
-                                </div>
-                                <div class="Comments">
-                                    <a href="#">
-                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                                    <span>Comment</span><span class="Numbers">100</span>
-                                    </a>
-                                </div>
-                                <div class="Share">
-                                <a href="#">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                    <span>Share</span><span class="Numbers">100</span>
-                                    </a>
-                                </div>
-
-                            </div>
-
-                            </div>
-
-
-                        </div>
-                           </div>
-
-                            <div class="QuestionAnswerTitle Public">
-                        <h3>PUBLIC Questions</h3>
-                        </div>
-                           <div class="QuestionAnswerMainBox">
-                            <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
-
-
-                               <ul class="align-items-start justify-content-start flex-column OnhoverMP">
-                                <li><a href="#">Abebe Mengistu</a></li>
-                                   <li><a href="#">Taye Hailu</a></li>
-                                   <li><a href="#">Kebede Taye</a></li>
-                                   <li><a href="#">Mulu Saya</a></li>
-                                   <li><a href="#">Chala Banti</a></li>
-                                   <li><a href="#">Feven Siraj</a></li>
-                                </ul>
-
-                        <div class="QuestionAnswerBox">
-                           <div class="Row1">
-                              <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
-                            <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
-                                <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                                <div class="UserTitle">
-                                    <a href="#"><p>Meskrem Hailu</p></a>
-                                    <span>1 hour ago</span>
-                                </div>
-                               </div>
-
-                               <div class="UnansweredBy d-flex flex-wrap align-items-center">
-                                   <a href="#"><span class="Title">Unanswered for</span></a><a href="#"><span class="MP">Cally Feeney</span></a>
-                                   <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                               </div>
-
-                               <div class="AskFollowUp d-flex flex-wrap align-items-center">
-                                  <i class="fa fa-spinner" aria-hidden="true"></i>
-                                   <span>ASK A FOLLOW UP</span>
-                               </div>
-
-
-                               <div class="ViewMoreIcon">
-                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom">
-                                   <div class="Menu2">
-                                   <ul class="d-flex align-items-center justify-content-center flex-column">
-                                       <li class="active1"><a href="#">Report</a></li>
-                                       <li><a href="#">Retract</a></li>
-                                       <li><a href="#">Hide</a></li>
-
-
-                                    </ul>
-                                   </div>
-                               </div>
-
-                                  </div>
-                            </div>
-
-                            <div class="Row2">
-
-                            <div class="Comments">
-                            <p>When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used</p>
-                            <p id="dots1">...</p>
-                            <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
-                            <button onclick="myFunction1()" id="myBtn1">See More</button>
-                        </div>
-                            </div>
-
-                            <div class="Row3">
-                            <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="Loud">
-                                <a>
-                                    <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
-                                    <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
-                                    <span class="Numbers">301</span>
-                                </a>
-                                </div>
-                                <div class="Comments">
-                                    <a href="#">
-                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                                    <span>Comment</span><span class="Numbers">100</span>
-                                    </a>
-                                </div>
-                                <div class="Share">
-                                <a href="#">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                    <span>Share</span><span class="Numbers">100</span>
-                                    </a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                           </div>
-
-                            <div class="QuestionAnswerMainBox AnswerQuestion">
-
-                        <div class="QuestionAnswerBox">
-                           <div class="Row1">
-                              <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
-                            <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
-                                <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                                <div class="UserTitle">
-                                    <a href="#"><p>Meskrem Hailu</p></a>
-                                    <span>1 hour ago</span>
-                                </div>
-                               </div>
-
-                               <div class="UnansweredBy d-flex flex-wrap align-items-center">
-                                   <a href="#"><span class="Title">Unanswered for</span></a><a href="#"><span class="MP">Cally Feeney</span></a>
-                                   <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-                               </div>
-
-                               <div class="AskFollowUp d-flex flex-wrap align-items-center">
-                                  <i class="fa fa-spinner" aria-hidden="true"></i>
-                                   <span>ASK A FOLLOW UP</span>
-                               </div>
-
-
-                               <div class="ViewMoreIcon">
-                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom">
-                                   <div class="Menu2">
-                                   <ul class="d-flex align-items-center justify-content-center flex-column">
-                                       <li class="active1"><a href="#">Report</a></li>
-                                       <li><a href="#">Retract</a></li>
-                                       <li><a href="#">Hide</a></li>
-
-
-                                    </ul>
-                                   </div>
-                               </div>
-
-                                  </div>
-                            </div>
-
-                            <div class="Row2">
-
-                            <div class="Comments">
-                            <p>When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used</p>
-                            <p id="dots1">...</p>
-                            <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
-                            <button onclick="myFunction1()" id="myBtn1">See More</button>
-                        </div>
-                            </div>
-
-                            <div class="Row3">
-                            <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="AnswerQuestion">
-                                <a href="#">
-                                   Answer Question
-                                </a>
-                                </div>
-                                <div class="Comments">
-                                    <a href="#">
-                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                                    <span>Comment</span><span class="Numbers">100</span>
-                                    </a>
-                                </div>
-                                <div class="Share">
-                                <a href="#">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                    <span>Share</span><span class="Numbers">100</span>
-                                    </a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                           </div>
-
-                        </div>
-
-                        </div>
+                    </div>
 
 
                         <div id="menu1" class="tab-pane fade">
