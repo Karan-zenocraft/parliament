@@ -74,7 +74,7 @@ class SiteController extends FrontCoreController
         ->where(['role_id' => Yii::$app->params['userroles']['MP'], "status" => Yii::$app->params['user_status_value']['active']])
         ->asArray()
         ->all();*/
-        $mpArr = ArrayHelper::map(Users::find()->orderBy('user_name')->asArray()->all(), 'id', 'user_name');
+        $mpArr = ArrayHelper::map(Users::find()->where(['role_id' => Yii::$app->params['userroles']['MP']])->orderBy('user_name')->asArray()->all(), 'id', 'user_name');
         //p($mpArr);
         $query = Users::find()
             ->joinWith(['answers', 'comments', 'shares'])

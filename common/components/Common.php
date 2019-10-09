@@ -1851,4 +1851,28 @@ class Common
 
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
+
+    public function getLastMondaySaturday($day)
+    {
+        $date = "";
+        if ($day == "monday") {
+            if (date('D') != 'Mon') {
+                //take the last monday
+                $staticstart = date('Y-m-d', strtotime('last Monday'));
+
+            } else {
+                $staticstart = date('Y-m-d');
+            }
+            $date = $staticstart;
+        } else {
+            if (date('D') != 'Sat') {
+                $staticfinish = date('Y-m-d', strtotime('next Saturday'));
+            } else {
+
+                $staticfinish = date('Y-m-d');
+            }
+            $date = $staticfinish;
+        }
+        return $date;
+    }
 }

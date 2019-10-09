@@ -176,6 +176,29 @@ $(document).ready(function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //$(".MainCenter .Nav1 ul").removeClassClass("UlHome");
 
 
@@ -375,12 +398,69 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-  $(".AnswerQuestion a").click(function(){
-    $(".GiveAnswer").toggleClass("GiveAnswerBox");
+  $(".AnswerQuestion .AnswerToggle").click(function(){
+      $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
+    $(".AnswerQuestionBox").toggleClass("GiveAnswerBox");
   });
     
     
 });
+
+
+
+$(document).ready(function(){
+  $(".AskFollowUp").click(function(){
+      $(".AnswerQuestionBox").removeClass("GiveAnswerBox");  
+    $(".AskFollowUpBox").toggleClass("GiveAnswerBox");
+  });
+    
+    
+});
+
+
+
+
+$(document).ready(function() {
+$('.Icons .fa-bell').click(function() {
+                $(".Icons .fa-bars").removeClass("ActiveArrow");
+                $(this).toggleClass("ActiveArrow");
+               
+                
+            });
+    
+        $("body").click(function() {
+                $(".Icons .fa-bell").removeClass("ActiveArrow");
+
+
+            });
+    
+    
+    $('.Icons .fa-bars').click(function() {
+                 $(".Icons .fa-bell").removeClass("ActiveArrow");
+                $(this).toggleClass("ActiveArrow");
+               
+                
+            });
+    
+        $("body").click(function() {
+                
+                $(".Icons .fa-bars").removeClass("ActiveArrow");
+
+
+            });
+
+
+            
+
+    
+    
+    });
+
+
+
+
+
+
 
  function countChar(val) {
          $('#charNum').text(len+"/540");

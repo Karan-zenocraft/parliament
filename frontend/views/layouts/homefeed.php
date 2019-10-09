@@ -54,7 +54,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
                         </i>
                         </span>
-                        <ul class=" OnlySm  Nav3 UlNotification">
+                        <ul class="  Nav3">
                         <li class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <span>Mark All as Unread</span></li>
                     <li><a href="">Chala Commented on your Question</a></li>
                     <li><a href="">Maya Made a Question Louder</a></li>
@@ -78,12 +78,23 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                     <div class="MainLeftInner">
                         <div class="RemainingQuestion d-flex align-items-center justify-content=center">
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/msg.png" ?>" alt="" class="img-fluid Msg">
+                        <?php
+$questions = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0])->count();
+
+$monday = Common::getLastMondaySaturday("monday");
+$saturday = Common::getLastMondaySaturday("saturday");
+$query = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
+$query->andWhere(['between', 'created_at', $monday, $saturday]);
+$questionCount = $query->count();
+$limit = 10
+?>
                         <p>Remaining Number of Questions
                             Allowed for the Week
-                            1 out of 10</p>
+                            <?php echo ($limit - $questionCount) ?> out of 10</p>
                             </div>
-
-                        <div class="LastQuestion">
+<?php if (!empty($questions)) {
+    ?>
+                      <div class="LastQuestion">
                         <p>Your last submitted Question</p>
                         <div class="LastQuestionBox">
 
@@ -102,19 +113,19 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         <div class="MPProfileName">
                         <p>Unanswered for</p>
 <?php $mps = $question->mp_id;
-$mpArr = explode(",", $mps);
+    $mpArr = explode(",", $mps);
 
-?>
+    ?>
                         <p><span><?php
 $i = 0;
-foreach ($mpArr as $key => $mp) {
-    echo Common::get_user_name($mp);
-    $i++;
-    if ($i != count($mpArr)) {
-        echo ",";
+    foreach ($mpArr as $key => $mp) {
+        echo Common::get_user_name($mp);
+        $i++;
+        if ($i != count($mpArr)) {
+            echo ",";
+        }
     }
-}
-?>
+    ?>
                        </span></p> </div>
                        <?php $userDetails = Common::get_name_by_id($mpArr[0], "Users");?>
                         <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $userDetails['photo'] ?>" alt="" class="img-fluid MPImage">
@@ -123,14 +134,18 @@ foreach ($mpArr as $key => $mp) {
 
                         <div class="Row2">
                         <div class="Comments">
-                            <?php $stringCut = substr($question->question, 20);
-$endPoint = strrpos($stringCut, ' ');?>
-                            <p><?php echo $stringCut; ?></p>
+                            <?php $length = strlen($question->question);
+    if ($length <= 120) {?>
+<p> <?php echo $question->question; ?></p>
+    <?php } else {?>
+           <p><?php echo substr($question->question, 0, 120) ?></p>
                             <p id="dots">...</p>
-                            <?php $string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);?>
-                            <p id="more"><?php echo LEFT($string, 51); ?></p>
+                            <p id="more"><?php echo substr($question->question, 120, $length); ?></p>
                             <button onclick="myFunction()" id="myBtn">Read more</button>
-                        </div>
+    <?php }?>
+    </div>
+
+
                         </div>
                             <div class="Row3">
                             <div class="Social d-flex align-items-center justify-content-between">
@@ -159,6 +174,17 @@ $endPoint = strrpos($stringCut, ' ');?>
                             </div>
                         </div>
                         </div>
+                    <?php } else {?>
+                         <div class="LongTime">
+                        <p>It has been a long time
+                            since you asked a Question.
+                            Make your voice heard.</p>
+
+                        </div>
+                    <?php }?>
+
+
+
 
                         <div class="ListOfQuestions">
                         <ul>

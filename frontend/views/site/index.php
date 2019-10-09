@@ -106,6 +106,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                     <div class="QuestionAnswerMainBox QuestionAnswerMainBox1">
 <!--                            <span class="MPName">Kebede Hailu</span><span class="Title"> Answered a Question</span>-->
                         <div class="QuestionAnswerBox">
+
                            <div class="Row1">
                               <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
                             <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
@@ -369,7 +370,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                         </div>
                            </div>
 
-                            <div class="QuestionAnswerMainBox AnswerQuestion">
+                           <div class="QuestionAnswerMainBox AnswerQuestion">
 
                         <div class="QuestionAnswerBox">
                            <div class="Row1">
@@ -416,14 +417,19 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                             <p id="dots1">...</p>
                             <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
                             <button onclick="myFunction1()" id="myBtn1">See More</button>
+
+
+
+
                         </div>
                             </div>
 
                             <div class="Row3">
                             <div class="Social d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="AnswerQuestion">
-                                <a href="#">
+                                <a class="AnswerToggle">
                                    Answer Question
+
                                 </a>
                                 </div>
                                 <div class="Comments">
@@ -438,9 +444,107 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                                     <span>Share</span><span class="Numbers">100</span>
                                     </a>
                                 </div>
+
                             </div>
+
                             </div>
+
+
                         </div>
                            </div>
+
+
+
+
+
+
+
+
+                           <!---------new-content----------------->
+
+                            <div class="GiveAnswer AskFollowUpBox">
+                           <div class="AskFollowUp">
+                              <div class="Profile">
+                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+                               <div class="UserTitle">
+                                   <a href="#"><p>Fitsum Hailu</p></a>
+                               </div>
+                               </div>
+                               <div class="AskFollowUpTitle">
+                               <p>ask a follow up</p>
+                               </div>
+                               <div class="AskFollowUpAnswerBox">
+                               <textarea> </textarea>
+                               </div>
+                                  <div class="AskFollowUpSubmit">
+                                   <a href="" class="">Submit</a></div>
+                           </div>
+                               <div class="CommentsBox">
+                               <div class="comments">
+                               <div class="EnterComments d-flex align-items-center justifyu-content-center">
+                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+                               <input type="text" class="AddComment" placeholder="Add a comment">
+                               <a href=""><i class="fa fa-paper-plane"></i></a>
+                               </div>
+                               </div>
+                               <ul class="CommentList">
+                               <li class="d-flex align-items-start justify-content-start">
+                                  <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="img-fluid"></div>
+                                   <div class="Commented">
+                                   <p class="CommentedUser">Abebe Kebede</p>
+                                   <p class="CommentedCaption">sdkfhsdj sdkfjsdk sd; sdkjf asdkl fjasd;fjsd;kl fasd;klfjasd ;fjasdklfjas;kl fjas;dlfjasd;lk</p>
+                                   <div class="Social d-flex align-items-center justify-content-start">
+                                       <div class="Like"><i class="fa fa-thumbs-up"></i><span class="First">Like</span><span>100</span></div>
+                                       <div class="Reply"><i class="fa fa-reply"></i><span class="First">Reply</span></div>
+                                   </div>
+                                   </div>
+                               </li>
+                               </ul>
+                               </div>
+                           </div>
+<div class="GiveAnswer AnswerQuestionBox">
+                           <div class="AskFollowUp">
+                              <div class="Profile">
+                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+                               <div class="UserTitle">
+                                   <a href="#"><p>Fitsum Hailu</p></a>
+                               </div>
+                               </div>
+                               <div class="AskFollowUpTitle">
+                               <p>Answer Question</p>
+                               </div>
+                               <div class="AskFollowUpAnswerBox">
+                               <textarea> </textarea>
+                               </div>
+                                  <div class="AskFollowUpSubmit">
+                                   <a href="" class="">Submit</a></div>
+                           </div>
+                               <div class="CommentsBox">
+
+                               <div class="comments">
+                               <div class="EnterComments d-flex align-items-center justifyu-content-center">
+                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+                               <input type="text" class="AddComment" placeholder="Add a comment">
+                               <a href=""><i class="fa fa-paper-plane"></i></a>
+                               </div>
+                               </div>
+
+                               <ul class="CommentList">
+                               <li class="d-flex align-items-start justify-content-start">
+                                  <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="img-fluid"></div>
+                                   <div class="Commented">
+                                   <p class="CommentedUser">Abebe Kebede</p>
+                                   <p class="CommentedCaption">sdkfhsdj sdkfjsdk sd; sdkjf asdkl fjasd;fjsd;kl fasd;klfjasd ;fjasdklfjas;kl fjas;dlfjasd;lk</p>
+                                   <div class="Social d-flex align-items-center justify-content-start">
+                                       <div class="Like"><i class="fa fa-thumbs-up"></i><span class="First">Like</span><span>100</span></div>
+                                       <div class="Reply"><i class="fa fa-reply"></i><span class="First">Reply</span></div>
+                                   </div>
+                                   </div>
+                               </li>
+                               </ul>
+                               </div>
+                           </div>
+
+    <!---------new-content-end----------------->
 
                         </div>

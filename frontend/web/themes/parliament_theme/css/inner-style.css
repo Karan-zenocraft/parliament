@@ -350,4 +350,111 @@ padding-right: 15px;margin-bottom: 10px;}
      opacity: unset!important; 
      transition: unset!important; }
 
-     
+     .GiveAnswer .AskFollowUp{background: #fff;
+    border: 4px solid #A10101;
+    border-radius: 50px;
+    margin-top: 20px;
+    padding: 20px 30px;}
+
+.GiveAnswer .AskFollowUp .Profile{display: flex;
+    align-items: center;
+    justify-content: flex-start;}
+
+.GiveAnswer .AskFollowUp .Profile .UserTitle{margin-left: 15px;}
+.GiveAnswer .AskFollowUp .Profile .UserTitle a p{margin: 0;}
+
+.GiveAnswer .AskFollowUpTitle{display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;}
+
+.GiveAnswer .AskFollowUpTitle p{margin: 0;}
+
+.GiveAnswer .AskFollowUpAnswerBox textarea{width: 100%;overflow: hidden;
+    border-radius: 60px;
+    padding-top: 20px;
+    border-color: #707070;
+    border: 1px solid;
+    padding-bottom: 262px;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;}
+
+
+
+
+.GiveAnswer .AskFollowUpSubmit{margin-bottom: 50px;}
+
+.GiveAnswer .AskFollowUpSubmit a:hover{color:#D17C0D;background:#ffffff;transition: 0.25s ease;border: 1px solid #D17C0D; }
+.GiveAnswer .AskFollowUpSubmit a{background: #D17C0D;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 8px 20px;
+    float: right;
+    margin-right: 40px;
+    margin-top: 5px;
+    font-size: 16px;
+    font-family: 'Segoe UI';
+    line-height: 22px;}
+
+
+
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .AskFollowUp span, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .AskFollowUp i{cursor: pointer;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion .AnswerToggle{cursor: pointer;}
+
+.GiveAnswer {display: none;transition: 0.25s ease;}
+.GiveAnswerBox{display: block;transition: 0.25s ease;}
+.GiveAnswer .AskFollowUp .AskFollowUpTitle p{font-size: 25px;line-height: 35px;color: #580816;font-family: 'Segoe UI';font-weight: 700;margin-bottom: 10px;}
+.GiveAnswer .AskFollowUp .AskFollowUpAnswerBox textarea:focus{outline: none;}
+.GiveAnswer .AskFollowUp .Profile .UserTitle a p{font-size: 16px;line-height: 22px;color: #10303F;font-weight: bold;font-family: 'Segoe UI';}
+.GiveAnswer .AskFollowUp .Profile .UserTitle a:hover{color: unset;}
+.GiveAnswer .CommentsBox{padding: 20px 28px;}
+.GiveAnswer .comments .EnterComments .AddComment{width: 100%;margin-left: 20px;background: transparent;border-bottom: 1px solid #707070!important; outline: none;box-shadow: none;border: none;font-family: 'Segoe UI';font-weight: normal;}
+.GiveAnswer .comments .EnterComments .AddComment::placeholder{color:#969696;font-family: 'Segoe UI';font-weight: normal;font-size: 18px;line-height: 22px;font-size: 18px;}
+
+.GiveAnswer .comments .EnterComments i{padding-left: 30px;font-size: 22px;}
+.GiveAnswer .comments .EnterComments img{max-height: 34px;}
+.GiveAnswer .CommentsBox .CommentList{padding: 0;margin: 0;padding-top: 35px;}
+.GiveAnswer .CommentsBox .CommentList .CommentedProfile{ margin-left: 6px;margin-right: 35px;}
+.GiveAnswer .CommentsBox .CommentList .CommentedProfile img{min-height: 21px;}
+.GiveAnswer .CommentsBox .CommentList .Commented .CommentedUser{margin-bottom: 15px;font-size: 14px;line-height: 17px;font-family: 'Segoe UI';font-weight: normal;color: #0D0D0D;}
+.GiveAnswer .CommentsBox .CommentList .Commented .CommentedCaption{font-size: 18px;line-height: 22px;font-family: 'Segoe UI';font-weight: normal;color: #0D0D0D;margin-bottom: 10px;}
+.GiveAnswer .CommentsBox .CommentList .Social .Like i{color: #000000;}
+.GiveAnswer .CommentsBox .CommentList .Social .Like span:last-child, .GiveAnswer .CommentsBox .CommentList .Social .Like .First, .GiveAnswer .CommentsBox .CommentList .Social .Reply .First{color: #434343;font-size: 14px;line-height: 17px;font-weight: normal;font-family: 'Segoe UI';}
+.GiveAnswer .CommentsBox .CommentList .Social .Like span:last-child{color:#9B9B9B; }
+
+.GiveAnswer .CommentsBox .CommentList .Social .Like .First{margin-left: 7px;margin-right: 5px;}
+.GiveAnswer .CommentsBox .CommentList .Social .Reply .First{margin-left: 5px;margin-right: 0px;}
+.GiveAnswer .CommentsBox .CommentList .Social .Reply{margin-left: 20px}
+header .HeaderBottomCenter .Icons .NotificationBadgeCircle span{display: none!important;}
+header .HeaderBottomCenter .UlNotification{display: block!important;}
+
+.Nav3{display: none}
+header .HeaderBottomCenter .UlNotification{background: #C6C6C6;margin: 0;padding: 0;list-style: none;color: #fff;font-size: 17px;position: absolute;
+    z-index: 999;right: 10px;display: block!important;transition: 0.25s ease;}
+    header .HeaderBottomCenter .UlNotification li{width: 100%;cursor: pointer;
+    background: #ffffff;
+    padding: 5px 5px 5px 5px;
+    margin-bottom: 3px;}
+    header .HeaderBottomCenter .UlNotification li:first-child{background: #ffffff   ;color: #fff!important;} 
+   header .HeaderBottomCenter .UlNotification li a{ line-height: 28px;font-size: 17px!important;color: #525256;
+    font-family: 'Segoe UI';
+    font-weight: 400;
+    padding-right: 30px!important;}
+    header .HeaderBottomCenter .UlNotification{display: none;transition: 0.25s ease;display: flex!important;align-items: flex-start;justify-content: flex-start;flex-direction: column;width: 22%;box-shadow: 0px 0px 25px 25px #00000066;}
+    header .HeaderBottomCenter .UlNotification li a:hover{text-decoration: none;transition: 0.25s ease;color: #000!important}
+    header .HeaderBottomCenter .UlNotification li{color: #000;}
+    header .HeaderBottomCenter .UlNotification li:last-child{margin-bottom: 0px; background: #EFEFEF}
+    header .HeaderBottomCenter .UlNotification li:first-child span:first-child{font-weight: 400;font-family: 'Segoe UI';font-size: 17px;color: #10303F}
+    header .HeaderBottomCenter .UlNotification li:first-child span:last-child{font-size: 17px;font-family: 'Segoe UI';font-weight: 600;cursor: pointer;color: #10303F}
+    header .HeaderBottomCenter .UlNotification li:nth-child(2){background: #EFEFEF }
+    .ActiveArrow:after{position: absolute;right: 0;content: '';width: 0;height: 0;border-left: 45px solid transparent;border-right: 45px solid transparent;
+    border-top: 40px solid #fff;bottom: -66px;left: 0;margin: auto;z-index: 9999;}
+
+.Main .MainLeft .LongTime p{font-size: 28px;line-height: 38px;font-family: bold;font-family: 'Segoe UI';color: #D17C0D;text-align: center;margin-bottom: 0;}
+.Main .MainLeft .LongTime{margin-bottom: 65px;display: block}
+
+.AnswerQuestionBox .AskFollowUp{border-color: #085820!important}
+.AnswerQuestionBox .AskFollowUpTitle p{color: #085820!important}
+img, i{cursor: pointer!important}
