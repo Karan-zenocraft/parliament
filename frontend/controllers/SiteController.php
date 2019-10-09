@@ -113,7 +113,8 @@ class SiteController extends FrontCoreController
             }
 
         }
-        $questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
+        //$questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
+        $questions = Questions::find()->with('userAgent')->where(["status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0])->orderBy(["id" => SORT_DESC])->asArray()->all();
 
         return $this->render('index', [
             'model' => $model,

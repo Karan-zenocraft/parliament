@@ -1875,4 +1875,21 @@ class Common
         }
         return $date;
     }
+
+    public function getMpNames($mp)
+    {
+        if (!empty($mp)) {
+            $mpArr = explode(",", $mp);
+            $i = 0;
+            $mp_name = "";
+            foreach ($mpArr as $key => $mp) {
+                $mp_name .= Common::get_user_name($mp);
+                $i++;
+                if ($i != count($mpArr)) {
+                    $mp_name .= ",";
+                }
+            }
+            return $mp_name;
+        }
+    }
 }

@@ -38,7 +38,6 @@ class Questions extends \common\models\base\QuestionsBase
             $query = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
             $query->andWhere(['between', 'created_at', $monday, $saturday]);
             $questionCount = $query->count();
-
             if ($questionCount == 10) {
                 $this->addError($attribute, 'You can not ask question as question limit reaches of this week');
                 //}else if (!$user || ($user->role_id != Yii::$app->params['userroles']['teachers'] && $user->role_id != Yii::$app->params['userroles']['student'])) {

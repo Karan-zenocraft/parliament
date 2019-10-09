@@ -373,8 +373,9 @@ $(".OnhoverGroup").hover(function() {
 
 
 $(document).ready(function(){
-  $("#Load1 a").click(function(){
-    $("#Load1 a").toggleClass("MadeLouderBG");
+  $(".Loud").click(function(){
+    var id = $(this).attr('id');
+    $("#"+id+" a").toggleClass("MadeLouderBG");
   });
     
     $("#Load2").click(function(){

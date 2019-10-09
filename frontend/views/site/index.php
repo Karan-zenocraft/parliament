@@ -1,5 +1,6 @@
 <?php
 // use kartik\icons\FontAwesomeAsset;
+use common\components\Common;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -99,12 +100,12 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 </div>
 <div class="QuestionAnswer">
-                        <div class="QuestionAnswerTitle">
+                       <div class="QuestionAnswerTitle">
                         <h3>Questions and answers from members you follow</h3>
                         </div>
 
                     <div class="QuestionAnswerMainBox QuestionAnswerMainBox1">
-<!--                            <span class="MPName">Kebede Hailu</span><span class="Title"> Answered a Question</span>-->
+
                         <div class="QuestionAnswerBox">
 
                            <div class="Row1">
@@ -196,7 +197,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                             <!-------box-2------------->
 
 
-                            <div class="QuestionAnswerMainBox">
+                    <!--         <div class="QuestionAnswerMainBox">
                             <div class="Top"><a href=""><span class="MPName">Kebede Hailu</span></a><span class="Title"> Answered a Question</span></div>
                         <div class="QuestionAnswerBox">
                            <div class="Row1">
@@ -278,11 +279,15 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 
 
                         </div>
-                           </div>
+                           </div> -->
 
                             <div class="QuestionAnswerTitle Public">
                         <h3>PUBLIC Questions</h3>
                         </div>
+                        <?php //p($questions);
+if (!empty($questions)) {
+    foreach ($questions as $key => $question) {
+        // p($question);?>
                            <div class="QuestionAnswerMainBox">
                             <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
 
@@ -296,19 +301,23 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                                    <li><a href="#">Feven Siraj</a></li>
                                 </ul>
 
-                        <div class="QuestionAnswerBox">
+                             <div class="QuestionAnswerBox">
+
                            <div class="Row1">
                               <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
                             <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
-                                <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
+                                <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $question['userAgent']['photo'] ?>" alt="" class="rounded-circle" width="47px" height="47px"></a>
                                 <div class="UserTitle">
-                                    <a href="#"><p>Meskrem Hailu</p></a>
-                                    <span>1 hour ago</span>
+                                    <a href="#"><p><?php echo $question['userAgent']['user_name'] ?></p></a>
+                                    <span><?php echo Common::time_elapsed_string($question['created_at']); ?></span>
                                 </div>
                                </div>
 
                                <div class="UnansweredBy d-flex flex-wrap align-items-center">
-                                   <a href="#"><span class="Title">Unanswered for</span></a><a href="#"><span class="MP">Cally Feeney</span></a>
+                                   <a href="#"><span class="Title">Unanswered for</span></a>
+                                    <?php $mps = $question['mp_id'];
+        $mpArr = Common::getMpNames($mps);?>
+                              <a href="#"><span class="MP"><?php echo $mpArr; ?></span></a>
                                    <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
                                </div>
 
@@ -319,12 +328,13 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 
 
                                <div class="ViewMoreIcon">
-                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom">
-                                   <div class="Menu2">
+                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one">
+                                   <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
+                                   <div class="Menu1" id="<?php echo 'menu_' . $question['id']; ?>">
                                    <ul class="d-flex align-items-center justify-content-center flex-column">
-                                       <li class="active1"><a href="#">Report</a></li>
-                                       <li><a href="#">Retract</a></li>
-                                       <li><a href="#">Hide</a></li>
+                                       <li class="active1"><a>Report</a></li>
+                                       <li><a >Retract</a></li>
+                                       <li><a >Hide</a></li>
 
 
                                     </ul>
@@ -341,36 +351,48 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                             <p id="dots1">...</p>
                             <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
                             <button onclick="myFunction1()" id="myBtn1">See More</button>
+
+
+
+
                         </div>
                             </div>
 
                             <div class="Row3">
                             <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="Loud">
+                                <div class="Loud" id="Load_<?php echo $question['id']; ?>">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
                                     <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                     <span class="Numbers">301</span>
                                 </a>
                                 </div>
+
                                 <div class="Comments">
                                     <a href="#">
                                 <i class="fa fa-commenting-o" aria-hidden="true"></i>
                                     <span>Comment</span><span class="Numbers">100</span>
-                                    </a>
+                                </a>
                                 </div>
+
                                 <div class="Share">
                                 <a href="#">
                                 <i class="fa fa-share-alt" aria-hidden="true"></i>
                                     <span>Share</span><span class="Numbers">100</span>
                                     </a>
                                 </div>
+
                             </div>
+
                             </div>
+
+
                         </div>
                            </div>
+                         <?php }
+}?>
 
-                           <div class="QuestionAnswerMainBox AnswerQuestion">
+                          <!--  <div class="QuestionAnswerMainBox AnswerQuestion">
 
                         <div class="QuestionAnswerBox">
                            <div class="Row1">
@@ -451,7 +473,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 
 
                         </div>
-                           </div>
+                           </div> -->
 
 
 
@@ -462,7 +484,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 
                            <!---------new-content----------------->
 
-                            <div class="GiveAnswer AskFollowUpBox">
+                       <!--      <div class="GiveAnswer AskFollowUpBox">
                            <div class="AskFollowUp">
                               <div class="Profile">
                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
@@ -543,7 +565,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                                </li>
                                </ul>
                                </div>
-                           </div>
+                           </div> -->
 
     <!---------new-content-end----------------->
 
