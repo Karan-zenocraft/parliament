@@ -335,8 +335,6 @@ if (!empty($questions)) {
                                        <li class="active1"><a>Report</a></li>
                                        <li><a >Retract</a></li>
                                        <li><a >Hide</a></li>
-
-
                                     </ul>
                                    </div>
                                </div>
@@ -362,10 +360,12 @@ if (!empty($questions)) {
                             <div class="Row3">
                             <div class="Social d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="Loud" id="Load<?php echo $question['id']; ?>" data-myval="<?php echo $question['id']; ?>">
-                                <a>
+                                  <?php $louder_by = $question['louder_by'];
+        ?>
+                                <a class="<?php echo (!empty($question['louder_by']) && in_array(Yii::$app->user->id, explode(",", $question['louder_by']))) ? 'MadeLouderBG' : '' ?>">
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
                                     <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
-                                    <span class="Numbers numbers<?php echo $question['id']; ?>">301</span>
+                                    <span class="Numbers numbers<?php echo $question['id']; ?>" id="numbers<?php echo $question['id']; ?>">301</span>
                                 </a>
                                 </div>
 
