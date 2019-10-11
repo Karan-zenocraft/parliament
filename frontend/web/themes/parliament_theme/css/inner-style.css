@@ -442,7 +442,7 @@ header .HeaderBottomCenter .UlNotification{background: #C6C6C6;margin: 0;padding
     font-family: 'Segoe UI';
     font-weight: 400;
     padding-right: 30px!important;}
-    header .HeaderBottomCenter .UlNotification{display: none;transition: 0.25s ease;display: flex!important;align-items: flex-start;justify-content: flex-start;flex-direction: column;width: 22%;box-shadow: 0px 0px 25px 25px #00000066;}
+    header .HeaderBottomCenter .UlNotification{display: none;transition: 0.25s ease;align-items: flex-start;justify-content: flex-start;flex-direction: column;width: 22%;box-shadow: 0px 0px 25px 25px #00000066;}
     header .HeaderBottomCenter .UlNotification li a:hover{text-decoration: none;transition: 0.25s ease;color: #000!important}
     header .HeaderBottomCenter .UlNotification li{color: #000;}
     header .HeaderBottomCenter .UlNotification li:last-child{margin-bottom: 0px; background: #EFEFEF}
@@ -458,3 +458,54 @@ header .HeaderBottomCenter .UlNotification{background: #C6C6C6;margin: 0;padding
 .AnswerQuestionBox .AskFollowUp{border-color: #085820!important}
 .AnswerQuestionBox .AskFollowUpTitle p{color: #085820!important}
 img, i{cursor: pointer!important}
+
+
+
+
+/*new css*/
+
+
+
+.Nav4{display: none}
+header .HeaderBottomCenter .UlSetting{background: #C6C6C6;margin: 0;padding: 0;list-style: none;color: #fff;font-size: 17px;position: absolute;
+    z-index: 999;right: 10px;display: block!important;transition: 0.25s ease;} 
+header .HeaderBottomCenter .UlSetting li{width: 100%;cursor: pointer;background: #ffffff;padding: 5px 5px 5px 5px;margin-bottom: 3px;}
+header .HeaderBottomCenter .UlSetting li a{ line-height: 28px;font-size: 17px;color: #525256;font-family: 'Segoe UI';font-weight: 400;padding-right: 30px!important;}
+header .HeaderBottomCenter .UlSetting{transition: 0.25s ease;display: flex!important;align-items: flex-start;justify-content: flex-start;flex-direction: column;width: 22%;box-shadow: 0px 0px 25px 25px #00000066;}
+header .HeaderBottomCenter .UlSetting li a:hover{text-decoration: none;transition: 0.25s ease;color: #000!important}
+header .HeaderBottomCenter .Icons .fa-cog{position: relative;}
+header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -60px;left: -15px;}
+ header .HeaderBottomCenter .Nav4 .BGList{background: #EFEFEF!important;}
+.Main .MainCenter .Nav1 .UlHome{box-shadow: 0px 0px 25px 25px #00000066!important;}
+.Main .MainCenter .FilterBar .Nav5 ul li i{font-size: 12px;color: #999898;
+    margin-left: 2px;}
+.Main .MainCenter .FilterBar .Nav5 li a{font-weight: 500!important;}
+.Main .MainCenter .FilterBar .Nav5 .FilterActive a{color: #ffffff!important;font-weight: bold!important;}
+.Main .MainCenter .FilterBar .SearchMps .SearchAnswredQ{width: 390px}
+header .HeaderBottomCenter .UlSetting li:last-child{margin-bottom: 0px;}
+.Main .MainCenter .CitizenBar .Nav2 ul li{margin: 0px 20px;}
+.Main .MainCenter .CitizenBar .Nav2 ul li:first-child{margin-left: 0px;}
+.Main .MainCenter .CitizenBar .Nav2 ul li:last-child{margin-right: 0px;}
+.Main .MainCenter .CitizenBar .Nav2{margin: 0px 22px;}
+.Main .MainCenter .CitizenBar span:nth-child(3){font-weight: normal;}
+
+.Main .MainCenter .CitizenPage{background: #10303F;padding-top: 25px;padding-bottom: 25px;padding-left: 56px;padding-right: 56px;position: relative;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockImg img{height: 122px;width: 122px;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption{color: #fff;display: flex;align-items: flex-start;justify-content: center;flex-direction: column;margin-left: 5px;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption h2{font-size: 20px;line-height: 32px;color: #ffffff;font-weight: lighter;margin-bottom: 2px;margin-top: 0px;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption p{font-size: 14px;line-height: 19px;color: #9DAAB0;font-weight: lighter;margin-bottom: 1px;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Following{border-color: #D17C0D!important;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Followed{background: #D17C0D;border-color: #D17C0D;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow{font-size: 9px;line-height: 12px;padding: 5px 7px 2px 7px;border: 2px solid transparent;
+border-radius: 30px;text-transform: uppercase;margin-top: 2px;margin-left: -2px;font-weight: normal;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock{width: 500px;;align-items: flex-start;display: flex;}
+.Main .MainCenter .CitizenPage .Row1{margin-bottom: 20px;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow{cursor: pointer;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow span:last-child{margin-left: 12px;position: relative}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow span:last-child:before{position: absolute;left: -6px;top: 0;bottom: 0;width: 1px;height: 20px;background: #ffffff;content: '';margin: auto}
+.Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows{position: absolute;top: 0;bottom: 0;margin: auto;}
+.Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-left{left: 10px;transform: rotate(180deg)}
+.Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-right{right: 10px;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock1:first-child{justify-content: flex-start}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock:nth-child(2){justify-content: center;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock:nth-child(3){justify-content: flex-end;}
