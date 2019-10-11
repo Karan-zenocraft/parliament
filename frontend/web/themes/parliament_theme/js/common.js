@@ -483,21 +483,33 @@ $(".OnhoverGroup").hover(function() {
 });
 
 
+
 $(document).ready(function(){
   $(".Loud").click(function(){
     var id = $(this).attr('id');
     var question_id = $(this).attr('data-myval');
-
+    if($("#"+id+" a").hasClass('MadeLouderBG')){
+      var event = "unlike";
+    }else{
+      var event = "like";
+    }
      $.ajax({
      url: "site/make-louder",
      type: 'post',
      dataType: 'json',
      data: {
-            question_id:question_id
+            question_id:question_id,
+            event:event
            },
      success: function (data) {
-      $("#"+id+" a").toggleClass("MadeLouderBG");
-      $(".numbers"+id).text(data);
+      //var response = JSON.stringify(data);
+      if(data.event == "unlike"){
+        $("#"+id+" a").removeClass("MadeLouderBG");
+        $('#numbers'+question_id).text(data.louderCount);
+      }else{
+        $("#"+id+" a").addClass("MadeLouderBG");
+        $('#numbers'+question_id).text(data.louderCount);
+      }
      }
   });
 
