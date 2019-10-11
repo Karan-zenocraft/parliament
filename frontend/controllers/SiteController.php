@@ -332,10 +332,6 @@ class SiteController extends FrontCoreController
             'model' => $model,
         ]);
     }
-    public function actionEngagement()
-    {
-        p(1323);
-    }
 
     public function actionCurrentCity()
     {
@@ -412,5 +408,15 @@ class SiteController extends FrontCoreController
             }
             return json_encode($retData);
         }
+    }
+    public function actionMakeLouder()
+    {
+        $question_id = $_POST['question_id'];
+        $question = Questions::find()->where(['id' => $question_id, 'status' => Yii::$app->params['user_status_value']['active']])->one();
+
+        $question->louder_by = empty($question->louder_by) ? Yii::$app->user->id : "," . Yii::$app->user->id;
+        $louderCount = !empty($questionLouderCount->louder_by) ? count(implode(",", $questionLouderCount->louder_by)) + 1 : 1;
+        $question->save(false);
+        return $louderCount;
     }
 }

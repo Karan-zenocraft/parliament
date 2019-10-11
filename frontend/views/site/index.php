@@ -328,9 +328,9 @@ if (!empty($questions)) {
 
 
                                <div class="ViewMoreIcon">
-                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one">
+                                   <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one" id="<?php echo $question['id']; ?>">
                                    <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
-                                   <div class="Menu1" id="<?php echo 'menu_' . $question['id']; ?>">
+                                   <div class="Menu1" id="<?php echo 'menu' . $question['id']; ?>">
                                    <ul class="d-flex align-items-center justify-content-center flex-column">
                                        <li class="active1"><a>Report</a></li>
                                        <li><a >Retract</a></li>
@@ -346,25 +346,26 @@ if (!empty($questions)) {
 
                             <div class="Row2">
 
-                            <div class="Comments">
-                            <p>When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used</p>
-                            <p id="dots1">...</p>
-                            <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
-                            <button onclick="myFunction1()" id="myBtn1">See More</button>
-
-
-
-
-                        </div>
+                                        <div class="Comments">
+                            <?php $length = strlen($question['question']);
+        if ($length <= 120) {?>
+<p> <?php echo $question['question']; ?></p>
+    <?php } else {?>
+           <p><?php echo substr($question['question'], 0, 120) ?></p>
+                            <p id="<?php echo "dots" . $question['id'] ?>">...</p>
+                            <p id="<?php echo "more" . $question['id'] ?>" class="more" style="display:none;"><?php echo substr($question['question'], 120, $length); ?></p>
+                            <button class="btn1" id="<?php echo $question['id'] ?>">Read more</button>
+    <?php }?>
+    </div>
                             </div>
 
                             <div class="Row3">
                             <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="Loud" id="Load_<?php echo $question['id']; ?>">
+                                <div class="Loud" id="Load<?php echo $question['id']; ?>" data-myval="<?php echo $question['id']; ?>">
                                 <a>
                                     <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
                                     <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
-                                    <span class="Numbers">301</span>
+                                    <span class="Numbers numbers<?php echo $question['id']; ?>">301</span>
                                 </a>
                                 </div>
 

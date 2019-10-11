@@ -135,13 +135,13 @@ $i = 0;
                         <div class="Row2">
                         <div class="Comments">
                             <?php $length = strlen($question->question);
-    if ($length <= 120) {?>
+    if ($length <= 70) {?>
 <p> <?php echo $question->question; ?></p>
     <?php } else {?>
-           <p><?php echo substr($question->question, 0, 120) ?></p>
-                            <p id="dots">...</p>
-                            <p id="more"><?php echo substr($question->question, 120, $length); ?></p>
-                            <button onclick="myFunction()" id="myBtn">Read more</button>
+           <p><?php echo substr($question->question, 0, 70) ?></p>
+                            <p id="dotsleft">...</p>
+                            <p id="moreleft" class="moreleft" style="display:none;"><?php echo substr($question->question, 71, $length); ?></p>
+                            <button class="btnleft" id="<?php echo $question['id'] ?>">Read more</button>
     <?php }?>
     </div>
 

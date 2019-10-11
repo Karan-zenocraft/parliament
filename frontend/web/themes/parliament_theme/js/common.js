@@ -1,8 +1,8 @@
-function myFunction() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
-
+function myFunction(id,element) {
+  //console.log(id);
+  var dots = document.getElementById("dots_"+id);
+  var moreText = document.getElementById("more_"+id);
+  var btnText = document.getElementById("question_"+id);
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     btnText.innerHTML = "Read more"; 
@@ -13,6 +13,7 @@ function myFunction() {
     moreText.style.display = "inline";
   }
 }
+
 
 function myFunction1() {
   var dots = document.getElementById("dots1");
@@ -344,17 +345,15 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $('.one').click(function() {
-              $(".Menu1").addClass("Option1");
+    var id = $(this).attr('id');
+    $(".Menu1").removeClass("Option1");
+              $("#menu"+id).toggleClass("Option1");
+              $(this).toggleClass("Option2");
             });
-    
     
     $("body").click(function() {
                 $(".Menu1").removeClass("Option1");
-
-
             });
-
-
             $(".one").click(function() {
                 event.stopPropagation();
             });
@@ -375,7 +374,21 @@ $(".OnhoverGroup").hover(function() {
 $(document).ready(function(){
   $(".Loud").click(function(){
     var id = $(this).attr('id');
-    $("#"+id+" a").toggleClass("MadeLouderBG");
+    var question_id = $(this).attr('data-myval');
+
+     $.ajax({
+     url: "site/make-louder",
+     type: 'post',
+     dataType: 'json',
+     data: {
+            question_id:question_id
+           },
+     success: function (data) {
+      $("#"+id+" a").toggleClass("MadeLouderBG");
+      $(".numbers"+id).text(data);
+     }
+  });
+
   });
     
     $("#Load2").click(function(){
@@ -509,6 +522,7 @@ $("#CurrentCity").click(function(){
 });
 
 $(document).ready(function(){
+ 
   //$('#questions-mp_id').on('select2:select', function (e) {
 $(document).on('select2:select', '#questions-mp_id', function (e) {
 
@@ -545,5 +559,30 @@ $(document).on('click', '.DimmerBox', function () {
   }
   }
 });
+
+ });
+
+
+$(document).ready(function(){
+$(".btn1").click(function(){
+var id = $(this).attr('id');
+$('#more'+id).toggleClass('show');
+if($("#more"+id).hasClass('show')){
+  $("#"+id).text("Read Less");
+}else{
+  $("#"+id).text("Read More");
+}
+
+ });
+
+$(".btnleft").click(function(){
+$('#moreleft').toggleClass('show');
+if($("#moreleft").hasClass('show')){
+  $(".btnleft").text("Read Less");
+}else{
+  $(".btnleft").text("Read More");
+}
+
+ });
 
  });

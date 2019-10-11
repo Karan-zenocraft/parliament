@@ -98,7 +98,7 @@ padding-right: 30px;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Comments p{font-size: 18px;line-height: 22px;font-weight: 400;font-family: 'Segoe UI';color: #0D0D0D;display: inline;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Comments button{text-decoration: none;cursor: pointer;font-size: 12px;font-weight: bold;line-height: 15px;color: #10303F;margin-left: 5px;font-family: 'Segoe UI';background: transparent;border: none;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Comments button:focus{outline: none;}
-.Main .MainLeft .LastQuestion .LastQuestionBox .Comments #more{display: none}
+.Comments .show{display: inline!important}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Row1{margin-bottom: 10px;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Row2{margin-bottom: 25px;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Row3 .Social{padding: 0px 20px;}
