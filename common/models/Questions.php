@@ -26,6 +26,8 @@ class Questions extends \common\models\base\QuestionsBase
             [['created_at', 'updated_at', 'mp_id', 'louder_by'], 'safe'],
             [['question'], 'string', 'max' => 540],
             [['question'], "validateCount"],
+            [['mp_id'], "validateMpCount"],
+
             //  [['mp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['mp_id' => 'id']],
             //[['user_agent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_agent_id' => 'id']],
         ];
@@ -45,6 +47,21 @@ class Questions extends \common\models\base\QuestionsBase
                 //$user->last_login = date('Y-m-d H:i:s');
                 //$user->is_logged_in = '1';
                 //$user->save();
+            }
+        }
+    }
+    public function validateMpCount($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            if (!empty($_POST)) {
+                $mpsCount = count($_POST['Questions']['mp_id']);
+                if ($mpsCount > 5) {
+                    $this->addError($attribute, 'You can select maximum 5 Mps.');
+                } else {
+                    //$user->last_login = date('Y-m-d H:i:s');
+                    //$user->is_logged_in = '1';
+                    //$user->save();
+                }
             }
         }
     }

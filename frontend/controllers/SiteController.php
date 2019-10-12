@@ -113,17 +113,27 @@ class SiteController extends FrontCoreController
             }
 
         }
-        //$questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
-        $questions = Questions::find()->with('userAgent')->where(["status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0])->orderBy(["id" => SORT_DESC])->asArray()->all();
 
+        //$questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
+        $questionsQuery = Questions::find()->with('userAgent')->where(["status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0])->orderBy(["id" => SORT_DESC]);
+        $paginationQuestion = new Pagination(['totalCount' => $questionsQuery->count(), 'pageSize' => 5]);
+        $totalCountQuestions = $paginationQuestion->totalCount;
+        $pageSizeQuestions = $paginationQuestion->pageSize;
+        $total_pages_questions = ceil($totalCountQuestions / $pageSizeQuestions);
+        $modelsQuestions = $questionsQuery->offset($paginationQuestion->offset)
+            ->limit($paginationQuestion->limit)
+            ->all();
         return $this->render('index', [
             'model' => $model,
-            'questions' => $questions,
+            // 'questions' => $questions,
             'mp' => $mpArr,
             'models' => $models,
             'pagination' => $pagination,
             'errors' => $errors,
             'total_pages' => $total_pages,
+            'modelsQuestions' => $modelsQuestions,
+            'paginationQuestion' => $paginationQuestion,
+            'total_pages_questions' => $total_pages_questions,
         ]);
     }
     /**
@@ -383,7 +393,8 @@ class SiteController extends FrontCoreController
                 $rowCount = 0;
                 foreach ($models as $key => $value) {
                     $retData .= "<div class='RowBox d-flex align-items-center justify-content-start col-md-4 p-0'><div class='DimmerBox' id=" . "mp_" . $value['id'] . ">";
-                    $retData .= "<img src=" . Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png class='img-fluid SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
+                    $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";
+                    $retData .= "<img src=" . $user_image . " class='img-fluid SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
                     $rowCount++;
                     if ($rowCount % $numOfCols == 0) {
                         $retData .= "</div><div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
@@ -432,6 +443,55 @@ class SiteController extends FrontCoreController
             }
             $data = ["event" => $event, "louderCount" => $louderCount];
             return json_encode($data);
+
+        }
+    }
+    public function actionLoadMoreQuestions()
+    {
+        if (!empty($_POST['page'])) {
+            $loginId = Yii::$app->user->id;
+            $page = ($_POST['page'] - 1) * 5;
+            $flagCond = !empty($_POST['filter']) ? $_POST['filter'] : "";
+            $flagSearch = !empty($_POST['search']) ? $_POST['search'] : "";
+
+            $questionsQuery = Questions::find()
+                ->with('userAgent')
+                ->where(["status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
+
+            if ($flagCond == 'myQue') {
+                // GET LOGIN USER'S QUESTIONS
+                $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+            } elseif ($flagCond == 'myLouder') {
+                // GET LOGIN USER'S LOUDER QUESTIONS
+                $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',louder_by)'));
+            }
+
+            if (!empty($flagSearch)) {
+                // SEARCH QUESTIONS
+                $questionsQuery = $questionsQuery->andwhere(['like', 'question', $flagSearch]);
+            }
+
+            $questionsQuery = $questionsQuery->orderBy(["id" => SORT_DESC]);
+            $models = $questionsQuery
+                ->offset($page)
+                ->limit(5)
+                ->all();
+            if (!empty($models)) {
+                $pageDataAjax = $this->renderPartial('questions', array(
+                    'modelsQuestions' => $models,
+                ));
+            } else {
+                $pageDataAjax = "No more data found.";
+            }
+        } else {
+            $pageDataAjax = "Bad Request";
+        }
+        $retArray = array('data' => $pageDataAjax, 'count' => count($models), 'page' => $_POST['page']);
+        return json_encode($retArray);
+    }
+    public function hideQuestionsFeed()
+    {
+        if (!empty($_POST['user_id']) && !empty($_POST['question_id'])) {
 
         }
     }

@@ -29,6 +29,9 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
     <a href="#" id="scroll" style="display: none;z-index: 99999;">
         <span></span></a>
 
+<?php $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
+
+$user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
     <header>
         <div class="container-fluid">
             <div class="row">
@@ -44,7 +47,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         <i class="fa fa-cog"></i>
                     </div>
                     <div class="Search">
-                        <input type="text" placeholder="Search for Questions here" class="SearchInput"><i class="fa fa-search"></i>
+                        <input type="text" placeholder="Search for Questions here" class="SearchInput" id="filterSearch" onblur="filterSearch()"><i class="fa fa-search"></i>
                     </div>
                     <div class="Icons">
 
@@ -55,7 +58,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         </i>
                         </span>
                         <ul class="Nav3">
-                           
+
                         <li class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <span>Mark All as Unread</span></li>
                     <li><a href="">Chala Commented on your Question</a></li>
                     <li><a href="">Maya Made a Question Louder</a></li>
@@ -65,16 +68,16 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                             <li><a href="">Abebe Followed you</a></li>
                         <li><a href="">Lily Shared your Question</a></li>
                             <li class="text-center"><a href=""><b>See all</b></a></li>
-                            </ul> 
+                            </ul>
                         <i class="fa fa-search OnlySm"></i>
                         <i class="fa fa-cog"></i>
                         <!--new html-->
-                        
+
                         <ul class="Nav4">
                             <li class="BGList"><a>Edit profile</a></li>
-                            <li><a >Log out</a></li>
-                    </ul>  
-                        
+                            <li><a href="site/logout">Log out</a></li>
+                    </ul>
+
 <!--end new html-->
 
 
@@ -112,12 +115,12 @@ $limit = 10
                       <div class="LastQuestion">
                         <p>Your last submitted Question</p>
                         <div class="LastQuestionBox">
-
                         <div class="Row1 d-flex align-items-center justify-content-between ">
                         <div class="User d-flex align-items-center justify-content center">
-                        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid UserImage">
+
+                        <img src="<?php echo $user_image; ?>" alt="" class="img-fluid UserImage">
                         <div class="ProfileName">
-                        <p><?php echo Common::get_user_name(Yii::$app->user->id); ?></p>
+                        <p><?php echo !empty($user) ? $user['user_name'] : "-" ?></p>
                             <?php $question = Questions::find()->where(["user_agent_id" => Yii::$app->user->id])->orderBy(["id" => SORT_DESC])->one();?>
                         <p><span><?php echo Common::time_elapsed_string($question->created_at); ?></span></p>
                         </div>
@@ -149,13 +152,13 @@ $i = 0;
 
                         <div class="Row2">
                         <div class="Comments">
-                            <?php $length = strlen($question->question);
+                            <?php $length = strlen($question['question']);
     if ($length <= 70) {?>
-<p> <?php echo $question->question; ?></p>
+<p> <?php echo $question['question']; ?></p>
     <?php } else {?>
-           <p><?php echo substr($question->question, 0, 70) ?></p>
+           <p><?php echo substr($question['question'], 0, 70) ?></p>
                             <p id="dotsleft">...</p>
-                            <p id="moreleft" class="moreleft" style="display:none;"><?php echo substr($question->question, 71, $length); ?></p>
+                            <p id="moreleft" class="moreleft" style="display:none;"><?php echo substr($question['question'], 71, $length); ?></p>
                             <button class="btnleft" id="<?php echo $question['id'] ?>">Read more</button>
     <?php }?>
     </div>
@@ -164,10 +167,10 @@ $i = 0;
                         </div>
                             <div class="Row3">
                             <div class="Social d-flex align-items-center justify-content-between">
-                            <div class="Loud" id="Load2">
+                            <div class="Loud" id="Load2" data-question="<?php echo $question['id']; ?>">
 
                             <i class="fa fa-wifi" aria-hidden="true"></i>
-                            <span>300</span>
+                            <span id="Load2_count"><?php echo (empty($question['louder_by']) || ($question['louder_by'] == "")) ? "0" : count(explode(",", $question['louder_by'])); ?></span>
 
                             </div>
 
@@ -203,9 +206,9 @@ $i = 0;
 
                         <div class="ListOfQuestions">
                         <ul>
-                            <li><a href="#">Questions you have asked</a></li>
-                            <li><a href="#">Questions you have made louder</a></li>
-                            <li><a href="#">Questions you have not answered (for MPs)</a></li>
+                            <li><a onclick="filterQuestion('myQue')"  href="#">Questions you have asked</a></li>
+                            <li><a onclick="filterQuestion('myLouder')" href="#">Questions you have made louder</a></li>
+                            <li><a onclick="filterQuestion('mpNotAns')" href="#">Questions you have not answered (for MPs)</a></li>
                         </ul>
 
                         </div>
@@ -236,14 +239,14 @@ Breadcrumbs::widget([
 
                         <div id="menu1" class="tab-pane fade">
                            <!---------new-content-start----------------->
-                            
+
                             <div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between">
-                                
+
                                 <nav class="Nav2 Nav5">
                                     <ul class="d-flex align-items-center justify-content-start nav">
                                         <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
                                         <li><a>Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
-                                        
+
                                     </ul>
 
                                 </nav>
@@ -251,20 +254,20 @@ Breadcrumbs::widget([
                                     <input type="search" placeholder="Search Answered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
                                 </div>
                             </div>
-                            
+
                             <!---------new-content-start----------------->
-                            
-                            
+
+
                         </div>
                         <div id="menu2" class="tab-pane fade">
-                            
+
                             <div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between">
-                                
+
                                 <nav class="Nav2 Nav5">
                                     <ul class="d-flex align-items-center justify-content-start nav">
                                         <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
                                         <li><a>Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
-                                        
+
                                     </ul>
 
                                 </nav>
@@ -276,8 +279,8 @@ Breadcrumbs::widget([
                         </div>
 
                         <div id="menu3" class="tab-pane fade">
-                            
-                            
+
+
                           <div class="FilterBar CitizenBar d-flex align-items-end justify-content-between">
                                 <span>Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
                                 <nav class="Nav2 Nav6">
@@ -294,7 +297,7 @@ Breadcrumbs::widget([
                                     <input type="search" placeholder="Search Citizen" class="SearchMp Citizen"><i class="fa fa-search"></i>
                                 </div>
                             </div>
-                            
+
                             <div class="CitizenPage">
                             <div class="Row1 d-flex align-items-center justify-content-start">
                             <div class="ProfileBlock">
@@ -302,106 +305,106 @@ Breadcrumbs::widget([
                             <div class="BlockImg">
                                 <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
 
-                                
-                            </div>    
+
+                            </div>
                             <div class="BlockCaption">
                                 <h2>Meskrem Hailu</h2>
                                 <p>Addis Ababa</p>
                                 <p>Accountant</p>
                                 <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                            </div>    
-                            </div>    
+                            </div>
+                            </div>
                             </div>
                             <div class="ProfileBlock">
                             <div class="Block1 d-flex align-items-center justify-content-center">
                             <div class="BlockImg">
                                 <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                            </div>    
+                            </div>
                             <div class="BlockCaption">
                                 <h2>Meskrem Hailu</h2>
                                 <p>Addis Ababa</p>
                                 <p>Accountant</p>
                                 <a class="Follow Following"><span>Follow</span><span>300</span> </a>
-                            </div>    
-                            </div>    
+                            </div>
+                            </div>
                             </div>
                                 <div class="ProfileBlock">
                             <div class="Block1 d-flex align-items-center justify-content-center">
                             <div class="BlockImg">
                                 <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                            </div>    
+                            </div>
                             <div class="BlockCaption">
                                 <h2>Meskrem Hailu</h2>
                                 <p>Addis Ababa</p>
                                 <p>Accountant</p>
                                 <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                            </div>    
-                            </div>    
                             </div>
                             </div>
-                                
+                            </div>
+                            </div>
+
                                 <div class="Row1 d-flex align-items-center justify-content-start">
                             <div class="ProfileBlock">
                             <div class="Block1 d-flex align-items-center justify-content-center">
                             <div class="BlockImg">
                                 <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                            </div>    
+                            </div>
                             <div class="BlockCaption">
                                 <h2>Meskrem Hailu</h2>
                                 <p>Addis Ababa</p>
                                 <p>Accountant</p>
                                 <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                            </div>    
-                            </div>    
+                            </div>
+                            </div>
                             </div>
                             <div class="ProfileBlock">
                             <div class="Block1 d-flex align-items-center justify-content-center">
                             <div class="BlockImg">
                                 <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                            </div>    
+                            </div>
                             <div class="BlockCaption">
                                 <h2>Meskrem Hailu</h2>
                                 <p>Addis Ababa</p>
                                 <p>Accountant</p>
                                 <a class="Follow Following"><span>Follow</span><span>300</span> </a>
-                            </div>    
-                            </div>    
+                            </div>
+                            </div>
                             </div>
                                 <div class="ProfileBlock">
                             <div class="Block1 d-flex align-items-center justify-content-center">
                             <div class="BlockImg">
                                 <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                            </div>    
+                            </div>
                             <div class="BlockCaption">
                                 <h2>Meskrem Hailu</h2>
                                 <p>Addis Ababa</p>
                                 <p>Accountant</p>
                                 <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                            </div>    
-                            </div>    
                             </div>
                             </div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            <div class="SliderArrowCitizen">
-                            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png"?>" alt="" class="img-fluid arrows arrows-right">
-                            
+                            </div>
+                            </div>
 
-                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png"?>" alt="" class="img-fluid arrows arrows-left">
-                             
-                            
+
+
+
+
+
+
+
+
+                            <div class="SliderArrowCitizen">
+                            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-right">
+
+
+                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-left">
+
+
                             </div>
                             </div>
-                            
-                            
-                            
+
+
+
                         </div>
                     </div>
                 </div>

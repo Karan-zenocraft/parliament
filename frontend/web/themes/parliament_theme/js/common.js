@@ -64,6 +64,49 @@ function AjaxCallSort(dataValue)
      }
   });
 }
+
+function QuestionAnswer()
+{
+  var nextpage = $("#pageQuestion").val();
+  var filter = $("#filterQuestion").val();
+  var search = $("#filterSearch").val();
+
+  $("#pageQuestion").val(++nextpage);
+      $.ajax({
+     url: "site/load-more-questions",
+     type: 'post',
+     dataType: 'json',
+     data: {
+            page:nextpage,
+            filter:filter,
+            search:search
+           },
+     success: function (response) {
+      if(nextpage=='1'){
+        $('#ajaxQuestion').html(response.data);
+      }
+      else{
+        $('#ajaxQuestion').append(response.data);
+      }
+       
+       if(response.count<=0)
+       {
+          $('#loadmoreData').hide();
+       }
+     }
+  });
+}
+function filterQuestion(flag)
+{
+  $("#filterQuestion").val(flag);
+  $("#pageQuestion").val('0');
+  QuestionAnswer()
+}
+function filterSearch()
+{
+  $("#pageQuestion").val('0');
+  QuestionAnswer()
+}
 function AjaxCallSearch()
 {
    
@@ -105,6 +148,7 @@ function getPage(flag)
   AjaxCallSearch();
 }
 $(document).ready(function() {
+                QuestionAnswer();
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
                         $('#scroll').fadeIn();
@@ -456,7 +500,8 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-  $('.one').click(function() {
+  //$('.one').click(function() {
+$(document).on('click', '.one', function () {
     var id = $(this).attr('id');
     $(".Menu1").removeClass("Option1");
               $("#menu"+id).toggleClass("Option1");
@@ -485,14 +530,42 @@ $(".OnhoverGroup").hover(function() {
 
 
 $(document).ready(function(){
-  $(".Loud").click(function(){
+  //$(".Loud").click(function(){
+    $(document).on('click', '.Loud', function () {
     var id = $(this).attr('id');
-    var question_id = $(this).attr('data-myval');
-    if($("#"+id+" a").hasClass('MadeLouderBG')){
-      var event = "unlike";
+    if(id == "Load2"){
+      var question_id = $(this).attr('data-question');
+       if($("#Load2").hasClass('LoadBG')){
+        var event = "unlike";
+      }else{
+        var event = "like";
+      }
+    $.ajax({
+     url: "site/make-louder",
+     type: 'post',
+     dataType: 'json',
+     data: {
+            question_id:question_id,
+            event:event
+           },
+     success: function (data) {
+      //var response = JSON.stringify(data);
+      if(data.event == "unlike"){
+        $("#Load2").removeClass("LoadBG");
+        $("#Load2Load2_count").text(data.louderCount);
+      }else{
+        $("#Load2").addClass("LoadBG");
+        $("#Load2_count").text(data.louderCount);
+      }
+     }
+  });
     }else{
-      var event = "like";
-    }
+     var question_id = $(this).attr('data-myval');
+      if($("#"+id+" a").hasClass('MadeLouderBG')){
+        var event = "unlike";
+      }else{
+        var event = "like";
+      }
      $.ajax({
      url: "site/make-louder",
      type: 'post',
@@ -512,12 +585,13 @@ $(document).ready(function(){
       }
      }
   });
+    }
 
   });
     
-    $("#Load2").click(function(){
+   /* $("#Load2").click(function(){
     $("#Load2").toggleClass("LoadBG");
-  });
+  });*/
 });
 
 
@@ -705,13 +779,14 @@ $(document).on('click', '.DimmerBox', function () {
 
 
 $(document).ready(function(){
-$(".btn1").click(function(){
-var id = $(this).attr('id');
+//$(".btn1").click(function(){
+$(document).on('click', '.btn1', function () {
+var id = $(this).attr('data-val');
 $('#more'+id).toggleClass('show');
 if($("#more"+id).hasClass('show')){
-  $("#"+id).text("Read Less");
+  $("#moreless"+id).text("Read Less");
 }else{
-  $("#"+id).text("Read More");
+  $("#moreless"+id).text("Read More");
 }
 
  });
@@ -726,4 +801,4 @@ if($("#moreleft").hasClass('show')){
 
  });
 
- });
+});
