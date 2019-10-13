@@ -94,24 +94,29 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                 <div class="col-md-3 cus-md-3 MainLeft">
                     <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo">
                     <div class="MainLeftInner">
+<?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
+    ?>
+
+
                         <div class="RemainingQuestion d-flex align-items-center justify-content=center">
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/msg.png" ?>" alt="" class="img-fluid Msg">
                         <?php
 $questions = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0])->count();
 
-$monday = Common::getLastMondaySaturday("monday");
-$saturday = Common::getLastMondaySaturday("saturday");
-$query = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
-$query->andWhere(['between', 'created_at', $monday, $saturday]);
-$questionCount = $query->count();
-$limit = 10
-?>
+    $monday = Common::getLastMondaySaturday("monday");
+    $saturday = Common::getLastMondaySaturday("saturday");
+    $query = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
+    $query->andWhere(['between', 'created_at', $monday, $saturday]);
+    $questionCount = $query->count();
+    $limit = 10
+    ?>
                         <p>Remaining Number of Questions
                             Allowed for the Week
                             <?php echo ($limit - $questionCount) ?> out of 10</p>
                             </div>
+
 <?php if (!empty($questions)) {
-    ?>
+        ?>
                       <div class="LastQuestion">
                         <p>Your last submitted Question</p>
                         <div class="LastQuestionBox">
@@ -131,19 +136,19 @@ $limit = 10
                         <div class="MPProfileName">
                         <p>Unanswered for</p>
 <?php $mps = $question->mp_id;
-    $mpArr = explode(",", $mps);
+        $mpArr = explode(",", $mps);
 
-    ?>
+        ?>
                         <p><span><?php
 $i = 0;
-    foreach ($mpArr as $key => $mp) {
-        echo Common::get_user_name($mp);
-        $i++;
-        if ($i != count($mpArr)) {
-            echo ",";
+        foreach ($mpArr as $key => $mp) {
+            echo Common::get_user_name($mp);
+            $i++;
+            if ($i != count($mpArr)) {
+                echo ",";
+            }
         }
-    }
-    ?>
+        ?>
                        </span></p> </div>
                        <?php $userDetails = Common::get_name_by_id($mpArr[0], "Users");?>
                         <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $userDetails['photo'] ?>" alt="" class="img-fluid MPImage">
@@ -153,7 +158,7 @@ $i = 0;
                         <div class="Row2">
                         <div class="Comments">
                             <?php $length = strlen($question['question']);
-    if ($length <= 70) {?>
+        if ($length <= 70) {?>
 <p> <?php echo $question['question']; ?></p>
     <?php } else {?>
            <p><?php echo substr($question['question'], 0, 70) ?></p>
@@ -199,16 +204,19 @@ $i = 0;
                             Make your voice heard.</p>
 
                         </div>
-                    <?php }?>
+                    <?php }}?>
 
 
 
 
                         <div class="ListOfQuestions">
                         <ul>
+                            <?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {?>
                             <li><a onclick="filterQuestion('myQue')"  href="#">Questions you have asked</a></li>
                             <li><a onclick="filterQuestion('myLouder')" href="#">Questions you have made louder</a></li>
+                        <?php } else {?>
                             <li><a onclick="filterQuestion('mpNotAns')" href="#">Questions you have not answered (for MPs)</a></li>
+                        <?php }?>
                         </ul>
 
                         </div>

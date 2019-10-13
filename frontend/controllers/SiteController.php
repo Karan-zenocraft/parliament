@@ -481,10 +481,10 @@ class SiteController extends FrontCoreController
                     'modelsQuestions' => $models,
                 ));
             } else {
-                $pageDataAjax = "No more data found.";
+                $pageDataAjax = "No more records found.";
             }
         } else {
-            $pageDataAjax = "Bad Request";
+            $pageDataAjax = "Bad Request, Please try again.";
         }
         $retArray = array('data' => $pageDataAjax, 'count' => count($models), 'page' => $_POST['page']);
         return json_encode($retArray);
@@ -494,5 +494,9 @@ class SiteController extends FrontCoreController
         if (!empty($_POST['user_id']) && !empty($_POST['question_id'])) {
 
         }
+    }
+    public function actionAnswerQuestion()
+    {
+        p(123);
     }
 }

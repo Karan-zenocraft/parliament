@@ -147,6 +147,13 @@ function getPage(flag)
   $("#page").val(page);
   AjaxCallSearch();
 }
+function answer_toggle(id){
+     // $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
+    $("#AnswerQuestionBox"+id).toggleClass("GiveAnswerBox");
+}
+/*function show_comments(id){
+  alert(id);
+}*/
 $(document).ready(function() {
                 QuestionAnswer();
                 $(window).scroll(function() {
@@ -610,10 +617,10 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-  $(".AnswerQuestion .AnswerToggle").click(function(){
+/*  $(".AnswerQuestion .AnswerToggle").click(function(){
       $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
     $(".AnswerQuestionBox").toggleClass("GiveAnswerBox");
-  });
+  });*/
     
     
 });

@@ -1,5 +1,6 @@
 <?php
 // use kartik\icons\FontAwesomeAsset;
+use common\components\Common;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -7,19 +8,26 @@ use yii\widgets\ActiveForm;
 // FontAwesomeAsset::register($this);
 ?>
 <div id="home" class="tab-pane active show Flex">
+  <?php
+$user = Common::get_name_by_id(Yii::$app->user->id, "Users");
+if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
+    ?>
+
+
+
   <div class="Ask">
     <?php $form = ActiveForm::begin(['id' => 'question-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true, 'validationUrl' => Url::toRoute('site/index')]);?>
     <?php
 echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
-    'data' => $mp,
-    'name' => 'mp_id',
-    'options' => ['placeholder' => 'Address for:', 'multiple' => true],
-    'pluginOptions' => [
-        'tags' => false,
-        'tokenSeparators' => [',', ' '],
-        'maximumInputLength' => 10,
-    ],
-])->label(false); ?>
+        'data' => $mp,
+        'name' => 'mp_id',
+        'options' => ['placeholder' => 'Address for:', 'multiple' => true],
+        'pluginOptions' => [
+            'tags' => false,
+            'tokenSeparators' => [',', ' '],
+            'maximumInputLength' => 10,
+        ],
+    ])->label(false); ?>
     <?=$form->field($model, 'question')->textArea(['maxlength' => true, "class" => "AskQuestion", "placeholder" => "Ask your Question. Get involved", "onkeyup" => "countChar(this)"])->label(false);?>
     <div id="charNum" style="float: right;">0/540</div>
     <div class="form-group">
@@ -55,10 +63,10 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
               <div class="row" id="list_mp">
                 <div class="Row1 col-md-12 d-flex align-items-center justify-content-start">
                   <?php if (!empty($models)) {
-    $numOfCols = 3;
-    $rowCount = 1;
-    foreach ($models as $key => $value) {
-        ?>
+        $numOfCols = 3;
+        $rowCount = 1;
+        foreach ($models as $key => $value) {
+            ?>
                   <div class="RowBox d-flex align-items-center justify-content-start col-md-4 p-0">
                     <?php $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";?>
                     <div class="DimmerBox" id="<?php echo "mp_" . $value['id'] ?>"><img src="<?php echo $user_image; ?>" alt="" class="img-fluid SliderImage"></div>
@@ -70,10 +78,10 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                   </a>
                 </div>
                 <?php if (($rowCount % $numOfCols == 0) && ($rowCount != $pagination->pageSize)) {
-            echo '</div><div class="Row1 col-md-12 d-flex align-items-center justify-content-start">';
-        }
-        $rowCount++;
-    }?>
+                echo '</div><div class="Row1 col-md-12 d-flex align-items-center justify-content-start">';
+            }
+            $rowCount++;
+        }?>
             </div>
           </div>
         </div>
@@ -87,73 +95,8 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
   </div>
 </div>
 </div>
+<?php }?>
 <div class="QuestionAnswer">
-<div class="QuestionAnswerTitle">
-  <h3>Questions and answers from members you follow</h3>
-</div>
-<div class="QuestionAnswerMainBox AnswerQuestion">
-  <div class="QuestionAnswerBox">
-    <div class="Row1">
-      <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
-        <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
-          <a href="#"><img src="../image/user.png" alt="" class="img-fluid"></a>
-          <div class="UserTitle">
-            <a href="#"><p>Meskrem Hailu</p></a>
-            <span>1 hour ago</span>
-          </div>
-        </div>
-        <div class="UnansweredBy d-flex flex-wrap align-items-center">
-          <a href="#"><span class="Title">Unanswered for</span></a><a href="#"><span class="MP">Cally Feeney</span></a>
-          <a href="#"><img src="../image/user.png" alt="" class="img-fluid"></a>
-        </div>
-        <div class="AskFollowUp d-flex flex-wrap align-items-center">
-          <i class="fa fa-spinner" aria-hidden="true"></i>
-          <span>ASK A FOLLOW UP</span>
-        </div>
-        <div class="ViewMoreIcon">
-          <img src="../image/arrow-bottom.png" alt="" class="img-fluid ArrowBottom">
-          <div class="Menu2">
-            <ul class="d-flex align-items-center justify-content-center flex-column">
-              <li class="active1"><a href="#">Report</a></li>
-              <li><a href="#">Retract</a></li>
-              <li><a href="#">Hide</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="Row2">
-      <div class="Comments">
-        <p>When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used</p>
-        <p id="dots1">...</p>
-        <p id="more1">When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.  hope that I would not have a single bit of talent left and could say, I used.....When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.</p>
-        <button onclick="myFunction1()" id="myBtn1">See More</button>
-      </div>
-    </div>
-    <div class="Row3">
-      <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-        <div class="AnswerQuestion">
-          <a class="AnswerToggle">
-            Answer Question
-          </a>
-        </div>
-        <div class="Comments">
-          <a href="#">
-            <i class="fa fa-commenting-o" aria-hidden="true"></i>
-            <span>Comment</span><span class="Numbers">100</span>
-          </a>
-        </div>
-        <div class="Share">
-          <a href="#">
-            <i class="fa fa-share-alt" aria-hidden="true"></i>
-            <span>Share</span><span class="Numbers">100</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- QUESTIONS AND ANSWER SECTION START-->
 <div class="QuestionAnswerTitle Public">
   <h3>PUBLIC Questions</h3>

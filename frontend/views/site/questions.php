@@ -1,6 +1,7 @@
 <?php
 use common\components\Common;
 if (!empty($modelsQuestions)) {
+    $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
     foreach ($modelsQuestions as $key => $question) {
         ?>
 <div class="QuestionAnswerMainBox" id="questions_answers">
@@ -64,16 +65,25 @@ $user_image = !empty($question['userAgent']['photo']) ? Yii::getAlias('@web') . 
     </div>
     <div class="Row3">
       <div class="Social d-flex flex-wrap align-items-center justify-content-between">
+        <?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
+            ?>
         <div class="Loud" id="Load<?php echo $question['id']; ?>" data-myval="<?php echo $question['id']; ?>">
           <?php $louder_by = $question['louder_by'];
-        ?>
+            ?>
           <a class="<?php echo (!empty($question['louder_by']) && in_array(Yii::$app->user->id, explode(",", $question['louder_by']))) ? 'MadeLouderBG' : '' ?>">
             <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
             <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
             <span class="Numbers numbers<?php echo $question['id']; ?>" id="numbers<?php echo $question['id']; ?>"><?php echo (empty($question['louder_by']) || ($question['louder_by'] == "")) ? "0" : count(explode(",", $question['louder_by'])); ?></span>
           </a>
         </div>
-        <div class="Comments">
+      <?php } else if (in_array($user->id, explode(",", $question['mp_id']))) {?>
+          <div class="AnswerQuestion" id="<?php echo $question['id']; ?>" onclick="answer_toggle(id)">
+                                <a class="AnswerToggle">
+                                   Answer Question
+                                </a>
+                                </div>
+      <?php }?>
+        <div class="Comments" id="comments<?php echo $question['id']; ?>" onclick= "show_comments(id)">
           <a href="#">
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
             <span>Comment</span><span class="Numbers">100</span>
@@ -89,5 +99,32 @@ $user_image = !empty($question['userAgent']['photo']) ? Yii::getAlias('@web') . 
     </div>
   </div>
 </div>
+ <div class="GiveAnswer AnswerQuestionBox" id="AnswerQuestionBox<?php echo $question['id']; ?>">
+                            <div class="AskFollowUp">
+                               <div class="Profile">
+                                <?php $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
+                                <img src="<?php echo $user_image; ?>" alt="" class="img-fluid">
+                                <div class="UserTitle">
+                                    <a href="#"><p><?php echo $user['user_name'] ?></p></a>
+                                </div>
+                                </div>
+
+                                <div class="AskFollowUpTitle">
+                                <p>Answer Question</p>
+
+                                </div>
+
+                                <div class="AskFollowUpAnswerBox">
+
+                                <textarea> </textarea>
+
+
+                                </div>
+                                   <div class="AskFollowUpSubmit">
+                                    <a href="" class="">Submit</a></div>
+                            </div>
+
+
+                            </div>
   <?php
 }}?>

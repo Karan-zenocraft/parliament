@@ -2,12 +2,12 @@
 
 namespace frontend\controllers;
 
-use Yii;
 use common\models\Questions;
 use common\models\QuestionsSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * QuestionsController implements the CRUD actions for Questions model.
