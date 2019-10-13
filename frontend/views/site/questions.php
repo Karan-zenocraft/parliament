@@ -1,5 +1,8 @@
 <?php
 use common\components\Common;
+use common\models\Answers;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 if (!empty($modelsQuestions)) {
     $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
     foreach ($modelsQuestions as $key => $question) {
@@ -76,13 +79,13 @@ $user_image = !empty($question['userAgent']['photo']) ? Yii::getAlias('@web') . 
             <span class="Numbers numbers<?php echo $question['id']; ?>" id="numbers<?php echo $question['id']; ?>"><?php echo (empty($question['louder_by']) || ($question['louder_by'] == "")) ? "0" : count(explode(",", $question['louder_by'])); ?></span>
           </a>
         </div>
-      <?php } else if (in_array($user->id, explode(",", $question['mp_id']))) {?>
-          <div class="AnswerQuestion" id="<?php echo $question['id']; ?>" onclick="answer_toggle(id)">
-                                <a class="AnswerToggle">
-                                   Answer Question
-                                </a>
-                                </div>
-      <?php }?>
+        <?php } else if (in_array($user->id, explode(",", $question['mp_id']))) {?>
+        <div class="AnswerQuestion" id="<?php echo $question['id']; ?>" onclick="answer_toggle(id)">
+          <a class="AnswerToggle">
+            Answer Question
+          </a>
+        </div>
+        <?php }?>
         <div class="Comments" id="comments<?php echo $question['id']; ?>" onclick= "show_comments(id)">
           <a href="#">
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
@@ -99,32 +102,33 @@ $user_image = !empty($question['userAgent']['photo']) ? Yii::getAlias('@web') . 
     </div>
   </div>
 </div>
- <div class="GiveAnswer AnswerQuestionBox" id="AnswerQuestionBox<?php echo $question['id']; ?>">
-                            <div class="AskFollowUp">
-                               <div class="Profile">
-                                <?php $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
-                                <img src="<?php echo $user_image; ?>" alt="" class="img-fluid">
-                                <div class="UserTitle">
-                                    <a href="#"><p><?php echo $user['user_name'] ?></p></a>
-                                </div>
-                                </div>
-
-                                <div class="AskFollowUpTitle">
-                                <p>Answer Question</p>
-
-                                </div>
-
-                                <div class="AskFollowUpAnswerBox">
-
-                                <textarea> </textarea>
-
-
-                                </div>
-                                   <div class="AskFollowUpSubmit">
-                                    <a href="" class="">Submit</a></div>
-                            </div>
-
-
-                            </div>
+<div class="GiveAnswer AnswerQuestionBox" id="AnswerQuestionBox<?php echo $question['id']; ?>">
+  <div class="AskFollowUp">
+    <div class="Profile">
+      <?php $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
+      <img src="<?php echo $user_image; ?>" alt="" class="img-fluid">
+      <div class="UserTitle">
+        <a href="#"><p><?php echo $user['user_name'] ?></p></a>
+      </div>
+    </div>
+    <div class="AskFollowUpTitle">
+      <p>Answer Question</p>
+    </div>
+    <div class="AskFollowUpAnswerBox" >
+      <?php $model_answer = new Answers();?>
+<?php $form2 = ActiveForm::begin(['id' => 'answers-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true/*, 'validationUrl' => Url::toRoute('site/index')*/]);?>
+ <?=$form2->field($model_answer, 'answer_text')->textArea(['maxlength' => true, "class" => "AskQuestion", "onkeyup" => "countChar(this)", "id" => "model_answer" . $question['id']])->label(false);?>
+    <div id="charNum" style="float: right;">0/540</div>
+     <!--  <textarea id="getAnswer<?php echo $question['id']; ?>" maxlength="540"> </textarea> -->
+    </div>
+    <div class="form-group AskFollowUpSubmit">
+      <?=Html::submitButton('Submit', ['class' => 'btn btn-success AskButton', "id" => $question['id'], "onclick" => "submitAnswer(" . $question['id'] . ")"])?>
+    </div>
+    <!-- <div class="AskFollowUpSubmit">
+      <a href="javascript:void(0)" onclick="submitAnswer(<?php echo $question['id']; ?>)">Submit</a></div> -->
+    <?php ActiveForm::end();?>
+    </div>
+    <div id="disp<?php echo $question['id']; ?>"></div>
+  </div>
   <?php
 }}?>

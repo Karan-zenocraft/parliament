@@ -151,6 +151,25 @@ function answer_toggle(id){
      // $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
     $("#AnswerQuestionBox"+id).toggleClass("GiveAnswerBox");
 }
+
+function submitAnswer(question_id)
+{
+alert(question_id);
+  var answer = $.trim($("#model_answer"+question_id).val());
+  if(answer==''){alert('Answer can not be blank'); return false;}
+   $.ajax({
+     url: "site/answer-question",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               answer: answer, 
+               question_id:question_id,
+           },
+     success: function (data) {
+         $('#disp'+question_id).html(data);
+     }
+  });
+}
 /*function show_comments(id){
   alert(id);
 }*/

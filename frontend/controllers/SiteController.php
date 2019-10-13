@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Answers;
 use common\models\LoginForm;
 use common\models\Questions;
 use common\models\Users;
@@ -497,6 +498,17 @@ class SiteController extends FrontCoreController
     }
     public function actionAnswerQuestion()
     {
-        p(123);
+        $model_answer = new Answers();
+        if (Yii::$app->request->post()) {
+            $postData = Yii::$app->request->post();
+            $model_answer->question_id = $postData['question_id'];
+            $model_answer->answer_text = $postData['answer'];
+            $model_answer->mp_id = Yii::$app->user->id;
+            $model_answer->save(false);
+            return json_encode("success");
+        } else {
+            return json_encode("Bad request");
+        }
+
     }
 }
