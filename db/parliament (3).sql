@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 30, 2019 at 07:44 PM
+-- Generation Time: Oct 13, 2019 at 11:55 AM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -108,7 +108,8 @@ CREATE TABLE `questions` (
   `id` bigint(20) NOT NULL,
   `user_agent_id` bigint(20) NOT NULL,
   `question` varchar(600) NOT NULL,
-  `mp_id` bigint(20) NOT NULL,
+  `mp_id` varchar(255) NOT NULL,
+  `louder_by` longtext,
   `status` smallint(6) NOT NULL DEFAULT '1',
   `is_delete` smallint(6) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
@@ -119,12 +120,36 @@ CREATE TABLE `questions` (
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `user_agent_id`, `question`, `mp_id`, `status`, `is_delete`, `created_at`, `updated_at`) VALUES
-(1, 6, 'testing testing testging testing testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting testing testgingtesting?', 2, 1, 0, '2019-09-30 08:36:13', '2019-09-30 08:36:13'),
-(2, 6, 'I want to change the road of my area which is test area. Please let me know when will it will be done?', 2, 1, 0, '2019-09-30 10:01:07', '2019-09-30 10:01:07'),
-(3, 6, 'Hi this is Rutusha Joshi I want to muncipal coraporation aware of my problem which is very dirty water coming in my area please do something on this.', 2, 1, 0, '2019-09-30 10:02:46', '2019-09-30 10:02:46'),
-(4, 6, 'testing for the project ', 2, 1, 0, '2019-09-30 10:29:11', '2019-09-30 10:29:11'),
-(5, 2, 'Ruutuuuuu tutut tutu tutut tutu tututu?', 2, 1, 0, '2019-09-30 10:29:45', '2019-09-30 10:29:45');
+INSERT INTO `questions` (`id`, `user_agent_id`, `question`, `mp_id`, `louder_by`, `status`, `is_delete`, `created_at`, `updated_at`) VALUES
+(39, 6, 'Hi Guys When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything?', '2,12,14,20,19', '6', 1, 0, '2019-10-07 13:10:25', '2019-10-11 15:18:19'),
+(40, 6, 'hey MP i want to ask one question to you that our city\'s roads are very bad to drive and very risky also please repair it as soon as possible this is my complaint to you please fix it asap.', '12,14', '8', 1, 0, '2019-10-09 05:43:55', '2019-10-11 12:44:33'),
+(41, 8, 'Hi How are you? MP', '12', '8,6', 1, 0, '2019-10-09 09:17:31', '2019-10-12 16:24:00'),
+(42, 8, 'Hi How are you?', '12', '8,6', 1, 0, '2019-10-09 09:17:34', '2019-10-11 12:57:32'),
+(43, 8, 'test question test question test question', '19', '8', 1, 0, '2019-10-09 09:18:08', '2019-10-11 12:57:14'),
+(44, 8, 'test question 1', '19', '8,6', 1, 0, '2019-10-09 09:18:27', '2019-10-11 12:57:30'),
+(45, 8, 'test question 1', '13', '8', 1, 0, '2019-10-09 09:18:32', '2019-10-11 12:57:26'),
+(46, 8, 'test question 1', '13', '8', 1, 0, '2019-10-09 09:18:33', '2019-10-11 12:57:25'),
+(47, 8, 'test question 2', '10', '8,6', 1, 0, '2019-10-09 09:18:50', '2019-10-12 16:23:56'),
+(48, 8, 'test question 3', '17,10', '6', 1, 0, '2019-10-09 09:19:20', '2019-10-11 13:22:31'),
+(49, 8, 'test question 4', '14', '8,6', 1, 0, '2019-10-09 09:19:32', '2019-10-11 12:50:28'),
+(50, 8, 'test question 5 test question 5 test question 5test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5test question 5 test question 5', '2,14', '8', 1, 0, '2019-10-09 09:19:59', '2019-10-12 16:22:02'),
+(51, 6, 'When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. hope that I would not have a single bit of talent left and could say, I used When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say', '2,20,19', '8,6', 1, 0, '2019-10-09 11:40:53', '2019-10-12 16:24:23'),
+(52, 6, 'dasdasdsadasd', '12,14,20,19,15', '6', 1, 0, '2019-10-11 15:34:11', '2019-10-12 16:55:01'),
+(53, 6, 'ssss', '12', '6', 1, 0, '2019-10-12 16:56:34', '2019-10-12 16:58:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_hide`
+--
+
+CREATE TABLE `question_hide` (
+  `id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `questions_id` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_by` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -212,11 +237,22 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `email`, `password`, `user_name`, `city`, `age`, `gender`, `photo`, `education`, `years_hopr`, `password_reset_token`, `badge_count`, `standing_commitee`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'testingforproject0@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'parliament_admin', 'test', 12, NULL, 'bk1_5d8b08ac2cdd3.jpg', 'rrrrr', NULL, '', 0, '', 1, '2019-05-03 10:09:57', '2019-09-25 06:26:52'),
-(2, 2, 'rutusha1212joshi@gmail.com', '0192023a7bbd73250516f069df18b500', 'Rutusha', 'test', 12, 1, 'crs-fvicn-1_5d8b08d644ddd.png', 'MECE', NULL, NULL, 0, '', 1, '2019-05-03 10:09:57', '2019-09-25 13:36:05'),
-(6, 2, 'rutusha.joshi@zenocraft.com', '21232f297a57a5a743894a0e4a801fc3', 'test', 'ahmedabad', 29, 2, NULL, 'e', NULL, NULL, NULL, '', 1, '2019-09-24 14:30:02', '2019-09-25 07:17:23'),
-(8, 3, 'jay.varan@zenocraft.com', 'c3284d0f94606de1fd2af172aba15bf3', 'jay', 'ahmedabad', 29, 2, 'business-3370832_1280_5d8b05ac72aac.jpg', 'BECE', 3, NULL, NULL, 'TRTW', 1, '2019-09-25 06:14:04', '2019-09-25 07:37:59'),
-(9, 2, 'chiefsrs123@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'chiefs', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, '', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03');
+(1, 1, 'testingforproject0@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'parliament_admin', 'test', 1, NULL, 'bk1_5d8b08ac2cdd3.jpg', 'rrrrr', NULL, '', 0, '', 1, '2019-05-03 10:09:57', '2019-09-25 06:26:52'),
+(2, 2, 'rutusha1212joshi@gmail.com', '0192023a7bbd73250516f069df18b500', ' Cally Fenney', 'zydus', 30, 1, 'crs-fvicn-1_5d8b08d644ddd.png', 'MECE', NULL, NULL, 0, 'Foregign Relation & Peace', 1, '2019-05-03 10:09:57', '2019-09-25 13:36:05'),
+(6, 3, 'rutusha.joshi@zenocraft.com', '21232f297a57a5a743894a0e4a801fc3', 'Shivani Barrow', 'ahmedabad', 3, 2, 'business-3370832_1280_5d8b05ac72aac.jpg', 'e', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-24 14:30:02', '2019-09-25 07:17:23'),
+(8, 3, 'jay.varan@zenocraft.com', '21232f297a57a5a743894a0e4a801fc3', 'jay', 'ahmedabad', 29, 2, 'business-3370832_1280_5d8b05ac72aac.jpg', 'BECE', 3, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 06:14:04', '2019-09-25 07:37:59'),
+(9, 2, 'chiefsrs1236@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Timur solomon', 'baroda', 5, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(10, 2, 'chiefsrs1234@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Norma Cano', 'rajkot', 90, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(11, 2, 'chiefsrs12s3@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Nims Caroz', 'surat', 89, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(12, 2, 'charlie@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Charlie Boss', 'charlie', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(13, 2, 'jazz@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Jazz Campus', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(14, 2, 'danny@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Danny Goel', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(15, 2, 'Hoang@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Hoang ', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(16, 2, 'Hoang@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Hoang Dang', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(17, 2, 'jane@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Jane Strawbel', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(18, 2, 'janes@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Janes Starch', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(19, 2, 'helyd@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Hely Gomez', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
+(20, 2, 'hely@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'helcuras Lee', 'gg', 12, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03');
 
 -- --------------------------------------------------------
 
@@ -260,8 +296,8 @@ CREATE TABLE `user_rules` (
 
 INSERT INTO `user_rules` (`id`, `role_id`, `privileges_controller`, `privileges_actions`, `permission`, `permission_type`) VALUES
 (1, 1, 'SiteController', 'index,logout,change-password,forgot-password', 'allow', 'admin'),
-(2, 2, 'SiteController', 'logout,change-password,forgot-password,index', 'allow', 'MP'),
-(3, 3, 'SiteController', 'logout,change-password,forgot-password,index', 'allow', 'user_agent'),
+(2, 2, 'SiteController', 'logout,change-password,forgot-password,index,engagement,load-more-questions', 'allow', 'MP'),
+(3, 3, 'SiteController', 'logout,change-password,forgot-password,index,engagement,current-city,make-louder,load-more-questions', 'allow', 'user_agent'),
 (4, 1, 'UsersController', 'create,update,delete,view,index', 'allow', 'admin');
 
 -- --------------------------------------------------------
@@ -406,7 +442,7 @@ ALTER TABLE `email_format`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `question_louder`
 --
@@ -426,7 +462,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `user_roles`
 --
@@ -464,7 +500,6 @@ ALTER TABLE `comments`
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
-  ADD CONSTRAINT `MPs` FOREIGN KEY (`mp_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `user_agent` FOREIGN KEY (`user_agent_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
