@@ -2,34 +2,40 @@ function myFunction(id,element) {
   //console.log(id);
   var dots = document.getElementById("dots_"+id);
   var moreText = document.getElementById("more_"+id);
+  var ansText = document.getElementById("answer_"+id);
   var btnText = document.getElementById("question_"+id);
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     btnText.innerHTML = "Read more"; 
     moreText.style.display = "none";
+    ansText.style.display = "none";
   } else {
     dots.style.display = "none";
     btnText.innerHTML = "Read less"; 
     moreText.style.display = "inline";
+    ansText.style.display = "inline";
   }
 }
-
 
 function myFunction1() {
   var dots = document.getElementById("dots1");
   var moreText = document.getElementById("more1");
+  var moreText2 = document.getElementById("more2");
   var btnText = document.getElementById("myBtn1");
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     btnText.innerHTML = "Read more"; 
     moreText.style.display = "none";
+    moreText2.style.display = "none";
   } else {
     dots.style.display = "none";
     btnText.innerHTML = "Read less"; 
     moreText.style.display = "inline";
+      moreText2.style.display = "block";
   }
 }
+
 function sortBy()
 {
   var sort = $("#sort").val();

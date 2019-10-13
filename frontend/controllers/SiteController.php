@@ -456,8 +456,7 @@ class SiteController extends FrontCoreController
             $flagSearch = !empty($_POST['search']) ? $_POST['search'] : "";
 
             $questionsQuery = Questions::find()
-                ->with('userAgent')
-                ->where(["status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
+                ->with('userAgent');
 
             if ($flagCond == 'myQue') {
                 // GET LOGIN USER'S QUESTIONS
@@ -465,6 +464,12 @@ class SiteController extends FrontCoreController
             } elseif ($flagCond == 'myLouder') {
                 // GET LOGIN USER'S LOUDER QUESTIONS
                 $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',louder_by)'));
+            } elseif ($flagCond == 'mpNotAns') {
+                // GET LOGIN USER'S LOUDER QUESTIONS
+                $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',questions.mp_id)'));
+                $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                    return $query->andWhere("answers.id is null");
+                }]);
             }
 
             if (!empty($flagSearch)) {

@@ -61,10 +61,15 @@ $user_image = !empty($question['userAgent']['photo']) ? Yii::getAlias('@web') . 
         <?php } else {?>
         <p><?php echo substr($question['question'], 0, 120) ?></p>
         <p id="<?php echo "dots" . $question['id'] ?>">...</p>
-        <p id="<?php echo "more" . $question['id'] ?>" class="more" style="display:none;"><?php echo substr($question['question'], 120, $length); ?></p>
+        <p id="<?php echo "more" . $question['id'] ?>" class="more" style="display:none;"><?php echo substr($question['question'], 120, $length); ?>
+                               </p>
+
+
         <button class="btn1" id="<?php echo "moreless" . $question['id'] ?>" data-val="<?php echo $question['id'] ?>">Read more</button>
+
         <?php }?>
       </div>
+
     </div>
     <div class="Row3">
       <div class="Social d-flex flex-wrap align-items-center justify-content-between">
