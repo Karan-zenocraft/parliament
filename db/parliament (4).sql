@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 13, 2019 at 11:55 AM
+-- Generation Time: Oct 14, 2019 at 07:50 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -35,6 +35,19 @@ CREATE TABLE `answers` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`id`, `question_id`, `answer_text`, `mp_id`, `created_at`, `updated_at`) VALUES
+(24, 51, 'weqwewqewqeqwe', 2, '2019-10-14 09:33:03', '2019-10-14 09:33:03'),
+(25, 51, 'sdfwsfsdfsdfdsfsd nnnnnnnnnnnnnnnnn', 2, '2019-10-14 09:34:03', '2019-10-14 09:34:03'),
+(26, 51, 'gdfgdfgdfgdsfg nnnnnnn gggggg', 2, '2019-10-14 09:42:44', '2019-10-14 09:42:44'),
+(27, 51, 'safsdfsdfsdf lllllllll', 2, '2019-10-14 09:43:24', '2019-10-14 09:43:24'),
+(28, 51, 'sadasd', 2, '2019-10-14 09:44:58', '2019-10-14 09:44:58'),
+(29, 51, 'sadasdasd', 2, '2019-10-14 09:48:13', '2019-10-14 09:48:13'),
+(30, 51, 'zxczxcZXC', 2, '2019-10-14 09:49:26', '2019-10-14 09:49:26');
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +64,17 @@ CREATE TABLE `comments` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `question_id`, `comment_text`, `user_agent_id`, `status`, `is_delete`, `created_at`, `updated_at`) VALUES
+(1, 52, 'Hi this is my first comment', 2, 1, 0, '2019-10-14 10:52:55', '2019-10-14 10:52:55'),
+(2, 52, 'sadasdasd', 2, 1, 0, '2019-10-14 10:54:32', '2019-10-14 10:54:32'),
+(3, 52, 'sadasdasd', 2, 1, 0, '2019-10-14 10:54:38', '2019-10-14 10:54:38'),
+(4, 53, 'sadasdasd', 2, 1, 0, '2019-10-14 10:55:10', '2019-10-14 10:55:10'),
+(5, 53, 'sadasdasd', 2, 1, 0, '2019-10-14 10:55:20', '2019-10-14 10:55:20');
 
 -- --------------------------------------------------------
 
@@ -128,14 +152,14 @@ INSERT INTO `questions` (`id`, `user_agent_id`, `question`, `mp_id`, `louder_by`
 (43, 8, 'test question test question test question', '19', '8', 1, 0, '2019-10-09 09:18:08', '2019-10-11 12:57:14'),
 (44, 8, 'test question 1', '19', '8,6', 1, 0, '2019-10-09 09:18:27', '2019-10-11 12:57:30'),
 (45, 8, 'test question 1', '13', '8', 1, 0, '2019-10-09 09:18:32', '2019-10-11 12:57:26'),
-(46, 8, 'test question 1', '13', '8', 1, 0, '2019-10-09 09:18:33', '2019-10-11 12:57:25'),
+(46, 8, 'test question 1', '13', '8,6', 1, 0, '2019-10-09 09:18:33', '2019-10-14 08:59:19'),
 (47, 8, 'test question 2', '10', '8,6', 1, 0, '2019-10-09 09:18:50', '2019-10-12 16:23:56'),
 (48, 8, 'test question 3', '17,10', '6', 1, 0, '2019-10-09 09:19:20', '2019-10-11 13:22:31'),
 (49, 8, 'test question 4', '14', '8,6', 1, 0, '2019-10-09 09:19:32', '2019-10-11 12:50:28'),
-(50, 8, 'test question 5 test question 5 test question 5test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5test question 5 test question 5', '2,14', '8', 1, 0, '2019-10-09 09:19:59', '2019-10-12 16:22:02'),
+(50, 8, 'test question 5 test question 5 test question 5test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5 test question 5test question 5 test question 5', '2,14', '8,6', 1, 0, '2019-10-09 09:19:59', '2019-10-14 08:59:10'),
 (51, 6, 'When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. hope that I would not have a single bit of talent left and could say, I used When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say', '2,20,19', '8,6', 1, 0, '2019-10-09 11:40:53', '2019-10-12 16:24:23'),
-(52, 6, 'dasdasdsadasd', '12,14,20,19,15', '6', 1, 0, '2019-10-11 15:34:11', '2019-10-12 16:55:01'),
-(53, 6, 'ssss', '12', '6', 1, 0, '2019-10-12 16:56:34', '2019-10-12 16:58:44');
+(52, 6, 'dasdasdsadasd', '12,14,20,19,15', '6', 1, 1, '2019-10-11 15:34:11', '2019-10-14 14:07:13'),
+(53, 6, 'When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me. hope that I would not have a single bit of talent left and could say, I used When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say', '12', '6,6', 1, 1, '2019-10-12 16:56:34', '2019-10-14 14:06:29');
 
 -- --------------------------------------------------------
 
@@ -146,10 +170,17 @@ INSERT INTO `questions` (`id`, `user_agent_id`, `question`, `mp_id`, `louder_by`
 CREATE TABLE `question_hide` (
   `id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `questions_id` text NOT NULL,
+  `question_id` text NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_by` datetime NOT NULL
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `question_hide`
+--
+
+INSERT INTO `question_hide` (`id`, `user_id`, `question_id`, `created_at`, `updated_at`) VALUES
+(3, 6, '52,53', '2019-10-14 14:06:55', '2019-10-14 14:08:04');
 
 -- --------------------------------------------------------
 
@@ -161,6 +192,21 @@ CREATE TABLE `question_louder` (
   `id` bigint(20) NOT NULL,
   `question_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_reported`
+--
+
+CREATE TABLE `question_reported` (
+  `id` bigint(20) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `report_comment` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -238,7 +284,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `role_id`, `email`, `password`, `user_name`, `city`, `age`, `gender`, `photo`, `education`, `years_hopr`, `password_reset_token`, `badge_count`, `standing_commitee`, `status`, `created_at`, `updated_at`) VALUES
 (1, 1, 'testingforproject0@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'parliament_admin', 'test', 1, NULL, 'bk1_5d8b08ac2cdd3.jpg', 'rrrrr', NULL, '', 0, '', 1, '2019-05-03 10:09:57', '2019-09-25 06:26:52'),
-(2, 2, 'rutusha1212joshi@gmail.com', '0192023a7bbd73250516f069df18b500', ' Cally Fenney', 'zydus', 30, 1, 'crs-fvicn-1_5d8b08d644ddd.png', 'MECE', NULL, NULL, 0, 'Foregign Relation & Peace', 1, '2019-05-03 10:09:57', '2019-09-25 13:36:05'),
+(2, 2, 'rutusha1212joshi@gmail.com', '21232f297a57a5a743894a0e4a801fc3', ' Cally Fenney', 'zydus', 30, 1, 'crs-fvicn-1_5d8b08d644ddd.png', 'MECE', NULL, NULL, 0, 'Foregign Relation & Peace', 1, '2019-05-03 10:09:57', '2019-09-25 13:36:05'),
 (6, 3, 'rutusha.joshi@zenocraft.com', '21232f297a57a5a743894a0e4a801fc3', 'Shivani Barrow', 'ahmedabad', 3, 2, 'business-3370832_1280_5d8b05ac72aac.jpg', 'e', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-24 14:30:02', '2019-09-25 07:17:23'),
 (8, 3, 'jay.varan@zenocraft.com', '21232f297a57a5a743894a0e4a801fc3', 'jay', 'ahmedabad', 29, 2, 'business-3370832_1280_5d8b05ac72aac.jpg', 'BECE', 3, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 06:14:04', '2019-09-25 07:37:59'),
 (9, 2, 'chiefsrs1236@gmail.com', '13489faf95ad78aec2cbebab40ec5a73', 'Timur solomon', 'baroda', 5, 2, 'chief-rs_logo_5d8b1337e06d7.png', 'rrrrr', NULL, NULL, NULL, 'Foregign Relation & Peace', 1, '2019-09-25 07:11:51', '2019-09-25 07:22:03'),
@@ -296,8 +342,8 @@ CREATE TABLE `user_rules` (
 
 INSERT INTO `user_rules` (`id`, `role_id`, `privileges_controller`, `privileges_actions`, `permission`, `permission_type`) VALUES
 (1, 1, 'SiteController', 'index,logout,change-password,forgot-password', 'allow', 'admin'),
-(2, 2, 'SiteController', 'logout,change-password,forgot-password,index,engagement,load-more-questions', 'allow', 'MP'),
-(3, 3, 'SiteController', 'logout,change-password,forgot-password,index,engagement,current-city,make-louder,load-more-questions', 'allow', 'user_agent'),
+(2, 2, 'SiteController', 'logout,change-password,forgot-password,index,engagement,load-more-questions,answer-question,save-comment,validate-comment,report-question', 'allow', 'MP'),
+(3, 3, 'SiteController', 'logout,change-password,forgot-password,index,engagement,current-city,make-louder,load-more-questions,save-comment,validate-comment,report-question,retract-question,hide-question', 'allow', 'user_agent'),
 (4, 1, 'UsersController', 'create,update,delete,view,index', 'allow', 'admin');
 
 -- --------------------------------------------------------
@@ -367,12 +413,27 @@ ALTER TABLE `questions`
   ADD KEY `MPs` (`mp_id`);
 
 --
+-- Indexes for table `question_hide`
+--
+ALTER TABLE `question_hide`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `question_louder`
 --
 ALTER TABLE `question_louder`
   ADD PRIMARY KEY (`id`),
   ADD KEY `question` (`question_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `question_reported`
+--
+ALTER TABLE `question_reported`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question` (`question_id`),
+  ADD KEY `user` (`user_id`);
 
 --
 -- Indexes for table `shares`
@@ -427,12 +488,12 @@ ALTER TABLE `user_rules_menu`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `email_format`
 --
@@ -444,9 +505,19 @@ ALTER TABLE `email_format`
 ALTER TABLE `questions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
+-- AUTO_INCREMENT for table `question_hide`
+--
+ALTER TABLE `question_hide`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `question_louder`
 --
 ALTER TABLE `question_louder`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `question_reported`
+--
+ALTER TABLE `question_reported`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `shares`
