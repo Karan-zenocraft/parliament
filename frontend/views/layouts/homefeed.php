@@ -52,7 +52,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                     <div class="Icons">
 
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden">
-                        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="img-fluid People">
+                        <img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;">
                         <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
                         </i>

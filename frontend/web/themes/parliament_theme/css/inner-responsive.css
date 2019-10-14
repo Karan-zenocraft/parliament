@@ -21,23 +21,35 @@
 
 @media (min-width: 1630px) and (max-width: 1749px) {
     .Main .MainLeft .Inner-Logo{top: -100px!important;}
+     /*EditProfilecss*/
+    .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{padding: 5px 25px!important;font-size: 11px;}
+    .Main .MainLeft .ProfileLeft .EditProfiles{top: 10px}
    
 }
 
 
 @media (min-width: 1500px) and (max-width: 1629px) {
     .Main .MainLeft .Inner-Logo{top: -90px!important;}
+    /*EditProfilecss*/
+    .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{padding: 5px 25px!important;font-size: 11px;}
+    .Main .MainLeft .ProfileLeft .EditProfiles{top: 10px}
    
 }
 
 
 @media (min-width: 1365px) and (max-width: 1499px) {
     .Main .MainLeft .Inner-Logo{top: -80px!important;}
+    /*EditProfilecss*/
+    .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{padding: 3px 22px!important;font-size: 9px;}
+    .Main .MainLeft .ProfileLeft .EditProfiles{top: 5px}
    
 }
 
 
-@media (min-width: 1200px) and (max-width: 1919px) {
+@media (min-width: 1200px) and (max-width: 1364px) {
+     /*EditProfilecss*/
+    .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{padding: 4px 20px!important;font-size: 8px;}
+    .Main .MainLeft .ProfileLeft .EditProfiles{top: 5px}
     
     
    
@@ -182,6 +194,28 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-right {height: 30px;width: 20px;right: 5px;}
 
 
+
+
+ 
+    
+    /*EditProfilecss*/
+.Main .MainLeft .ProfileLeft .EditProfile ul li:after{font-size: 12px;}
+.Main .MainLeft .ProfileLeft .Title{font-size:12px;line-height:18px;}
+.Main .MainLeft .ProfileLeft .TitleBold{font-size: 12px;line-height: 18px;}
+.Main .MainLeft .ProfileLeft .User h3{font-size:20px;line-height:28px;}
+.Main .MainLeft .ProfileLeft .User p{font-size:10px; line-height:16px; }
+.Main .MainLeft .ProfileLeft .EditProfile ul li{margin-bottom: 5px;padding-left: 20px;}
+.Main .MainLeft .ProfileLeft .User img{width: 150px;height: 150px;}
+.Main .MainLeft .ProfileLeft .User{margin-bottom: 20px;}
+    
+
+    
+    /*ModalCss*/
+
+.Report label{font-size: 12px;line-height: 18px;}
+.Report .modal-title{font-size: 12px;line-height: 16px;}
+.Report .SubmitReportBtn{font-size: 10px;line-height: 16px;}
+    .Report .SubmitReportBtn{padding: 5px 20px;}
 }
 
 
@@ -345,6 +379,26 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow span:last-child:before{height: 9px;top: 0;margin: auto;}
     
 
+      /*EditProfilecss*/
+.Main .MainLeft .ProfileLeft .EditProfile ul li:after{font-size: 10px;}
+.Main .MainLeft .ProfileLeft .Title{font-size:10px;line-height:16px;}
+.Main .MainLeft .ProfileLeft .TitleBold{font-size: 10px;line-height: 18px;}
+.Main .MainLeft .ProfileLeft .User h3{font-size:14px;line-height:22px;}
+.Main .MainLeft .ProfileLeft .User p{font-size:10px; line-height:16px; }
+.Main .MainLeft .ProfileLeft .EditProfile ul li{margin-bottom: 5px;padding-left: 20px;}
+.Main .MainLeft .ProfileLeft .User img{width: 100px;height: 100px;}
+.Main .MainLeft .ProfileLeft .User{margin-bottom: 20px;}
+    .Main .MainLeft .ProfileLeft .User img{margin-bottom: 10px;}
+    .Main .MainLeft .ProfileLeft .EditProfile, .Main .MainLeft .EditProfileMain .ListOfQuestions{padding-left: 0px;}
+    .Main .MainLeft .ProfileLeft .EditProfile ul{margin-bottom: 20px;}
+    .Main .MainLeft .MainLeftInner .ListOfQuestions ul li a{font-size: 10px;}
+     
+/*ModalCss*/
+
+.Report label{font-size: 12px;line-height: 18px;}
+.Report .modal-title{font-size: 12px;line-height: 16px;}
+.Report .SubmitReportBtn{font-size: 10px;line-height: 16px;}
+
 }
 
 
@@ -416,6 +470,11 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-left{left: 5px;height: 30px;width: 20px;}
     .Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-right {height: 30px;width: 20px;right: 5px;}
 
+
+
+/*EditProfilecss*/
+    .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{padding: 3px 17px!important;font-size: 8px;}
+    .Main .MainLeft .ProfileLeft .EditProfiles{top:0px;right: 3px;}
 }
 
 
@@ -825,8 +884,69 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .Main .MainCenter .CitizenPage .Row1{margin-bottom: 30px;}
     .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow span:last-child:before{height: 9px;top: 0;margin: auto;}
 
+
+
+/*EditProfilecss*/
+    .MainEditProfile .MainLeft{display: block;padding-top: 0!important;padding-right: 0!important;}
+.Main .MainLeft .ProfileLeft .EditProfile ul li:after{font-size: 14px;}
+.Main .MainLeft .ProfileLeft .Title{font-size:14px;line-height:18px;}
+.Main .MainLeft .ProfileLeft .TitleBold{font-size: 14px;line-height: 18px;}
+.Main .MainLeft .ProfileLeft .User h3{font-size:18px;line-height:24px;}
+.Main .MainLeft .ProfileLeft .User p{font-size:12px; line-height:18px; }
+.Main .MainLeft .ProfileLeft .EditProfile ul li{margin-bottom: 5px;padding-left: 20px;}
+.Main .MainLeft .ProfileLeft .User img{width: 100px;height: 100px;}
+.Main .MainLeft .ProfileLeft .User{margin-bottom: 15px;}
+    .Main .MainLeft .ProfileLeft .User img{margin-bottom: 10px;border: 2px solid #ffffff;}
+    .Main .MainLeft .ProfileLeft .EditProfile{padding-left: 0px;}
+    .Main .MainLeft .EditProfileMain .ListOfQuestions{display: none}
+    .Main .MainLeft .ProfileLeft .EditProfile ul{margin-bottom: 20px;}
+    header .HeaderBottomCenter{border-bottom: 1px solid #10303F}
+    .Main .MainLeft .MainLeftInner{border:  1px solid #10303F}
+    .Main .MainLeft .MainLeftInner .ListOfQuestions ul li a{font-size: 14px;line-height: 20px;}
+    .Main .MainLeft .MainLeftInner .ListOfQuestions ul{margin-bottom: 30px;}
+    .Main .MainLeft .MainLeftInner .ListOfQuestions ul li:before{font-size: 14px;}
+    .Main .MainLeft .OnlySm{display: block}
+    .Main .MainCenter .Onlylg{display: none;}
+    
+    /*EditProfilecss*/
+    .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{padding: 4px 22px!important;font-size: 10px;}
+    .Main .MainLeft .ProfileLeft .EditProfiles{top:5px;right: 5px;}
+    
+    
+    
+    /*ModalCss*/
+
+.Report label{font-size: 11px;line-height: 16px;}
+.Report .modal-title{font-size: 11px;line-height: 16px;}
+.Report .SubmitReportBtn{font-size: 11px;line-height: 16px;}
+    
+    
+/*    Searchmobilemenu*/
+    header .HeaderBottomCenter .UlSearch{display: block!important;}
+    header .HeaderBottomCenter .Search{display: none;position: absolute;left: 0%;top: 49px;z-index: 9999;width: 100%;background: #000;padding: 10px 0px}
+    header .HeaderBottomCenter .SearchInput{display: block;height: 30px;width: 195px;border: 2px solid #41545D;outline: none
+    ;font-size: 12px;margin-left: 56%;}
+    header .HeaderBottomCenter .Search .fa-search{display: none;}
 }
   
 @media only screen and (max-width: 767px){
+
+
+    .Main .MainCenter .CitizenPage{padding-left: 40px;padding-right: 40px;}
+.Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-left{left: 15px;height: 30px;width: 20px;}
+.Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-right {height: 30px;width: 20px;right: 15px;}
+  
+    
+    /*EditProfilecss*/
+    .Main .MainLeft .ProfileLeft .EditProfile ul li:after{font-size: 12px;}
+.Main .MainLeft .ProfileLeft .Title{font-size:12px;line-height:18px;}
+.Main .MainLeft .ProfileLeft .TitleBold{font-size: 12px;line-height: 18px;}
+.Main .MainLeft .ProfileLeft .User h3{font-size:16px;line-height:24px;}
+.Main .MainLeft .ProfileLeft .User p{font-size:10px; line-height:16px; }
+    .Main .MainLeft .MainLeftInner .ListOfQuestions ul li a{font-size: 12px;line-height: 18px;}
+     .Main .MainLeft .MainLeftInner .ListOfQuestions ul li:before{font-size: 12px;}
+    .Main .MainLeft .MainLeftInner .ListOfQuestions ul{margin-bottom: 20px;}
+    .Main .MainLeft .ProfileLeft .User img{height: 80px;width: 80px;}
+    .Main .MainLeft .OnlySm{display: block;}
    
 }

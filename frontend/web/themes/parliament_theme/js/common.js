@@ -16,13 +16,80 @@ function myFunction(id,element) {
     ansText.style.display = "inline";
   }
 }
+function reportQuestion(id) {
 
-function myFunction1() {
-  var dots = document.getElementById("dots1");
-  var moreText = document.getElementById("more1");
-  var moreText2 = document.getElementById("more2");
-  var btnText = document.getElementById("myBtn1");
-
+  var report_comment = $.trim($("#report"+id).val());
+  if(report_comment==''){alert('report comment can not be blank'); return false;}
+   $.ajax({
+     url: "site/report-question",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               report_comment: report_comment, 
+               question_id:id,
+           },
+     success: function (data) {
+      alert("question reported successfully.")
+      $("#myModal"+id).css("display","none");
+      location.reload();
+     }
+  });
+}
+function retract_question(id) {
+ if (confirm("Press a button!")) {
+    txt = "ok";
+  } else {
+    txt = "cancel";
+  }
+  if(txt == "ok"){
+    $.ajax({
+     url: "site/retract-question",
+     type: 'post',
+     dataType: 'json',
+     data: { 
+               question_id:id,
+           },
+     success: function (data) {
+    if(data == "success"){
+      alert("Question is successfully retracted");
+    }else{
+      alert("You can not retract as question is answered.")
+    }
+      location.reload();
+     }
+  });
+  }
+}
+function hide_question(id) {
+ if (confirm("Are you sure you want to hide question.")) {
+    txt = "yes";
+  } else {
+    txt = "No";
+  }
+  alert(txt);
+  if(txt == "yes"){
+    $.ajax({
+     url: "site/hide-question",
+     type: 'post',
+     dataType: 'json',
+     data: { 
+               question_id:id,
+           },
+     success: function (data) {
+    if(data == "success"){
+      alert("Question is successfully hide");
+    }
+      location.reload();
+     }
+  });
+  }
+}
+function myFunction1(id) {
+  //var id = $(this).attr('id');
+  var dots = document.getElementById("dots"+id);
+  var moreText = document.getElementById("more"+id);
+  var moreText2 = document.getElementById("more2"+id);
+  var btnText = document.getElementById("myBtn1"+id);
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     btnText.innerHTML = "Read more"; 
@@ -160,7 +227,6 @@ function answer_toggle(id){
 
 function submitAnswer(question_id)
 {
-alert(question_id);
   var answer = $.trim($("#model_answer"+question_id).val());
   if(answer==''){alert('Answer can not be blank'); return false;}
    $.ajax({
@@ -172,13 +238,58 @@ alert(question_id);
                question_id:question_id,
            },
      success: function (data) {
-         $('#disp'+question_id).html(data);
+
+      alert(data);
      }
   });
 }
-/*function show_comments(id){
-  alert(id);
-}*/
+function submitComment(question_id)
+{
+  var comment = $.trim($("#comment_text"+question_id).val());
+  if(comment==''){alert('comment can not be blank'); return false;}
+   $.ajax({
+     url: "site/save-comment",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               comment: comment, 
+               question_id:question_id,
+           },
+     success: function (data) {
+//         $('#disp'+question_id).html(data);
+         $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
+           var dots = document.getElementById("dots"+question_id);
+          var moreText = document.getElementById("more"+question_id);
+          var moreText2 = document.getElementById("more2"+question_id);
+          var btnText = document.getElementById("myBtn1"+question_id);
+    /*      if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more"; 
+            moreText.style.display = "none";
+            moreText2.style.display = "none";
+          } else {*/
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less"; 
+            moreText.style.display = "inline";
+              moreText2.style.display = "block";
+          //}
+
+     }
+  });
+}
+function show_comments(id){
+      $(".AnswerQuestionBox").removeClass("GiveAnswerBox");
+      $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
+    $("#CommentBox"+id).toggleClass("GiveAnswerBox");
+}
+
+function show_mp_list(id){
+  $(".OnhoverGroup").hover(function() {
+      $("#OnhoverMP"+id).show();
+}).mouseleave(function() {
+      $("#OnhoverMP"+id).hide();
+});
+}
 $(document).ready(function() {
                 QuestionAnswer();
                 $(window).scroll(function() {
@@ -551,13 +662,13 @@ $(document).on('click', '.one', function () {
 
 
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 $(".OnhoverGroup").hover(function() {
       $(".OnhoverMP").show();
 }).mouseleave(function() {
       $(".OnhoverMP").hide();
 });
-});
+});*/
 
 
 
@@ -641,25 +752,15 @@ $(document).ready(function(){
 
 
 
-$(document).ready(function(){
-/*  $(".AnswerQuestion .AnswerToggle").click(function(){
-      $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
-    $(".AnswerQuestionBox").toggleClass("GiveAnswerBox");
-  });*/
-    
-    
-});
 
-
-
-$(document).ready(function(){
-  $(".AskFollowUp").click(function(){
-      $(".AnswerQuestionBox").removeClass("GiveAnswerBox");  
-    $(".AskFollowUpBox").toggleClass("GiveAnswerBox");
-  });
+// $(document).ready(function(){
+//   $(".AskFollowUp").click(function(){
+//       $(".AnswerQuestionBox").removeClass("GiveAnswerBox");  
+//     $(".AskFollowUpBox").toggleClass("GiveAnswerBox");
+//   });
     
     
-});
+// });
 
 
 
@@ -716,11 +817,6 @@ $('.Icons .fa-bell').click(function() {
     
     
     });
-
-
-
-
-
 
 
  function countChar(val) {
@@ -812,16 +908,17 @@ $(document).on('click', '.DimmerBox', function () {
 
 $(document).ready(function(){
 //$(".btn1").click(function(){
-$(document).on('click', '.btn1', function () {
+/*$(document).on('click', '.btn1', function () {
 var id = $(this).attr('data-val');
 $('#more'+id).toggleClass('show');
+$('#more2'+id).toggleClass('show');
 if($("#more"+id).hasClass('show')){
   $("#moreless"+id).text("Read Less");
 }else{
   $("#moreless"+id).text("Read More");
 }
 
- });
+ });*/
 
 $(".btnleft").click(function(){
 $('#moreleft').toggleClass('show');
@@ -833,4 +930,20 @@ if($("#moreleft").hasClass('show')){
 
  });
 
+});
+
+
+
+
+
+$(document).ready(function(){
+  $(".Social .Comments").click(function(){
+    alert($(this).val());
+      
+      $(".AnswerQuestionBox").removeClass("GiveAnswerBox");
+      $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
+    $(".CommentBox").toggleClass("GiveAnswerBox");
+  });
+    
+    
 });

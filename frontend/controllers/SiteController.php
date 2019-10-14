@@ -2,7 +2,10 @@
 namespace frontend\controllers;
 
 use common\models\Answers;
+use common\models\Comments;
 use common\models\LoginForm;
+use common\models\QuestionHide;
+use common\models\QuestionReported;
 use common\models\Questions;
 use common\models\Users;
 use frontend\components\FrontCoreController;
@@ -456,7 +459,7 @@ class SiteController extends FrontCoreController
             $flagSearch = !empty($_POST['search']) ? $_POST['search'] : "";
 
             $questionsQuery = Questions::find()
-                ->with('userAgent');
+                ->with('userAgent', 'answers', 'comments');
 
             if ($flagCond == 'myQue') {
                 // GET LOGIN USER'S QUESTIONS
@@ -477,7 +480,8 @@ class SiteController extends FrontCoreController
                 $questionsQuery = $questionsQuery->andwhere(['like', 'question', $flagSearch]);
             }
 
-            $questionsQuery = $questionsQuery->orderBy(["id" => SORT_DESC]);
+            //$questionsQuery = $questionsQuery->orderBy(["id" => SORT_DESC]);
+            $questionsQuery = $questionsQuery->where("questions.is_delete != '1'")->orderBy(["id" => SORT_DESC]);
             $models = $questionsQuery
                 ->offset($page)
                 ->limit(5)
@@ -515,5 +519,76 @@ class SiteController extends FrontCoreController
             return json_encode("Bad request");
         }
 
+    }
+
+    public function actionSaveComment()
+    {
+        $model_comment = new Comments();
+        if (Yii::$app->request->post()) {
+            $postData = Yii::$app->request->post();
+            $model_comment->question_id = $postData['question_id'];
+            $model_comment->comment_text = $postData['comment'];
+            $model_comment->user_agent_id = Yii::$app->user->id;
+            $model_comment->save(false);
+            return json_encode("success");
+        } else {
+            return json_encode("Bad request");
+        }
+    }
+    public function actionReportQuestion()
+    {
+        $model_report = new QuestionReported();
+        if (Yii::$app->request->post()) {
+            $postData = Yii::$app->request->post();
+            $model_report->question_id = $postData['question_id'];
+            $model_report->report_comment = $postData['report_comment'];
+            $model_report->user_id = Yii::$app->user->id;
+            $model_report->save(false);
+            return json_encode("success");
+        } else {
+            return json_encode("Bad request");
+        }
+    }
+    public function actionRetractQuestion()
+    {
+        if (Yii::$app->request->post()) {
+            $postData = Yii::$app->request->post();
+            $question = Questions::find()->with('answers')->where(['id' => $postData['question_id']])->one();
+            if (!empty($question['answers'])) {
+                return json_encode("error");
+            } else {
+                $question->is_delete = 1;
+                $question->save(false);
+                return json_encode("success");
+            }
+            $model_report->question_id = $postData['question_id'];
+            $model_report->report_comment = $postData['report_comment'];
+            $model_report->user_id = Yii::$app->user->id;
+            $model_report->save(false);
+            return json_encode("success");
+        } else {
+            return json_encode("Bad request");
+        }
+    }
+
+    public function actionHideQuestion()
+    {
+        if (Yii::$app->request->post()) {
+            $postData = Yii::$app->request->post();
+            $modelHide = QuestionHide::find()->where(['user_id' => Yii::$app->user->id])->one();
+            if (!empty($modelHide)) {
+                $modelHideQuestion = $modelHide;
+                $modelHideQuestion->question_id = $modelHideQuestion->question_id . "," . $postData['question_id'];
+            } else {
+                $modelHideQuestion = new QuestionHide();
+                $modelHideQuestion->question_id = $postData['question_id'];
+                $modelHideQuestion->user_id = Yii::$app->user->id;
+
+            }
+            $modelHideQuestion->save(false);
+            return json_encode("success");
+        } else {
+            return json_encode("Bad request");
+        }
     }
 }
