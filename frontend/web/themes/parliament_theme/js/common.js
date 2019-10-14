@@ -50,12 +50,14 @@ function retract_question(id) {
                question_id:id,
            },
      success: function (data) {
+
     if(data == "success"){
+      $("#questions_answers"+id).remove();
       alert("Question is successfully retracted");
     }else{
       alert("You can not retract as question is answered.")
     }
-      location.reload();
+      ///location.reload();
      }
   });
   }
@@ -66,7 +68,6 @@ function hide_question(id) {
   } else {
     txt = "No";
   }
-  alert(txt);
   if(txt == "yes"){
     $.ajax({
      url: "site/hide-question",
@@ -77,9 +78,10 @@ function hide_question(id) {
            },
      success: function (data) {
     if(data == "success"){
+      $("#questions_answers"+id).remove();
       alert("Question is successfully hide");
     }
-      location.reload();
+      //location.reload();
      }
   });
   }
@@ -256,23 +258,9 @@ function submitComment(question_id)
                question_id:question_id,
            },
      success: function (data) {
-//         $('#disp'+question_id).html(data);
+
+         $('#commentArray'+question_id).prepend(data.data);
          $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
-           var dots = document.getElementById("dots"+question_id);
-          var moreText = document.getElementById("more"+question_id);
-          var moreText2 = document.getElementById("more2"+question_id);
-          var btnText = document.getElementById("myBtn1"+question_id);
-    /*      if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "Read more"; 
-            moreText.style.display = "none";
-            moreText2.style.display = "none";
-          } else {*/
-            dots.style.display = "none";
-            btnText.innerHTML = "Read less"; 
-            moreText.style.display = "inline";
-              moreText2.style.display = "block";
-          //}
 
      }
   });

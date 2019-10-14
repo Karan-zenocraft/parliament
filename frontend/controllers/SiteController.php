@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\components\Common;
 use common\models\Answers;
 use common\models\Comments;
 use common\models\LoginForm;
@@ -473,16 +474,30 @@ class SiteController extends FrontCoreController
                 $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
                     return $query->andWhere("answers.id is null");
                 }]);
+            } elseif ($flagCond == 'Answered') {
+                // GET LOGIN USER'S LOUDER QUESTIONS
+                $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+                $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                    return $query->andWhere("answers.id is not null");
+                }]);
+            } elseif ($flagCond == 'Unanswered') {
+                // GET LOGIN USER'S LOUDER QUESTIONS
+                $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+                $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                    return $query->andWhere("answers.id is null");
+                }]);
             }
-
             if (!empty($flagSearch)) {
                 // SEARCH QUESTIONS
                 $questionsQuery = $questionsQuery->andwhere(['like', 'question', $flagSearch]);
             }
 
             //$questionsQuery = $questionsQuery->orderBy(["id" => SORT_DESC]);
-            $questionsQuery = $questionsQuery->where("questions.is_delete != '1'")->orderBy(["id" => SORT_DESC]);
+            $questionsQuery = $questionsQuery->where("questions.is_delete != '1'")
+                ->groupBy("id")
+                ->orderBy(["id" => SORT_DESC]);
             $models = $questionsQuery
+
                 ->offset($page)
                 ->limit(5)
                 ->all();
@@ -530,10 +545,20 @@ class SiteController extends FrontCoreController
             $model_comment->comment_text = $postData['comment'];
             $model_comment->user_agent_id = Yii::$app->user->id;
             $model_comment->save(false);
-            return json_encode("success");
+
+            $comment_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
+            $userName = Common::get_user_name(Yii::$app->user->id);
+
+            $pageDataAjax = $this->renderPartial('commentList', array(
+                'comment_user' => $comment_user,
+                'user_name' => $userName,
+                'comment' => $postData['comment'],
+            ));
         } else {
-            return json_encode("Bad request");
+            $pageDataAjax = "Bad request";
         }
+        $retArray = array('data' => $pageDataAjax);
+        return json_encode($retArray);
     }
     public function actionReportQuestion()
     {

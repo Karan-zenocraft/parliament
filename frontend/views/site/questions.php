@@ -9,7 +9,7 @@ if (!empty($modelsQuestions)) {
     $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
     foreach ($modelsQuestions as $key => $question) {
         ?>
-<div class="QuestionAnswerMainBox" id="questions_answers">
+<div class="QuestionAnswerMainBox" id="questions_answers<?php echo $question['id']; ?>">
   <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
   <ul class="align-items-start justify-content-start flex-column OnhoverMP">
     <li><a href="#">Abebe Mengistu</a></li>
@@ -284,7 +284,7 @@ $current_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads
 
 
                                 </div>
-
+                                <div id="commentArray<?php echo $question['id']; ?>">
                                 <?php if (!empty($question['comments'])) {
             $comment_count = count($question['comments']);
             foreach ($question['comments'] as $key => $comment) {
@@ -307,7 +307,7 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
 
                                 </ul>
                               <?php }}?>
-
+                                </div>
                                 </div>
     </div>
 <div class="GiveAnswer AnswerQuestionBox" id="AnswerQuestionBox<?php echo $question['id']; ?>">
