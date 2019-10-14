@@ -464,7 +464,7 @@ class SiteController extends FrontCoreController
 
             if ($flagCond == 'myQue') {
                 // GET LOGIN USER'S QUESTIONS
-                $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+                $questionsQuery = $questionsQuery->andwhere(['=', 'user_agent_id', $loginId]);
             } elseif ($flagCond == 'myLouder') {
                 // GET LOGIN USER'S LOUDER QUESTIONS
                 $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',louder_by)'));
@@ -494,10 +494,10 @@ class SiteController extends FrontCoreController
 
             //$questionsQuery = $questionsQuery->orderBy(["id" => SORT_DESC]);
             $questionsQuery = $questionsQuery->where("questions.is_delete != '1'")
-                ->groupBy("id")
+            //->groupBy("id")
                 ->orderBy(["id" => SORT_DESC]);
-            $models = $questionsQuery
 
+            $models = $questionsQuery
                 ->offset($page)
                 ->limit(5)
                 ->all();
