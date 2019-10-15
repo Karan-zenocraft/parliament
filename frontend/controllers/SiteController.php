@@ -460,11 +460,14 @@ class SiteController extends FrontCoreController
             $flagSearch = !empty($_POST['search']) ? $_POST['search'] : "";
 
             $questionsQuery = Questions::find()
-                ->with('userAgent', 'answers', 'comments');
+                ->with(['userAgent', 'answers' => function ($q) {
+                    return $q->orderBy(["answers.id" => SORT_DESC]);
+                }, 'comments']);
 
+            $user_role_id = Common::get_user_role($loginId, "");
             if ($flagCond == 'myQue') {
                 // GET LOGIN USER'S QUESTIONS
-                $questionsQuery = $questionsQuery->andwhere(['=', 'user_agent_id', $loginId]);
+                $questionsQuery = $questionsQuery->where(['user_agent_id' => $loginId]);
             } elseif ($flagCond == 'myLouder') {
                 // GET LOGIN USER'S LOUDER QUESTIONS
                 $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',louder_by)'));
@@ -475,27 +478,47 @@ class SiteController extends FrontCoreController
                     return $query->andWhere("answers.id is null");
                 }]);
             } elseif ($flagCond == 'Answered') {
-                // GET LOGIN USER'S LOUDER QUESTIONS
-                $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
-                $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                    return $query->andWhere("answers.id is not null");
-                }]);
+                // GET LOGIN USER'S ANSWERED QUESTIONS
+                if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
+                    $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                        return $query->andWhere("answers.id is not null");
+                    }]);
+                } else {
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) use ($loginId) {
+                        return $query->andWhere(["answers.mp_id" => $loginId]);
+                    }]);
+                    $questionsQuery->groupBy(['answers.question_id']);
+                }
             } elseif ($flagCond == 'Unanswered') {
-                // GET LOGIN USER'S LOUDER QUESTIONS
-                $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
-                $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                    return $query->andWhere("answers.id is null");
-                }]);
+                // GET LOGIN USER'S UNANSWERED QUESTIONS
+                if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
+                    $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                        return $query->andWhere("answers.id is null");
+                    }]);
+                } else {
+                    $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',questions.mp_id)'));
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                        return $query->andWhere("answers.id is null");
+                    }]);
+                }
+            } elseif (($flagCond = 'Homefeed')) {
+                $questionsQuery;
             }
             if (!empty($flagSearch)) {
                 // SEARCH QUESTIONS
                 $questionsQuery = $questionsQuery->andwhere(['like', 'question', $flagSearch]);
             }
-
+            $questionHided = QuestionHide::find()->select('question_id')->where("user_id ='" . $loginId . "'")->one();
+            $hiddenQuestions = !empty($questionHided) ? $questionHided['question_id'] : "";
             //$questionsQuery = $questionsQuery->orderBy(["id" => SORT_DESC]);
-            $questionsQuery = $questionsQuery->where("questions.is_delete != '1'")
+            if (!empty($hiddenQuestions)) {
+                $questionsQuery->andWhere("questions.id NOT IN (" . $hiddenQuestions . ")");
+            }
+            $questionsQuery = $questionsQuery->andWhere("questions.is_delete != '1'");
             //->groupBy("id")
-                ->orderBy(["id" => SORT_DESC]);
+            $questionsQuery->orderBy(["id" => SORT_DESC]);
 
             $models = $questionsQuery
                 ->offset($page)
@@ -529,11 +552,20 @@ class SiteController extends FrontCoreController
             $model_answer->answer_text = $postData['answer'];
             $model_answer->mp_id = Yii::$app->user->id;
             $model_answer->save(false);
-            return json_encode("success");
-        } else {
-            return json_encode("Bad request");
-        }
 
+            $answer_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
+            $userName = Common::get_user_name(Yii::$app->user->id);
+
+            $pageDataAjax = $this->renderPartial('answersList', array(
+                'answer_user' => $answer_user,
+                'user_name' => $userName,
+                'answer' => $postData['answer'],
+            ));
+        } else {
+            $pageDataAjax = "Bad request";
+        }
+        $retArray = array('data' => $pageDataAjax);
+        return json_encode($retArray);
     }
 
     public function actionSaveComment()

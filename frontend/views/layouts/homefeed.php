@@ -126,33 +126,54 @@ $questions = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "
                         <img src="<?php echo $user_image; ?>" alt="" class="img-fluid UserImage">
                         <div class="ProfileName">
                         <p><?php echo !empty($user) ? $user['user_name'] : "-" ?></p>
-                            <?php $question = Questions::find()->where(["user_agent_id" => Yii::$app->user->id])->orderBy(["id" => SORT_DESC])->one();?>
+                            <?php $question = Questions::find()->with('comments', 'answers')->where(["user_agent_id" => Yii::$app->user->id, "is_delete" => 0])->orderBy(["id" => SORT_DESC])->one();?>
                         <p><span><?php echo Common::time_elapsed_string($question->created_at); ?></span></p>
                         </div>
                         </div>
 
+<?php
+$mps = $question['mp_id'];
+        //  p($mps, 0);
+        $answered_mp = !empty($question['answers']) ? array_column($question['answers'], 'mp_id') : [];
+        // p($answered_mp, 0);
+        $unanswered_by = array_diff(explode(",", $mps), $answered_mp);
+        //  p($unanswered_by, 0);
+        $first_mp = Common::getMpNames(current($unanswered_by));
+        $count = count($unanswered_by);
+        $mpArr = Common::getMpNames(implode(",", $unanswered_by));
+        if (!empty($unanswered_by)) {
+            ?>
                         <div class="MP d-flex align-items-center justify-content center">
 
                         <div class="MPProfileName">
-                        <p>Unanswered for</p>
-<?php $mps = $question->mp_id;
-        $mpArr = explode(",", $mps);
 
-        ?>
-                        <p><span><?php
-$i = 0;
-        foreach ($mpArr as $key => $mp) {
-            echo Common::get_user_name($mp);
-            $i++;
-            if ($i != count($mpArr)) {
-                echo ",";
-            }
-        }
-        ?>
-                       </span></p> </div>
+                        <p>Unanswered for</p>
+                        <?php if ($count == 1) {
+                ?>
+                        <p><span><?php echo $first_mp; ?></span></p>
+                   <?php } else {?>
+                        <p><span><?php echo $first_mp; ?></span></p>
+                        and&nbsp;<a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="left"> <?php echo " " . ($count - 1); ?> others</span></a>
+                   <?php }?>
+                   </div>
                        <?php $userDetails = Common::get_name_by_id($mpArr[0], "Users");?>
                         <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $userDetails['photo'] ?>" alt="" class="img-fluid MPImage">
+                              <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMPleft" style="display: none;">
+          <?php
+$exclude_first = array_shift($unanswered_by);
+            foreach ($unanswered_by as $key => $unanswer_mp) {
+                echo "<li><a href='#'>" . Common::getMpNames($unanswer_mp) . "</a></li>";
+            }
+            ?>
+    <!-- <li><a href="#">Abebe Mengistu</a></li>
+    <li><a href="#">Taye Hailu</a></li>
+    <li><a href="#">Kebede Taye</a></li>
+    <li><a href="#">Mulu Saya</a></li>
+    <li><a href="#">Chala Banti</a></li>
+    <li><a href="#">Feven Siraj</a></li> -->
+  </ul>
                         </div>
+                   <?php }?>
                         </div>
 
                         <div class="Row2">
@@ -172,7 +193,7 @@ $i = 0;
                         </div>
                             <div class="Row3">
                             <div class="Social d-flex align-items-center justify-content-between">
-                            <div class="Loud" id="Load2" data-question="<?php echo $question['id']; ?>">
+                            <div class="Loud <?php echo (!empty($question['louder_by']) && in_array(Yii::$app->user->id, explode(",", $question['louder_by']))) ? 'LoadBG' : '' ?>" id="Load2" data-question="<?php echo $question['id']; ?>">
 
                             <i class="fa fa-wifi" aria-hidden="true"></i>
                             <span id="Load2_count"><?php echo (empty($question['louder_by']) || ($question['louder_by'] == "")) ? "0" : count(explode(",", $question['louder_by'])); ?></span>
@@ -182,7 +203,8 @@ $i = 0;
                             <div class="Comment">
                             <a href="#">
                                 <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                            <span>100</span>
+                                 <?php $comment_count = !empty($question['comments']) ? count($question['comments']) : 0;?>
+                            <span><?php echo $comment_count; ?></span>
                                 </a>
                             </div>
 

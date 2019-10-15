@@ -1,7 +1,7 @@
 function myFunction(id,element) {
   //console.log(id);
   var dots = document.getElementById("dots_"+id);
-  var moreText = document.getElementById("more_"+id);
+ // var moreText = document.getElementById("more_"+id);
   var ansText = document.getElementById("answer_"+id);
   var btnText = document.getElementById("question_"+id);
   if (dots.style.display === "none") {
@@ -229,7 +229,8 @@ function answer_toggle(id){
 
 function submitAnswer(question_id)
 {
-  var answer = $.trim($("#model_answer"+question_id).val());
+  var answer = $.trim($(".model_answer"+question_id).val());
+  alert(answer);
   if(answer==''){alert('Answer can not be blank'); return false;}
    $.ajax({
      url: "site/answer-question",
@@ -240,8 +241,10 @@ function submitAnswer(question_id)
                question_id:question_id,
            },
      success: function (data) {
+         $("#AnswerQuestionBox"+question_id).removeClass('GiveAnswerBox');
+         $('#answersList'+question_id).prepend(data.data);
+         $('#more2'+question_id).css('display:inline');
 
-      alert(data);
      }
   });
 }
@@ -683,10 +686,14 @@ $(document).ready(function(){
       //var response = JSON.stringify(data);
       if(data.event == "unlike"){
         $("#Load2").removeClass("LoadBG");
-        $("#Load2Load2_count").text(data.louderCount);
+        $("#Load2_count").text(data.louderCount);
+        $("#Load"+question_id+" a").removeClass("MadeLouderBG")
+        $('#numbers'+question_id).text(data.louderCount);
       }else{
         $("#Load2").addClass("LoadBG");
         $("#Load2_count").text(data.louderCount);
+         $("#Load"+question_id+" a").addClass("MadeLouderBG")
+        $('#numbers'+question_id).text(data.louderCount);
       }
      }
   });
@@ -707,12 +714,21 @@ $(document).ready(function(){
            },
      success: function (data) {
       //var response = JSON.stringify(data);
+      var load_question_id = $('#Load2').attr('data-question');
       if(data.event == "unlike"){
         $("#"+id+" a").removeClass("MadeLouderBG");
         $('#numbers'+question_id).text(data.louderCount);
+        if(question_id == load_question_id){
+          $("#Load2").removeClass("LoadBG");
+        $("#Load2_count").text(data.louderCount);
+        }
       }else{
         $("#"+id+" a").addClass("MadeLouderBG");
         $('#numbers'+question_id).text(data.louderCount);
+        if(question_id == load_question_id){
+          $("#Load2").addClass("LoadBG");
+        $("#Load2_count").text(data.louderCount);
+        }
       }
      }
   });
@@ -817,6 +833,19 @@ $('.Icons .fa-bell').click(function() {
         } else {
           $('#charNum').css('color', 'black');
           $('#charNum').text(len+"/540");
+        }
+      };
+       function countCharanswer(val) {
+        var id =  $(val).attr('id');
+         $('#charNum'+id).text(len+"/540");
+        var len = val.value.length;
+        if (len >= 540) {
+        val.value = val.value.substring(0, 540);
+          $('#charNum'+id).text("540/540");
+          $('#charNum'+id).css('color', 'red');
+        } else {
+          $('#charNum'+id).css('color', 'black');
+          $('#charNum'+id).text(len+"/540");
         }
       };
 $("#engagement").click(function(){

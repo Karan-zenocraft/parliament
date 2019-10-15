@@ -54,10 +54,9 @@ if (!empty($modelsQuestions)) {
                 ?>
             <a href="#"><span class="MP"><?php echo $first_mp;
                 ?></span></a>
-              and  <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
+              and&nbsp;<a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
           <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
-        </div>
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question['id']; ?>">
           <?php
 $exclude_first = array_shift($unanswered_by);
@@ -72,6 +71,7 @@ $exclude_first = array_shift($unanswered_by);
     <li><a href="#">Chala Banti</a></li>
     <li><a href="#">Feven Siraj</a></li> -->
   </ul>
+        </div>
       <?php }?>
         <div class="AskFollowUp d-flex flex-wrap align-items-center">
           <i class="fa fa-spinner" aria-hidden="true"></i>
@@ -83,7 +83,9 @@ $exclude_first = array_shift($unanswered_by);
           <div class="Menu1" id="<?php echo 'menu' . $question['id']; ?>">
             <ul class="d-flex align-items-center justify-content-center flex-column">
               <li class="active1" data-toggle="modal" data-target="#myModal<?php echo $question['id'] ?>"><a>Report</a></li>
+              <?php if (($user->role_id == Yii::$app->params['userroles']['user_agent']) && ($question['user_agent_id'] == Yii::$app->user->id)) {?>
               <li><a id="<?php echo $question['id']; ?>" onclick="retract_question(id)">Retract</a></li>
+            <?php }?>
               <li><a id="<?php echo $question['id']; ?>" onclick="hide_question(id)">Hide</a></li>
             </ul>
           </div>
@@ -131,26 +133,19 @@ $model_report = new QuestionReported();
     </div>
     <div class="Row2">
       <div class="Comments">
-        <?php $length = strlen($question['question']);
-        if ($length <= 120) {?>
         <p> <?php echo $question['question']; ?></p>
-        <?php } else {?>
-        <p><?php echo substr($question['question'], 0, 120) ?></p>
-        <p id="<?php echo "dots" . $question['id'] ?>">...</p>
-        <p id="<?php echo "more" . $question['id'] ?>" class="more" style="display:none;"><?php echo substr($question['question'], 120, $length); ?>
-                               </p>
-
-
+        <p id="<?php echo "more" . $question['id'] ?>" class="more" style="display:none;"></p>
+                               <?php if (!empty($question['answers'])) {?>
+                                 <p id="<?php echo "dots" . $question['id'] ?>">...</p>
         <button class="btn1" id="<?php echo "myBtn1" . $question['id'] ?>" data-val="<?php echo $question['id'] ?>" onclick="myFunction1(this.getAttribute('data-val'))">Read more</button>
-
-        <?php }?>
+      <?php }?>
       </div>
          <!---------new--------------------->
 <?php
 if (!empty($question['answers'])) {?>
 
 <div class="AnsweredByBox" id="more2<?php echo $question['id']; ?>">
-
+<div id="answersList<?php echo $question['id']; ?>">
        <?php foreach ($question['answers'] as $key => $answer) {?>
 
 
@@ -170,6 +165,7 @@ if (!empty($question['answers'])) {?>
                         </div>
                                 </div>
                               <?php }}?>
+                            </div>
                                  <!---------new end--------------------->
 
 
@@ -325,7 +321,7 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
     <div class="AskFollowUpAnswerBox" >
       <?php $model_answer = new Answers();?>
 <?php $form2 = ActiveForm::begin(['id' => 'answers-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true/*, 'validationUrl' => Url::toRoute('site/index')*/]);?>
- <?=$form2->field($model_answer, 'answer_text')->textArea(['maxlength' => true, "class" => "AskQuestion", "onkeyup" => "countChar(this)", "id" => "model_answer" . $question['id'], "data-val" => $question['id']])->label(false);?>
+ <?=$form2->field($model_answer, 'answer_text')->textArea(['maxlength' => true, "class" => "AskQuestion model_answer" . $question['id'] . " ?>", "onkeyup" => "countCharanswer(this)", "id" => $question['id'], "data-val" => $question['id']])->label(false);?>
     <div id="charNum<?php echo $question['id']; ?>" style="float: right;">0/540</div>
      <!--  <textarea id="getAnswer<?php echo $question['id']; ?>" maxlength="540"> </textarea> -->
     </div>

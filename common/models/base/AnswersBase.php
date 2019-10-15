@@ -39,7 +39,7 @@ class AnswersBase extends \yii\db\ActiveRecord
             [['question_id', 'answer_text', 'mp_id', 'created_at', 'updated_at'], 'required'],
             [['question_id', 'mp_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['answer_text'], 'string', 'max' => 255],
+            [['answer_text'], 'string', 'max' => 540],
             [['mp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['mp_id' => 'id']],
             [['question_id'], 'exist', 'skipOnError' => true, 'targetClass' => Questions::className(), 'targetAttribute' => ['question_id' => 'id']],
         ];
