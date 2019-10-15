@@ -43,6 +43,7 @@ class PasswordResetRequestForm extends Model
         $user = Users::findOne([
             'status' => Users::STATUS_ACTIVE,
             'email' => $this->email,
+            'role_id' => [Yii::$app->params['userroles']['user_agent'], Yii::$app->params['userroles']['MP']],
         ]);
 
         if (!$user) {
@@ -52,7 +53,7 @@ class PasswordResetRequestForm extends Model
         if (!Users::isPasswordResetTokenValid($user->password_reset_token)) {
             $token = $user->generatePasswordResetToken();
             $user->password_reset_token = $token;
-            if (!$user->save()) {
+            if (!$user->save(false)) {
                 return false;
             }
         }
