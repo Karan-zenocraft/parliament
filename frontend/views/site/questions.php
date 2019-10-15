@@ -10,7 +10,7 @@ if (!empty($modelsQuestions)) {
     foreach ($modelsQuestions as $key => $question) {
         ?>
 <div class="QuestionAnswerMainBox" id="questions_answers<?php echo $question['id']; ?>">
-  <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
+<!--   <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
   <ul class="align-items-start justify-content-start flex-column OnhoverMP">
     <li><a href="#">Abebe Mengistu</a></li>
     <li><a href="#">Taye Hailu</a></li>
@@ -18,7 +18,7 @@ if (!empty($modelsQuestions)) {
     <li><a href="#">Mulu Saya</a></li>
     <li><a href="#">Chala Banti</a></li>
     <li><a href="#">Feven Siraj</a></li>
-  </ul>
+  </ul> -->
 
   <div class="QuestionAnswerBox">
     <div class="Row1">
@@ -202,7 +202,7 @@ if (!empty($question['answers'])) {?>
         <?=\imanilchaudhari\socialshare\ShareButton::widget([
             'style' => 'horizontal',
             'networks' => ['facebook'],
-            'data_via' => 'imanilchaudhari', //twitter username (for twitter only, if exists else leave empty)
+            'data_via' => '', //twitter username (for twitter only, if exists else leave empty)
         ]);?>
         </div>
         <div class="Share" id="<?php echo $question['id']; ?>">
