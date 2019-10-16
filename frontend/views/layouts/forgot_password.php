@@ -1,8 +1,8 @@
 <?php
 use frontend\assets\ParliamentAsset;
-
-$this->registerCssFile('@web/themes/parliament_theme/css/inner-style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
-$this->registerCssFile('@web/themes/parliament_theme/css/inner-responsive.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+use yii\widgets\Breadcrumbs;
+$this->registerCssFile('@web/themes/parliament_theme/css/style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerCssFile('@web/themes/parliament_theme/css/responsive.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ParliamentAsset::register($this);
 $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 //CommonAppAsset::register( $this );
@@ -23,7 +23,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
 </head>
 
-<body class="example-1  scrollbar-dusty-grass square thin ForgotBody">
+<body class="ForgotBody">
 <?php $this->beginBody()?>
     <a href="#" id="scroll" style="display: none;z-index: 99999;">
         <span></span></a>
@@ -46,28 +46,28 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
 
 
-    <section class="ForgotHeader">
+    <header class="ForgotHeader">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 col-xl-5 HeaderLeft">
-                    <a href="index.html"><img src="../image/Logo1.png" alt="" class="img-fluid Logo"></a>
+                    <a href="index.html"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" alt="" class="img-fluid Logo"></a>
 
 
 
 
                 </div>
-                <div class="col-md-12 col-xl-7 HeaderRight ForgotRight">
+
                      <?php echo
 Breadcrumbs::widget([
     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 ])
 ?><?php //echo Alert::widget() ?><?php echo $content ?>
-                </div>
+
 
             </div>
         </div>
 
-    </section>
+    </header>
       <?php $this->endBody();?>
       <?php $this->endPage()?>
 </body>

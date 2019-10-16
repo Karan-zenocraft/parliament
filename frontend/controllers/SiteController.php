@@ -259,6 +259,8 @@ class SiteController extends FrontCoreController
      */
     public function actionRequestPasswordReset()
     {
+        $this->layout = "forgot_password";
+
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {

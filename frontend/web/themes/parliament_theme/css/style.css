@@ -94,7 +94,7 @@ header .HeaderRight .Profile:hover img{transform: scale(1.1);transition: 0.25s e
 .ForgotRight form input{border: 2px solid #d7c1c1a3;
     outline: 2px solid #41545D;
     margin-bottom: 20px;
-    width: 100%;
+    width: 50%;
     height: auto;}
 .ForgotRight .Btn:focus{outline: none;}
 .ForgotRight .Btn:hover{transition: 0.25s ease;background:transparent;border: 1px solid #fff;color: #fff; }
@@ -109,4 +109,7 @@ header .HeaderRight .Profile:hover img{transform: scale(1.1);transition: 0.25s e
 .NavigationBar ul li:last-child{margin-right: 0px;}
 .ForgotBody{background: #10303F}
 
-.help-block-error{color: red;font-family: 'Segoe UI';font-size: 14px;line-height: 18px;font-weight: 400;min-height: 18px;margin: 0;}
+.help-block-error, .help-block{color: red!important;font-family: 'Segoe UI'!important;font-size: 14px!important;line-height: 18px!important;font-weight: 400!important;min-height: 18px!important;margin: 0!important;}
+
+.control-label{display: none;}
+.Btn:focus{box-shadow: none;outline: none;}
