@@ -223,7 +223,26 @@ function getPage(flag)
      $(".carousel-control-prev-icon").attr("page",page);
   }
   $("#page").val(page);
-  AjaxCallSearch();
+  var sortdir = $("#sort").val();
+    var sortby = $("#sortby").val();
+    var page = $("#page").val();
+    var search = $('#searchMP').val();
+     //console.log(search+"-"+sortby+"-"+sortdir);
+
+    $.ajax({
+     url: "site/current-city",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: sortby, 
+               sortdir:sortdir,
+               search: search, 
+               page: page
+           },
+     success: function (data) {
+         $('#list_mp').html(data);
+     }
+  });
 }
 function answer_toggle(id){
      // $(".AskFollowUpBox").removeClass("GiveAnswerBox"); 
@@ -332,11 +351,11 @@ $(document).ready(function() {
 
         $(document).ready(function() {
         //  $('.DimmerBox').on('click', '.deletelanguage', function(){
-        $(document).on('click', '.DimmerBox', function () {
+      /*  $(document).on('click', '.DimmerBox', function () {
            // $('.DimmerBox').click(function() {
                 //$('.DimmerBox').removeClass("Dimmer");
                 $(this).toggleClass("Dimmer"); 
-            });    
+            });*/    
             $('.Icons i').click(function() {
                 $('.Icons i').removeClass("ActiveIcon");
                 $(this).addClass("ActiveIcon");
@@ -901,7 +920,8 @@ $(document).on('select2:unselect', '#questions-mp_id', function (e) {
 });
 $(document).on('click', '.DimmerBox', function () {
   var id = $(this).attr('id');
-  if($(this).hasClass("Dimmer") == true){
+  $('#'+id).toggleClass("Dimmer");
+  if($('#'+id).hasClass("Dimmer") == true){
   var mp = id.replace('mp_','');
   //$('#questions-mp_id').val(mp); // Select the option with a value of '1'
   var selectedValues = new Array();

@@ -33,8 +33,8 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
             <div class="row">
                 <div class="LoginBottom col-md-12 d-flex align-items-center justify-content-end">
                     <ul class="d-flex align-items-center justify-content-start flex-wrap">
-                        <li><a href="">Home</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="login">Login</a></li>
 
                     </ul>
 
