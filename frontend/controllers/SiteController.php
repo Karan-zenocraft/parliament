@@ -285,6 +285,7 @@ class SiteController extends FrontCoreController
      */
     public function actionResetPassword($token)
     {
+        $this->layout = "forgot_password";
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {

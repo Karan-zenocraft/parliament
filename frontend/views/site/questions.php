@@ -169,7 +169,9 @@ if (!empty($question['answers'])) {?>
                                 <div class="UnansweredBy d-flex flex-wrap align-items-center justify-content-end">
                                   <?php $mp = Common::get_name_by_id($answer['mp_id'], "Users");?>
                                    <a href="#"><span class="Title">Answered by</span></a><a href="#"><span class="MP"><?php echo $mp->user_name; ?></span></a>
-                                   <a href="#"><img src="../image/user.png" alt="" class="img-fluid"></a>
+<?php $mp_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $mp->photo : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
+
+                                   <a href="#"><img src="<?php echo $mp_user_image; ?>" alt="" class="img-fluid"></a>
                                </div>
 
                             </div>
