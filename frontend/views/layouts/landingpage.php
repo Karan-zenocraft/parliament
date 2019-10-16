@@ -2,6 +2,7 @@
 
 ///* @var $this \yii\web\View */
 /* @var $content string */
+use common\models\Representatives;
 use frontend\assets\ParliamentAsset;
 use yii\widgets\Breadcrumbs;
 /* @var $content string */
@@ -45,19 +46,32 @@ ParliamentAsset::register($this);
                 </div>
                 <div class="col-md-12 col-xl-7 HeaderRight">
                     <h1>Ask YOUR representatives direct questions</h1>
-
+<?php
+$representativesArr = Representatives::find()->asArray()->all();
+?>
                     <div class="Representative  d-flex align-items-start justify-content-start">
                         <div class="row">
-                            <div class="Profile d-flex flex-wrap align-items-center justify-content-start">
-                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/1.png" ?>" alt="" class="img-fluid">
+                      <?php if (!empty($representativesArr)) {
+    $i = 1;
+    foreach ($representativesArr as $key => $user) {
+        ?>
+
+                            <div class="Profile">
+                                <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="img-fluid">
                                 <div class="ProfileTitle">
-                                    <p>Shivani Barrow</p>
-                                    <p><span>Agriculture & Pastoralism <br> Standing Committee</span></p>
+                                    <p><?php echo $user['user_name']; ?></p>
+                                    <p><span><?php echo $user['standing_commitee']; ?></span></p>
                                 </div>
                             </div>
 
+    <?php
+if ($i == 2) {
+            echo "</div><div class='row'>";
+        }
+        $i++;}}?>
 
-                            <div class="Profile d-flex flex-wrap align-items-center justify-content-start">
+
+                       <!--      <div class="Profile d-flex flex-wrap align-items-center justify-content-start">
                                 <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/3.png" ?>" alt="" class="img-fluid">
                                 <div class="ProfileTitle">
                                     <p> Bitew Tasew</p>
@@ -83,13 +97,13 @@ ParliamentAsset::register($this);
                                     <p><span>Foreign Relations & Peace <br> Standing Committee</span></p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
-                    <h2>Get invlolved</h2>
+
 
                 </div>
-
+ <h2>Get invlolved</h2>
             </div>
         </div>
 

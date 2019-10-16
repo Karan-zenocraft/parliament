@@ -171,7 +171,7 @@ if (!empty($question['answers'])) {?>
                                    <a href="#"><span class="Title">Answered by</span></a><a href="#"><span class="MP"><?php echo $mp->user_name; ?></span></a>
 <?php $mp_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $mp->photo : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
 
-                                   <a href="#"><img src="<?php echo $mp_user_image; ?>" alt="" class="img-fluid"></a>
+                                   <a href="#"><img src="<?php echo $mp_user_image; ?>" alt="" class="rounded-circle" style="width:41px;height:41px;"></a>
                                </div>
 
                             </div>
@@ -215,7 +215,7 @@ if (!empty($question['answers'])) {?>
           <a>
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
             <?php $comment_count = !empty($question['comments']) ? count($question['comments']) : 0;?>
-            <span>Comment</span><span class="Numbers"><?php echo $comment_count; ?></span>
+            <span>Comment</span><span class="Numbers" id="comments<?php echo $question['id'] ?>"><?php echo $comment_count; ?></span>
           </a>
         </div>
         <div class="Share" id="<?php echo $question['id']; ?>">

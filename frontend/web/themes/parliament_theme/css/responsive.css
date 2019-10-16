@@ -23,7 +23,8 @@
     header .HeaderLeft{padding: 0px 15px}
     header .HeaderRight h1{font-size: 27px;line-height: 45px;margin-top: 40px;margin-bottom: 20px;}
     header .HeaderRight{padding-right: 15px}
-    header .HeaderRight .Profile{}
+    header .HeaderRight .Profile{display: flex;align-items: center;justify-content: center;}
+    header .HeaderRight .Profile .ProfileTitle{padding-right: 50px;}
     header .HeaderRight .Profile img{margin-right: 0px;width: 30%}
     header .HeaderRight .Profile .ProfileTitle{margin-left: 20px;}
     header .HeaderRight .Profile p{font-size: 20px;line-height: 40px;}

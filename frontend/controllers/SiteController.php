@@ -178,7 +178,6 @@ class SiteController extends FrontCoreController
             return $this->goHome();
         }
         $model = new LoginForm();
-
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goHome();
         } else {
@@ -463,7 +462,9 @@ class SiteController extends FrontCoreController
             $questionsQuery = Questions::find()
                 ->with(['userAgent', 'answers' => function ($q) {
                     return $q->orderBy(["answers.id" => SORT_DESC]);
-                }, 'comments']);
+                }, 'comments' => function ($q) {
+                    return $q->orderBy(["comments.id" => SORT_DESC]);
+                }]);
 
             $user_role_id = Common::get_user_role($loginId, "");
             if ($flagCond == 'myQue') {

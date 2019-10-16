@@ -49,7 +49,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
       </ul>
     </nav>
     <div class="SearchMps">
-      <input type="search" value="" onBlur="AjaxCallSearch(this.value)" placeholder="Search MPs" id='searchMP' class="SearchMp"><i class="fa fa-search"></i>
+      <input type="search" value="" onkeypress="AjaxCallSearch(event)" placeholder="Search MPs" id='searchMP' class="SearchMp"><i class="fa fa-search"></i>
     </div>
   </div>
   <div class="tab-content clearfix">

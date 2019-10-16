@@ -29,7 +29,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
     {
         return [
             [['role_id', 'status', 'age'], 'integer'],
-            [['role_id', 'email', 'password', 'user_name', 'city', 'status', 'gender', 'age', 'education'], 'required'],
+            [['role_id', 'email', 'password', 'user_name', 'city', 'status', 'gender', 'age', 'education', 'name'], 'required'],
             [['created_at', 'updated_at', 'name', 'age'], 'safe'],
             [['email'], 'email'],
             [['years_hopr'], "number"],
@@ -84,6 +84,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
         return [
             'id' => 'ID',
             'role_id' => 'Role',
+            'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
             'user_name' => 'User Name',

@@ -177,14 +177,16 @@ function filterQuestion(flag)
   $("#pageQuestion").val('0');
   QuestionAnswer()
 }
-function filterSearch()
+function filterSearch(e)
 {
+   if (e.keyCode == 13) {
   $("#pageQuestion").val('0');
   QuestionAnswer()
 }
-function AjaxCallSearch()
+}
+function AjaxCallSearch(e)
 {
-   
+   if (e.keyCode == 13) {
     var sortdir = $("#sort").val();
     var sortby = $("#sortby").val();
     var page = $("#page").val();
@@ -205,6 +207,7 @@ function AjaxCallSearch()
          $('#list_mp').html(data);
      }
   });
+  }
 }
 function getPage(flag)
 {
@@ -249,6 +252,7 @@ function submitAnswer(question_id)
 }
 function submitComment(question_id)
 {
+  var comment_count = $('#comments'+question_id).text();
   var comment = $.trim($("#comment_text"+question_id).val());
   if(comment==''){alert('comment can not be blank'); return false;}
    $.ajax({
@@ -260,10 +264,10 @@ function submitComment(question_id)
                question_id:question_id,
            },
      success: function (data) {
-
          $('#commentArray'+question_id).prepend(data.data);
          $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
          $('.AddComment').val('');
+         $('#comments'+question_id).text(++comment_count);
 
      }
   });

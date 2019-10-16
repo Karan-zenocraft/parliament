@@ -42,7 +42,7 @@ $UserRolesDropdown = ArrayHelper::map(array("" => "") + UserRoles::find()->where
  <?php echo $form->field($model, 'age') ?></div>
 
        <div class="span3 style_input_width">
- <?php echo $form->field($model, 'gender')->dropDownList(Yii::$app->params['gender']); ?></div>
+ <?php echo $form->field($model, 'gender')->dropDownList(array("" => "") + Yii::$app->params['gender']); ?></div>
 
        <div class="span3 style_input_width">
  <?php echo $form->field($model, 'education') ?></div>

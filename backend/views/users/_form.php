@@ -22,20 +22,20 @@ use yii\widgets\ActiveForm;
     <div class="span3 style_input_width"><?=$form->field($model, 'user_name')->textInput(['maxlength' => true])?></div>
 
     <div class="span3 style_input_width"><?=$form->field($model, 'email')->textInput(['maxlength' => true])?></div>
-
-    <div class="span3 style_input_width"><?=$form->field($model, 'password')->passwordInput(['maxlength' => true])?></div>
+ <div class="span3 style_input_width"><?=$form->field($model, 'name')->textInput(['maxlength' => true])?></div>
 </div>
 <div class="row">
+    <div class="span3 style_input_width"><?=$form->field($model, 'password')->passwordInput(['maxlength' => true])?></div>
         <div class="span3 style_input_width">
     <?=$form->field($model, 'city')->textInput()?></div>
 <div class="span3 style_input_width">
     <?=$form->field($model, 'age')->textInput()?></div>
 <div class="span3 style_input_width">
     <?=$form->field($model, 'education')->textInput(['maxlength' => true])?></div>
-     <div class="span3 style_input_width">
-    <?=$form->field($model, 'status')->dropDownList(Yii::$app->params['user_status']);?></div>
 </div>
 <div class="row">
+     <div class="span3 style_input_width">
+    <?=$form->field($model, 'status')->dropDownList(Yii::$app->params['user_status']);?></div>
         <div class="span3 style_input_width">
             <?=$form->field($model, 'photo')->fileInput(['id' => 'photo', 'value' => $model->photo]);?>
             </div>
