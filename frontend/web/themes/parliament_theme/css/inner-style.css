@@ -621,3 +621,50 @@ border-radius: 30px;text-transform: uppercase;margin-top: 2px;margin-left: -2px;
     #answers-form .form-group{margin: 0px;}
     .Charnum{float: right;margin-right: 10px;}
     .GiveAnswer .AskFollowUpSubmit button:focus{outline: none;box-shadow: none;}
+
+
+
+/*10-16-19*/
+
+
+
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP{position: relative;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP{transition: all 0.25s ease 0s;
+    position: absolute;
+    left: -25px;
+    box-shadow: 0px 0px 10px 5px #00000066;
+    right: 0px;
+    margin: 30px auto auto;
+    background: rgb(16, 48, 63);
+    width: 125px;
+    list-style-type: none;
+    padding: 3px 10px;
+    color: rgb(255, 255, 255);
+    display: block;top: 7px;}
+
+.Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child{color: #10303F;
+    font-size: 10px;
+    line-height: 11px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    margin-bottom: 0px;
+    }
+.Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4){font-size: 10px;cursor: pointer;
+    font-weight: bold;font-family: 'Segoe UI';
+    margin-bottom: 0px;
+    color: #0D5D83;
+    line-height: 11px;}
+
+.Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 10px;
+    font-weight: bold;font-family: 'Segoe UI';
+    margin-bottom: 0px;
+    color: #000;
+    line-height: 11px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox p span{font-size: 7px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .User{min-width: 50%}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li a{font-size: 10px;}
+
+.carousel-caption .Row1 .RowBox .Dimmer:before{background-color: rgba(0,0,0,.5);transition: 0.25s ease;
+    transition: background-color 1s;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li{cursor: pointer;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Title{word-break: break-all}

@@ -264,6 +264,20 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 .UsersImg .Absolute .Img3{right: 25px}
     
     
+    
+    /*10-16-19*/
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .User{min-width: 50%}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child, .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 8px;line-height: 12px;}
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{height: 20px;width: 20px;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;display: flex;
+    flex-direction: column;}
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li a{font-size: 8px;line-height: 12px;}
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li{line-height: 0px;padding: 3px 0px}
+    
 }
 
 
@@ -479,6 +493,23 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     height: 20px;
     width: 20px;
 }
+    
+    
+    
+    
+    /*    10-16-19*/
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .User{min-width: 50%}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child, .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 7px;line-height: 10px;}
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{height: 15px;width: 15px;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;display: flex;
+    flex-direction: column;}
+    
+     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li a{font-size: 8px;line-height: 12px;}
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li{line-height: 0px;padding: 3px 0px}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP{width: 100px;padding: 3px 7px;}
     
 }
 

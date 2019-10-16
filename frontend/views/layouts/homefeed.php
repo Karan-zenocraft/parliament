@@ -123,7 +123,7 @@ $questions = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "
                         <div class="Row1 d-flex align-items-center justify-content-between ">
                         <div class="User d-flex align-items-center justify-content center">
 
-                        <img src="<?php echo $user_image; ?>" alt="" class="img-fluid UserImage">
+                        <img src="<?php echo $user_image; ?>" alt="" class="rounded-circle UserImage">
                         <div class="ProfileName">
                         <p><?php echo !empty($user) ? $user['user_name'] : "-" ?></p>
                             <?php $question = Questions::find()->with('comments', 'answers')->where(["user_agent_id" => Yii::$app->user->id, "is_delete" => 0])->orderBy(["id" => SORT_DESC])->one();?>
@@ -147,19 +147,20 @@ $mps = $question['mp_id'];
 
                         <div class="MPProfileName">
 
-                        <p>Unanswered for</p>
-                        <?php if ($count == 1) {
+                        <span>Unanswered for</span>
+                        <span><?php if ($count == 1) {
                 ?>
-                        <p><span><?php echo $first_mp; ?></span></p>
+                        <?php echo $first_mp; ?></span>
                    <?php } else {?>
-                        <p><span><?php echo $first_mp; ?></span></p>
-                        and&nbsp;<a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="left"> <?php echo " " . ($count - 1); ?> others</span></a>
+                        <span><?php echo $first_mp; ?></span>
+                            <span>and </span>
+                            <span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="left"> <?php echo " " . ($count - 1); ?> others</span>
                    <?php }?>
                    </div>
                        <?php $userDetails = Common::get_name_by_id($unanswered_by[0], "Users");
 
             //p($userDetails . "1111111");?>
-                        <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $userDetails['photo'] ?>" alt="" class="img-fluid MPImage">
+                        <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $userDetails['photo'] ?>" alt="" class="rounded-circle MPImage">
                               <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMPleft" style="display: none;">
           <?php
 $exclude_first = array_shift($unanswered_by);
