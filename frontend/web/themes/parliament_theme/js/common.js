@@ -230,7 +230,6 @@ function answer_toggle(id){
 function submitAnswer(question_id)
 {
   var answer = $.trim($(".model_answer"+question_id).val());
-  alert(answer);
   if(answer==''){alert('Answer can not be blank'); return false;}
    $.ajax({
      url: "site/answer-question",
@@ -264,6 +263,7 @@ function submitComment(question_id)
 
          $('#commentArray'+question_id).prepend(data.data);
          $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
+         $('.AddComment').val('');
 
      }
   });

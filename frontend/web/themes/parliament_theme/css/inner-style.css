@@ -95,7 +95,7 @@ padding-right: 30px;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 7px;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName p span{color: #0D5D83;text-align: right!important}
 .Main .MainLeft .LastQuestion .LastQuestionBox .MPProfileName p{text-align: right}
-.Main .MainLeft .LastQuestion .LastQuestionBox .Comments p{font-size: 18px;line-height: 22px;font-weight: 400;font-family: 'Segoe UI';color: #0D0D0D;display: inline;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Comments p{font-size: 18px;line-height: 22px;font-weight: 400;font-family: 'Segoe UI';color: #0D0D0D;display: inline;word-break: break-word;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Comments button{text-decoration: none;cursor: pointer;font-size: 12px;font-weight: bold;line-height: 15px;color: #10303F;margin-left: 5px;font-family: 'Segoe UI';background: transparent;border: none;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Comments button:focus{outline: none;}
 .Comments .show{display: inline!important}
@@ -124,10 +124,10 @@ padding-right: 30px;}
 .Main .MainCenter .Nav1 ul li:hover a{color: #fff;transition: 0.25s ease;}
 .Main .MainCenter .Nav1 ul li .active{background: #D17C0D;color: #fff;}
 .Main .MainCenter .Nav1 ul li a{text-decoration: none;padding: 7px 60px;color: #707070;background: #000;}
-.Main .MainCenter .Ask{border-radius: 85px;border:10px solid #10303F;background: #ECECEC;padding-bottom: 45px;padding-left: 15px;
+.Main .MainCenter .Ask{border-radius: 85px;border:10px solid #10303F;background: #ECECEC;padding-bottom: 5px;padding-left: 15px;
 padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .Ask .Address{float: right;margin-right: 40px;margin-top: 5px;padding-right: 218px;height: 41px;border-radius: 50px;border: 1px solid #7070708f;background: #E5E2E2;padding-left: 15px;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;font-family: 'Segoe UI'; }
-.Main .MainCenter .Ask .AskQuestion{margin-top: 5px;height: 295px;width: 100%;border-radius: 50px;border: 1px solid #7070708f;background: #D4D4D4;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;text-align: center}
+.Main .MainCenter .Ask .AskQuestion{margin-top: 5px;padding: 130px 15px;width: 100%;border-radius: 50px;border: 1px solid #7070708f;background: #D4D4D4;font-size: 20px;line-height: 17px;font-weight: 400;color: #0D0D0D;text-align: center}
 .Main .MainCenter .Ask .AskQuestion:focus,.Main .MainCenter .Ask .Address:focus{outline: none;background: #ffffff6b;transition: 0.25s ease;}
 .Main .MainCenter .Ask .AskButton{background: #D17C0D;color: #10303F;border: 1px solid #707070;border-radius: 50px;padding: 5px 31px;float: right;margin-right: 40px;margin-top: 5px;font-size: 16px;font-family: 'Segoe UI';line-height: 22px}
 .Main .MainCenter .Ask .AskButton:hover{background: #fff;color: #D17C0D;transition: 0.25s ease;}
@@ -217,23 +217,23 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion a{font-size: 10px;
     line-height: 18px;font-weight: bold;font-family: 'Segoe UI';color: #10303F;text-transform: uppercase;}
 
-.carousel-caption{position: unset!important;color: #000!important;padding-top: 0px!important;padding-bottom: 0px!important}
+.carousel-caption{position: unset!important;color: #000!important;padding-top: 55px!important;padding-bottom: 0px!important}
 .carousel-inner{background: #10303F}
-.carousel-caption .Row1{padding: 0px 50px;padding-top: 55px;}
+.carousel-caption .Row1{padding: 0px 60px;padding-bottom: 55px;}
 .carousel-caption .Row1:last-child{padding-bottom: 55px;}
 .carousel-caption .Row1 .RowBox{/*margin: auto;*/}
-.carousel-caption .Row1 .RowBox .Dimmer:before{content: '';position: absolute;top: 0;left: 0;height: 117px;width: 117px;background: #000;border-radius: 100%;z-index: 9999;opacity: .5}
+.carousel-caption .Row1 .RowBox .Dimmer:before{content: '';position: absolute;top: 0;left: 0;height: 100px;width: 100px;background: #000;border-radius: 100%;z-index: 9999;opacity: .5}
 .carousel-caption .Row1 .RowBox .Dimmer{position: relative;}
-.carousel-caption .Row1 .RowBox .RowTitle{text-align: left;margin-left: 10px;}
+.carousel-caption .Row1 .RowBox .RowTitle{text-align: left;margin-left: 5px;}
 .carousel-caption .Row1 .RowBox .RowTitle p{font-size: 18px;color: #fff;line-height: 30px;font-weight: 400; margin-bottom: 0px;font-family: 'Segoe UI';}
-.carousel-caption .Row1 .RowBox .RowTitle p span{font-size: 11px;color: #a5a5a5;line-height: 18px;font-weight: 400; margin-bottom: 0px;font-family: 'Segoe UI';}
+.carousel-caption .Row1 .RowBox .RowTitle p span{font-size: 12px;color: #a5a5a5;line-height: 18px;font-weight: 400; margin-bottom: 0px;font-family: 'Segoe UI';}
 .carousel-caption .Row1 .RowBox .RowTitle p:last-child{line-height: 0;}
 
 .carousel-control-next-icon{background-image:url("../image/slider-arrow.png")!important;}
 .carousel-control-next-icon, .carousel-control-prev-icon{width: 21%!important;height: 11%!important;z-index: 999999999!important;position: absolute;right: 0px;left: 90px;margin: 15% 0%;}
 .carousel-control-next, .carousel-control-prev{opacity: 1!important}
 .carousel-control-prev{display: none!important;}
-/*.carousel-caption .Row1 .RowBox:hover .SliderImage{transform: scale(1.1);transition: 0.25s ease;}*/
+/*.carousel-caption .Row1 .RowBox:hover .{transform: scale(1.1);transition: 0.25s ease;}*/
 /*.carousel-caption .Row1 .RowBox .SliderImage{position: relative;transform: scale(1.0);overflow: hidden}*/
 .Main  .MainCenter .Nav2 ul li{cursor: pointer}
 .Main  .MainCenter .Nav2 ul .FilterActive a{color: #D17C0D!important;}
@@ -270,7 +270,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .GiveAnswer .AskFollowUpSubmit{margin-bottom: 50px;}
 
 
-.GiveAnswer .AskFollowUpSubmit a{background: #D17C0D;
+.GiveAnswer .AskFollowUpSubmit button{background: #D17C0D;
     color: #10303F;
     border: 1px solid #707070;
     border-radius: 50px;
@@ -305,13 +305,13 @@ padding-right: 15px;margin-bottom: 10px;}
     float: right!important;
     border-radius: 50px!important;
     
-    margin-right: 10px!important;
+    margin-right: 30px!important;
     margin-top: 5px!important;
     height: 41px!important;
     border-radius: 50px!important;
     border: 1px solid #7070708f!important;
     background: #E5E2E2!important;
-    padding-left: 15px!important;
+    padding-left: 10px!important;
     font-size: 14px!important;
     line-height: 17px!important;
     font-weight: 400!important;
@@ -385,8 +385,8 @@ padding-right: 15px;margin-bottom: 10px;}
 
 .GiveAnswer .AskFollowUpSubmit{margin-bottom: 50px;}
 
-.GiveAnswer .AskFollowUpSubmit a:hover{color:#D17C0D;background:#ffffff;transition: 0.25s ease;border: 1px solid #D17C0D; }
-.GiveAnswer .AskFollowUpSubmit a{background: #D17C0D;
+.GiveAnswer .AskFollowUpSubmit button:hover{color:#D17C0D;background:#ffffff;transition: 0.25s ease;border: 1px solid #D17C0D; }
+.GiveAnswer .AskFollowUpSubmit button{background: #D17C0D;
     color: #ffffff;
     border-radius: 12px;
     padding: 8px 20px;
@@ -414,10 +414,10 @@ padding-right: 15px;margin-bottom: 10px;}
 .GiveAnswer .comments .EnterComments .AddComment::placeholder{color:#969696;font-family: 'Segoe UI';font-weight: normal;font-size: 18px;line-height: 22px;font-size: 18px;}
 
 .GiveAnswer .comments .EnterComments i{padding-left: 30px;font-size: 22px;}
-.GiveAnswer .comments .EnterComments img{max-height: 34px;}
+.GiveAnswer .comments .EnterComments img{height: 34px;width: 34px;border-radius: 50%}
 .GiveAnswer .CommentsBox .CommentList{padding: 0;margin: 0;padding-top: 35px;}
 .GiveAnswer .CommentsBox .CommentList .CommentedProfile{ margin-left: 6px;margin-right: 35px;}
-.GiveAnswer .CommentsBox .CommentList .CommentedProfile img{min-height: 21px;}
+.GiveAnswer .CommentsBox .CommentList .CommentedProfile img{height: 21px;width: 21px;border-radius: 50%}
 .GiveAnswer .CommentsBox .CommentList .Commented .CommentedUser{margin-bottom: 15px;font-size: 14px;line-height: 17px;font-family: 'Segoe UI';font-weight: normal;color: #0D0D0D;}
 .GiveAnswer .CommentsBox .CommentList .Commented .CommentedCaption{font-size: 18px;line-height: 22px;font-family: 'Segoe UI';font-weight: normal;color: #0D0D0D;margin-bottom: 10px;}
 .GiveAnswer .CommentsBox .CommentList .Social .Like i{color: #000000;}
@@ -568,3 +568,56 @@ border-radius: 30px;text-transform: uppercase;margin-top: 2px;margin-left: -2px;
 .MainEditProfile .EditProfileMain{position: relative}
 .Main .MainLeft .ProfileLeft .EditProfiles{position: absolute;top: 15px;right: 10px;}
 .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{background: #D17C0D;color: #ffffff;text-transform: uppercase;padding: 7px 35px;font-weight:normal;font-size:13px;line-height:17px;font-family: 'Segoe UI';border-radius: 50px;}
+
+
+/*14-10-19*/
+
+.MainCenter .tab-content #home .tab-pane .carousel .SliderArrowHomeFeed{}
+.MainCenter .tab-content #home .tab-pane .carousel .SliderArrowHomeFeed .Arrow_Left{position: absolute;top: 0;bottom: 0;margin: auto;transform: rotate(180deg);left: 5px;}
+.MainCenter .tab-content #home .tab-pane .carousel .SliderArrowHomeFeed .Arrow_Right{position: absolute;top: 0;bottom: 0;margin: auto;right: 5px;}
+.carousel-caption .Row1 .RowBox .SliderImage{height: 100px;width: 100px;}
+.carousel-caption .Row1 .RowBox:first-child{justify-content: flex-start!important;}
+.carousel-caption .Row1 .RowBox:nth-child(2){justify-content: center!important}
+.carousel-caption .Row1 .RowBox:last-child{justify-content: flex-end!important;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1  img{height: 24px;width: 24px;}
+.Ask .form-group{margin-bottom: 0px;}
+.Ask  form{margin-bottom: 0px;}
+.Ask #charNum{margin-right: 10px;font-size: 10px;line-height: 16px;font-weight: 400;font-family: 'Segoe UI';}
+.select2-container--krajee-bs4 .select2-selection--multiple{margin-top: 5px!important;padding-top: 5px;
+    padding-bottom: 5px;}
+.select2-selection--multiple{width: unset!important;height: unset!important;min-height: unset!important;min-width: 420px;max-width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;}
+.select2-container .select2-search--inline .select2-search__field{padding: 0px!important}
+.help-block{color: red;margin-left: 15px;font-size: 14px;line-height: 20px;font-family: 'Segoe UI';font-weight: 400;}
+.select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field{height: unset!important}
+.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice{margin-top: 0!important}
+.load_more:hover{transition: 0.25s ease;}
+.load_more:focus{outline: none;}
+.load_more{background: #D17C0D;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 7px 35px;
+    border-radius: 50px;
+    color: #fff;border: none}
+.UnansweredBy{position: relative;margin: 0 auto!important;}
+.UsersImg{display: flex;align-items: center;justify-content: center;}
+.UsersImg .One{position: relative;}
+.UsersImg img{height: 43px;width: 43px;}
+.UsersImg .Absolute .Img1{position: absolute;right: 45px}
+.UsersImg .Absolute .Img2{position: absolute;right: 25px}
+.UsersImg .Absolute .Img3{position: absolute;right: 8px}
+.UsersImg .Absolute {position: absolute;right: -64px;top: 0;}
+.Okanswer{padding: 0;
+    margin: 0;
+    background: unset;
+    border: none;}
+
+     #comments .required{width: 100%!important}
+    #comments{width: 100%;display: flex;align-items: center;justify-content: flex-start;}
+    .GiveAnswer .AskFollowUp .AnswerImage{height: 43px;width: 43px;}
+    .Okanswer:focus{outline: none}
+
+    #answers-form .form-group{margin: 0px;}
+    .Charnum{float: right;margin-right: 10px;}
+    .GiveAnswer .AskFollowUpSubmit button:focus{outline: none;box-shadow: none;}

@@ -52,6 +52,13 @@
     .Login .LoginLeft .Form table{text-align: center}
     .Login .LoginBottom ul{padding-left: unset;justify-content: space-between!important}
     .Login .LoginBottom ul li:first-child{margin-left: 30px;}
+    
+     .ForgotHeader{padding-top: 0px;}
+    .ForgotRight{padding-left: 0px!important;padding: 0px 15px!important}
+    header .HeaderRight h1{text-align: center!important;font-size: 30px;line-height: 38px;}
+    .ForgotRight p{text-align: center!important;}
+    .ForgotRight form{margin: auto;}
+    .ForgotRight .Btn{display: block;margin: auto;}
 
 }
 
@@ -76,6 +83,13 @@
     .Login .LoginBottom ul{justify-content: space-between!important}
     .Login .LoginBottom ul li:first-child{margin-left: 30px;}
     .Login .LoginLeft{margin: auto}
+    
+    .ForgotHeader{padding-top: 0px;}
+    .ForgotRight{padding-left: 0px!important;padding: 0px 15px!important}
+    header .HeaderRight h1{text-align: center!important;font-size: 30px;line-height: 38px;}
+    .ForgotRight p{text-align: center!important;}
+    .ForgotRight form{margin: auto;}
+    .ForgotRight .Btn{display: block;margin: auto;}
 }
 
 @media (min-width: 577px) and (max-width: 767px) {
@@ -133,7 +147,7 @@ header .HeaderRight h1{font-size: 32px;margin-top: 15px;margin-bottom: 30px;line
     .Login .LoginLeft .Form table tr:last-child{display: flex;flex-direction: column;}
     .Login .LoginLeft .Form table tr:last-child td:first-child{display: flex;order: 1;}
     .Login .LoginLeft .Form table tr:last-child td:last-child{display: flex;order: 0;}
-    .Login .LoginLeft .Form table .LoginButton{margin-left: unset;margin: auto;margin-top: 20px;}
+    .Login .LoginLeft .Form table .LoginButton{margin-left: unset;margin: auto;margin-top: 20px;display: block;}
     .Login .LoginLeft .Form table .ForgotButton{margin: auto;margin-top: 20px;}
    .Login .LoginBottom ul li:first-child {margin-left: 13px;}
     .Login .LoginBottom ul li{margin: 0px 13px;}
@@ -143,15 +157,34 @@ header .HeaderRight h1{font-size: 32px;margin-top: 15px;margin-bottom: 30px;line
     header .HeaderRight h2{margin-top: 60px;margin-bottom: 10px;font-size: 20px;line-height: 40px;}
     .Login .LoginLeft .Form table .Password-md{display: none;}
     .Login .LoginLeft .Form table label{font-size: 16px;line-height: 18px;}
-    .Login .LoginLeft .Form table input{margin-bottom: 25px;}
+    .Login .LoginLeft .Form table input{margin-bottom: 10px;}
     .Login .LoginRight h1{font-size: 25px;margin-top:0px;margin-bottom: 0px;line-height: 46px}
     .Login .LoginRight, .Login .LoginLeft{margin-bottom: 40px;}
+    .form-group{width: 100%}
 }
   
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 767px){
     header .HeaderRight .Representative{width: 100%;border-radius: 50px;}
     .Login .LoginBottom ul{padding-left: unset;}
     .Login .LoginLeft .Form {padding-left: unset;}
     header .HeaderRight{padding-right: 15px;}
+    
+    .NavigationBar{padding: 15px 0px;}
+    .NavigationBar .LoginBottom{justify-content: flex-start!important}
+    .ForgotHeader{padding-top: 60px;padding-bottom: 0px;}
+    .ForgotHeader .Logo{max-width: 175px;}
+    .NavigationBar ul li:first-child{margin-left: 0px;}
+    header .HeaderRight h1{font-size: 18px;line-height: 24px;text-align: center!important;margin-bottom: 15px;}
+    .ForgotRight p{text-align: center;font-size: 11px;line-height: 20px;}
+    .ForgotRight{padding-left: 20px!important;padding-right: 20px!important;padding-top: 50px;}
+    .ForgotRight form{padding: 0px;margin-top: 25px;}
+    .ForgotRight form input{font-size: 14px;max-width: 70%;
+    margin: auto;}
+    .ForgotRight .Btn{display: block;margin: auto;padding: 2px 20px;}
+    .Forgot {padding-top: 20px;}
+    .NavigationBar ul li a{font-size: 12px;line-height: 18px;}
+    .NavigationBar ul li{margin: 0px 15px;}
+    header .HeaderLeft{padding: 0px 0px;}
+    
     
 }

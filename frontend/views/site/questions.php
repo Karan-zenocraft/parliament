@@ -20,7 +20,7 @@ if (!empty($modelsQuestions)) {
     <li><a href="#">Feven Siraj</a></li>
   </ul> -->
 
-  <div class="QuestionAnswerBox">
+  <div class="QuestionAnswerBox" style="border-color:<?php echo !empty($question['answers']) ? '#085820' : '#580816' ?> !important">
     <div class="Row1">
       <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
         <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
@@ -56,11 +56,26 @@ if (!empty($modelsQuestions)) {
                 ?></span></a>
               and&nbsp;<a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
-          <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid"></a>
+          <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
+
+<?php $exclude_first = array_shift($unanswered_by);?>
+            <div class="Absolute">
+            <?php $i = 1;
+            foreach ($unanswered_by as $key => $unanswer_mp) {
+                $user_mp = Common::get_name_by_id($unanswer_mp, "Users");
+                $user_mp_image = $user_mp['photo'];
+                $user_mp_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user_mp['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
+                ?>
+            <img class="Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="img-fluid">
+            <?php $i++;
+            }?>
+            </div>
+
+
+          </a>
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question['id']; ?>">
           <?php
-$exclude_first = array_shift($unanswered_by);
-            foreach ($unanswered_by as $key => $unanswer_mp) {
+foreach ($unanswered_by as $key => $unanswer_mp) {
                 echo "<li><a href='#'>" . Common::getMpNames($unanswer_mp) . "</a></li>";
             }
             ?>
@@ -73,10 +88,10 @@ $exclude_first = array_shift($unanswered_by);
   </ul>
         </div>
       <?php }?>
-        <div class="AskFollowUp d-flex flex-wrap align-items-center">
+        <!-- <div class="AskFollowUp d-flex flex-wrap align-items-center">
           <i class="fa fa-spinner" aria-hidden="true"></i>
           <span>ASK A FOLLOW UP</span>
-        </div>
+        </div> -->
         <div class="ViewMoreIcon">
           <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one" id="<?php echo $question['id']; ?>">
           <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
@@ -164,14 +179,17 @@ if (!empty($question['answers'])) {?>
 
                         </div>
                                 </div>
-                              <?php }}?>
+                              <?php }?>
                             </div>
                                  <!---------new end--------------------->
 
-
+    </div>
+  <?php }?>
 
     </div>
-    <div class="Row3">
+
+
+      <div class="Row3">
       <div class="Social d-flex flex-wrap align-items-center justify-content-between">
         <?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
             ?>
@@ -252,7 +270,6 @@ if (!empty($question['answers'])) {?>
 
 
       </div>
-    </div>
   </div>
 
 
@@ -270,7 +287,7 @@ $current_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads
 
 <?=$form3->field($model_comment, 'comment_text')->textInput(['class' => 'AddComment', 'placeholder' => 'Add a comment', "id" => "comment_text" . $question['id']])->label(false);?>
  <div class="form-group">
-<?=Html::submitButton('<i class="fa fa-paper-plane"></i>', ["id" => $question['id'], "onclick" => "submitComment(" . $question['id'] . ")"]);?></div>
+<?=Html::submitButton('<i class="fa fa-paper-plane"></i>', ["id" => $question['id'], "class" => "Okanswer", "onclick" => "submitComment(" . $question['id'] . ")"]);?></div>
 <?php $form3->end();?>
                                 <!-- <input type="text" class="AddComment" placeholder="Add a comment"> -->
 
@@ -294,11 +311,11 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
                                     <div class="Commented">
                                     <p class="CommentedUser"><?php echo Common::get_user_name($comment['user_agent_id']) ?></p>
                                     <p class="CommentedCaption"><?php echo $comment['comment_text']; ?></p>
-                                    <div class="Social d-flex align-items-center justify-content-start">
+                                    <!-- <div class="Social d-flex align-items-center justify-content-start">
                                         <div class="Like"><i class="fa fa-thumbs-up"></i><span class="First">Like</span><span>100</span></div>
                                         <div class="Reply"><i class="fa fa-reply"></i><span class="First">Reply</span></div>
                                     </div>
-                                    </div>
+                                    </div> -->
                                 </li>
 
                                 </ul>
@@ -310,7 +327,7 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
   <div class="AskFollowUp">
     <div class="Profile">
       <?php $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
-      <img src="<?php echo $user_image; ?>" alt="" class="img-fluid">
+      <img src="<?php echo $user_image; ?>" alt="" class="rounded-circle AnswerImage">
       <div class="UserTitle">
         <a href="#"><p><?php echo $user['user_name'] ?></p></a>
       </div>
@@ -322,11 +339,12 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
       <?php $model_answer = new Answers();?>
 <?php $form2 = ActiveForm::begin(['id' => 'answers-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true/*, 'validationUrl' => Url::toRoute('site/index')*/]);?>
  <?=$form2->field($model_answer, 'answer_text')->textArea(['maxlength' => true, "class" => "AskQuestion model_answer" . $question['id'] . " ?>", "onkeyup" => "countCharanswer(this)", "id" => $question['id'], "data-val" => $question['id']])->label(false);?>
-    <div id="charNum<?php echo $question['id']; ?>" style="float: right;">0/540</div>
+
      <!--  <textarea id="getAnswer<?php echo $question['id']; ?>" maxlength="540"> </textarea> -->
     </div>
-    <div class="form-group AskFollowUpSubmit">
-      <?=Html::submitButton('Submit', ['class' => 'btn btn-success AskButton', "id" => $question['id'], "onclick" => "submitAnswer(" . $question['id'] . ")"])?>
+    <div class="form-group AskFollowUpSubmit d-flex align-items-center justify-content-end">
+      <?=Html::submitButton('Submit', ['class' => 'btn btn-success AskButton d-flex order-1', "id" => $question['id'], "onclick" => "submitAnswer(" . $question['id'] . ")"])?>
+      <div class="d-flex order-0 Charnum" id="charNum<?php echo $question['id']; ?>">0/540</div>
     </div>
     <!-- <div class="AskFollowUpSubmit">
       <a href="javascript:void(0)" onclick="submitAnswer(<?php echo $question['id']; ?>)">Submit</a></div> -->

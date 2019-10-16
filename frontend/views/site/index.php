@@ -29,9 +29,9 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         ],
     ])->label(false); ?>
     <?=$form->field($model, 'question')->textArea(['maxlength' => true, "class" => "AskQuestion", "placeholder" => "Ask your Question. Get involved", "onkeyup" => "countChar(this)"])->label(false);?>
-    <div id="charNum" style="float: right;">0/540</div>
-    <div class="form-group">
-      <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton'])?>
+    <div class="form-group d-flex align-items-center justify-content-end">
+      <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton d-flex order-1'])?>
+      <div id="charNum" class="d-flex order-0" style="float: right;">0/540</div>
     </div>
     <?php ActiveForm::end();?>
   </div>
@@ -86,9 +86,14 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
           </div>
         </div>
       </div>
-      <span class="carousel-control-prev-icon" onclick="getPage('prev')" aria-hidden="true"></span>
+    <!--   <span class="carousel-control-prev-icon" onclick="getPage('prev')" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
-      <span class="carousel-control-next-icon" onclick="getPage('next')"  aria-hidden="true"></span>
+      <span class="carousel-control-next-icon" onclick="getPage('next')"  aria-hidden="true"></span> -->
+      <div class="SliderArrowHomeFeed">
+     <img class="Arrow_Left" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>"  onclick="getPage('prev')" aria-hidden="true">
+     <span class="sr-only">Previous</span>
+     <img class="Arrow_Right" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" onclick="getPage('next')"  aria-hidden="true">
+       </div>
       <?php }?>
       <?php //Pjax::end();?>
     </div>

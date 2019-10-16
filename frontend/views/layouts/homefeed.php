@@ -251,7 +251,7 @@ $exclude_first = array_shift($unanswered_by);
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
                             <li><a data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
-                            <li><a data-toggle="tab" onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                            <li><a data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
                             <li><a data-toggle="tab" href="#menu3" class="show">Citizens</a></li>
                         </ul>
                     </nav>
