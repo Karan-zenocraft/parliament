@@ -1819,7 +1819,7 @@ class Common
             }
         }
     }
-    public function time_elapsed_string($datetime, $full = false)
+    public static function time_elapsed_string($datetime, $full = false)
     {
         $now = new \DateTime();
         $ago = new \DateTime($datetime);
@@ -1852,7 +1852,7 @@ class Common
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
 
-    public function getLastMondaySaturday($day)
+    public static function getLastMondaySaturday($day)
     {
         $date = "";
         if ($day == "monday") {
@@ -1876,7 +1876,7 @@ class Common
         return $date;
     }
 
-    public function getMpNames($mp)
+    public static function getMpNames($mp)
     {
         if (!empty($mp)) {
             $mpArr = explode(",", $mp);
