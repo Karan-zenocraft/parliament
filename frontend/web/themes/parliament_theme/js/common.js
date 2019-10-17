@@ -157,17 +157,41 @@ function QuestionAnswer()
             search:search
            },
      success: function (response) {
-      if(nextpage=='1'){
-        $('#ajaxQuestion').html(response.data);
-      }
-      else{
-        $('#ajaxQuestion').append(response.data);
-      }
-       
-       if(response.count<=0)
+
+      if(filter == 'Answered'){
+        if(nextpage=='1'){
+          $('#answered_questions').html(response.data);
+        }
+        else{
+          $('#answered_questions').append(response.data);
+        }
+  if(response.count <= 0)
+       {
+          $('#loadmoreDataanswered').hide();
+       }
+      }else if(filter == 'Unanswered'){
+        if(nextpage=='1'){
+          $('#unanswered_questions').html(response.data);
+        }
+        else{
+          $('#unanswered_questions').append(response.data);
+        }
+        if(response.count <= 0)
+       {
+          $('#loadmoreDataunanswered').hide();
+       }
+      }else{
+        if(nextpage=='1'){
+          $('#ajaxQuestion').html(response.data);
+        }
+        else{
+          $('#ajaxQuestion').append(response.data);
+        }
+       if(response.count <= 0)
        {
           $('#loadmoreData').hide();
        }
+      }
      }
   });
 }

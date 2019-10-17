@@ -253,9 +253,9 @@ $exclude_first = array_shift($unanswered_by);
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
-                            <li><a data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
-                            <li><a data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
-                            <li><a data-toggle="tab" class="show">Citizens</a></li>
+                            <li><a href="#menu1"  data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+                            <li><a href="#menu2"  data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" class="show">Citizens</a></li>
                         </ul>
                     </nav>
 
@@ -284,8 +284,19 @@ Breadcrumbs::widget([
 
                                 </nav>
                                 <div class="SearchMps SearchAnswredMps">
-                                    <input type="search" placeholder="Search Answered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
+                                    <input type="search" placeholder="Search UnAnswered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
                                 </div>
+                            </div>
+                            <div class="QuestionAnswer">
+<!-- QUESTIONS AND ANSWER SECTION START-->
+                            <div class="QuestionAnswerTitle Public">
+                            <h3>PUBLIC Questions</h3>
+                            </div>
+                            <input type='hidden' id='pageQuestion' value='0'>
+                            <input type='hidden' id='filterQuestion' value=''>
+                            <div id='unanswered_questions'>
+                            </div>
+                            <br><center><button class="load_more" id="loadmoreDataunanswered" onclick="QuestionAnswer()" >Load More</button></center>
                             </div>
 
                             <!---------new-content-start----------------->
@@ -299,7 +310,7 @@ Breadcrumbs::widget([
                                 <nav class="Nav2 Nav5">
                                     <ul class="d-flex align-items-center justify-content-start nav">
                                         <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                                        <li><a>Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
+                                        <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
 
                                     </ul>
 
@@ -308,7 +319,17 @@ Breadcrumbs::widget([
                                     <input type="search" placeholder="Search Answered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
                                 </div>
                             </div>
-                            <h1>three</h1>
+                            <div class="QuestionAnswer">
+<!-- QUESTIONS AND ANSWER SECTION START-->
+                            <div class="QuestionAnswerTitle Public">
+                              <h3>PUBLIC Questions</h3>
+                            </div>
+                            <input type='hidden' id='pageQuestion' value='0'>
+                            <input type='hidden' id='filterQuestion' value=''>
+                            <div id='answered_questions'>
+                            </div>
+                             <br><center><button class="load_more" id="loadmoreDataanswered" onclick="QuestionAnswer()" >Load More</button></center>
+                            </div>
                         </div>
 
                         <div id="menu3" class="tab-pane fade">

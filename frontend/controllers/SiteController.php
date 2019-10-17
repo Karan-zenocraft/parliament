@@ -467,7 +467,6 @@ class SiteController extends FrontCoreController
                 }, 'comments' => function ($q) {
                     return $q->orderBy(["comments.id" => SORT_DESC]);
                 }]);
-
             $user_role_id = Common::get_user_role($loginId, "");
             if ($flagCond == 'myQue') {
                 // GET LOGIN USER'S QUESTIONS
