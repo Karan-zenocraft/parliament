@@ -622,7 +622,7 @@ $(document).ready(function(){
 
 
 
-$(document).ready(function(){
+/*$(document).ready(function(){
   $('.Icons .fa-bell').click(function() {
               $(".HeaderBottomCenter .Nav3").toggleClass("UlNotification");
                 $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
@@ -649,7 +649,7 @@ $(document).ready(function(){
     
    
 
-        });
+        });*/
 
 
 
