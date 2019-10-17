@@ -173,7 +173,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <li class="BGList"><a href="#home" data-toggle="tab" class="active show">Home Feed</a></li>
+                            <li class="BGList"><a href="#home" class="active show">Home Feed</a></li>
                             <li><a data-toggle="tab" href="#menu1" class="show">Unanswered</a></li>
                             <li><a data-toggle="tab" href="#menu2" class="show">Answered</a></li>
                             <li><a data-toggle="tab" href="#menu3" class="show">Citizens</a></li>
