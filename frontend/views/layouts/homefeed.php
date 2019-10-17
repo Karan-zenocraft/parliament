@@ -255,7 +255,7 @@ $exclude_first = array_shift($unanswered_by);
                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
                             <li><a href="#menu1"  data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
                             <li><a href="#menu2"  data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
-                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" class="show">Citizens</a></li>
+                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="get_citizen_list()" class="show">Citizens</a></li>
                         </ul>
                     </nav>
 
@@ -278,7 +278,7 @@ Breadcrumbs::widget([
                                 <nav class="Nav2 Nav5">
                                     <ul class="d-flex align-items-center justify-content-start nav">
                                         <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                                        <li><a>Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
+                                       <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
 
                                     </ul>
 
@@ -293,7 +293,7 @@ Breadcrumbs::widget([
                             <h3>PUBLIC Questions</h3>
                             </div>
                             <input type='hidden' id='pageQuestion' value='0'>
-                            <input type='hidden' id='filterQuestion' value=''>
+                            <input type='hidden' id='filterQuestion2' value=''>
                             <div id='unanswered_questions'>
                             </div>
                             <br><center><button class="load_more" id="loadmoreDataunanswered" onclick="QuestionAnswer()" >Load More</button></center>
@@ -324,8 +324,9 @@ Breadcrumbs::widget([
                             <div class="QuestionAnswerTitle Public">
                               <h3>PUBLIC Questions</h3>
                             </div>
-                            <input type='hidden' id='pageQuestion' value='0'>
+                           <!--  <input type='hidden' id='pageQuestion' value='0'>
                             <input type='hidden' id='filterQuestion' value=''>
+                            <input type="hidden" id='filterQuestion2' value=''> -->
                             <div id='answered_questions'>
                             </div>
                              <br><center><button class="load_more" id="loadmoreDataanswered" onclick="QuestionAnswer()" >Load More</button></center>
@@ -351,8 +352,9 @@ Breadcrumbs::widget([
                                     <input type="search" placeholder="Search Citizen" class="SearchMp Citizen"><i class="fa fa-search"></i>
                                 </div>
                             </div>
-
-                            <div class="CitizenPage">
+                            </div>
+                            <div id="citizensList"></div>
+                         <!--    <div class="CitizenPage">
                             <div class="Row1 d-flex align-items-center justify-content-start">
                             <div class="ProfileBlock">
                             <div class="Block1 d-flex align-items-center justify-content-center">
@@ -455,11 +457,10 @@ Breadcrumbs::widget([
 
 
                             </div>
-                            </div>
 
 
 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3 cus-md-3 MainRight">

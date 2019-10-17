@@ -144,6 +144,7 @@ function QuestionAnswer()
 {
   var nextpage = $("#pageQuestion").val();
   var filter = $("#filterQuestion").val();
+  var filter2 = $("#filterQuestion2").val();
   var search = $("#filterSearch").val();
 
   $("#pageQuestion").val(++nextpage);
@@ -154,6 +155,7 @@ function QuestionAnswer()
      data: {
             page:nextpage,
             filter:filter,
+            filter2:filter2,
             search:search
            },
      success: function (response) {
@@ -198,6 +200,12 @@ function QuestionAnswer()
 function filterQuestion(flag)
 {
   $("#filterQuestion").val(flag);
+  $("#pageQuestion").val('0');
+  QuestionAnswer()
+}
+function filterQuestion2(flag)
+{
+  $("#filterQuestion2").val(flag);
   $("#pageQuestion").val('0');
   QuestionAnswer()
 }
@@ -327,6 +335,20 @@ function show_mp_list(id){
 }).mouseleave(function() {
       $("#OnhoverMP"+id).hide();
 });
+}
+function get_citizen_list(){
+   $.ajax({
+     url: "site/get-citizen-list",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               comment: 123, 
+              // question_id:question_id,
+           },
+     success: function (response) {
+      $('#citizensList').html(response.data);
+     }
+  });
 }
 $(document).ready(function() {
                 QuestionAnswer();
