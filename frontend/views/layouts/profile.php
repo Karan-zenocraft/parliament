@@ -1,6 +1,8 @@
 <?php
+use common\components\Common;
 use frontend\assets\ParliamentAsset;
 use yii\widgets\Breadcrumbs;
+
 $this->registerCssFile('@web/themes/parliament_theme/css/inner-style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 $this->registerCssFile('@web/themes/parliament_theme/css/inner-responsive.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ParliamentAsset::register($this);
@@ -45,7 +47,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
 
                     <div class="Search">
-                        <input type="text" placeholder="Search for Questions here" class="SearchInput"><i class="fa fa-search"></i>
+                        <input type="text" placeholder="Search for Questions here" class="SearchInput" id="filterSearch" onkeypress="filterSearch(event)"><i class="fa fa-search"></i>
                     </div>
 
 
@@ -112,40 +114,42 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
                     <nav class="Nav1 OnlySm">
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <li class="BGList"><a href="#home" data-toggle="tab" class="active show">Home Feed</a></li>
-                            <li><a data-toggle="tab" href="#menu1" class="show">Unanswered</a></li>
-                            <li><a data-toggle="tab" href="#menu2" class="show">Answered</a></li>
-                            <li><a data-toggle="tab" href="#menu3" class="show">Citizens</a></li>
+                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
+                            <li><a href="#menu1"  data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+                            <li><a href="#menu2"  data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
                         </ul>
                     </nav>
 
-                    <a href="home.html"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
+                    <a href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
                     <div class="MainLeftInner EditProfileMain">
 
-
+<?php $user_id = !empty($_REQUEST['user_id']) ? $_REQUEST['user_id'] : Yii::$app->user->id;
+$user = Common::get_name_by_id($user_id, "Users");
+?>
                         <div class="ProfileLeft">
                         <div class="EditProfiles"><a href="#" class="EditProfileBtn">EDIt</a></div>
                             <div class="User">
-                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="rounded-circle">
-                                <p>@Fithailu</p>
-                                <h3>Fitsum Hailu</h3>
+                                <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle">
+                                <p><?php echo $user['name']; ?></p>
+                                <h3><?php echo $user['user_name']; ?></h3>
                                 <p class="Title">Coder</p>
                             </div>
 
                             <nav class="EditProfile">
                                 <ul>
-                                    <li><span class="Title">From </span> <span class="TitleBold"> Addis Ababa Ethiopia</span> </li>
+                                    <li><span class="Title">From </span> <span class="TitleBold"> <?php echo $user['city']; ?></span> </li>
 
 
-                                    <li><span class="Title">Education </span> <span class="TitleBold"> Accounting (BA) from JU</span> </li>
+                                    <li><span class="Title">Education </span> <span class="TitleBold"><?php echo $user['education']; ?></span> </li>
 
 
                                     <li><span class="Title">Work </span> <span class="TitleBold"> Head of Accounting at AU</span> </li>
-                                    <li><span class="Title">Joined </span> <span class="TitleBold"> August 2019</span> </li>
-                                    <li><span class="TitleBold"> Female</span> </li>
+                                    <li><span class="Title">Joined </span> <span class="TitleBold"><?php echo date("M Y", strtotime($user['created_at'])); ?></span> </li>
+                                    <li><span class="TitleBold"> <?php echo Yii::$app->params['gender'][$user['gender']]; ?></span></li>
                                     <li> <span class="TitleBold"> 1988</span> </li>
                                     <li><span class="Title"> Remaining Number of Questions
-                                            Allowed for the Week: </span> <span class="TitleBold"> 1 out of 10</span> </li>
+                                            Allowed for the Week: </span> <span class="TitleBold">  <?php echo Common::get_remaining_questions_per_week($user_id); ?> out of 10</span> </li>
 
                                 </ul>
 
@@ -173,10 +177,10 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <li class="BGList"><a href="#home" class="active show">Home Feed</a></li>
-                            <li><a data-toggle="tab" href="#menu1" class="show">Unanswered</a></li>
-                            <li><a data-toggle="tab" href="#menu2" class="show">Answered</a></li>
-                            <li><a data-toggle="tab" href="#menu3" class="show">Citizens</a></li>
+                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
+                            <li><a href="#menu1"  data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+                            <li><a href="#menu2"  data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
                         </ul>
                     </nav>
 
@@ -208,7 +212,18 @@ Breadcrumbs::widget([
                             </div>
 
                             <!---------new-content-start----------------->
-
+                              <div class="QuestionAnswer">
+<!-- QUESTIONS AND ANSWER SECTION START-->
+                            <div class="QuestionAnswerTitle Public">
+                            <h3>PUBLIC Questions</h3>
+                            </div>
+                            <input type='hidden' id='pageQuestion' value='0'>
+                             <input type='hidden' id='questions_url' value="<?php echo Yii::getAlias("@web") . '/site/load-more-questions'; ?>">
+                            <input type='hidden' id='filterQuestion2' value=''>
+                            <div id='unanswered_questions'>
+                            </div>
+                            <br><center><button class="load_more" id="loadmoreDataunanswered" onclick="QuestionAnswer()" >Load More</button></center>
+                            </div>
 
                         </div>
                         <div id="menu2" class="tab-pane fade">
@@ -227,132 +242,46 @@ Breadcrumbs::widget([
                                     <input type="search" placeholder="Search Answered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
                                 </div>
                             </div>
-                            <h1>three</h1>
+                                  <div class="QuestionAnswer">
+<!-- QUESTIONS AND ANSWER SECTION START-->
+                            <div class="QuestionAnswerTitle Public">
+                              <h3>PUBLIC Questions</h3>
+                            </div>
+                           <!--  <input type='hidden' id='pageQuestion' value='0'>
+                            <input type='hidden' id='filterQuestion' value=''>
+                            <input type="hidden" id='filterQuestion2' value=''> -->
+                            <div id='answered_questions'>
+                            </div>
+                             <br><center><button class="load_more" id="loadmoreDataanswered" onclick="QuestionAnswer()" >Load More</button></center>
+                            </div>
                         </div>
+
 
                         <div id="menu3" class="tab-pane fade">
 
 
-                            <div class="FilterBar CitizenBar d-flex align-items-end justify-content-between">
+                          <div class="FilterBar CitizenBar d-flex align-items-end justify-content-between">
                                 <span>Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
                                 <nav class="Nav2 Nav6">
-                                    <ul class="d-flex align-items-center justify-content-start nav Nav6Ul">
-                                        <li class="FilterActive"><a>Engagement </a></li>
-                                        <li><a>Current City</a></li>
-                                        <li><a>Sex</a></li>
-                                        <li><a>Age</a></li>
-                                    </ul>
+                                       <ul class="d-flex align-items-center justify-content-start nav">
+                                            <li class="FilterActive"><a onClick="AjaxCallSortCitizen('engagement')">Engagement </a></li>
+                                            <li><a onClick="AjaxCallSortCitizen('city')" >Current City</a></li>
+                                            <li><a onClick="AjaxCallSortCitizen('sex')">Sex</a></li>
+                                            <li><a onClick="AjaxCallSortCitizen('age')">Age</a></li>
+                                            <input type='hidden' id='sort_citizen' value='asc'>
+                                            <input type='hidden' id='sortby_citizen' value=''>
+                                            <input type='hidden' id='page_citizen' value='1'>
+                                        </ul>
+
 
                                 </nav>
-                                <span>Show Citizens You follow</span>
+                              <span>Show Citizens You follow</span>
                                 <div class="SearchMps SearchCitizen">
-                                    <input type="search" placeholder="Search Citizen" class="SearchMp Citizen"><i class="fa fa-search"></i>
+                                    <input type="search" placeholder="Search Citizen" class="SearchMp Citizen" id="search_citizen" onkeypress="AjaxCallSearchCitizen(event)"><i class="fa fa-search"></i>
                                 </div>
                             </div>
-
-                            <div class="CitizenPage">
-                                <div class="Row1 d-flex align-items-center justify-content-start">
-                                    <div class="ProfileBlock">
-                                        <div class="Block1 d-flex align-items-center justify-content-center">
-                                            <div class="BlockImg">
-                                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                                            </div>
-                                            <div class="BlockCaption">
-                                                <h2>Meskrem Hailu</h2>
-                                                <p>Addis Ababa</p>
-                                                <p>Accountant</p>
-                                                <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ProfileBlock">
-                                        <div class="Block1 d-flex align-items-center justify-content-center">
-                                            <div class="BlockImg">
-                                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                                            </div>
-                                            <div class="BlockCaption">
-                                                <h2>Meskrem Hailu</h2>
-                                                <p>Addis Ababa</p>
-                                                <p>Accountant</p>
-                                                <a class="Follow Following"><span>Follow</span><span>300</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ProfileBlock">
-                                        <div class="Block1 d-flex align-items-center justify-content-center">
-                                            <div class="BlockImg">
-                                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                                            </div>
-                                            <div class="BlockCaption">
-                                                <h2>Meskrem Hailu</h2>
-                                                <p>Addis Ababa</p>
-                                                <p>Accountant</p>
-                                                <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="Row1 d-flex align-items-center justify-content-start">
-                                    <div class="ProfileBlock">
-                                        <div class="Block1 d-flex align-items-center justify-content-center">
-                                            <div class="BlockImg">
-                                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                                            </div>
-                                            <div class="BlockCaption">
-                                                <h2>Meskrem Hailu</h2>
-                                                <p>Addis Ababa</p>
-                                                <p>Accountant</p>
-                                                <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ProfileBlock">
-                                        <div class="Block1 d-flex align-items-center justify-content-center">
-                                            <div class="BlockImg">
-                                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                                            </div>
-                                            <div class="BlockCaption">
-                                                <h2>Meskrem Hailu</h2>
-                                                <p>Addis Ababa</p>
-                                                <p>Accountant</p>
-                                                <a class="Follow Following"><span>Follow</span><span>300</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ProfileBlock">
-                                        <div class="Block1 d-flex align-items-center justify-content-center">
-                                            <div class="BlockImg">
-                                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Citizen1.png" ?>" alt="" class="rounded-circle">
-                                            </div>
-                                            <div class="BlockCaption">
-                                                <h2>Meskrem Hailu</h2>
-                                                <p>Addis Ababa</p>
-                                                <p>Accountant</p>
-                                                <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
-
-
-                                <div class="SliderArrowCitizen">
-                                    <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-right">
-                                    <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-left">
-
-                                </div>
                             </div>
-
-
-
-                        </div>
+                            <div id="citizensList"></div>
 
 
 

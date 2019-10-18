@@ -664,29 +664,56 @@ CHAR_LENGTH(REPLACE(louder_by, ',', '')) + 1) AS louderCount")->andwhere(['user_
     }
     public function actionGetCitizenList()
     {
+        if (!empty($_POST['page'])) {
+            $requestData = Yii::$app->request->post();
+            $dir = (!empty($requestData['sortdir']) && $requestData['sortdir'] == 'asc') ? SORT_ASC : SORT_DESC;
+            $orderBy = ['user_name' => SORT_ASC];
 
-        $orderBy = ['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC];
-        $query = Users::find()
-            ->joinWith(['answers', 'comments', 'shares'])
-            ->select(['users.*', 'COUNT(answers.id) AS answer_count', 'COUNT(comments.id) AS comment_count', 'COUNT(shares.id) AS share_count'])
-            ->where(['users.role_id' => Yii::$app->params['userroles']['user_agent'], "users.status" => Yii::$app->params['user_status_value']['active']])->asArray()->groupBy(['users.id'])->orderBy($orderBy);
-        //  p($query);
-        $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 12]);
-        $totalCount = $pagination->totalCount;
-        $pageSize = $pagination->pageSize;
-        $total_pages = ceil($totalCount / $pageSize);
-        //p($pagination);
+            if (!empty($requestData['sortby'])) {
+                if ($requestData['sortby'] == 'age') {
+                    $orderBy = ["users.age" => $dir];
+                } else if ($requestData['sortby'] == 'sex') {
+                    $orderBy = ["users.gender" => $dir];
+                } else if ($requestData['sortby'] == 'city') {
+                    $orderBy = ["users.city" => $dir];
+                }
+            }
+            $page = ($requestData['page'] - 1) * 4;
+            // $page = 4;
+            if (empty($requestData['sortby']) && empty($requestData['search'])) {
+                $orderBy = ['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC];
+                $query = Users::find()
+                    ->joinWith(['answers', 'comments', 'shares'])
+                    ->select(['users.*', 'COUNT(answers.id) AS answer_count', 'COUNT(comments.id) AS comment_count', 'COUNT(shares.id) AS share_count'])
+                    ->where(['users.role_id' => Yii::$app->params['userroles']['user_agent'], "users.status" => Yii::$app->params['user_status_value']['active']])->asArray()->groupBy(['users.id'])->orderBy($orderBy);
+            } else {
+                $query = Users::find()
+                    ->select(['users.*'])
+                    ->where(['users.role_id' => Yii::$app->params['userroles']['user_agent'], "users.status" => Yii::$app->params['user_status_value']['active']]);
 
-        $models = $query->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-        $pageDataAjax = $this->renderPartial('citizens', [
-            'models' => $models, 'pagination' => $pagination,
-            'total_pages' => $total_pages]);
-        $retArray = array('data' => $pageDataAjax);
-        return json_encode($retArray);
+            }
+            if (!empty($requestData['search'])) {
+                $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
+            }
+            $query = $query->orderBy($orderBy);
+            //  p($query);
+            $pagination = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4]);
+            $totalCount = $pagination->totalCount;
+            $pageSize = $pagination->pageSize;
+            $total_pages = ceil($totalCount / $pageSize);
+            //p($pagination);
+
+            $models = $query->offset($page)
+                ->limit(4)
+                ->all();
+            $pageDataAjax = $this->renderPartial('citizens', [
+                'models' => $models, 'pagination' => $pagination,
+                'total_pages' => $total_pages]);
+            $retArray = array('data' => $pageDataAjax);
+            return json_encode($retArray);
+        }
     }
-    public function actionProfile()
+    public function actionProfile($user_id)
     {
         $this->layout = 'profile';
         return $this->render('profile');

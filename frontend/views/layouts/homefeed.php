@@ -74,7 +74,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                         <!--new html-->
 
                         <ul class="Nav4">
-                            <li class="BGList"><a>Edit profile</a></li>
+                            <li class="BGList"><a href="profile/<?php echo Yii::$app->user->id; ?>">Edit profile</a></li>
                             <li><a href="site/logout">Log out</a></li>
                     </ul>
 
@@ -102,17 +102,10 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/msg.png" ?>" alt="" class="img-fluid Msg">
                         <?php
 $questions = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0])->count();
-
-    $monday = Common::getLastMondaySaturday("monday");
-    $saturday = Common::getLastMondaySaturday("saturday");
-    $query = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
-    $query->andWhere(['between', 'created_at', $monday, $saturday]);
-    $questionCount = $query->count();
-    $limit = 10
     ?>
                         <p>Remaining Number of Questions
                             Allowed for the Week
-                            <?php echo ($limit - $questionCount) ?> out of 10</p>
+                            <?php echo Common::get_remaining_questions_per_week(Yii::$app->user->id); ?> out of 10</p>
                             </div>
 
 <?php if (!empty($questions)) {
@@ -255,7 +248,7 @@ $exclude_first = array_shift($unanswered_by);
                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
                             <li><a href="#menu1"  data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
                             <li><a href="#menu2"  data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
-                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="get_citizen_list()" class="show">Citizens</a></li>
+                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
                         </ul>
                     </nav>
 
@@ -293,6 +286,7 @@ Breadcrumbs::widget([
                             <h3>PUBLIC Questions</h3>
                             </div>
                             <input type='hidden' id='pageQuestion' value='0'>
+                            <input type='hidden' id='questions_url' value="<?php echo Yii::getAlias("@web") . '/site/load-more-questions'; ?>">
                             <input type='hidden' id='filterQuestion2' value=''>
                             <div id='unanswered_questions'>
                             </div>
@@ -339,17 +333,21 @@ Breadcrumbs::widget([
                           <div class="FilterBar CitizenBar d-flex align-items-end justify-content-between">
                                 <span>Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
                                 <nav class="Nav2 Nav6">
-                                    <ul class="d-flex align-items-center justify-content-start nav Nav6Ul">
-                                        <li class="FilterActive"><a>Engagement </a></li>
-                                        <li><a>Current City</a></li>
-                                        <li><a>Sex</a></li>
-                                        <li><a>Age</a></li>
-                                    </ul>
+                                       <ul class="d-flex align-items-center justify-content-start nav">
+                                            <li class="FilterActive"><a onClick="AjaxCallSortCitizen('engagement')">Engagement </a></li>
+                                            <li><a onClick="AjaxCallSortCitizen('city')" >Current City</a></li>
+                                            <li><a onClick="AjaxCallSortCitizen('sex')">Sex</a></li>
+                                            <li><a onClick="AjaxCallSortCitizen('age')">Age</a></li>
+                                            <input type='hidden' id='sort_citizen' value='asc'>
+                                            <input type='hidden' id='sortby_citizen' value=''>
+                                            <input type='hidden' id='page_citizen' value='1'>
+                                        </ul>
+
 
                                 </nav>
                               <span>Show Citizens You follow</span>
                                 <div class="SearchMps SearchCitizen">
-                                    <input type="search" placeholder="Search Citizen" class="SearchMp Citizen"><i class="fa fa-search"></i>
+                                    <input type="search" placeholder="Search Citizen" class="SearchMp Citizen" id="search_citizen" onkeypress="AjaxCallSearchCitizen(event)"><i class="fa fa-search"></i>
                                 </div>
                             </div>
                             </div>

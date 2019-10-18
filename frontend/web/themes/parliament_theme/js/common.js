@@ -92,6 +92,7 @@ function myFunction1(id) {
   var moreText = document.getElementById("more"+id);
   var moreText2 = document.getElementById("more2"+id);
   var btnText = document.getElementById("myBtn1"+id);
+  
   if (dots.style.display === "none") {
     dots.style.display = "inline";
     btnText.innerHTML = "Read more"; 
@@ -114,6 +115,16 @@ function sortBy()
     $("#sort").val("asc");
   }
   return $("#sort").val();
+}
+function sortByCitizen()
+{
+  var sort = $("#sort_citizen").val();
+  if(sort == "asc"){
+    $("#sort_citizen").val("desc");
+  }else{
+    $("#sort_citizen").val("asc");
+  }
+  return $("#sort_citizen").val();
 }
 function AjaxCallSort(dataValue)
 {
@@ -139,17 +150,43 @@ function AjaxCallSort(dataValue)
      }
   });
 }
+function AjaxCallSortCitizen(dataValue)
+{
+    $("#citizensList").show();
+    var sortdir = sortByCitizen();
+    var search = $('#search_citizen').val();
+    $("#page_citizen").val(1);
+    $('#sortby_citizen').val(dataValue);
+         //console.log(dataValue+"-"+search+"-"+sortdir);
 
+    $.ajax({
+     url: "site/get-citizen-list",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: dataValue, 
+               sortdir:sortdir,
+               search : search,
+               page: 1
+
+           },
+     success: function (response) {
+       $('#citizensList').html(response.data);
+     }
+  });
+}
 function QuestionAnswer()
 {
   var nextpage = $("#pageQuestion").val();
   var filter = $("#filterQuestion").val();
   var filter2 = $("#filterQuestion2").val();
   var search = $("#filterSearch").val();
+ // var url = $('#questions_url').val();
+  $("#citizensList").hide();
 
   $("#pageQuestion").val(++nextpage);
       $.ajax({
-     url: "site/load-more-questions",
+     url: 'site/load-more-questions',
      type: 'post',
      dataType: 'json',
      data: {
@@ -241,6 +278,31 @@ function AjaxCallSearch(e)
   });
   }
 }
+function AjaxCallSearchCitizen(e)
+{
+   if (e.keyCode == 13) {
+    var sortdir = $("#sort_citizen").val();
+    var sortby = $("#sortby_citizen").val();
+    var page = $("#page_citizen").val();
+    var search = $('#search_citizen').val();
+/*console.log(search+"-"+sortby+"-"+sortdir);
+return false;*/
+    $.ajax({
+     url: "site/get-citizen-list",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: sortby, 
+               sortdir:sortdir,
+               search: search, 
+               page: page
+           },
+     success: function (response) {
+      $('#citizensList').html(response.data);
+     }
+  });
+  }
+}
 function getPage(flag)
 {
   if(flag=='next'){
@@ -273,6 +335,40 @@ function getPage(flag)
            },
      success: function (data) {
          $('#list_mp').html(data);
+     }
+  });
+}
+function getPageCitizen(flag)
+{
+  $('#citizensList').show();
+     var page = $("#page_citizen").val();
+  if(flag=='next'){
+     $("#page_citizen").val(++page);
+     /*$(".carousel-control-next-icon").attr("page",page);*/
+  }
+  else
+  {
+     $("#page_citizen").val(--page);
+     /*$(".carousel-control-prev-icon").attr("page",page);*/
+  }
+  $("#page_citizen").val(page);
+  var sortdir = $("#sort_citizen").val();
+    var sortby = $("#sortby_citizen").val();
+    var page = $("#page_citizen").val();
+    var search = $('#search_citizen').val();
+
+    $.ajax({
+     url: "site/get-citizen-list",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: sortby, 
+               sortdir:sortdir,
+               search: search, 
+               page: page
+           },
+     success: function (response) {
+         $('#citizensList').html(response.data);
      }
   });
 }
@@ -336,20 +432,22 @@ function show_mp_list(id){
       $("#OnhoverMP"+id).hide();
 });
 }
-function get_citizen_list(){
+/*function get_citizen_list(){
+    $("#citizensList").show();
+
    $.ajax({
      url: "site/get-citizen-list",
      type: 'post',
      dataType: 'json',
      data: {
-               comment: 123, 
+               page: 1, 
               // question_id:question_id,
            },
      success: function (response) {
       $('#citizensList').html(response.data);
      }
   });
-}
+}*/
 $(document).ready(function() {
                 QuestionAnswer();
                 $(window).scroll(function() {
@@ -706,13 +804,13 @@ $(document).ready(function(){
   //$('.one').click(function() {
 $(document).on('click', '.one', function () {
     var id = $(this).attr('id');
-    $(".Menu1").removeClass("Option1");
+    $(".menu_report").removeClass("Option1");
               $("#menu"+id).toggleClass("Option1");
               $(this).toggleClass("Option2");
             });
     
     $("body").click(function() {
-                $(".Menu1").removeClass("Option1");
+                $(".menu_report").removeClass("Option1");
             });
             $(".one").click(function() {
                 event.stopPropagation();

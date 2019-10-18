@@ -95,7 +95,7 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
         <div class="ViewMoreIcon">
           <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one" id="<?php echo $question['id']; ?>">
           <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
-          <div class="Menu1" id="<?php echo 'menu' . $question['id']; ?>">
+          <div class="Menu1 menu_report" id="<?php echo 'menu' . $question['id']; ?>">
             <ul class="d-flex align-items-center justify-content-center flex-column">
               <li class="active1" data-toggle="modal" data-target="#myModal<?php echo $question['id'] ?>"><a>Report</a></li>
               <?php if (($user->role_id == Yii::$app->params['userroles']['user_agent']) && ($question['user_agent_id'] == Yii::$app->user->id)) {?>

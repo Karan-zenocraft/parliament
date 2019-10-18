@@ -1892,4 +1892,14 @@ class Common
             return $mp_name;
         }
     }
+    public static function get_remaining_questions_per_week($user_id)
+    {
+        $monday = Common::getLastMondaySaturday("monday");
+        $saturday = Common::getLastMondaySaturday("saturday");
+        $query = Questions::find()->where(['user_agent_id' => $user_id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
+        $query->andWhere(['between', 'created_at', $monday, $saturday]);
+        $questionCount = $query->count();
+        $limit = 10;
+        return ($limit - $questionCount);
+    }
 }

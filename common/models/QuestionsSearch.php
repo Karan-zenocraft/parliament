@@ -2,9 +2,9 @@
 
 namespace common\models;
 
+use common\models\Questions;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Questions;
 
 /**
  * QuestionsSearch represents the model behind the search form of `common\models\Questions`.
@@ -40,7 +40,7 @@ class QuestionsSearch extends Questions
      */
     public function search($params)
     {
-        $query = Questions::find();
+        $query = Questions::find()->where("is_delete != '1'");
 
         // add conditions that should always apply here
 

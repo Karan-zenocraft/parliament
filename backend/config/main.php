@@ -60,6 +60,10 @@ return [
                 'create-user' => 'users/create',
                 'update-user/<id>' => 'users/update',
                 'delete-user/<id>' => 'users/delete',
+                'manage-representatives' => 'representatives/index',
+                'create-representative' => 'representatives/create',
+                'update-representative/<id>' => 'representatives/update',
+                'delete-representative/<id>' => 'representatives/delete',
             ],
         ],
         'request' => [

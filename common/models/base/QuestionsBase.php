@@ -61,7 +61,7 @@ class QuestionsBase extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_agent_id' => 'User Agent ID',
+            'user_agent_id' => 'Citizen',
             'question' => 'Question',
             'mp_id' => 'MP',
             'status' => 'Status',
