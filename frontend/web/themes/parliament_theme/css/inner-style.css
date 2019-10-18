@@ -668,3 +668,58 @@ border-radius: 30px;text-transform: uppercase;margin-top: 2px;margin-left: -2px;
     transition: background-color 1s;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li{cursor: pointer;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Title{word-break: break-all}
+
+
+
+
+/*10-17-2019*/
+
+
+
+/*.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .UsersImg .One{position: absolute;top: 0;right: -18px;}*/
+.UsersImg .Absolute .Img4{display: none}
+#report textarea:focus{outline: none!important;box-shadow: none!important;}
+
+/*18-10-2019*/
+
+
+.modal-header .close:focus{outline: none;}
+.Report .SubmitReportBtn:focus{outline: none;}
+.Main .MainCenter .Ask .AskButton:focus{box-shadow: none!important;;outline: none!important;;border-color: #D17C0D!important;;background-color: #fff!important;color: #D17C0D!important;transition: 0.25s all;}
+.select2-results__option {
+    font-size: 10px!important;
+}
+.select2-results__option {
+    padding: 6px!important;}
+.GiveAnswer .CommentsBox .CommentList .Commented .CommentedCaption{word-break: break-all}
+#comments .required{margin-bottom: 0px;}
+#comments .form-group{margin-bottom: 0px!important;padding: 0px 3px;}
+header .HeaderBottomCenter .Search{text-align: center!important;}
+/*
+.select2-container--open{right: 1116px!important;width: 333px!important;
+    left: unset!important;}
+*/
+header .HeaderBottomCenter .Icons{margin-right: unset;margin-left: unset}
+header .HeaderBottomCenter .Search{width: 495px!important}
+header .HeaderBottomCenter .Search{margin-right: auto;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon{right: 25px;}
+.select2-selection--multiple{max-width: 80%!important}
+.Ask .help-block{width: 33%;display: block;margin-left: auto;}
+/*header .HeaderBottomCenter .Icons .IconBoxs{margin-right: auto;margin-left: 65px;}*/
+header .HeaderBottomCenter .People{height: 162px!important;width: 162px!important;}
+.OnhoverGroup{cursor: pointer;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: unset;padding-left: 8px;padding-right: 40px;padding-top: 3px;padding-bottom: 3px;
+    margin-top: 25px;left: unset;right: 0;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 10px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li{line-height: 0;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{margin-right: 5px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .MP{margin-right: 5px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p{font-size: 18px;}
+header .HeaderBottomCenter .Icons{padding-right: 50px!important}
+.load_more .text-dark{color: #fff!important;
+    margin-left: 3px!important;width: 14px!important;
+    height: 14px!important;display: none;}
+.load_more .showspinner{display: block!important}
+.carousel-caption .Row1 .RowBox .Dimmer:before{z-index: 99;}
+header .HeaderBottomCenter .UlSetting{width: 90%;top: 105%}
+header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -63px;}

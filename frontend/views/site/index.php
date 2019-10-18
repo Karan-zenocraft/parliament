@@ -49,7 +49,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
       </ul>
     </nav>
     <div class="SearchMps">
-      <input type="search" value="" onkeypress="AjaxCallSearch(event)" placeholder="Search MPs" id='searchMP' class="SearchMp"><i class="fa fa-search"></i>
+      <input type="text" value="" onkeypress="AjaxCallSearch(event)" placeholder="Search MPs" id='searchMP' class="SearchMp"><i class="fa fa-search"></i>
     </div>
   </div>
   <div class="tab-content clearfix">
@@ -69,7 +69,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
             ?>
                   <div class="RowBox d-flex align-items-center justify-content-start col-md-4 p-0">
                     <?php $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";?>
-                    <div class="DimmerBox" id="<?php echo "mp_" . $value['id'] ?>"><img src="<?php echo $user_image; ?>" alt="" class="img-fluid SliderImage"></div>
+                    <div class="DimmerBox" id="<?php echo "mp_" . $value['id'] ?>"><img src="<?php echo $user_image; ?>" alt="" class="rounded-circle SliderImage"></div>
                     <a href="#"><div class="RowTitle">
                       <p><?php echo $value['user_name']; ?></p>
                       <p><span><?php echo $value['standing_commitee']; ?><br>
@@ -117,7 +117,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 <div class="GiveAnswer AskFollowUpBox">
   <div class="AskFollowUp">
     <div class="Profile">
-      <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+      <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="rounded-circle">
       <div class="UserTitle">
         <a href="#"><p>Fitsum Hailu</p></a>
       </div>
@@ -134,14 +134,14 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
     <div class="CommentsBox">
       <div class="comments">
         <div class="EnterComments d-flex align-items-center justifyu-content-center">
-          <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+          <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="rounded-circle">
           <input type="text" class="AddComment" placeholder="Add a comment">
           <a href=""><i class="fa fa-paper-plane"></i></a>
         </div>
       </div>
       <ul class="CommentList">
         <li class="d-flex align-items-start justify-content-start">
-          <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="img-fluid"></div>
+          <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="rounded-circle"></div>
           <div class="Commented">
             <p class="CommentedUser">Abebe Kebede</p>
             <p class="CommentedCaption">sdkfhsdj sdkfjsdk sd; sdkjf asdkl fjasd;fjsd;kl fasd;klfjasd ;fjasdklfjas;kl fjas;dlfjasd;lk</p>
@@ -157,7 +157,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
   <div class="GiveAnswer AnswerQuestionBox">
     <div class="AskFollowUp">
       <div class="Profile">
-        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="rounded-circle">
         <div class="UserTitle">
           <a href="#"><p>Fitsum Hailu</p></a>
         </div>
@@ -174,14 +174,14 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
       <div class="CommentsBox">
         <div class="comments">
           <div class="EnterComments d-flex align-items-center justifyu-content-center">
-            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
+            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="rounded-circle">
             <input type="text" class="AddComment" placeholder="Add a comment">
             <a href=""><i class="fa fa-paper-plane"></i></a>
           </div>
         </div>
         <ul class="CommentList">
           <li class="d-flex align-items-start justify-content-start">
-            <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="img-fluid"></div>
+            <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="rounded-circle"></div>
             <div class="Commented">
               <p class="CommentedUser">Abebe Kebede</p>
               <p class="CommentedCaption">sdkfhsdj sdkfjsdk sd; sdkjf asdkl fjasd;fjsd;kl fasd;klfjasd ;fjasdklfjas;kl fjas;dlfjasd;lk</p>
