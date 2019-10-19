@@ -105,7 +105,6 @@ class SiteController extends FrontCoreController
             $model->user_agent_id = Yii::$app->user->id;
             $model->mp_id = implode(",", $postData['Questions']['mp_id']);
             $model->save();
-            Yii::$app->session->setFlash('success', Yii::getAlias('@question_add_message'));
             return $this->redirect(['site/index']);
             //return ActiveForm::validate($model);
         } else {
