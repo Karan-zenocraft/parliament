@@ -77,7 +77,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                         <!--new html-->
 
                         <ul class="Nav4">
-                            <li class="BGList"><a href="/parliament?user_id=<?php echo Yii::$app->user->id; ?>">Edit profile</a></li>
+                            <li class="BGList"><a href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id; ?>">Edit profile</a></li>
                             <li><a href="site/logout">Log out</a></li>
                     </ul>
 
