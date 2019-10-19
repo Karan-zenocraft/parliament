@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
 <div class="span3 style_input_width">
     <?=$form->field($model, 'age')->textInput()?></div>
 <div class="span3 style_input_width">
-    <?=$form->field($model, 'education')->textInput(['maxlength' => true])?></div>
+    <?=$form->field($model, 'education')->textInput()?></div>
 </div>
 <div class="row">
      <div class="span3 style_input_width">
@@ -44,6 +44,8 @@ use yii\widgets\ActiveForm;
             <div class="span3 style_input_width">
             <?=$form->field($model, 'gender')->radioList(Yii::$app->params['gender']);?>
         </div>
+        <div class="span3 style_input_width">
+    <?=$form->field($model, 'work')->textInput()?></div>
         </div>
         <div class="row">
 <div class="span3">
