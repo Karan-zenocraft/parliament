@@ -15,7 +15,9 @@ use common\components\Common;
 $user = Common::get_name_by_id($user_id, "Users");
 ?>
   <div class="ProfileLeft">
-    <div class="EditProfiles"><a href="#" class="EditProfileBtn">EDIt</a></div>
+    <div class="EditProfiles">
+      <a href="#" data-toggle="modal" data-target="#editProfile" class="EditProfileBtn">EDIt</a>
+    </div>
     <div class="User">
       <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle">
       <p><?php echo $user['name']; ?></p>
@@ -41,5 +43,30 @@ $user = Common::get_name_by_id($user_id, "Users");
         <li><a href="#">Questions you have made louder</a></li>
         <li><a href="#">Questions you have not answered (for MPs)</a></li>
       </ul>
+    </div>
+  </div>
+  <div class="modal fade Report" id="editProfile">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h6 class="modal-title">Edit profile</h6>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control col-md-8" name="work" value="">
+            </div>
+            <div class="form-group">
+              <input type="text" name="work"  class="form-control  col-md-8" value="">
+            </div>
+            <div class="SubmitReport">
+              <input type="button" name="save" class="SubmitReportBtn" value="save">
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>

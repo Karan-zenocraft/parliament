@@ -325,10 +325,10 @@ Breadcrumbs::widget([
                 <div class="col-md-3 cus-md-3 MainRight">
                     <nav>
                         <ul class="d=flex align-items-center justify-content=center flex-direction-column">
-                            <li><a href="#">Community Guidelines </a></li>
-                            <li><a href="#">Announcements</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                            <li><a href="#">About Bridge</a></li>
+                            <li><a href="https://b4p.et/community-guidelines/">Community Guidelines </a></li>
+                            <li><a href="https://b4p.et/announcements/">Announcements</a></li>
+                            <li><a href="https://b4p.et/terms-of-use/">Terms of Use</a></li>
+                            <li><a href="https://b4p.et/about-bridge">About Bridge</a></li>
                         </ul>
                     </nav>
 

@@ -7,6 +7,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 // FontAwesomeAsset::register($this);
 ?>
+
+
 <div id="home" class="tab-pane active show Flex">
   <?php
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
