@@ -125,9 +125,8 @@ class UsersController extends AdminCoreController
         $UserRolesDropdown = ArrayHelper::map(UserRoles::find()->where("id !=" . Yii::$app->params['userroles']['admin'])->asArray()->all(), 'id', 'role_name');
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $postData = Yii::$app->request->post();
-            $model->password = md5($postData['Users']['password']);
 
-            if ($postData['Users']['role_id'] == Yii::$app->params['userroles']['MP']) {
+            if ($postData['Users']['role_id'] == Yii::$app->params['userroles']['user_agent']) {
                 $model->years_hopr = "";
                 $model->standing_commitee = "";
             } else {

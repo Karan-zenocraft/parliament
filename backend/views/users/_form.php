@@ -25,7 +25,9 @@ use yii\widgets\ActiveForm;
  <div class="span3 style_input_width"><?=$form->field($model, 'name')->textInput(['maxlength' => true])?></div>
 </div>
 <div class="row">
+    <?php if ($model->isNewRecord) {?>
     <div class="span3 style_input_width"><?=$form->field($model, 'password')->passwordInput(['maxlength' => true])?></div>
+<?php }?>
         <div class="span3 style_input_width">
     <?=$form->field($model, 'city')->textInput()?></div>
 <div class="span3 style_input_width">
@@ -69,14 +71,14 @@ use yii\widgets\ActiveForm;
         $("#photo").change(function() {
         readURL(this);
         });
-        if($("#users-role_id").val() =="<?php echo Yii::$app->params['userroles']['user_agent']; ?>"){
+        if($("#users-role_id").val() =="<?php echo Yii::$app->params['userroles']['MP']; ?>"){
              $(".pickup_row").show();
         }else{
             $(".pickup_row").hide();
         }
         $("#users-role_id").change(function(){
         var role = $(this).val();
-        if(role == "<?php echo Yii::$app->params['userroles']['user_agent']; ?>"){
+        if(role == "<?php echo Yii::$app->params['userroles']['MP']; ?>"){
             $(".pickup_row").show();
         }else{
             $(".pickup_row").hide();
