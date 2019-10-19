@@ -1,4 +1,3 @@
-
 <?php
 // use kartik\icons\FontAwesomeAsset;
 use common\components\Common;
@@ -7,16 +6,12 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 // FontAwesomeAsset::register($this);
 ?>
-
-
 <div id="home" class="tab-pane active show Flex">
   <?php
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
 if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
     ?>
-
-<?php// p($errors, 0);?>
-
+  <?php// p($errors, 0);?>
   <div class="Ask hideHome">
     <?php $form = ActiveForm::begin(['id' => 'question-form']);?>
     <?php
@@ -30,10 +25,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
             'maximumInputLength' => 10,
         ],
     ])->label(false); ?>
-
     <?=$form->field($model, 'question')->textArea(['maxlength' => true, "class" => "AskQuestion", "placeholder" => "Ask your Question. Get involved", "onkeyup" => "countChar(this)"])->label(false);?>
-
-
     <div class="form-group d-flex align-items-center justify-content-end">
       <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton d-flex order-1'])?>
       <div id="charNum" class="d-flex order-0" style="float: right;">0/540</div>
@@ -48,10 +40,6 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         <li><a onClick="AjaxCallSort('city')" >Current City</a></li>
         <li><a onClick="AjaxCallSort('sex')">Sex</a></li>
         <li><a onClick="AjaxCallSort('age')">Age</a></li>
-        <input type='hidden' id='sort' value='asc'>
-        <input type='hidden' id='sortby' value=''>
-        <input type='hidden' id='page' value='1'>
-        <input type='hidden' id='user_id' value="<?php echo !empty($_REQUEST['user_id']) ? $_REQUEST['user_id'] : Yii::$app->user->id ?>">
       </ul>
     </nav>
     <div class="SearchMps hideHome">
@@ -92,14 +80,14 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
           </div>
         </div>
       </div>
-    <!--   <span class="carousel-control-prev-icon" onclick="getPage('prev')" aria-hidden="true"></span>
+      <!--   <span class="carousel-control-prev-icon" onclick="getPage('prev')" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
       <span class="carousel-control-next-icon" onclick="getPage('next')"  aria-hidden="true"></span> -->
       <div class="SliderArrowHomeFeed">
-     <img class="Arrow_Left" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>"  onclick="getPage('prev')" aria-hidden="true">
-     <span class="sr-only">Previous</span>
-     <img class="Arrow_Right" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" onclick="getPage('next')"  aria-hidden="true">
-       </div>
+        <img class="Arrow_Left" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>"  onclick="getPage('prev')" aria-hidden="true">
+        <span class="sr-only">Previous</span>
+        <img class="Arrow_Right" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" onclick="getPage('next')"  aria-hidden="true">
+      </div>
       <?php }?>
       <?php //Pjax::end();?>
     </div>
@@ -107,19 +95,17 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 </div>
 <?php }?>
-
- <div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between showHome" style="display:none !important ">
-      <nav class="Nav2 Nav5 showHome">
-          <ul class="d-flex align-items-center justify-content-start nav showHome">
-              <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-             <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
-          </ul>
-      </nav>
-   <!--    <div class="SearchMps SearchAnswredMps">
-          <input type="search" placeholder="Search UnAnswered Questions" class="SearchMp AnswredQ"><i class="fa fa-search"></i>
-      </div> -->
-  </div>
-
+<div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between showHome" style="display:none !important ">
+<nav class="Nav2 Nav5 showHome">
+  <ul class="d-flex align-items-center justify-content-start nav showHome">
+    <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+    <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
+  </ul>
+</nav>
+<!--    <div class="SearchMps SearchAnswredMps">
+  <input type="search" placeholder="Search UnAnswered Questions" class="SearchMp AnswredQ"><i class="fa fa-search"></i>
+</div> -->
+</div>
 <div class="QuestionAnswer">
 <!-- QUESTIONS AND ANSWER SECTION START-->
 <div class="QuestionAnswerTitle Public">
@@ -127,11 +113,14 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 <input type='hidden' id='pageQuestion' value='0'>
 <input type='hidden' id='filterQuestion' value=''>
+<input type='hidden' id='sort' value='asc'>
+<input type='hidden' id='sortby' value=''>
+<input type='hidden' id='page' value='1'>
+<input type='hidden' id='user_id' value="<?php echo !empty($_REQUEST['user_id']) ? $_REQUEST['user_id'] : Yii::$app->user->id ?>">
 <div id='ajaxQuestion'>
 </div>
- <br><center><button class="load_more" id="loadmoreData" onclick="QuestionAnswer()" >Load More</button></center>
+<br><center><button class="load_more" id="loadmoreData" onclick="QuestionAnswer()" >Load More</button></center>
 <!-- QUESTIONS AND ANSWER SECTION END-->
-
 <!---------new-content----------------->
 <div class="GiveAnswer AskFollowUpBox">
   <div class="AskFollowUp">
