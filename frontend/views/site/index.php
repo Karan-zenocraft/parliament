@@ -1,9 +1,9 @@
+
 <?php
 // use kartik\icons\FontAwesomeAsset;
 use common\components\Common;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 // FontAwesomeAsset::register($this);
 ?>
@@ -13,10 +13,10 @@ $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
 if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
     ?>
 
+<?php// p($errors, 0);?>
 
-
-  <div class="Ask">
-    <?php $form = ActiveForm::begin(['id' => 'question-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true, 'validationUrl' => Url::toRoute('site/index')]);?>
+  <div class="Ask hideHome">
+    <?php $form = ActiveForm::begin(['id' => 'question-form']);?>
     <?php
 echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         'data' => $mp,
@@ -28,16 +28,19 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
             'maximumInputLength' => 10,
         ],
     ])->label(false); ?>
+
     <?=$form->field($model, 'question')->textArea(['maxlength' => true, "class" => "AskQuestion", "placeholder" => "Ask your Question. Get involved", "onkeyup" => "countChar(this)"])->label(false);?>
+
+
     <div class="form-group d-flex align-items-center justify-content-end">
       <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton d-flex order-1'])?>
       <div id="charNum" class="d-flex order-0" style="float: right;">0/540</div>
     </div>
     <?php ActiveForm::end();?>
   </div>
-  <div class="FilterBar d-flex align-items-end justify-content-between">
-    <span>Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
-    <nav class="Nav2">
+  <div class="hideHome FilterBar d-flex align-items-end justify-content-between ">
+    <span class="hideHome">Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
+    <nav class="Nav2 hideHome">
       <ul class="d-flex align-items-center justify-content-start nav">
         <li class="FilterActive"><a onClick="AjaxCallSort('engagement')">Engagement </a></li>
         <li><a onClick="AjaxCallSort('city')" >Current City</a></li>
@@ -48,11 +51,11 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         <input type='hidden' id='page' value='1'>
       </ul>
     </nav>
-    <div class="SearchMps">
+    <div class="SearchMps hideHome">
       <input type="text" value="" onkeypress="AjaxCallSearch(event)" placeholder="Search MPs" id='searchMP' class="SearchMp"><i class="fa fa-search"></i>
     </div>
   </div>
-  <div class="tab-content clearfix">
+  <div class="tab-content clearfix hideHome">
     <div id="Engagement" class="tab-pane active show">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" id="mp_rows">
@@ -101,6 +104,19 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 </div>
 <?php }?>
+
+ <div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between showHome" style="display:none !important ">
+      <nav class="Nav2 Nav5 showHome">
+          <ul class="d-flex align-items-center justify-content-start nav showHome">
+              <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+             <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
+          </ul>
+      </nav>
+   <!--    <div class="SearchMps SearchAnswredMps">
+          <input type="search" placeholder="Search UnAnswered Questions" class="SearchMp AnswredQ"><i class="fa fa-search"></i>
+      </div> -->
+  </div>
+
 <div class="QuestionAnswer">
 <!-- QUESTIONS AND ANSWER SECTION START-->
 <div class="QuestionAnswerTitle Public">

@@ -11,22 +11,28 @@ use yii\widgets\ActiveForm;
 <div class="questions-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
+    'action' => ['index'],
+    'method' => 'get',
+    'options' => [
+        'data-pjax' => 1,
+    ],
+]);?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'user_agent_id') ?>
-
-    <?= $form->field($model, 'question') ?>
-
-    <?= $form->field($model, 'mp_id') ?>
-
-    <?= $form->field($model, 'louder_by') ?>
+    <?php //$form->field($model, 'id')?>
+<div class="row">
+    <div class="span3 style_input_width">
+    <?=$form->field($model, 'user_agent_id')?>
+</div>
+    <div class="span3 style_input_width">
+    <?=$form->field($model, 'question')?>
+</div>
+</div>
+<div class="row">
+    <div class="span3 style_input_width">
+    <?=$form->field($model, 'mp_id')?>
+</div>
+</div>
+    <?php //$form->field($model, 'louder_by')?>
 
     <?php // echo $form->field($model, 'status') ?>
 
@@ -37,10 +43,10 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?=Html::submitButton('Search', ['class' => 'btn btn-primary'])?>
+        <?=Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary'])?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end();?>
 
 </div>

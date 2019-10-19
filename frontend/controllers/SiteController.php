@@ -23,7 +23,6 @@ use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\widgets\ActiveForm;
 
 /**
  * Site controller
@@ -100,14 +99,14 @@ class SiteController extends FrontCoreController
         $models = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             $postData = Yii::$app->request->post();
             $model->user_agent_id = Yii::$app->user->id;
             $model->mp_id = implode(",", $postData['Questions']['mp_id']);
             $model->save();
-            // Yii::$app->session->setFlash('success', Yii::getAlias('@question_add_message'));
-            return ActiveForm::validate($model);
+            return $this->redirect(['site/index']);
+            //return ActiveForm::validate($model);
         } else {
             $errors = $model->errors;
             if (!empty($errors) && !empty($errors['question'][0])) {
@@ -713,9 +712,9 @@ CHAR_LENGTH(REPLACE(louder_by, ',', '')) + 1) AS louderCount")->andwhere(['user_
             return json_encode($retArray);
         }
     }
-    public function actionProfile($user_id)
-    {
-        $this->layout = 'profile';
-        return $this->render('profile');
-    }
+    /*  public function actionProfile($user_id)
+{
+$this->layout = 'homefeed';
+return $this->render('profile');
+}*/
 }

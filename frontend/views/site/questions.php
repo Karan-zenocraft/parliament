@@ -53,10 +53,10 @@ if (!empty($modelsQuestions)) {
           <?php } else {
                 ?>
             <a href="#"><span class="MP"><?php echo $first_mp;
-                ?> and</span></a>
-              <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
+                ?></span></a>
+              and&nbsp;<a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
-          <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="rounded-circle">
+          <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
 
 <?php $exclude_first = array_shift($unanswered_by);?>
             <div class="Absolute">
@@ -66,7 +66,7 @@ if (!empty($modelsQuestions)) {
                 $user_mp_image = $user_mp['photo'];
                 $user_mp_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user_mp['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
                 ?>
-            <img class="Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="rounded-circle">
+            <img class="Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="img-fluid">
             <?php $i++;
             }?>
             </div>
@@ -218,15 +218,13 @@ if (!empty($question['answers'])) {?>
             <span>Comment</span><span class="Numbers" id="comments<?php echo $question['id'] ?>"><?php echo $comment_count; ?></span>
           </a>
         </div>
-<!--
-        <div class="Share" id="<?php echo $question['id']; ?>">
+       <!--  <div class="Share" id="<?php echo $question['id']; ?>">
         <?=\imanilchaudhari\socialshare\ShareButton::widget([
             'style' => 'horizontal',
             'networks' => ['facebook'],
             'data_via' => '', //twitter username (for twitter only, if exists else leave empty)
         ]);?>
-        </div>
--->
+        </div> -->
         <div class="Share" id="<?php echo $question['id']; ?>">
           <a data-toggle="modal" data-target="#myModal<?php echo $question['id']; ?>">
             <i class="fa fa-share-alt" aria-hidden="true"></i>
@@ -285,7 +283,7 @@ if (!empty($question['answers'])) {?>
                                 <div class="EnterComments d-flex align-items-center justifyu-content-center">
                                   <?php
 $current_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
-                                <img src="<?php echo $current_user_image; ?>" alt="" class="rounded-circle">
+                                <img src="<?php echo $current_user_image; ?>" alt="" class="img-fluid">
                                  <?php $model_comment = new Comments();
         $form3 = ActiveForm::begin(['id' => 'comments', 'enableAjaxValidation' => true, 'enableClientValidation' => true, 'action' => "javascript:void(0);" /*, 'validationUrl' => Url::toRoute('site/index')*/]);?>
 
@@ -311,7 +309,7 @@ $current_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads
                                   <?php
 $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
                 $commented_user_image = !empty($comment_user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $comment_user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png;"?>
-                                   <div class="CommentedProfile"> <img src="<?php echo $commented_user_image ?>" alt="" class="rounded-circle"></div>
+                                   <div class="CommentedProfile"> <img src="<?php echo $commented_user_image ?>" alt="" class="img-fluid"></div>
                                     <div class="Commented">
                                     <p class="CommentedUser"><?php echo Common::get_user_name($comment['user_agent_id']) ?></p>
                                     <p class="CommentedCaption"><?php echo $comment['comment_text']; ?></p>
