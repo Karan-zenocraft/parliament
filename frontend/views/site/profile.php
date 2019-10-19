@@ -1,5 +1,8 @@
 <?php
 use common\components\Common;
+use common\models\Users;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 ?>
 <nav class="Nav1 OnlySm">
   <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
@@ -15,9 +18,11 @@ use common\components\Common;
 $user = Common::get_name_by_id($user_id, "Users");
 ?>
   <div class="ProfileLeft">
+    <?php if (!empty($_REQUEST) && !empty($_REQUEST['user_id']) && ($_REQUEST['user_id'] == Yii::$app->user->id)) {?>
     <div class="EditProfiles">
       <a href="#" data-toggle="modal" data-target="#editProfile" class="EditProfileBtn">EDIt</a>
     </div>
+<?php }?>
     <div class="User">
       <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle">
       <p><?php echo $user['name']; ?></p>
@@ -39,9 +44,12 @@ $user = Common::get_name_by_id($user_id, "Users");
     </div>
     <div class="ListOfQuestions">
       <ul>
-        <li><a href="#">Questions you have asked</a></li>
-        <li><a href="#">Questions you have made louder</a></li>
-        <li><a href="#">Questions you have not answered (for MPs)</a></li>
+       <?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {?>
+      <li><a onclick="filterQuestion('myQue')"  href="#">Questions you have asked</a></li>
+      <li><a onclick="filterQuestion('myLouder')" href="#">Questions you have made louder</a></li>
+      <?php } else {?>
+      <li><a onclick="filterQuestion('mpNotAns')" href="#">Questions you have not answered (for MPs)</a></li>
+      <?php }?>
       </ul>
     </div>
   </div>
@@ -55,17 +63,28 @@ $user = Common::get_name_by_id($user_id, "Users");
         </div>
         <!-- Modal body -->
         <div class="modal-body">
-          <form>
+         <!--  <form>
             <div class="form-group">
+              <label>Work</label>
               <input type="text" class="form-control col-md-8" name="work" value="">
             </div>
             <div class="form-group">
+              <label>Education</labe>
               <input type="text" name="work"  class="form-control  col-md-8" value="">
             </div>
             <div class="SubmitReport">
               <input type="button" name="save" class="SubmitReportBtn" value="save">
             </div>
-          </form>
+          </form> -->
+          <?php $model = Users::findOne(Yii::$app->user->id);?>
+        <?php $form = ActiveForm::begin(['id' => 'profile-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true/*, 'validationUrl' => Url::toRoute('site/index')*/]);?>
+ <?=$form->field($model, 'education')->textArea(["class" => "form-control col-md-8 education_profile", 'value' => $model->education, "required" => true]);?>
+ <?=$form->field($model, 'work')->textArea(["class" => "form-control col-md-8 work_profile", 'value' => $model->work, "required" => true]);?>
+
+    <div class="form-group SubmitReport d-flex align-items-center justify-content-end">
+      <?=Html::submitButton('Save', ['class' => 'btn btn-success SubmitReportBtn d-flex order-1', "onclick" => "editProfile(" . $_REQUEST['user_id'] . ")"])?>
+    </div>
+    <?php ActiveForm::end();?>
         </div>
       </div>
     </div>

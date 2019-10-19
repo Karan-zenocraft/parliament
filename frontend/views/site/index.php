@@ -51,6 +51,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         <input type='hidden' id='sort' value='asc'>
         <input type='hidden' id='sortby' value=''>
         <input type='hidden' id='page' value='1'>
+        <input type='hidden' id='user_id' value="<?php echo !empty($_REQUEST['user_id']) ? $_REQUEST['user_id'] : Yii::$app->user->id ?>">
       </ul>
     </nav>
     <div class="SearchMps hideHome">

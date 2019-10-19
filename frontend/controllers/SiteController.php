@@ -432,7 +432,7 @@ class SiteController extends FrontCoreController
     public function actionLoadMoreQuestions()
     {
         if (!empty($_POST['page'])) {
-            $loginId = Yii::$app->user->id;
+            $loginId = $_POST['user_id'];
             $page = ($_POST['page'] - 1) * 5;
             $flagCond = !empty($_POST['filter']) ? $_POST['filter'] : "";
             $flagCond2 = !empty($_POST['filter2']) ? $_POST['filter2'] : "";
@@ -712,9 +712,24 @@ CHAR_LENGTH(REPLACE(louder_by, ',', '')) + 1) AS louderCount")->andwhere(['user_
             return json_encode($retArray);
         }
     }
-    /*  public function actionProfile($user_id)
-{
-$this->layout = 'homefeed';
-return $this->render('profile');
-}*/
+    public function actionEditProfile()
+    {
+        if (!empty($_POST)) {
+            $education = $_POST['education'];
+            $work = $_POST['work'];
+            $user_id = $_POST['user_id'];
+            $model = Users::findOne([$user_id]);
+            if (!empty($model)) {
+                $model->work = $work;
+                $model->education = $education;
+                $model->save(false);
+                $retData = array("msg" => "success");
+
+            } else {
+                $retData = array("msg" => "error");
+            }
+            return json_encode($retData);
+        }
+    }
+
 }

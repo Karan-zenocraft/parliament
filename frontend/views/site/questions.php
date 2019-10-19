@@ -225,11 +225,9 @@ if (!empty($question['answers'])) {?>
             'data_via' => '', //twitter username (for twitter only, if exists else leave empty)
         ]);?>
         </div> -->
-        <div class="Share" id="<?php echo $question['id']; ?>">
-          <a data-toggle="modal" data-target="#myModal<?php echo $question['id']; ?>">
+        <div class="Share" id="<?php echo $question['id']; ?>" onclick="facebook_share('<?php echo $question['question']; ?>','','','')" data-question="<?php echo $question['question']; ?>">
             <i class="fa fa-share-alt" aria-hidden="true"></i>
             <span>Share</span><span class="Numbers">100</span>
-          </a>
         </div>
 
 <div class="modal fade Report" id="myModal<?php echo $question['id']; ?>">

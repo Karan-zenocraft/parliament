@@ -181,7 +181,7 @@ function QuestionAnswer()
   var filter = $("#filterQuestion").val();
   var filter2 = $("#filterQuestion2").val();
   var search = $("#filterSearch").val();
- // var url = $('#questions_url').val();
+  var user_id = $('#user_id').val();
   $("#citizensList").hide();
 
   $("#pageQuestion").val(++nextpage);
@@ -193,7 +193,8 @@ function QuestionAnswer()
             page:nextpage,
             filter:filter,
             filter2:filter2,
-            search:search
+            search:search,
+            user_id:user_id
            },
      success: function (response) {
 
@@ -416,6 +417,59 @@ function show_mp_list(id){
       $("#OnhoverMP"+id).hide();
 });
 }
+function editProfile(user_id)
+{
+  var education = $.trim($('.education_profile').val());
+  var work = $.trim($('.work_profile').val());
+   $.ajax({
+     url: "site/edit-profile",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               education: education, 
+               work:work,
+               user_id:user_id
+           },
+     success: function (data) {
+      if(data.msg == "success"){
+         location.reload();
+      }else{
+         alert("There is some problem to updatating the profile")
+         location.reload();
+      }
+     }
+  });
+}
+function facebook_share(title, desc, url, image){
+ postToFeed(title, desc, url, image);
+}
+
+
+
+
+  window.fbAsyncInit = function(){
+FB.init({
+    appId: '465073670768272', status: true, cookie: true, xfbml: true }); 
+};
+(function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if(d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; 
+    js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+    ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+
+function postToFeed(title, desc, url, image){
+var obj = {
+            method: 'feed',
+            link: "http://ask.zenocraft.com", 
+            picture: 'http://ask.zenocraft.com/uploads/IMG-20180804-WA0001_5dab09cb6270f.jpg',
+            name: title,
+            description: title
+          };
+function callback(response){}
+FB.ui(obj, callback);
+}
+
+
 /*function get_citizen_list(){
     $("#citizensList").show();
 
