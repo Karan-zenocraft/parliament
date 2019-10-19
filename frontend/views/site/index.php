@@ -1,3 +1,4 @@
+
 <?php
 // use kartik\icons\FontAwesomeAsset;
 use common\components\Common;
@@ -13,10 +14,10 @@ $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
 if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
     ?>
 
-
+<?php// p($errors, 0);?>
 
   <div class="Ask">
-    <?php $form = ActiveForm::begin(['id' => 'question-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true, 'validationUrl' => Url::toRoute('site/index')]);?>
+    <?php $form = ActiveForm::begin(['id' => 'question-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true, 'validationUrl' => Url::toRoute('site/index'), 'validateOnSubmit' => true]);?>
     <?php
 echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         'data' => $mp,
@@ -28,7 +29,11 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
             'maximumInputLength' => 10,
         ],
     ])->label(false); ?>
+    <?php echo (!empty($errors) && !empty($errors['mp_id'])) ? $errors['mp_id'][0] : ""; ?>
     <?=$form->field($model, 'question')->textArea(['maxlength' => true, "class" => "AskQuestion", "placeholder" => "Ask your Question. Get involved", "onkeyup" => "countChar(this)"])->label(false);?>
+    <?php echo !empty($errors['question']) ? $errors['question'][0] : ""; ?>
+<?php echo Html::error($model, 'question', ['class' => 'help-block']); ?>
+
     <div class="form-group d-flex align-items-center justify-content-end">
       <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton d-flex order-1'])?>
       <div id="charNum" class="d-flex order-0" style="float: right;">0/540</div>

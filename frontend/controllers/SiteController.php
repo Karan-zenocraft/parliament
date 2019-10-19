@@ -713,9 +713,9 @@ CHAR_LENGTH(REPLACE(louder_by, ',', '')) + 1) AS louderCount")->andwhere(['user_
             return json_encode($retArray);
         }
     }
-    public function actionProfile($user_id)
-    {
-        $this->layout = 'profile';
-        return $this->render('profile');
-    }
+    /*  public function actionProfile($user_id)
+{
+$this->layout = 'homefeed';
+return $this->render('profile');
+}*/
 }

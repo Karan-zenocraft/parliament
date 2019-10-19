@@ -1,100 +1,45 @@
 <?php
-// use kartik\icons\FontAwesomeAsset;
-// FontAwesomeAsset::register($this);
+use common\components\Common;
 ?>
-<div id="home" class="tab-pane active show Flex">
-<div class="QuestionAnswer">
-<!-- QUESTIONS AND ANSWER SECTION START-->
-<div class="QuestionAnswerTitle Public">
-  <h3>PUBLIC Questions</h3>
-</div>
-<input type='hidden' id='pageQuestion' value='0'>
-<input type='hidden' id='filterQuestion' value=''>
-<div id='ajaxQuestion'>
-</div>
- <br><center><button class="load_more" id="loadmoreData" onclick="QuestionAnswer()" >Load More</button></center>
-<!-- QUESTIONS AND ANSWER SECTION END-->
-
-<!---------new-content----------------->
-<div class="GiveAnswer AskFollowUpBox">
-  <div class="AskFollowUp">
-    <div class="Profile">
-      <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
-      <div class="UserTitle">
-        <a href="#"><p>Fitsum Hailu</p></a>
-      </div>
+<nav class="Nav1 OnlySm">
+  <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
+    <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
+    <li><a href="#menu1"  data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+    <li><a href="#menu2"  data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+    <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
+  </ul>
+</nav>
+<a href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
+<div class="MainLeftInner EditProfileMain">
+  <?php $user_id = !empty($_REQUEST['user_id']) ? $_REQUEST['user_id'] : Yii::$app->user->id;
+$user = Common::get_name_by_id($user_id, "Users");
+?>
+  <div class="ProfileLeft">
+    <div class="EditProfiles"><a href="#" class="EditProfileBtn">EDIt</a></div>
+    <div class="User">
+      <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle">
+      <p><?php echo $user['name']; ?></p>
+      <h3><?php echo $user['user_name']; ?></h3>
+      <p class="Title">Coder</p>
     </div>
-    <div class="AskFollowUpTitle">
-      <p>ask a follow up</p>
+    <nav class="EditProfile">
+      <ul>
+        <li><span class="Title">From </span> <span class="TitleBold"> <?php echo $user['city']; ?></span> </li>
+        <li><span class="Title">Education </span> <span class="TitleBold"><?php echo $user['education']; ?></span> </li>
+        <li><span class="Title">Work </span> <span class="TitleBold"> Head of Accounting at AU</span> </li>
+        <li><span class="Title">Joined </span> <span class="TitleBold"><?php echo date("M Y", strtotime($user['created_at'])); ?></span> </li>
+        <li><span class="TitleBold"> <?php echo Yii::$app->params['gender'][$user['gender']]; ?></span></li>
+        <li> <span class="TitleBold"> 1988</span> </li>
+        <li><span class="Title"> Remaining Number of Questions
+          Allowed for the Week: </span> <span class="TitleBold">  <?php echo Common::get_remaining_questions_per_week($user_id); ?> out of 10</span> </li>
+        </ul>
+      </nav>
     </div>
-    <div class="AskFollowUpAnswerBox">
-      <textarea> </textarea>
-    </div>
-    <div class="AskFollowUpSubmit">
-      <a href="" class="">Submit</a></div>
-    </div>
-    <div class="CommentsBox">
-      <div class="comments">
-        <div class="EnterComments d-flex align-items-center justifyu-content-center">
-          <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
-          <input type="text" class="AddComment" placeholder="Add a comment">
-          <a href=""><i class="fa fa-paper-plane"></i></a>
-        </div>
-      </div>
-      <ul class="CommentList">
-        <li class="d-flex align-items-start justify-content-start">
-          <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="img-fluid"></div>
-          <div class="Commented">
-            <p class="CommentedUser">Abebe Kebede</p>
-            <p class="CommentedCaption">sdkfhsdj sdkfjsdk sd; sdkjf asdkl fjasd;fjsd;kl fasd;klfjasd ;fjasdklfjas;kl fjas;dlfjasd;lk</p>
-            <div class="Social d-flex align-items-center justify-content-start">
-              <div class="Like"><i class="fa fa-thumbs-up"></i><span class="First">Like</span><span>100</span></div>
-              <div class="Reply"><i class="fa fa-reply"></i><span class="First">Reply</span></div>
-            </div>
-          </div>
-        </li>
+    <div class="ListOfQuestions">
+      <ul>
+        <li><a href="#">Questions you have asked</a></li>
+        <li><a href="#">Questions you have made louder</a></li>
+        <li><a href="#">Questions you have not answered (for MPs)</a></li>
       </ul>
     </div>
-  </div>
-  <div class="GiveAnswer AnswerQuestionBox">
-    <div class="AskFollowUp">
-      <div class="Profile">
-        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
-        <div class="UserTitle">
-          <a href="#"><p>Fitsum Hailu</p></a>
-        </div>
-      </div>
-      <div class="AskFollowUpTitle">
-        <p>Answer Question</p>
-      </div>
-      <div class="AskFollowUpAnswerBox">
-        <textarea> </textarea>
-      </div>
-      <div class="AskFollowUpSubmit">
-        <a href="" class="">Submit</a></div>
-      </div>
-      <div class="CommentsBox">
-        <div class="comments">
-          <div class="EnterComments d-flex align-items-center justifyu-content-center">
-            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png" ?>" alt="" class="img-fluid">
-            <input type="text" class="AddComment" placeholder="Add a comment">
-            <a href=""><i class="fa fa-paper-plane"></i></a>
-          </div>
-        </div>
-        <ul class="CommentList">
-          <li class="d-flex align-items-start justify-content-start">
-            <div class="CommentedProfile"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png" ?>" alt="" class="img-fluid"></div>
-            <div class="Commented">
-              <p class="CommentedUser">Abebe Kebede</p>
-              <p class="CommentedCaption">sdkfhsdj sdkfjsdk sd; sdkjf asdkl fjasd;fjsd;kl fasd;klfjasd ;fjasdklfjas;kl fjas;dlfjasd;lk</p>
-              <div class="Social d-flex align-items-center justify-content-start">
-                <div class="Like"><i class="fa fa-thumbs-up"></i><span class="First">Like</span><span>100</span></div>
-                <div class="Reply"><i class="fa fa-reply"></i><span class="First">Reply</span></div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!---------new-content-end----------------->
   </div>
