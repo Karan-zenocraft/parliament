@@ -41,16 +41,18 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 HeaderBottomCenter d-flex align-items-center justify-content-center flex-wrap">
-                    <div class="Icons Icon">
-                        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="img-fluid People">
+                <div class="col-md-12 HeaderBottomCenter d-flex align-items-center justify-content-center flex-wrap p-0">
+                    <div class="Icons Icon col-md-3 p-0">
+                        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="rounded-circle People">
                         <i class="fa fa-bell"></i>
                         <i class="fa fa-cog"></i>
                     </div>
-                    <div class="Search">
+                    <div class="col-md-6 p-0">
+                       <div class="Search">
                         <input type="text" placeholder="Search for Questions here" class="SearchInput" id="filterSearch" onkeypress="filterSearch(event)"><i class="fa fa-search"></i>
+                           </div>
                     </div>
-                    <div class="Icons">
+                    <div class="Icons col-md-12 col-lg-3 p-lg-0 d-flex justify-content-end align-items-center">
 
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden">
                         <img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;">
@@ -84,8 +86,8 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
 
                         <i class="fa fa-bars OnlySm"></i>
                     </div>
+                        </div>
                 </div>
-            </div>
 
         </div>
     </header>
@@ -105,8 +107,8 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
-                            <li><a href="#menu1"  data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
-                            <li><a href="#menu2"  data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                            <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+                            <li><a href="#home" data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
                             <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
                         </ul>
                     </nav>
@@ -136,7 +138,7 @@ Breadcrumbs::widget([
 
                                 </nav>
                                 <div class="SearchMps SearchAnswredMps">
-                                    <input type="search" placeholder="Search UnAnswered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
+                                    <input type="search" placeholder="Search UnAnswered Questions" class="SearchMp AnswredQ"><i class="fa fa-search"></i>
                                 </div>
                             </div>
                             <div class="QuestionAnswer">
@@ -307,10 +309,10 @@ Breadcrumbs::widget([
 
 
                             <div class="SliderArrowCitizen">
-                            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-right">
+                            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="rounded-circle arrows arrows-right">
 
 
-                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-left">
+                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="rounded-circle arrows arrows-left">
 
 
                             </div>

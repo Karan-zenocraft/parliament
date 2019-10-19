@@ -218,13 +218,13 @@ if (!empty($question['answers'])) {?>
             <span>Comment</span><span class="Numbers" id="comments<?php echo $question['id'] ?>"><?php echo $comment_count; ?></span>
           </a>
         </div>
-        <div class="Share" id="<?php echo $question['id']; ?>">
+       <!--  <div class="Share" id="<?php echo $question['id']; ?>">
         <?=\imanilchaudhari\socialshare\ShareButton::widget([
             'style' => 'horizontal',
             'networks' => ['facebook'],
             'data_via' => '', //twitter username (for twitter only, if exists else leave empty)
         ]);?>
-        </div>
+        </div> -->
         <div class="Share" id="<?php echo $question['id']; ?>">
           <a data-toggle="modal" data-target="#myModal<?php echo $question['id']; ?>">
             <i class="fa fa-share-alt" aria-hidden="true"></i>

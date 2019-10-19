@@ -197,30 +197,15 @@ function QuestionAnswer()
            },
      success: function (response) {
 
-      if(filter == 'Answered'){
-        if(nextpage=='1'){
-          $('#answered_questions').html(response.data);
-        }
-        else{
-          $('#answered_questions').append(response.data);
-        }
-  if(response.count <= 0)
-       {
-          $('#loadmoreDataanswered').hide();
-       }
-      }else if(filter == 'Unanswered'){
-        if(nextpage=='1'){
-          $('#unanswered_questions').html(response.data);
-        }
-        else{
-          $('#unanswered_questions').append(response.data);
-        }
-        if(response.count <= 0)
-       {
-          $('#loadmoreDataunanswered').hide();
-       }
+      if(filter == "Answered" ||  filter =='Unanswered'){
+        $(".hideHome").hide();
+        $(".showHome").show();
       }else{
-        if(nextpage=='1'){
+        $(".hideHome").show();
+        $(".showHome").hide();
+      }
+
+       if(nextpage=='1'){
           $('#ajaxQuestion').html(response.data);
         }
         else{
@@ -230,7 +215,6 @@ function QuestionAnswer()
        {
           $('#loadmoreData').hide();
        }
-      }
      }
   });
 }

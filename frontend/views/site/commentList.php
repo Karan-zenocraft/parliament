@@ -2,7 +2,7 @@
 	<li class="d-flex align-items-start justify-content-start">
 		<?php
 $commented_user_image = !empty($comment_user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $comment_user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png;"?>
-		<div class="CommentedProfile"> <img src="<?php echo $commented_user_image ?>" alt="" class="img-fluid"></div>
+		<div class="CommentedProfile"> <img src="<?php echo $commented_user_image ?>" alt="" class="rounded-circle"></div>
 		<div class="Commented">
 			<p class="CommentedUser"><?php echo $user_name; ?></p>
 			<p class="CommentedCaption"><?php echo $comment; ?></p>

@@ -29,10 +29,10 @@
 
 
                             <div class="SliderArrowCitizen">
-                            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-right"  onclick="getPageCitizen('next')">
+                            <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="rounded-circle arrows arrows-right"  onclick="getPageCitizen('next')">
 
 
-                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="img-fluid arrows arrows-left" onclick="getPageCitizen('prev')">
+                               <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/slider-arrow.png" ?>" alt="" class="rounded-circle arrows arrows-left" onclick="getPageCitizen('prev')">
 
 
                             </div>
