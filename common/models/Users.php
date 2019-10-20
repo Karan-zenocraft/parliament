@@ -34,10 +34,10 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
             [['email'], 'email'],
             [['years_hopr'], "number"],
             [['years_hopr', 'standing_commitee'], 'required', 'when' => function ($model) {
-                return $model->role_id == Yii::$app->params['userroles']['user_agent'];
+                return $model->role_id == Yii::$app->params['userroles']['MP'];
             }, 'whenClient' => "function (attribute, value) {
-                return $('#users-role_id').val() == '" . Yii::$app->params['userroles']['user_agent'] . "';
-            }"],
+                return $('#users-role_id').val() == '" . Yii::$app->params['userroles']['MP'] . "';
+            }", ],
             // ['age', 'is3NumbersOnly'],
             ['email', 'validateEmail'],
             //[['photo'], 'image', 'skipOnEmpty' => true, 'extensions' => 'jpg, jpeg, gif, png', 'on' => 'update'],
