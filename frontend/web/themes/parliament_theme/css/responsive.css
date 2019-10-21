@@ -23,13 +23,14 @@
     header .HeaderLeft{padding: 0px 15px}
     header .HeaderRight h1{font-size: 27px;line-height: 45px;margin-top: 40px;margin-bottom: 20px;}
     header .HeaderRight{padding-right: 15px}
-    header .HeaderRight .Profile{display: flex;align-items: center;justify-content: center;}
-    header .HeaderRight .Profile .ProfileTitle{padding-right: 50px;}
-    header .HeaderRight .Profile img{margin-right: 0px;width: 30%}
-    header .HeaderRight .Profile .ProfileTitle{margin-left: 20px;}
-    header .HeaderRight .Profile p{font-size: 20px;line-height: 40px;}
+    header .HeaderRight .Profile{display: flex;align-items: center;justify-content: center;max-width: 270px;}
+    header .HeaderRight .Profile .ProfileTitle{padding-right: 0px;}
+    header .HeaderRight .Profile img{margin-right: 0px;height: 103px;width: 103px;}
+    header .HeaderRight .Profile .ProfileTitle{margin-left: 15px;}
+    header .HeaderRight .Profile p{font-size: 20px;line-height: 22px;margin-bottom: 5px;}
     header .HeaderRight .Profile span{font-size: 14px;line-height: 18px;}
     header .HeaderRight .Representative{width: 100%}
+    header .HeaderRight .Representative .row:last-child{padding-right: 0px!important;padding-left: 30px!important;}
      header .HeaderRight .Representative .row{display: block;width: 100%}
     header .HeaderRight h2 {font-size: 34px;line-height: 70px;margin-top: 35px;margin-bottom: 20px;}
     .Login .LoginLeft .Form{padding-left: 50px;}
@@ -39,13 +40,21 @@
     .Login .LoginBottom ul li a{font-size: 16px;line-height: 18px;}
 }
     
+
+
+
+
+
+
+
+
 @media (min-width: 1025px) and (max-width: 1199px) {
     
     .Login .LoginLeft{margin: auto}
     header .HeaderRight h1{font-size: 41px;line-height: 85px;margin-top: 0px;}
      header .HeaderRight .Representative{width: 100%}
     header .HeaderRight{padding-right: 15px;}
-    header .HeaderRight .Profile p {font-size: 30px;line-height: 55px;}
+    header .HeaderRight .Profile p {font-size: 30px;line-height: 35px;margin-bottom: 5px;}
     header .HeaderRight .Profile span {font-size: 20px;line-height: 25px;}
     header .HeaderRight h2 {font-size: 34px;line-height: 70px;margin-top: 60px;margin-bottom: 20px;}
     .Login .LoginLeft .Form{padding-left: unset;}
@@ -60,6 +69,14 @@
     .ForgotRight p{text-align: center!important;}
     .ForgotRight form{margin: auto;}
     .ForgotRight .Btn{display: block;margin: auto;}
+    .Form form tr td {width: 100%;text-align: left}
+    header .HeaderRight .Profile img{height: 140px;width: 140px;}
+    header .HeaderRight .ProfileTitle{max-width: 260px;padding-right: 0;}
+    .ForgotRight form input{margin: auto;width: 40%}
+    header .ForgotRight form .form-group .help-block{text-align: center!important}
+    
+    
+    
 
 }
 
@@ -70,7 +87,7 @@
     header .HeaderRight .Representative .row{display: block;width: 100%}
     header .HeaderRight .Profile{display: block!important;width: 100%;text-align: center;}
      header .HeaderRight .Profile .ProfileTitle {text-align: center;margin: auto;}
-    header .HeaderRight .Profile p {font-size: 28px;line-height: 50px;}
+    header .HeaderRight .Profile p {font-size: 24px;line-height: 50px;}
     header .HeaderRight .Profile span{font-size: 18px;line-height: 23px;}
     header .HeaderRight .Profile img{margin-right: unset;}
     header .HeaderRight h2{font-size: 30px;line-height: 65px;margin-top: 60px;margin-bottom: 20px;}
@@ -91,12 +108,21 @@
     .ForgotRight p{text-align: center!important;}
     .ForgotRight form{margin: auto;}
     .ForgotRight .Btn{display: block;margin: auto;}
+    header .HeaderRight .ProfileTitle{padding-right: 0;max-width: 265px;}
+    header .HeaderRight .Profile p{margin-bottom: 0px;}
+    header .HeaderRight .Profile p{line-height: 32px;}
+    header .HeaderRight .Profile img{height: 140px;width: 140px;}
+    .ForgotRight form input{margin: auto;}
+    header .ForgotRight form .form-group .help-block{text-align: center!important}
+    
+    
+    
 }
 
 @media (min-width: 577px) and (max-width: 767px) {
     
 header .HeaderRight h1{font-size: 32px;margin-top: 15px;margin-bottom: 30px;line-height: 50px;}
-    header .HeaderRight .Profile p {font-size: 24px;line-height: 44px;}
+    header .HeaderRight .Profile p {font-size: 20px;line-height: 28px;}
     header .HeaderRight .Profile span {font-size: 16px;line-height: 20px;}
     header .HeaderRight .Profile img{margin: auto;}
     header .HeaderRight .Representative{padding-left: unset;}
@@ -111,7 +137,10 @@ header .HeaderRight h1{font-size: 32px;margin-top: 15px;margin-bottom: 30px;line
     .Login .LoginBottom ul li{margin: 0px 24px;}
     .Login .LoginBottom ul li:first-child{margin-left:24px;}
     .Login .LoginBottom ul{justify-content: space-between!important}
-   
+    header .HeaderRight .ProfileTitle{padding-right: 0px;max-width: 225px;}
+    header .HeaderRight .Profile p{margin-bottom: 0px;}
+    header .HeaderRight .Profile img{height: 125px;width: 125px;}
+    header .ForgotRight form .form-group .help-block{text-align: center!important}
 }
 
 @media (min-width: 577px) {
@@ -162,6 +191,12 @@ header .HeaderRight h1{font-size: 32px;margin-top: 15px;margin-bottom: 30px;line
     .Login .LoginRight h1{font-size: 25px;margin-top:0px;margin-bottom: 0px;line-height: 46px}
     .Login .LoginRight, .Login .LoginLeft{margin-bottom: 40px;}
     .form-group{width: 100%}
+    header .HeaderRight .Profile img{height: 125px;width: 125px;}
+    header .HeaderRight .Representative .row{margin: 0;}
+    header .HeaderRight .ProfileTitle{padding-right: 0px;}
+    header .HeaderRight .Profile p{margin-bottom: 0px;line-height: 24px;}
+    header .HeaderRight .Profile .ProfileTitle{max-width: 225px;}
+    .ForgotRight form input{width: 100%!important;max-width: unset!important}
 }
   
 @media only screen and (max-width: 767px){
