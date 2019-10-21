@@ -14,10 +14,10 @@
 
                             </div>
                             <div class="BlockCaption">
-                                <h2><?php echo $value['user_name']; ?></h2>
+                                <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $value['id']; ?>"><h2><?php echo $value['user_name']; ?></h2></a>
                                 <p><?php echo $value['city']; ?></p>
                                 <p><?php echo $value['education']; ?></p>
-                                <a class="Follow Followed"><span>Follow</span><span>300</span> </a>
+                                <!-- <a class="Follow Followed"><span>Follow</span><span>300</span> </a> -->
                             </div>
                             </div>
                             </div>

@@ -459,63 +459,32 @@ class SiteController extends FrontCoreController
                 }]);
             } elseif ($flagCond == 'Answered') {
                 // GET LOGIN USER'S ANSWERED QUESTIONS
-                if ($flagCond2 == 'loudest') {
-                    if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
-                        $questionsQuery = $questionsQuery->select("*,(CHAR_LENGTH(louder_by) -
-CHAR_LENGTH(REPLACE(louder_by, ',', '')) + 1) AS louderCount")->andwhere(['user_agent_id' => $loginId]);
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                            return $query->andWhere("answers.id is not null");
-                        }]);
-                        $questionsQuery->orderBy(["louderCount" => SORT_DESC]);
-
-                    } else {
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) use ($loginId) {
-                            return $query->andWhere(["answers.mp_id" => $loginId]);
-                        }]);
-                        $questionsQuery->groupBy(['answers.question_id']);
-                    }
+                if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
+                    $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                        return $query->andWhere("answers.id is not null");
+                    }]);
                 } else {
-                    if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
-                        $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                            return $query->andWhere("answers.id is not null");
-                        }]);
-                    } else {
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) use ($loginId) {
-                            return $query->andWhere(["answers.mp_id" => $loginId]);
-                        }]);
-                        $questionsQuery->groupBy(['answers.question_id']);
-                    }
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) use ($loginId) {
+                        return $query->andWhere(["answers.mp_id" => $loginId]);
+                    }]);
+                    $questionsQuery->groupBy(['answers.question_id']);
                 }
 
             } elseif ($flagCond == 'Unanswered') {
-                if ($flagCond2 == 'loudest') {
-                    if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
-                        $questionsQuery = $questionsQuery->select("*", "LENGTH(`louder_by`)-LENGTH( REPLACE( `louder_by` , ',', '' ) )+1 AS loud_count");
-                        $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                            return $query->andWhere("answers.id is null");
-                        }]);
-                    } else {
-                        $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',questions.mp_id)'));
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                            return $query->andWhere("answers.id is null");
-                        }]);
-                    }
+                // GET LOGIN USER'S UNANSWERED QUESTIONS
+                if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
+                    $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                        return $query->andWhere("answers.id is null");
+                    }]);
                 } else {
-                    // GET LOGIN USER'S UNANSWERED QUESTIONS
-                    if ($user_role_id == Yii::$app->params['userroles']['user_agent']) {
-                        $questionsQuery = $questionsQuery->andwhere(['user_agent_id' => $loginId]);
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                            return $query->andWhere("answers.id is null");
-                        }]);
-                    } else {
-                        $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',questions.mp_id)'));
-                        $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
-                            return $query->andWhere("answers.id is null");
-                        }]);
-                    }
+                    $questionsQuery = $questionsQuery->andwhere(new \yii\db\Expression('FIND_IN_SET(' . $loginId . ',questions.mp_id)'));
+                    $questionsQuery = $questionsQuery->joinWith(['answers' => function ($query) {
+                        return $query->andWhere("answers.id is null");
+                    }]);
                 }
+
             } elseif (($flagCond = 'Homefeed')) {
                 $questionsQuery;
             }
@@ -531,7 +500,13 @@ CHAR_LENGTH(REPLACE(louder_by, ',', '')) + 1) AS louderCount")->andwhere(['user_
             }
             $questionsQuery = $questionsQuery->andWhere("questions.is_delete != '1'");
             //->groupBy("id")
-            $questionsQuery->orderBy(["questions.id" => SORT_DESC]);
+            if ($flagCond2 == 'loudest') {
+
+                $questionsQuery = $questionsQuery->select(["*", "(LENGTH(louder_by) - LENGTH(REPLACE(louder_by, ',','')) + 1) AS louder_count"]);
+                $questionsQuery = $questionsQuery->orderBy(["louder_count" => SORT_DESC]);
+            } else {
+                $questionsQuery->orderBy(["questions.id" => SORT_DESC]);
+            }
 
             $models = $questionsQuery
                 ->offset($page)
@@ -730,6 +705,14 @@ CHAR_LENGTH(REPLACE(louder_by, ',', '')) + 1) AS louderCount")->andwhere(['user_
             }
             return json_encode($retData);
         }
+    }
+    public function actionViewQuestion($id)
+    {
+        $this->layout = "question_detail";
+        $model = Questions::findOne($id);
+        return $this->render('viewQuestion', [
+            'model' => $model,
+        ]);
     }
 
 }

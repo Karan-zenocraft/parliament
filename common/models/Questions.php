@@ -7,7 +7,7 @@ use Yii;
 
 class Questions extends \common\models\base\QuestionsBase
 {
-
+    public $louder_count;
     public function beforeSave($insert)
     {
         if ($this->isNewRecord) {

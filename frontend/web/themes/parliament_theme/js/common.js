@@ -183,7 +183,6 @@ function QuestionAnswer()
   var search = $("#filterSearch").val();
   var user_id = $('#user_id').val();
   $("#citizensList").hide();
-
   $("#pageQuestion").val(++nextpage);
       $.ajax({
      url: 'site/load-more-questions',
@@ -197,7 +196,7 @@ function QuestionAnswer()
             user_id:user_id
            },
      success: function (response) {
-
+      $("#filterQuestion2").val("");
       if(filter == "Answered" ||  filter =='Unanswered'){
         $(".hideHome").hide();
         $(".showHome").show();
@@ -441,9 +440,20 @@ function editProfile(user_id)
   });
 }
 function facebook_share(title, desc, url, image){
+FB.ui(
+{
+method: 'feed',
+name: 'This is the content of the "name" field.',
+link: url,
+picture: 'http://www.groupstudy.in/img/logo3.jpeg',
+caption: 'Top 3 reasons why you should care about your finance',
+description: "What happens when you don't take care of your finances? Just look at our country -- you spend irresponsibly, get in debt up to your eyeballs, and stress about how you're going to make ends meet. The difference is that you don't have a glut of taxpayers…",
+message: ""
+});
+}
+/*function facebook_share(title, desc, url, image){
  postToFeed(title, desc, url, image);
 }
-
 
 
 
@@ -455,19 +465,19 @@ FB.init({
     if(d.getElementById(id)) {return;}
     js = d.createElement('script'); js.id = id; 
     js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-    ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+    ref.parentNode.insertBefore(js, ref);}(document,false));
 
 function postToFeed(title, desc, url, image){
 var obj = {
             method: 'feed',
-            link: "http://ask.zenocraft.com", 
+            link: url, 
             picture: 'http://ask.zenocraft.com/uploads/IMG-20180804-WA0001_5dab09cb6270f.jpg',
-            name: title,
-            description: title
+            name: 'question',
+            description: 'test'
           };
 function callback(response){}
 FB.ui(obj, callback);
-}
+}*/
 
 
 /*function get_citizen_list(){

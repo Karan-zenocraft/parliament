@@ -27,8 +27,8 @@ $questions = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "
 				<div class="User d-flex align-items-center justify-content center">
 					<img src="<?php echo $user_image; ?>" alt="" class="rounded-circle UserImage">
 					<div class="ProfileName">
-						<p><?php echo !empty($user) ? $user['user_name'] : "-" ?></p>
 						<?php $question = Questions::find()->with('comments', 'answers')->where(["user_agent_id" => Yii::$app->user->id, "is_delete" => 0])->orderBy(["id" => SORT_DESC])->one();?>
+						 <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id; ?>"><p><?php echo !empty($user) ? $user['user_name'] : "-" ?></p></a>
 						<p><span><?php echo Common::time_elapsed_string($question->created_at); ?></span></p>
 					</div>
 				</div>

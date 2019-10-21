@@ -33,7 +33,7 @@ $user = Common::get_name_by_id($user_id, "Users");
       <ul>
         <li><span class="Title">From </span> <span class="TitleBold"> <?php echo $user['city']; ?></span> </li>
         <li><span class="Title">Education </span> <span class="TitleBold"><?php echo $user['education']; ?></span> </li>
-        <li><span class="Title">Work </span> <span class="TitleBold"> Head of Accounting at AU</span> </li>
+        <li><span class="Title">Work </span> <span class="TitleBold"><?php echo !empty($user['education']) ? $user['work'] : "-"; ?></span> </li>
         <li><span class="Title">Joined </span> <span class="TitleBold"><?php echo date("M Y", strtotime($user['created_at'])); ?></span> </li>
         <li><span class="TitleBold"> <?php echo Yii::$app->params['gender'][$user['gender']]; ?></span></li>
         <li> <span class="TitleBold"> 1988</span> </li>

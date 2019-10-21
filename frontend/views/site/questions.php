@@ -9,6 +9,7 @@ if (!empty($modelsQuestions)) {
     $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
     foreach ($modelsQuestions as $key => $question) {
         ?>
+
 <div class="QuestionAnswerMainBox" id="questions_answers<?php echo $question['id']; ?>">
 <!--   <div class="Top"><a href="#"><span class="MPName">Ayele, Meskerem</span></a> and <a><span class="MPName OnhoverGroup">6 citizens you follow </span></a><span class="Title"> Commented or Made this Louder</span></div>
   <ul class="align-items-start justify-content-start flex-column OnhoverMP">
@@ -29,7 +30,7 @@ if (!empty($modelsQuestions)) {
         $user_image = !empty($question['userAgent']['photo']) ? Yii::getAlias('@web') . "/uploads/" . $question['userAgent']['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
           <a href=" #"><img src="<?php echo $user_image; ?>" alt="" class="rounded-circle" width="47px" height="47px"></a>
           <div class="UserTitle">
-            <a href="#"><p><?php echo $question['userAgent']['user_name'] ?></p></a>
+            <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $question['userAgent']['id']; ?>"><p><?php echo $question['userAgent']['user_name'] ?></p></a>
             <span><?php echo Common::time_elapsed_string($question['created_at']); ?></span>
           </div>
         </div>
@@ -225,7 +226,8 @@ if (!empty($question['answers'])) {?>
             'data_via' => '', //twitter username (for twitter only, if exists else leave empty)
         ]);?>
         </div> -->
-        <div class="Share" id="<?php echo $question['id']; ?>" onclick="facebook_share('<?php echo $question['question']; ?>','','','')" data-question="<?php echo $question['question']; ?>">
+
+        <div class="Share" id="<?php echo $question['id']; ?>" onclick="facebook_share('<?php echo $question['question']; ?>','desc','<?php echo Yii::getAlias('@web') . "/site/view-question?id=" . $question['id'] ?>','')" data-question="<?php echo $question['question']; ?>" data-url="<?php echo Yii::getAlias('@web') . "/site/view-question" ?>">
             <i class="fa fa-share-alt" aria-hidden="true"></i>
             <span>Share</span><span class="Numbers">100</span>
         </div>
@@ -354,3 +356,16 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
   </div>
   <?php
 }}?>
+<div id="fb-root"></div>
+<script type="text/javascript">
+window.fbAsyncInit = function() {
+FB.init({appId: '465073670768272', status: true, cookie: true,
+xfbml: true});
+};
+(function() {
+var e = document.createElement('script'); e.async = true;
+e.src = document.location.protocol +
+'//connect.facebook.net/en_US/all.js';
+document.getElementById('fb-root').appendChild(e);
+}());
+</script>

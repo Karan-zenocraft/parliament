@@ -38,7 +38,7 @@ class FrontCoreController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'request-password-reset', 'reset-password', 'gii'],
+                        'actions' => ['login', 'error', 'request-password-reset', 'reset-password', 'gii', 'view-question'],
                         'allow' => true,
                     ],
                 ],

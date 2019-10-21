@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'value' => function ($data) {
                 $ssText = !empty($data->userAgent) ? $data->userAgent->user_name : "";
                 //   $url = Yii::$app->urlManager->createUrl(['reservations/view', 'id' => $data->id]);
-                return Html::a($ssText, ['view', 'id' => $data->id], ['class' => 'colorbox_popup', 'onclick' => 'javascript:openColorBox();']);
+                return $ssText;
             },
         ],
         'question',

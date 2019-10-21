@@ -1,3 +1,8 @@
+<meta property="og:url" content="http://ask.zenocraft.com" />
+<meta property="og:type" content="website" />
+<meta property="og:title"  content=" Notice of Passing" />
+<meta property="og:description"   content="Notice of Passing " />
+<meta property="og:image" content="http://ask.zenocraft.com/uploads/IMG-20180804-WA0001_5dab09cb6270f.jpg" />
 <?php
 // use kartik\icons\FontAwesomeAsset;
 use common\components\Common;
@@ -64,12 +69,12 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                   <div class="RowBox d-flex align-items-center justify-content-start col-md-4 p-0">
                     <?php $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";?>
                     <div class="DimmerBox" id="<?php echo "mp_" . $value['id'] ?>"><img src="<?php echo $user_image; ?>" alt="" class="rounded-circle SliderImage"></div>
-                    <a href="#"><div class="RowTitle">
-                      <p><?php echo $value['user_name']; ?></p>
+                   <div class="RowTitle">
+                      <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $value['id']; ?>"> <p><?php echo $value['user_name']; ?></p>
+                  </a>
                       <p><span><?php echo $value['standing_commitee']; ?><br>
                       Standing Committee</span></p>
                     </div>
-                  </a>
                 </div>
                 <?php if (($rowCount % $numOfCols == 0) && ($rowCount != $pagination->pageSize)) {
                 echo '</div><div class="Row1 col-md-12 d-flex align-items-center justify-content-start">';
@@ -98,8 +103,8 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 <div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between showHome" style="display:none !important ">
 <nav class="Nav2 Nav5 showHome">
   <ul class="d-flex align-items-center justify-content-start nav showHome">
-    <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-    <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
+    <li class="FilterActive"><a onclick="filterQuestion2('recent')">Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+    <li><a onclick="filterQuestion2('louddest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
   </ul>
 </nav>
 <!--    <div class="SearchMps SearchAnswredMps">
@@ -108,7 +113,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 <div class="QuestionAnswer">
 <!-- QUESTIONS AND ANSWER SECTION START-->
-<div class="QuestionAnswerTitle Public">
+<div class="QuestionAnswerTitle Public hideHome">
   <h3>PUBLIC Questions</h3>
 </div>
 <input type='hidden' id='pageQuestion' value='0'>
