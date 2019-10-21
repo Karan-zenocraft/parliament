@@ -52,9 +52,9 @@ class AnswersBase extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'question_id' => Yii::t('app', 'Question ID'),
+            'question_id' => Yii::t('app', 'Question'),
             'answer_text' => Yii::t('app', 'Answer Text'),
-            'mp_id' => Yii::t('app', 'Mp ID'),
+            'mp_id' => Yii::t('app', 'MP'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

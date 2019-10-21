@@ -1,8 +1,6 @@
 <?php
 use common\components\Common;
 use frontend\assets\ParliamentAsset;
-use frontend\components\HelloWidget;
-use frontend\components\ProfilePage;
 use yii\widgets\Breadcrumbs;
 
 $this->registerCssFile('@web/themes/parliament_theme/css/inner-style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
@@ -95,11 +93,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 cus-md-3 MainLeft">
-                <?php if (empty($_REQUEST['user_id'])) {?>
-                    <?php echo HelloWidget::widget(); ?>
-                <?php } else {?>
-                    <?php echo ProfilePage::widget(); ?>
-                <?php }?>
+
                 </div>
                 <div class="col-md-12 col-lg-6 cus-md-6 MainCenter">
                     <nav class="Nav1">

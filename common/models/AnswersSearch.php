@@ -2,14 +2,14 @@
 
 namespace common\models;
 
-use common\models\Questions;
+use common\models\Answers;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * QuestionsSearch represents the model behind the search form of `common\models\Questions`.
+ * AnswersSearch represents the model behind the search form of `common\models\Answers`.
  */
-class QuestionsSearch extends Questions
+class AnswersSearch extends Answers
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class QuestionsSearch extends Questions
     public function rules()
     {
         return [
-            [['id', /*'user_agent_id', 'mp_id', */'status', 'is_delete'], 'integer'],
-            [['question', 'created_at', 'updated_at', 'user_agent_id', 'mp_id'], 'safe'],
+            [['id', 'question_id'], 'integer'],
+            [['answer_text', 'created_at', 'updated_at', 'mp_id'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class QuestionsSearch extends Questions
      */
     public function search($params)
     {
-        $query = Questions::find()->where("is_delete != '1'");
+        $query = Answers::find()->where(['question_id' => $_GET['qid']]);
 
         // add conditions that should always apply here
 
@@ -59,20 +59,16 @@ class QuestionsSearch extends Questions
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            // 'user_agent_id' => $this->user_agent_id,
-            //  'mp_id' => $this->mp_id,
-            'status' => $this->status,
-            'is_delete' => $this->is_delete,
+            'question_id' => $this->question_id,
+            //'mp_id' => $this->mp_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'question', $this->question]);
-        $query->andFilterWhere(['in', 'mp_id', $this->mp_id]);
-        $query->joinWith(['userAgent' => function ($query) {
-            $query->where('users.user_name LIKE "%' . $this->user_agent_id . '%"');
+        $query->andFilterWhere(['like', 'answer_text', $this->answer_text]);
+        $query->joinWith(['mp' => function ($query) {
+            $query->where('users.user_name LIKE "%' . $this->mp_id . '%"');
         }]);
-
         return $dataProvider;
     }
 }
