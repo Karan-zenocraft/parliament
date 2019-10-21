@@ -3,7 +3,6 @@
 use common\components\Common;
 use yii\grid\GridView;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\QuestionsSearch */
@@ -21,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="questions-form span12">
 
      <?=Html::a(Yii::t('app', '<i class="icon-filter icon-white"></i> Filter'), "javascript:void(0);", ['class' => 'btn btn-primary open_search']);?>
-     <?php if (!empty($_REQUEST['questionsSearch']) || (!empty($_GET['temp']) && $_GET['temp'] == "clear")) {?>
+     <?php if (!empty($_REQUEST['QuestionsSearch']) || (!empty($_GET['temp']) && $_GET['temp'] == "clear")) {?>
         <div class="questionss-serach common_search">
          <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         </div>
@@ -42,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]);  ?>
     <div class="block-content">
         <div class="goodtable">
-    <?php Pjax::begin();?>
+    <?php //Pjax::begin();?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?=GridView::widget([
@@ -90,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'header' => 'Actions',
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{delete}',
+            'template' => '{delete}{manage_answers}',
             'buttons' => [
                 /* 'update' => function ($url, $model) {
                 $flag = 1;
@@ -101,13 +100,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     $confirmmessage = "Are you sure you want to delete this question?";
                     return Common::template_delete_button($url, $model, $confirmmessage, $flag);
                 },
+                'manage_answers' => function ($url, $model) {
+                    $title = "View Answers";
+                    $flag = 1;
+                    $url = Yii::$app->urlManager->createUrl(['answers/index', 'qid' => $model->id]);
+                    return Common::template_view_answers_button($url, $model, $title, $flag);
+                },
 
             ],
         ],
     ],
 ]);?>
 
-    <?php Pjax::end();?>
+    <?php// Pjax::end();?>
 
         </div>
     </div>

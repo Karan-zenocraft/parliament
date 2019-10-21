@@ -64,6 +64,10 @@ return [
                 'create-representative' => 'representatives/create',
                 'update-representative/<id>' => 'representatives/update',
                 'delete-representative/<id>' => 'representatives/delete',
+                'manage-questions' => 'questions/index',
+                'create-question' => 'questions/create',
+                'update-question/<id>' => 'questions/update',
+                'delete-question/<id>' => 'questions/delete',
             ],
         ],
         'request' => [

@@ -1203,10 +1203,10 @@ class Common
     public static function get_name_by_id($id = '', $flag = '')
     {
 
-        if ($flag == "Restaurants") {
-            $snRestaurantsDetail = Restaurants::find()->where(['id' => $id])->one();
-            $name = $snRestaurantsDetail->name;
-            return !empty($name) ? $name : '';
+        if ($flag == "Questions") {
+            $snQuestionDetail = Questions::find()->where(['id' => $id])->one();
+            $question = $snQuestionDetail->question;
+            return !empty($question) ? $question : '';
         }
         if ($flag == "RestaurantFloors") {
             $snRestaurantsDetail = RestaurantFloors::find()->where(['id' => $id])->one();
@@ -1901,5 +1901,27 @@ class Common
         $questionCount = $query->count();
         $limit = 10;
         return ($limit - $questionCount);
+    }
+    public static function template_view_answers_button($url, $model, $title, $flag = false)
+    {
+        if ($flag == 1) {
+            return Html::a('<i class="icon-calendar icon-white"></i>', $url, [
+                'title' => Yii::t('yii', $title),
+                'class' => 'btn btn-primary btn-small',
+                //'target' => '_blanck'
+            ]);
+        }
+        if ($flag == 2) {
+            return Html::a('<i class="icon-folder-open icon-white"></i>', $url, [
+                'title' => Yii::t('yii', $title),
+                'class' => 'btn btn-primary btn-small',
+                //'target' => '_blanck'
+            ]);
+        }
+        return Html::a('<i class="fa fa-external-link"></i>' . $title, $url, [
+            'title' => Yii::t('yii', $title),
+            'class' => 'btn btn-primary',
+            //'target' => '_blanck'
+        ]);
     }
 }

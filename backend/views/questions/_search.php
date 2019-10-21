@@ -1,5 +1,7 @@
 <?php
 
+use common\models\Users;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -29,7 +31,7 @@ use yii\widgets\ActiveForm;
 </div>
 <div class="row">
     <div class="span3 style_input_width">
-    <?=$form->field($model, 'mp_id')?>
+    <?=$form->field($model, 'mp_id')->dropDownList(array("" => "") + ArrayHelper::map(Users::find()->where(['role_id' => Yii::$app->params['userroles']['MP']])->orderBy('user_name')->asArray()->all(), 'id', 'user_name'))?>
 </div>
 </div>
     <?php //$form->field($model, 'louder_by')?>
@@ -42,9 +44,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'updated_at') ?>
 
-    <div class="form-group">
+   <div class="form-group">
         <?=Html::submitButton('Search', ['class' => 'btn btn-primary'])?>
-        <?=Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary'])?>
+        <?=Html::a(Yii::t('app', '<i class="icon-refresh"></i> clear'), Yii::$app->urlManager->createUrl(['questions/index', "temp" => "clear"]), ['class' => 'btn btn-default'])?>
     </div>
 
     <?php ActiveForm::end();?>
