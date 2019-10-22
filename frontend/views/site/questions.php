@@ -229,7 +229,8 @@ if (!empty($question['answers'])) {?>
 
         <div class="Share" id="<?php echo $question['id']; ?>" onclick="facebook_share('<?php echo $question['id']; ?>')" data-question="<?php echo $question['question']; ?>">
             <i class="fa fa-share-alt" aria-hidden="true"></i>
-            <span>Share</span><span class="Numbers">100</span>
+            <?php $share_count = Shares::find()->where(['question_id' => $question['id']])->count();?>
+            <span>Share</span><span class="Numbers"><?php echo ($share_count > 0) ? $share_count : 0 ?></span>
         </div>
 
 <div class="modal fade Report" id="myModal<?php echo $question['id']; ?>">

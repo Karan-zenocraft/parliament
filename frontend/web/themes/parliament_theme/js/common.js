@@ -482,8 +482,26 @@ var obj = {
             description: 'test'
           };
 function callback(response){
-  console.log(response);
-  return false;
+  if (response && response.post_id) {
+         $.ajax({
+     url: "site/facebook-share",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               question_id: question_id, 
+           },
+     success: function (data) {
+      if(data.msg == "success"){
+         location.reload();
+      }else{
+         alert("There is some problem to updatating the profile")
+         location.reload();
+      }
+     }
+  });
+     } else {
+       alert('Something went wrong in sharing');
+     }
 }
 FB.ui(obj, callback);
 }
