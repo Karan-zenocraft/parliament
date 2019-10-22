@@ -5,6 +5,7 @@ use common\components\Common;
 use common\models\Answers;
 use common\models\Comments;
 use common\models\LoginForm;
+use common\models\Notifications;
 use common\models\QuestionHide;
 use common\models\QuestionReported;
 use common\models\Questions;
@@ -424,7 +425,14 @@ class SiteController extends FrontCoreController
                 $louderCount = (empty($question->louder_by) || ($question->louder_by == "")) ? 0 : count(explode(",", $question->louder_by));
                 $event = "unlike";
             }
-            $data = ["event" => $event, "louderCount" => $louderCount, "louder_by" => Common::get_user_name(Yii::$app->user->id), "ask_user_id" => $question->user_agent_id];
+            $data = ["event" => $event, "louderCount" => $louderCount, "louder_by" => Common::get_user_name(Yii::$app->user->id), "ask_user_id" => $question->user_agent_id, "louder_user_id" => Yii::$app->user->id];
+            if (Yii::$app->user->id != $question->user_agent_id) {
+                $model_notification = new Notifications();
+                $model_notification->user_id = $question->user_agent_id;
+                $model_notification->notification = Common::get_user_name(Yii::$app->user->id) . " make louder on your question ";
+                $model_notification->save(false);
+            }
+
             return json_encode($data);
 
         }
@@ -542,6 +550,7 @@ class SiteController extends FrontCoreController
             $model_answer->save(false);
 
             $answer_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
+            $ask_user = Questions::findOne($postData['question_id']);
             $userName = Common::get_user_name(Yii::$app->user->id);
 
             $pageDataAjax = $this->renderPartial('answersList', array(
@@ -552,7 +561,12 @@ class SiteController extends FrontCoreController
         } else {
             $pageDataAjax = "Bad request";
         }
-        $retArray = array('data' => $pageDataAjax);
+        $retArray = array('data' => $pageDataAjax, 'user_name' => $userName, 'ask_user_id' => $ask_user->user_agent_id);
+        $model_notification = new Notifications();
+        $model_notification->user_id = $ask_user->user_agent_id;
+        $model_notification->notification = $userName . " answered your question ";
+        $model_notification->save(false);
+
         return json_encode($retArray);
     }
 
@@ -579,7 +593,14 @@ class SiteController extends FrontCoreController
         } else {
             $pageDataAjax = "Bad request";
         }
-        $retArray = array('data' => $pageDataAjax, 'comment' => $postData['comment'], 'user_name' => $userName, 'ask_user_id' => $ask_user->user_agent_id);
+        $retArray = array('data' => $pageDataAjax, 'comment' => $postData['comment'], 'user_name' => $userName, 'ask_user_id' => $ask_user->user_agent_id, "comment_user_id" => Yii::$app->user->id);
+        if (Yii::$app->user->id != $ask_user->user_agent_id) {
+            $model_notification = new Notifications();
+            $model_notification->user_id = $ask_user->user_agent_id;
+            $model_notification->notification = $userName . " commented your question ";
+            $model_notification->save(false);
+        }
+
         return json_encode($retArray);
     }
     public function actionReportQuestion()
@@ -715,6 +736,21 @@ class SiteController extends FrontCoreController
         return $this->render('viewQuestion', [
             'model' => $model,
         ]);
+    }
+    public function actionClearNotifications()
+    {
+        if (!empty($_POST)) {
+            $notifications = Notifications::find()->where(['user_id' => $_POST['user_id']])->all();
+            foreach ($notifications as $key => $notification) {
+                $notification->mark_read = 1;
+                $notification->save(false);
+            }
+            $retData = array("msg" => "success");
+
+        } else {
+            $retData = array("msg" => "error");
+        }
+        return json_encode($retData);
     }
 
 }

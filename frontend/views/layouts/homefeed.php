@@ -1,5 +1,6 @@
 <?php
 use common\components\Common;
+use common\models\Notifications;
 use frontend\assets\ParliamentAsset;
 use frontend\components\HelloWidget;
 use frontend\components\ProfilePage;
@@ -58,7 +59,8 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                         <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden"></a>
                         <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;"></a>
                         <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
-                        <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
+                            <?php $notifications = Notifications::find()->where(['user_id' => Yii::$app->user->id, 'mark_read' => 0])->asArray()->all();?>
+                        <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary"><?php echo !empty($notifications) ? count($notifications) : 0 ?></span>
                         </i>
                         </span>
 
@@ -80,10 +82,17 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
 
 
                     <div class="Nav3" >
-                        <div class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <span>Mark All as Unread</span></div>
+                        <div class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <a href="javascript:void(0);" onclick="clear_notification(<?php echo Yii::$app->user->id; ?>)"><span>Mark All as Unread</span></a></div>
 
                         <ul class="example-1  scrollbar-dusty-grass square thin dynamic_notification" style="list-style-type: none;padding: 0;margin-bottom: 0px;max-height: 220px;overflow-y: scroll;overflow-x: auto;">
+<?php if (!empty($notifications)) {
+    foreach ($notifications as $key => $notification) {
+        echo "<li><a href=''> " . $notification['notification'] . " </a></li>";
+    }
 
+}
+
+?>
                 <!--     <li><a href="">Chala Commented on your Question</a></li>
                     <li><a href="">Maya Made a Question Louder</a></li>
                       <li><a href="">Abebe Followed you</a></li>
@@ -94,7 +103,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
 
                         </ul>
 
-                        <div class="text-center"><a href=""><b>See all</b></a></div>
+                        <!-- <div class="text-center"><a href=""><b>See all</b></a></div> -->
 
                             </div>
 

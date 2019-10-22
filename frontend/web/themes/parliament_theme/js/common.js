@@ -377,7 +377,9 @@ function submitAnswer(question_id)
          $("#AnswerQuestionBox"+question_id).removeClass('GiveAnswerBox');
          $('#answersList'+question_id).prepend(data.data);
          $('#more2'+question_id).css('display:inline');
-
+         var title = data.user_name + " has answered on your question " + question_id;
+           var userid = data.ask_user_id;
+           sendNotification(title,userid);
      }
   });
 }
@@ -399,48 +401,11 @@ function submitComment(question_id)
          $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
          $('.AddComment').val('');
          $('#comments'+question_id).text(++comment_count);
-
-            pubnub = new PubNub({
-            publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
-            subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
-            secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
-          })
-
-    function publishSampleMessage() {
-        console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
-        var publishConfig = {
-            channel : "ask",
-            message: {
-                title: data.user_name + " has commented on your question " + question_id,
-                description: "hello world!",
-                userid: data.ask_user_id,
-                flag:true,
-                site:'ask.zenocraft.com'
-            }
+           var title = data.user_name + " has commented on your question " + question_id;
+           var userid = data.ask_user_id;
+            if(data.comment_user_id != userid ){
+          sendNotification(title,userid);
         }
-        pubnub.publish(publishConfig, function(status, response) {
-            console.log(status, response);
-        })
-    }
-
-    pubnub.addListener({
-        status: function(statusEvent) {
-            if (statusEvent.category === "PNConnectedCategory") {
-                publishSampleMessage();
-            }
-        },
-        message: function(msg) {
-            console.log(msg.message.title);
-            console.log(msg.message.description);
-        },
-        presence: function(presenceEvent) {
-            // handle presence
-        }
-    })
-    console.log("Subscribing..");
-    pubnub.subscribe({
-        channels: ['rutusha']
-    });
 
      }
   });
@@ -593,7 +558,8 @@ var login_user_id = $('#login_user_id').val();
                 message: function(message) {
                     if(message.message.userid == login_user_id){
                          var count = $('.badge-secondary').text();
-                         $('.badge-secondary').text(count++);
+                         count++;
+                         $('.badge-secondary').text(count);
                          $(".dynamic_notification").append('<li><a href="#">'+message.message.title+'</li>');
                     }
                         if (!("Notification" in window)) {
@@ -621,8 +587,27 @@ var login_user_id = $('#login_user_id').val();
                     // withPresence: true
                 });
 }
+function clear_notification(user_id){
+     $.ajax({
+     url: "site/clear-notifications",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               user_id:user_id
+           },
+     success: function (data) {
+      if(data.msg == "success"){
+         location.reload();
+      }else{
+         alert("There is some problem to clear notification.")
+         location.reload();
+      }
+     }
+  });
+}
 $(document).ready(function() {
                 QuestionAnswer();
+                getNotification();
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
                         $('#scroll').fadeIn();
@@ -1070,7 +1055,9 @@ $(document).ready(function(){
         }
         var title = data.louder_by+" made louder on your question "+question_id;
         var userid = data.ask_user_id;
+        if(data.louder_user_id != userid ){
           sendNotification(title,userid);
+        }
       }
      }
   });
@@ -1307,8 +1294,10 @@ $(document).ready(function(){
     
     
 });
-$(document).ready(function(){
- pubnub = new PubNub({
+/*$(document).ready(function(){
+  getNotification();*/
+
+/* pubnub = new PubNub({
             publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
             subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
             secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
@@ -1346,6 +1335,6 @@ var login_user_id = $('#login_user_id').val();
             pubnub.subscribe({
                     channels: ['ask'],
                     // withPresence: true
-                });
+                });*/
 
-            });
+           // });
