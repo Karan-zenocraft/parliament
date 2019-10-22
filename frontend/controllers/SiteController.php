@@ -377,7 +377,7 @@ class SiteController extends FrontCoreController
                 foreach ($models as $key => $value) {
                     $retData .= "<div class='RowBox d-flex align-items-center justify-content-start col-md-4 p-0'><div class='DimmerBox' id=" . "mp_" . $value['id'] . ">";
                     $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";
-                    $retData .= "<img src=" . $user_image . " class='img-fluid SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
+                    $retData .= "<img src=" . $user_image . " class='img-fluid rounded-circle  SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
                     $rowCount++;
                     if ($rowCount % $numOfCols == 0) {
                         $retData .= "</div><div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
