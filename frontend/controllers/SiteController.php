@@ -731,8 +731,13 @@ class SiteController extends FrontCoreController
     }
     public function actionViewQuestion($id)
     {
-        $this->layout = "question_detail";
-        $model = Questions::findOne($id);
+        $this->layout = "view_question";
+        $model = Questions::find()
+            ->with(['userAgent', 'answers' => function ($q) {
+                return $q->orderBy(["answers.id" => SORT_DESC]);
+            }, 'comments' => function ($q) {
+                return $q->orderBy(["comments.id" => SORT_DESC]);
+            }])->where(['id' => $id])->one();
         return $this->render('viewQuestion', [
             'model' => $model,
         ]);

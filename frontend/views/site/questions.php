@@ -227,7 +227,7 @@ if (!empty($question['answers'])) {?>
         ]);?>
         </div> -->
 
-        <div class="Share" id="<?php echo $question['id']; ?>" onclick="facebook_share('<?php echo $question['question']; ?>','desc','<?php echo Yii::getAlias('@web') . "/site/view-question?id=" . $question['id'] ?>','')" data-question="<?php echo $question['question']; ?>" data-url="<?php echo Yii::getAlias('@web') . "/site/view-question" ?>">
+        <div class="Share" id="<?php echo $question['id']; ?>" onclick="facebook_share('<?php echo $question['question']; ?>')" data-question="<?php echo $question['question']; ?>">
             <i class="fa fa-share-alt" aria-hidden="true"></i>
             <span>Share</span><span class="Numbers">100</span>
         </div>
