@@ -712,6 +712,7 @@ $(document).ready(function(){
                 $(".MainCenter .Nav1 ul").removeClass("UlHome");
                 $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
                 $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
+                $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); /*Searchmobilemenu*/
                 $(".MainCenter .Nav2 ul").toggleClass("UlFilter");
                 $(".MainCenter .Nav6 ul").toggleClass("UlFilterCitizen");
                 $(".FilterBar span:first-child i").toggleClass("Rotate");
@@ -801,6 +802,7 @@ $(document).ready(function(){
               $(".HeaderBottomCenter .Nav4").toggleClass("UlSetting");
                 $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
        $(".MainCenter .Nav6 ul").removeClass("UlFilterCitizen");
+      $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); /*Searchmobilemenu*/
                 $(".MainCenter .Nav2 ul").removeClass("UlFilter");
                 $(".MainCenter .Nav1 ul").removeClass("UlHome");
             });
@@ -905,6 +907,7 @@ $(document).ready(function(){
               $(".HeaderBottomCenter .Nav3").toggleClass("UlNotification");
                 $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
        $(".MainCenter .Nav6 ul").removeClass("UlFilterCitizen");
+      $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); 
                 $(".MainCenter .Nav2 ul").removeClass("UlFilter");
                 $(".MainCenter .Nav1 ul").removeClass("UlHome");
             });
@@ -934,6 +937,7 @@ $(document).ready(function(){
               $(".MainCenter .Nav1 ul").toggleClass("UlHome");
                 $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
                 $(".MainCenter .Nav2 ul").removeClass("UlFilter");
+      $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); /*Searchmobilemenu add also for above commented notification*/
        $(".MainCenter .Nav6 ul").removeClass("UlFilterCitizen");
             $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
             });
@@ -1102,6 +1106,7 @@ $(document).ready(function() {
 $('.Icons .fa-bell').click(function() {
                 $(".Icons .fa-bars").removeClass("ActiveArrow");
                 $(".Icons .fa-cog").removeClass("ActiveArrow");
+     $(".Icons .fa-search").removeClass("ActiveArrow"); /*Searchmobilemenu*/
                 $(this).toggleClass("ActiveArrow");
                
                 
@@ -1117,6 +1122,8 @@ $('.Icons .fa-bell').click(function() {
     $('.Icons .fa-bars').click(function() {
                  $(".Icons .fa-bell").removeClass("ActiveArrow");
                 $(".Icons .fa-cog").removeClass("ActiveArrow");
+        
+        $(".Icons .fa-search").removeClass("ActiveArrow"); /*Searchmobilemenu*/
                 $(this).toggleClass("ActiveArrow");
                
                 
@@ -1134,6 +1141,9 @@ $('.Icons .fa-bell').click(function() {
     $('.Icons .fa-cog').click(function() {
                 $(".Icons .fa-bars").removeClass("ActiveArrow");
                  $(".Icons .fa-bell").removeClass("ActiveArrow");
+                $(".Icons .fa-search").removeClass("ActiveArrow"); /*Searchmobilemenu*/
+        
+        
                 $(this).toggleClass("ActiveArrow");
                
                 
@@ -1147,9 +1157,71 @@ $('.Icons .fa-bell').click(function() {
             });
             
 
+    /*Searchmobilemenu add in between script*/
+
     
+    
+     $('.Icons .fa-search').click(function() {
+                $(".Icons .fa-bars").removeClass("ActiveArrow");
+                 $(".Icons .fa-bell").removeClass("ActiveArrow");
+                $(".Icons .fa-cog").removeClass("ActiveArrow");
+                $(this).toggleClass("ActiveArrow");
+               
+                
+            });
+    
+        $("body").click(function() {
+                
+                $(".Icons .fa-search").removeClass("ActiveArrow");
+
+
+            });
+    
+    
+    /*Searchmobilemenu end*/
     
     });
+
+
+
+
+/*Searchmobilemenu new*/
+
+
+
+$(document).ready(function(){
+  $('.Icons .fa-search').click(function() {
+              $("header .HeaderBottomCenter .Search").toggleClass("UlSearch");
+                $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
+      $(".Main .MainCenter .Nav1 ul").removeClass("UlHome");
+                $(".MainCenter .Nav2 ul").removeClass("UlFilter");
+       $(".MainCenter .Nav6 ul").removeClass("UlFilterCitizen");
+            $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
+            });
+    
+    
+    $("body").click(function() {
+                $("header .HeaderBottomCenter .Search").removeClass("UlSearch");
+
+
+            });
+
+
+            $(".Icons .fa-search").click(function() {
+                event.stopPropagation();
+            });
+    
+    $(".UlSearch, .SearchInput").click(function() {
+                event.stopPropagation();
+            });
+    
+    
+   
+
+        });
+
+/*Searchmobilemenu end*/
+
 
 
  function countChar(val) {

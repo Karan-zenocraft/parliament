@@ -115,6 +115,10 @@
     .carousel-caption .Row1 .RowBox .SliderImage{height: 55px!important;width: 55px!important}
     .carousel-caption .Row1{padding: 0px 40px!important;padding-bottom: 45px!important;}
     
+    /*    10-22-19*/
+    
+    .carousel-caption .Row1 .RowBox .SliderImage{min-height: 55px!important;min-width: 55px!important}
+    
     
    
 }
@@ -372,6 +376,16 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     justify-content: flex-end!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-bottom: 15px!important;
     margin-top: 15px!important;}
+
+
+
+
+
+/*    10-22-19*/
+    
+    .carousel-caption .Row1 .RowBox .RowTitle p span br{display: block}
+    .carousel-caption .Row1 .RowBox:nth-child(3){justify-content: flex-end!important}
+    .carousel-caption .Row1 .RowBox .SliderImage{min-height: 60px;min-width: 60px;}
 
 }
 
@@ -693,6 +707,15 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
    .Main .MainLeft .ProfileLeft .EditProfiles{ top: 0px;
     right: 3px;}
     
+
+
+
+
+/*    10-22-19*/
+    .carousel-caption .Row1 .RowBox .RowTitle p span br{display: block;}
+    
+    .carousel-caption .Row1 .RowBox .SliderImage{min-height: 55px!important;min-width: 55px!important;}
+
 }
 
 
@@ -1145,6 +1168,13 @@ header{padding-top: 50px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 10px!important;margin-bottom: 10px!important}
     
     
+
+
+
+/*    10-22-19*/
+    
+    .carousel-caption .Row1 .RowBox .SliderImage{min-height: 45px!important;min-width: 45px!important;}
+
 }
 
 @media (min-width: 320px) and (max-width: 991px){

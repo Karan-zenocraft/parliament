@@ -743,3 +743,13 @@ header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -63px;}
 .Ask .help-block{margin-top: 0;}
 .Main .MainLeft .ProfileLeft .User img{height: 213px;width: 213px;}
 .Main .MainLeft .EditProfileMain{position: relative}
+
+/*10-22-19*/
+
+.UsersImg .Absolute Img, .UsersImg .One{border-radius: 50%}
+.carousel-caption .Row1 .RowBox:nth-child(3){justify-content: flex-end!important}
+.carousel-caption .Row1 .RowBox .SliderImage{min-height: 100px;min-width: 100px;}
+
+header .HeaderBottomCenter .UlNotification {background: #FFFFFF;}
+
+header .HeaderBottomCenter .UlNotification span{font-size: 20px;font-weight: 300;font-family: 'Segoe UI';line-height: 25px;color: #000;padding: 9px 6px;}
