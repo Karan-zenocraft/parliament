@@ -377,7 +377,7 @@ function submitAnswer(question_id)
          $("#AnswerQuestionBox"+question_id).removeClass('GiveAnswerBox');
          $('#answersList'+question_id).prepend(data.data);
          $('#more2'+question_id).css('display:inline');
-         var title = data.user_name + " has answered on your question " + question_id;
+         var title = data.user_name + " has answered on your question ";
            var userid = data.ask_user_id;
            sendNotification(title,userid);
      }
@@ -401,7 +401,7 @@ function submitComment(question_id)
          $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
          $('.AddComment').val('');
          $('#comments'+question_id).text(++comment_count);
-           var title = data.user_name + " has commented on your question " + question_id;
+           var title = data.user_name + " has commented on your question ";
            var userid = data.ask_user_id;
             if(data.comment_user_id != userid ){
           sendNotification(title,userid);
@@ -1053,7 +1053,7 @@ $(document).ready(function(){
           $("#Load2").addClass("LoadBG");
         $("#Load2_count").text(data.louderCount);
         }
-        var title = data.louder_by+" made louder on your question "+question_id;
+        var title = data.louder_by+" made louder on your question ";
         var userid = data.ask_user_id;
         if(data.louder_user_id != userid ){
           sendNotification(title,userid);
