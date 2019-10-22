@@ -482,7 +482,7 @@ var obj = {
             description: 'test'
           };
 function callback(response){
-  if (response && response.post_id) {
+ 
          $.ajax({
      url: "site/facebook-share",
      type: 'post',
@@ -499,9 +499,7 @@ function callback(response){
       }
      }
   });
-     } else {
-       alert('Something went wrong in sharing');
-     }
+     
 }
 FB.ui(obj, callback);
 }
