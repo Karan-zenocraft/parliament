@@ -61,18 +61,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
                         </i>
                         </span>
-                        <ul class="Nav3">
 
-                        <li class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <span>Mark All as Unread</span></li>
-                    <li><a href="">Chala Commented on your Question</a></li>
-                    <li><a href="">Maya Made a Question Louder</a></li>
-                      <li><a href="">Abebe Followed you</a></li>
-                        <li><a href="">Lily Shared your Question</a></li>
-                            <li><a href="">Chala Commented on your Question</a></li>
-                            <li><a href="">Abebe Followed you</a></li>
-                        <li><a href="">Lily Shared your Question</a></li>
-                            <li class="text-center"><a href=""><b>See all</b></a></li>
-                            </ul>
                         <i class="fa fa-search OnlySm"></i>
                         <i class="fa fa-cog"></i>
                         <!--new html-->
@@ -87,7 +76,28 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
 
                         <i class="fa fa-bars OnlySm"></i>
                     </div>
-                        </div>
+
+
+
+                    <div class="Nav3" >
+                        <div class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <span>Mark All as Unread</span></div>
+
+                        <ul class="example-1  scrollbar-dusty-grass square thin dynamic_notification" style="list-style-type: none;padding: 0;margin-bottom: 0px;max-height: 220px;overflow-y: scroll;overflow-x: auto;">
+
+                <!--     <li><a href="">Chala Commented on your Question</a></li>
+                    <li><a href="">Maya Made a Question Louder</a></li>
+                      <li><a href="">Abebe Followed you</a></li>
+                        <li><a href="">Lily Shared your Question</a></li>
+                            <li><a href="">Chala Commented on your Question</a></li>
+                            <li><a href="">Abebe Followed you</a></li>
+                        <li><a href="">Lily Shared your Question</a></li> -->
+
+                        </ul>
+
+                        <div class="text-center"><a href=""><b>See all</b></a></div>
+
+                            </div>
+
                 </div>
 
         </div>
@@ -104,7 +114,6 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                 </div>
                 <div class="col-md-12 col-lg-6 cus-md-6 MainCenter">
                     <nav class="Nav1">
-
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
@@ -329,6 +338,7 @@ Breadcrumbs::widget([
                 </div>
                 <div class="col-md-3 cus-md-3 MainRight">
                     <nav>
+                        <input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo Yii::$app->user->id ?>">
                         <ul class="d=flex align-items-center justify-content=center flex-direction-column">
                             <li><a href="https://b4p.et/community-guidelines/">Community Guidelines </a></li>
                             <li><a href="https://b4p.et/announcements/">Announcements</a></li>

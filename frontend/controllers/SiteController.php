@@ -424,7 +424,7 @@ class SiteController extends FrontCoreController
                 $louderCount = (empty($question->louder_by) || ($question->louder_by == "")) ? 0 : count(explode(",", $question->louder_by));
                 $event = "unlike";
             }
-            $data = ["event" => $event, "louderCount" => $louderCount];
+            $data = ["event" => $event, "louderCount" => $louderCount, "louder_by" => Common::get_user_name(Yii::$app->user->id), "ask_user_id" => $question->user_agent_id];
             return json_encode($data);
 
         }

@@ -538,6 +538,89 @@ FB.ui(obj, callback);
      }
   });
 }*/
+function sendNotification(title,userid){
+      pubnub = new PubNub({
+            publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
+            subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+            secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+          })
+
+    function publishSampleMessage() {
+        var publishConfig = {
+            channel : "ask",
+            message: {
+                title: title,
+                description: "hello world!",
+                userid:userid,
+                flag:true,
+                site:'ask.zenocraft.com'
+            }
+        }
+        pubnub.publish(publishConfig, function(status, response) {
+            console.log(status, response);
+        })
+    }
+
+    pubnub.addListener({
+        status: function(statusEvent) {
+            if (statusEvent.category === "PNConnectedCategory") {
+                publishSampleMessage();
+            }
+        },
+        message: function(msg) {
+            console.log(msg.message.title);
+            console.log(msg.message.description);
+        },
+        presence: function(presenceEvent) {
+            // handle presence
+        }
+    })
+    console.log("Subscribing..");
+    pubnub.subscribe({
+        channels: ['rutusha']
+    });
+}
+function getNotification(){
+   pubnub = new PubNub({
+            publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
+            subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+            secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+    });
+var login_user_id = $('#login_user_id').val();
+
+
+ pubnub.addListener({
+                message: function(message) {
+                    if(message.message.userid == login_user_id){
+                         var count = $('.badge-secondary').text();
+                         $('.badge-secondary').text(count++);
+                         $(".dynamic_notification").append('<li><a href="#">'+message.message.title+'</li>');
+                    }
+                        if (!("Notification" in window)) {
+                            console.log("This browser does not support desktop notification");
+                        }
+                        else if (Notification.permission === "granted") {
+                            alert(message.message.title);
+                            setTimeout(notification.close.bind(notification), 4000);
+                            //model_popup("info","New Crisis Added",message.message.title);
+                        }
+                        else if (Notification.permission !== 'denied') {
+                            Notification.requestPermission(function (permission) {
+                                if (permission === "granted") {
+                                   // console.log(message.message.title);
+                                    alert(message.message.title);
+                                }
+
+                            });
+                        }
+                    }
+                    // }
+                });
+            pubnub.subscribe({
+                    channels: ['ask'],
+                    // withPresence: true
+                });
+}
 $(document).ready(function() {
                 QuestionAnswer();
                 $(window).scroll(function() {
@@ -832,7 +915,7 @@ $(document).ready(function(){
 
 
 
-/*$(document).ready(function(){
+$(document).ready(function(){
   $('.Icons .fa-bell').click(function() {
               $(".HeaderBottomCenter .Nav3").toggleClass("UlNotification");
                 $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
@@ -844,8 +927,6 @@ $(document).ready(function(){
     
     $("body").click(function() {
                 $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
-
-
             });
 
 
@@ -859,7 +940,7 @@ $(document).ready(function(){
     
    
 
-        });*/
+        });
 
 
 
@@ -987,6 +1068,9 @@ $(document).ready(function(){
           $("#Load2").addClass("LoadBG");
         $("#Load2_count").text(data.louderCount);
         }
+        var title = data.louder_by+" made louder on your question "+question_id;
+        var userid = data.ask_user_id;
+          sendNotification(title,userid);
       }
      }
   });
@@ -1224,20 +1308,21 @@ $(document).ready(function(){
     
 });
 $(document).ready(function(){
-
  pubnub = new PubNub({
             publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
             subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
             secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
     });
+var login_user_id = $('#login_user_id').val();
+
 
  pubnub.addListener({
                 message: function(message) {
-                    console.log(message);
-
-                    // {
-                      alert(message.message.title);
-                       console.log(message.message.title);
+                    if(message.message.userid == login_user_id){
+                         var count = $('.badge-secondary').text();
+                         $('.badge-secondary').text(count++);
+                         $(".dynamic_notification").append('<li><a href="#">'+message.message.title+'</li>');
+                    }
                         if (!("Notification" in window)) {
                             console.log("This browser does not support desktop notification");
                         }
@@ -1255,11 +1340,12 @@ $(document).ready(function(){
 
                             });
                         }
+                    }
                     // }
-                }
-            });
+                });
             pubnub.subscribe({
                     channels: ['ask'],
                     // withPresence: true
                 });
-});
+
+            });

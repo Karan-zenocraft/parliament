@@ -42,6 +42,7 @@ $mps = $question['mp_id'];
         $count = count($unanswered_by);
         $mpArr = Common::getMpNames(implode(",", $unanswered_by));
         if (!empty($unanswered_by)) {
+
             ?>
 				<div class="MP d-flex align-items-center justify-content center">
 					<div class="MPProfileName">
@@ -55,7 +56,7 @@ $mps = $question['mp_id'];
 						<span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="left"> <?php echo " " . ($count - 1); ?> others</span>
 						<?php }?>
 					</div>
-					<?php $userDetails = Common::get_name_by_id($unanswered_by[0], "Users");
+					<?php $userDetails = Common::get_name_by_id(array_shift($unanswered_by), "Users");
             //p($userDetails . "1111111");?>
 					<img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $userDetails['photo'] ?>" alt="" class="rounded-circle MPImage">
 					<ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMPleft" style="display: none;">
