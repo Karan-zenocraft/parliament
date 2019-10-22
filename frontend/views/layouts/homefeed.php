@@ -23,6 +23,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" type="image/png" sizes="64x64">
     <meta name="theme-color" content="#000" />
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
 </head>
 
 <body class="example-1  scrollbar-dusty-grass square thin">

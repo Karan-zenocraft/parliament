@@ -400,6 +400,48 @@ function submitComment(question_id)
          $('.AddComment').val('');
          $('#comments'+question_id).text(++comment_count);
 
+            pubnub = new PubNub({
+            publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
+            subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+            secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+          })
+
+    function publishSampleMessage() {
+        console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
+        var publishConfig = {
+            channel : "ask",
+            message: {
+                title: data.user_name + " has commented on your question " + question_id,
+                description: "hello world!",
+                userid: data.ask_user_id,
+                flag:true,
+                site:'ask.zenocraft.com'
+            }
+        }
+        pubnub.publish(publishConfig, function(status, response) {
+            console.log(status, response);
+        })
+    }
+
+    pubnub.addListener({
+        status: function(statusEvent) {
+            if (statusEvent.category === "PNConnectedCategory") {
+                publishSampleMessage();
+            }
+        },
+        message: function(msg) {
+            console.log(msg.message.title);
+            console.log(msg.message.description);
+        },
+        presence: function(presenceEvent) {
+            // handle presence
+        }
+    })
+    console.log("Subscribing..");
+    pubnub.subscribe({
+        channels: ['rutusha']
+    });
+
      }
   });
 }
@@ -443,12 +485,12 @@ function facebook_share(title, desc, url, image){
 FB.ui(
 {
 method: 'feed',
-name: 'This is the content of the "name" field.',
-link: url,
-picture: 'http://www.groupstudy.in/img/logo3.jpeg',
-caption: 'Top 3 reasons why you should care about your finance',
-description: "What happens when you don't take care of your finances? Just look at our country -- you spend irresponsibly, get in debt up to your eyeballs, and stress about how you're going to make ends meet. The difference is that you don't have a glut of taxpayers…",
-message: ""
+name: 'Fitsumbirhan Zeroem',
+link: 'ask.zenocraft.com',
+picture: 'http://ask.zenocraft.com/themes/parliament_theme/image/Inner-Logo.png',
+caption: 'Ask',
+description: "Why is 1+3=4?",
+message: "test question"
 });
 }
 /*function facebook_share(title, desc, url, image){
@@ -898,7 +940,7 @@ $(document).ready(function(){
             event:event
            },
      success: function (data) {
-      //var response = JSON.stringify(data);
+      //var response = JSON.stringify(data)
       if(data.event == "unlike"){
         $("#Load2").removeClass("LoadBG");
         $("#Load2_count").text(data.louderCount);
@@ -910,6 +952,7 @@ $(document).ready(function(){
          $("#Load"+question_id+" a").addClass("MadeLouderBG")
         $('#numbers'+question_id).text(data.louderCount);
       }
+
      }
   });
     }else{
@@ -1179,4 +1222,44 @@ $(document).ready(function(){
   });
     
     
+});
+$(document).ready(function(){
+
+ pubnub = new PubNub({
+            publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
+            subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+            secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+    });
+
+ pubnub.addListener({
+                message: function(message) {
+                    console.log(message);
+
+                    // {
+                      alert(message.message.title);
+                       console.log(message.message.title);
+                        if (!("Notification" in window)) {
+                            console.log("This browser does not support desktop notification");
+                        }
+                        else if (Notification.permission === "granted") {
+                            alert(message.message.title);
+                            setTimeout(notification.close.bind(notification), 4000);
+                            //model_popup("info","New Crisis Added",message.message.title);
+                        }
+                        else if (Notification.permission !== 'denied') {
+                            Notification.requestPermission(function (permission) {
+                                if (permission === "granted") {
+                                   // console.log(message.message.title);
+                                    alert(message.message.title);
+                                }
+
+                            });
+                        }
+                    // }
+                }
+            });
+            pubnub.subscribe({
+                    channels: ['ask'],
+                    // withPresence: true
+                });
 });

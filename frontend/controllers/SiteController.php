@@ -567,6 +567,8 @@ class SiteController extends FrontCoreController
             $model_comment->save(false);
 
             $comment_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
+            $ask_user = Questions::findOne($postData['question_id']);
+
             $userName = Common::get_user_name(Yii::$app->user->id);
 
             $pageDataAjax = $this->renderPartial('commentList', array(
@@ -577,7 +579,7 @@ class SiteController extends FrontCoreController
         } else {
             $pageDataAjax = "Bad request";
         }
-        $retArray = array('data' => $pageDataAjax);
+        $retArray = array('data' => $pageDataAjax, 'comment' => $postData['comment'], 'user_name' => $userName, 'ask_user_id' => $ask_user->user_agent_id);
         return json_encode($retArray);
     }
     public function actionReportQuestion()
