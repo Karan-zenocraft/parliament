@@ -296,7 +296,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     
     .carousel-caption .Row1 .RowBox:first-child{justify-content: flex-start!important;}
 .carousel-caption .Row1 .RowBox:nth-child(2){justify-content: center!important}
-.carousel-caption .Row1 .RowBox:last-child{justify-content: flex-end!important;}
+/*.carousel-caption .Row1 .RowBox:last-child{justify-content: flex-end!important;}*/
     .select2-selection--multiple{padding-right: 15px;margin-right: 15px!important;max-width: 100%;min-width: 300px;}
     
     .load_more{background: #D17C0D;
