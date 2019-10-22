@@ -446,23 +446,22 @@ function editProfile(user_id)
      }
   });
 }
-function facebook_share(title, desc, url, image){
+/*function facebook_share(title, desc, url, image){
 FB.ui(
 {
 method: 'feed',
 name: 'Fitsumbirhan Zeroem',
+href:url,
 link: 'ask.zenocraft.com',
 picture: 'http://ask.zenocraft.com/themes/parliament_theme/image/Inner-Logo.png',
 caption: 'Ask',
 description: "Why is 1+3=4?",
 message: "test question"
 });
+}*/
+function facebook_share(question_id){
+ postToFeed(question_id);
 }
-/*function facebook_share(title, desc, url, image){
- postToFeed(title, desc, url, image);
-}
-
-
 
   window.fbAsyncInit = function(){
 FB.init({
@@ -474,17 +473,20 @@ FB.init({
     js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
     ref.parentNode.insertBefore(js, ref);}(document,false));
 
-function postToFeed(title, desc, url, image){
+function postToFeed(question_id){
 var obj = {
             method: 'feed',
-            link: url, 
-            picture: 'http://ask.zenocraft.com/uploads/IMG-20180804-WA0001_5dab09cb6270f.jpg',
+            link: 'ask.zenocraft.com/view/question?id='+question_id, 
+            picture: 'http://ask.zenocraft.com/themes/parliament_theme/image/Logo1.png',
             name: 'question',
             description: 'test'
           };
-function callback(response){}
+function callback(response){
+  console.log(response);
+  return false;
+}
 FB.ui(obj, callback);
-}*/
+}
 
 
 /*function get_citizen_list(){
@@ -712,7 +714,7 @@ $(document).ready(function(){
                 $(".MainCenter .Nav1 ul").removeClass("UlHome");
                 $(".HeaderBottomCenter .Nav3").removeClass("UlNotification");
                 $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
-                $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); /*Searchmobilemenu*/
+      $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); /*Searchmobilemenu*/
                 $(".MainCenter .Nav2 ul").toggleClass("UlFilter");
                 $(".MainCenter .Nav6 ul").toggleClass("UlFilterCitizen");
                 $(".FilterBar span:first-child i").toggleClass("Rotate");
@@ -907,7 +909,7 @@ $(document).ready(function(){
               $(".HeaderBottomCenter .Nav3").toggleClass("UlNotification");
                 $(".HeaderBottomCenter .Nav4").removeClass("UlSetting");
        $(".MainCenter .Nav6 ul").removeClass("UlFilterCitizen");
-      $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); 
+      $("header .HeaderBottomCenter .Search").removeClass("UlSearch"); /*Searchmobilemenu add also for above commented notification*/
                 $(".MainCenter .Nav2 ul").removeClass("UlFilter");
                 $(".MainCenter .Nav1 ul").removeClass("UlHome");
             });
@@ -1122,7 +1124,6 @@ $('.Icons .fa-bell').click(function() {
     $('.Icons .fa-bars').click(function() {
                  $(".Icons .fa-bell").removeClass("ActiveArrow");
                 $(".Icons .fa-cog").removeClass("ActiveArrow");
-        
         $(".Icons .fa-search").removeClass("ActiveArrow"); /*Searchmobilemenu*/
                 $(this).toggleClass("ActiveArrow");
                
@@ -1141,9 +1142,7 @@ $('.Icons .fa-bell').click(function() {
     $('.Icons .fa-cog').click(function() {
                 $(".Icons .fa-bars").removeClass("ActiveArrow");
                  $(".Icons .fa-bell").removeClass("ActiveArrow");
-                $(".Icons .fa-search").removeClass("ActiveArrow"); /*Searchmobilemenu*/
-        
-        
+        $(".Icons .fa-search").removeClass("ActiveArrow"); /*Searchmobilemenu*/
                 $(this).toggleClass("ActiveArrow");
                
                 
@@ -1180,8 +1179,9 @@ $('.Icons .fa-bell').click(function() {
     
     /*Searchmobilemenu end*/
     
+    
+    
     });
-
 
 
 
@@ -1221,7 +1221,6 @@ $(document).ready(function(){
         });
 
 /*Searchmobilemenu end*/
-
 
 
  function countChar(val) {
