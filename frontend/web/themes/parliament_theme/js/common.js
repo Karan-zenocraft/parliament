@@ -476,7 +476,7 @@ FB.init({
 function postToFeed(question_id){
 var obj = {
             method: 'feed',
-            link: 'ask.zenocraft.com/view/question?id='+question_id, 
+            link: 'ask.zenocraft.com/site/view-question?id='+question_id, 
             picture: 'http://ask.zenocraft.com/themes/parliament_theme/image/Logo1.png',
             name: 'question',
             description: 'test'
