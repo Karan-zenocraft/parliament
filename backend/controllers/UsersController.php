@@ -82,8 +82,10 @@ class UsersController extends AdminCoreController
             $file = \yii\web\UploadedFile::getInstance($model, 'photo');
             if (!empty($file)) {
                 $file_name = $file->basename . "_" . uniqid() . "." . $file->extension;
-                $model->photo = $file_name;
-                $file->saveAs(Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_name);
+                //p(trim($file_name));
+                $file_filter = str_replace(" ", "", $file_name);
+                $model->photo = $file_filter;
+                $file->saveAs(Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_filter);
             }
             $model->save(false);
             ///////////////////////////////////////////////////////////
@@ -137,13 +139,12 @@ class UsersController extends AdminCoreController
             if (!empty($file)) {
                 $delete = $model->oldAttributes['photo'];
                 $file_name = $file->basename . "_" . uniqid() . "." . $file->extension;
-
-                $model->photo = $file_name;
+                $file_filter = str_replace(" ", "", $file_name);
                 if (!empty($old_image) && file_exists(Yii::getAlias('@root') . '/frontend/web/uploads/' . $old_image)) {
                     unlink(Yii::getAlias('@root') . '/frontend/web/uploads/' . $old_image);
                 }
-                $file->saveAs(Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_name, false);
-                $model->photo = $file_name;
+                $file->saveAs(Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_filter, false);
+                $model->photo = $file_filter;
             } else {
                 $model->photo = $old_image;
             }
