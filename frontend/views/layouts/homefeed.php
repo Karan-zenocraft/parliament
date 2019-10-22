@@ -48,15 +48,15 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                         <i class="fa fa-bell"></i>
                         <i class="fa fa-cog"></i>
                     </div>
-                    <div class="col-md-6 p-0">
+                    <div class="col-md-12 col-lg-6 p-0">
                        <div class="Search">
                         <input type="text" placeholder="Search for Questions here" class="SearchInput" id="filterSearch" onkeypress="filterSearch(event)"><i class="fa fa-search"></i>
                            </div>
                     </div>
                     <div class="Icons col-md-12 col-lg-3 p-lg-0 d-flex justify-content-end align-items-center">
 
-                        <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden">
-                        <img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;">
+                        <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden"></a>
+                        <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;"></a>
                         <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
                         </i>
@@ -95,7 +95,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
     <section class="Main">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3 cus-md-3 MainLeft">
+                <div class="col-lg-3 col-md-12 cus-md-3 MainLeft">
                 <?php if (empty($_REQUEST['user_id'])) {?>
                     <?php echo HelloWidget::widget(); ?>
                 <?php } else {?>
@@ -139,14 +139,16 @@ Breadcrumbs::widget([
 
                                 </nav>
                                 <div class="SearchMps SearchAnswredMps">
-                                    <input type="search" placeholder="Search UnAnswered Questions" class="SearchMp AnswredQ"><i class="fa fa-search"></i>
+                                    <input type="text" placeholder="Search UnAnswered Questions" class="SearchMp AnswredQ"><i class="fa fa-search"></i>
                                 </div>
                             </div>
                             <div class="QuestionAnswer">
 <!-- QUESTIONS AND ANSWER SECTION START-->
+<!--
                             <div class="QuestionAnswerTitle Public">
                             <h3>PUBLIC Questions</h3>
                             </div>
+-->
                             <input type='hidden' id='pageQuestion' value='0'>
                             <input type='hidden' id='questions_url' value="<?php echo Yii::getAlias("@web") . '/site/load-more-questions'; ?>">
                             <input type='hidden' id='filterQuestion2' value=''>
@@ -172,14 +174,16 @@ Breadcrumbs::widget([
 
                                 </nav>
                                 <div class="SearchMps SearchAnswredMps">
-                                    <input type="search" placeholder="Search Answered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
+                                    <input type="text" placeholder="Search Answered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
                                 </div>
                             </div>
                             <div class="QuestionAnswer">
 <!-- QUESTIONS AND ANSWER SECTION START-->
+<!--
                             <div class="QuestionAnswerTitle Public">
                               <h3>PUBLIC Questions</h3>
                             </div>
+-->
                            <!--  <input type='hidden' id='pageQuestion' value='0'>
                             <input type='hidden' id='filterQuestion' value=''>
                             <input type="hidden" id='filterQuestion2' value=''> -->
@@ -209,7 +213,7 @@ Breadcrumbs::widget([
                                 </nav>
                               <span>Show Citizens You follow</span>
                                 <div class="SearchMps SearchCitizen">
-                                    <input type="search" placeholder="Search Citizen" class="SearchMp Citizen" id="search_citizen" onkeypress="AjaxCallSearchCitizen(event)"><i class="fa fa-search"></i>
+                                    <input type="text" placeholder="Search Citizen" class="SearchMp Citizen" id="search_citizen" onkeypress="AjaxCallSearchCitizen(event)"><i class="fa fa-search"></i>
                                 </div>
                             </div>
                             </div>

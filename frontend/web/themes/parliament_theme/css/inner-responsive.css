@@ -1,3 +1,38 @@
+/*Searchmobilemenu*/
+
+@media (min-width: 320px) and (max-width: 576px){
+    header .HeaderBottomCenter .SearchInput{margin-left: 35%!important;}  
+   }
+/*Searchmobilemenu end*/
+
+
+
+
+@media (min-width: 1500px) and (max-width: 1749px) {
+
+/*    20-10-19*/
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 500px!important;}
+    
+}
+
+
+
+@media (min-width: 1919px){
+    
+/*    20-10-19*/
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{    margin-left: unset!important;
+    margin-right: unset!important;
+    max-width: 100%!important;
+    justify-content: flex-end!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-bottom: 25px!important;
+    margin-top: 25px!important;}
+   
+    
+}
+
+
+
+
 
 @media (min-width: 1900px) and (max-width: 2000px) {
     
@@ -15,6 +50,11 @@
     .MainCenter .tab-content #home .tab-pane .carousel .SliderArrowHomeFeed .Arrow_Right{right: 15px!important}
     .carousel-caption{padding-top: 45px!important}
     .carousel-caption .Row1 .RowBox .RowTitle{padding-right: 75px!important}
+    
+    
+     /*    20-10-19*/
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 600px!important;}
+    
 }
 
 @media (min-width: 1750px) and (max-width: 1849px) {
@@ -24,6 +64,10 @@
     .MainCenter .tab-content #home .tab-pane .carousel .SliderArrowHomeFeed .Arrow_Right{right: 15px!important}
     .carousel-caption{padding-top: 45px!important}
      .carousel-caption .Row1 .RowBox .RowTitle{padding-right: 35px!important}
+    
+    
+    /*    20-10-19*/
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 600px!important;}
 }
 
 
@@ -313,6 +357,21 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .GiveAnswer .AskFollowUp .AnswerImage{height: 47px;width: 47px;}
     .GiveAnswer .AskFollowUp .AskFollowUpTitle p{font-size: 15px;margin-bottom: 7px;}
     
+    
+    /*    10-20-19*/
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 340px;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px}
+    
+    
+
+
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{    margin-left: unset!important;
+    margin-right: unset!important;
+    max-width: 100%!important;
+    justify-content: flex-end!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-bottom: 15px!important;
+    margin-top: 15px!important;}
 
 }
 
@@ -324,6 +383,17 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     width: 35%!important;
     top: -72px!important;
 }
+}
+
+
+@media (min-width: 1025px) and (max-width: 1259px) {
+/*10-20-2019*/
+    
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 300px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-bottom: 15px!important;margin-top: 15px!important;}
+/*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredByComments{margin-bottom: 0px!important}*/
+ .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{margin-left: unset!important;margin-right: unset!important;max-width: 100%!important;justify-content: flex-end!important;}
+
 }
 
 @media (min-width: 992px) and (max-width: 1259px) {
@@ -609,6 +679,20 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
    
     line-height: 20px;}
     
+    
+    
+.QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child {
+    max-width: unset;
+}
+    
+    
+/*    20-10-19*/
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px}
+    .Main .MainLeft .ProfileLeft .EditProfiles .EditProfileBtn{padding: 3px 17px!important;
+    font-size: 8px;}
+   .Main .MainLeft .ProfileLeft .EditProfiles{ top: 0px;
+    right: 3px;}
+    
 }
 
 
@@ -697,6 +781,14 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Title{font-size: 10px;}
     .GiveAnswer .AskFollowUp .Profile .UserTitle a p{font-size: 10px;}
     
+    
+    
+     /*10-20-2019*/
+    
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 300px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px;}
+    
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{margin-left: unset!important;margin-right: unset!important;max-width: 100%!important;justify-content: flex-end!important;}
 }
 
 
@@ -708,6 +800,12 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .fa-angle-down{display: none!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .Loud .OnlySm{display: none!important;}
     header .HeaderBottomCenter .OnlySm{display: none!important}
+    
+    
+     /*10-20-2019*/
+    
+    
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a{position: relative!important}
 }
 
 
@@ -732,6 +830,11 @@ header{padding-top: 80px;}
     
 */
     
+    /*    20-10-19*/
+    
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 500px}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-bottom: 15px!important;margin-top: 15px!important;}
+    
 }
 
 
@@ -749,6 +852,17 @@ header{padding-top: 50px;}
     max-width: 500px!important;
     min-width: 500px!important;
 }
+    
+    
+    /*10-20-2019*/
+    
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 350px!important;}
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+/*10-20-19*/
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 47px!important;width: 47px!important;}
 }
 
 
@@ -812,6 +926,15 @@ header{padding-top: 50px;}
 
 .GiveAnswer .AskFollowUp .Profile .UserTitle{margin-left: 5px!important;}
     .GiveAnswer .AskFollowUp{padding:15px 10px!important}
+    
+    
+     /*10-20-2019*/
+    
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 250px;}
+.select2-container--krajee-bs4 .select2-selection--multiple{max-width: 400px!important;min-width: 400px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 35px!important;width: 35px!important;}
+    
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 20px!important}
 }
 
 
@@ -1010,6 +1133,18 @@ header{padding-top: 50px;}
 .GiveAnswer .AskFollowUp{padding:15px 10px!important}
     
     
+    /*    20-10-19*/
+    
+    header .HeaderBottomCenter .SearchInput{height: 25px!important;
+    font-size: 10px!important;
+    width: 160px!important;
+    padding: 6px!important;}
+    header .HeaderBottomCenter .Search{padding-top: 0px!important}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{margin-top: 35px!important}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 30px!important;width: 30px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 10px!important;margin-bottom: 10px!important}
+    
+    
 }
 
 @media (min-width: 320px) and (max-width: 991px){
@@ -1032,7 +1167,10 @@ header{padding-top: 50px;}
     header .HeaderBottomCenter{display: unset!important;justify-content: unset!important;align-items: unset!important;border-bottom: 4px solid #E4E4E4;}
     header .HeaderBottomCenter .Icons .ActiveIcon{background: #32464F;position: relative!important}
     header .HeaderBottomCenter .Icons .fa-bars:last-child{padding-right: 0px;}
-    .Main .MainLeft{display: none}
+    .Main .MainLeft{padding-top: 0px;}
+    .Main .MainLeft .EditProfileMain{display: block!important}
+    .Main .MainLeft{padding-left: 0px;padding-right: 0px;}
+    .Main .MainLeft .MainLeftInner{display: none}
     .Main  .MainCenter .Nav1 ul{flex-direction: column;position: absolute;right: 0;top: 0;background: #000;}
     
     .Main .MainCenter .Nav1 ul li{box-shadow: unset;width: 100%;background: #ffffff;padding: 2px 7px 2px 7px;margin-bottom: 3px;}
@@ -1301,7 +1439,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .Main .MainLeft .MainLeftInner .ListOfQuestions ul li a{font-size: 14px;line-height: 20px;}
     .Main .MainLeft .MainLeftInner .ListOfQuestions ul{margin-bottom: 30px;}
     .Main .MainLeft .MainLeftInner .ListOfQuestions ul li:before{font-size: 14px;}
-    .Main .MainLeft .OnlySm{display: block}
+    .Main .MainLeft .OnlySm{display: none}
     .Main .MainCenter .Onlylg{display: none;}
     
     /*EditProfilecss*/
@@ -1319,7 +1457,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     
 /*    Searchmobilemenu*/
     header .HeaderBottomCenter .UlSearch{display: block!important;}
-    header .HeaderBottomCenter .Search{display: none;position: absolute;left: 0%;top: 49px;z-index: 9999;width: 100%;background: #000;padding: 10px 0px}
+    header .HeaderBottomCenter .Search{display: none;position: absolute;left: 0%;top: 49px;z-index: 9999;width: 100%!important;background: #000;padding: 10px 0px}
     header .HeaderBottomCenter .SearchInput{display: block;height: 30px;width: 195px;border: 2px solid #41545D;outline: none
     ;font-size: 12px;margin-left: 56%;}
     header .HeaderBottomCenter .Search .fa-search{display: none;}
@@ -1443,6 +1581,27 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .GiveAnswer .AskFollowUp .Profile img{height: 47px;width: 47px;}
     .GiveAnswer .AskFollowUp .AskFollowUpTitle p{font-size: 14px;}
 
+    
+    /*    10-20-2019*/
+    .select2-container--krajee-bs4 .select2-selection--multiple{max-width: 600px;min-width: 600px;}
+    .select2-selection--multiple{border-radius: 0px!important;}
+    .Ask form{display: flex;flex-direction: column;}
+    .Ask form .form-group:nth-child(2){order: 2}
+     .Ask form .form-group:nth-child(3){order: 1}
+    .Ask form .form-group:nth-child(4){order: 3;}
+    .Main .MainCenter .Ask .AskQuestion{margin-bottom: 0px;}
+    .select2-selection--multiple{margin-bottom: 0px!important}
+    .Ask .help-block{font-size: 10px;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a{justify-content: flex-start;}
+/*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 47px!important;width: 47px!important;}*/
+
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{justify-content: center!important}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByComments{margin-bottom: 0px;}  
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .MP{line-height: 18px;font-size: 12px;}
+    
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Title, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{line-height: 20px;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .Title{line-height: 20px;}
 
 }
   

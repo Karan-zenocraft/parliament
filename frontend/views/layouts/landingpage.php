@@ -50,7 +50,7 @@ ParliamentAsset::register($this);
 $representativesArr = Representatives::find()->asArray()->all();
 ?>
                     <div class="Representative  d-flex align-items-start justify-content-start">
-                        <div class="row">
+                        <div class="row col-md-6 col-xl-6 p-0">
                       <?php if (!empty($representativesArr)) {
     $i = 1;
     foreach ($representativesArr as $key => $user) {
@@ -66,7 +66,7 @@ $representativesArr = Representatives::find()->asArray()->all();
 
     <?php
 if ($i == 2) {
-            echo "</div><div class='row'>";
+            echo "</div><div class='row col-md-6 col-xl-6 p-0'>";
         }
         $i++;}}?>
 

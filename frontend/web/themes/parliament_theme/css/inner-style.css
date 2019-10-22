@@ -118,7 +118,10 @@ padding-right: 30px;}
 .Main .MainCenter{border: 1px solid #707070;padding: 0px;}
 .Main .MainCenter .Nav1{margin-top: 20px;margin-bottom: 25px;padding: 0px 15px;}
 .Main .MainCenter .Nav1 ul{margin: 0;padding: 0;border: none}
-.Main .MainCenter .Nav1 ul li{box-shadow:5px 10px 40px 0px #00000066;cursor: pointer}
+.Main .MainCenter .Nav1 ul li{
+/*    box-shadow:5px 10px 40px 0px #00000066;*/
+    
+cursor: pointer}
 .Main .MainCenter .Nav1 ul li a{list-style-type: none;color: #707070;font-size: 18px;font-weight: 400;line-height: 15px;font-family: 'Segoe UI';}
 .Main .MainCenter .Nav1 ul li:hover{background: #D17C0D;color: #fff;transition: 0.25s ease;}
 .Main .MainCenter .Nav1 ul li:hover a{color: #fff;transition: 0.25s ease;}
@@ -227,7 +230,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .carousel-caption .Row1 .RowBox .RowTitle{text-align: left;margin-left: 5px;}
 .carousel-caption .Row1 .RowBox .RowTitle p{font-size: 18px;color: #fff;line-height: 30px;font-weight: 400; margin-bottom: 0px;font-family: 'Segoe UI';}
 .carousel-caption .Row1 .RowBox .RowTitle p span{font-size: 12px;color: #a5a5a5;line-height: 18px;font-weight: 400; margin-bottom: 0px;font-family: 'Segoe UI';}
-.carousel-caption .Row1 .RowBox .RowTitle p:last-child{line-height: 0;}
+.carousel-caption .Row1 .RowBox .RowTitle p:last-child{line-height:16px;}
 
 .carousel-control-next-icon{background-image:url("../image/slider-arrow.png")!important;}
 .carousel-control-next-icon, .carousel-control-prev-icon{width: 21%!important;height: 11%!important;z-index: 999999999!important;position: absolute;right: 0px;left: 90px;margin: 15% 0%;}
@@ -476,7 +479,7 @@ header .HeaderBottomCenter .UlSetting li a:hover{text-decoration: none;transitio
 header .HeaderBottomCenter .Icons .fa-cog{position: relative;}
 header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -60px;left: -15px;}
  header .HeaderBottomCenter .Nav4 .BGList{background: #EFEFEF!important;}
-.Main .MainCenter .Nav1 .UlHome{box-shadow: 0px 0px 25px 25px #00000066!important;}
+/*.Main .MainCenter .Nav1 .UlHome{box-shadow: 0px 0px 25px 25px #00000066!important;}*/
 .Main .MainCenter .FilterBar .Nav5 ul li i{font-size: 12px;color: #999898;
     margin-left: 2px;}
 .Main .MainCenter .FilterBar .Nav5 li a{font-weight: 500!important;}
@@ -706,7 +709,7 @@ header .HeaderBottomCenter .Search{margin-right: auto;}
 .select2-selection--multiple{max-width: 80%!important}
 .Ask .help-block{width: 33%;display: block;margin-left: auto;}
 /*header .HeaderBottomCenter .Icons .IconBoxs{margin-right: auto;margin-left: 65px;}*/
-header .HeaderBottomCenter .People{height: 162px!important;width: 162px!important;z-index:99;}
+header .HeaderBottomCenter .People{height: 162px!important;width: 162px!important;z-index: 99;}
 .OnhoverGroup{cursor: pointer;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: unset;padding-left: 8px;padding-right: 40px;padding-top: 3px;padding-bottom: 3px;
     margin-top: 25px;left: unset;right: 0;}
@@ -723,3 +726,20 @@ header .HeaderBottomCenter .Icons{padding-right: 50px!important}
 .carousel-caption .Row1 .RowBox .Dimmer:before{z-index: 99;}
 header .HeaderBottomCenter .UlSetting{width: 90%;top: 105%}
 header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -63px;}
+
+
+/*10-20-19*/
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p{margin-right: 0!important}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments button{padding-left: 0px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy .UnansweredBy{align-items: center!important}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px;}
+
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 600px;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy {align-items: center!important;}
+
+.MainCenter .tab-content .tab-pane{background: #E4E4E4;}
+.Main .MainCenter{min-height: 600px;background: #E4E4E4;}
+.Ask .help-block{margin-top: 0;}
+.Main .MainLeft .ProfileLeft .User img{height: 213px;width: 213px;}
+.Main .MainLeft .EditProfileMain{position: relative}

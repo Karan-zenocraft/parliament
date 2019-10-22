@@ -46,20 +46,25 @@ header{background: #10303F;padding-bottom: 1px;}
 header .HeaderRight h1{font-size: 44px;font-weight: bold;letter-spacing: 0;line-height: 94px;color: #ffffff;text-transform: uppercase;margin-top: 65px;margin-bottom: 35px;text-align: center; font-family: 'Segoe UI';}
 header .HeaderRight h2{font-size: 37px;font-weight: bold;letter-spacing: 0;line-height: 74px;color: #ffffff;text-transform: uppercase;margin-top: 30px;margin-bottom: 40px;text-align: center; font-family: 'Segoe UI';}
 header .HeaderRight{padding-right: 50px;}
-header .HeaderRight .Representative{background: #ffffff;border-radius: 100px;width: 91%;margin: auto;padding-top: 20px;padding-left: 55px;   padding-bottom: 10px;padding-right: 0px;border: 2px solid #707070;}
+header .HeaderRight .Representative{background: #ffffff;border-radius: 100px;width: 100%;margin: auto;padding-top: 20px;padding-left: 55px;   padding-bottom: 10px;padding-right: 0px;border: 2px solid #707070;}
 header .HeaderLeft .Logo{margin: auto;display: block;}
 header .HeaderLeft{padding: 50px 15px;}
-header .HeaderRight .Profile{margin-bottom: 10px;}
-
+header .HeaderRight .Profile{margin-bottom: 10px;display: flex;
+    align-items: center;
+    justify-content: center;}
+header .HeaderRight .ProfileTitle{max-width: 260px;}
+header .HeaderRight .Profile .ProfileTitle{word-break: normal}
+header .HeaderRight .Profile span{word-break:  normal;}
 header .HeaderRight .Profile img{margin-right: 25px;}
-header .HeaderRight .Profile p{margin: 0;font-size: 39px;line-height: 52px;letter-spacing: 0;color: #333;}
+header .HeaderRight .Profile p{margin: 0;font-size: 39px;line-height: 40px;letter-spacing: 0;color: #333;font-family: 'Segoe UI';font-weight: lighter;margin-bottom: 10px;}
 header .HeaderRight .Profile p:last-child{font-size: unset;line-height: 20px;}
 header .HeaderRight .Profile span{margin: 0;font-size: 21px;line-height: 28px;letter-spacing: 0;color: #a5a5a5;font-weight: lighter; font-family: 'Segoe UI';}
 .Login{padding-top: 20px;background-image: linear-gradient(#10313E, #020000);}
 .Login .LoginLeft .Form{padding-left: 120px;}
+/*.Form form tr td .form-group{margin-bottom: 0;}*/
 .Login .LoginLeft .Form table label{font-size: 20px;color: #FCF1F1;line-height: 19px;letter-spacing: 0;font-weight: normal;margin-bottom: 15px; font-family: 'Segoe UI';}
 .Login .LoginLeft .Form table{width: 100%;}
-.Login .LoginLeft .Form table input{border: 5px solid #d7c1c1a3;outline:5px solid #41545D;margin-bottom: 35px;width: 100%;height: auto;max-width: 232px;min-height: 40px;}
+.Login .LoginLeft .Form table input{border: 5px solid #d7c1c1a3;outline:5px solid #41545D;margin-bottom: 15px;width: 100%;height: auto;max-width: 232px;min-height: 40px;}
 .Login .LoginLeft .Form table .ForgotButton{color: #fcf1f182;font-size: 20px;font-weight: normal;line-height: 19px;letter-spacing: 0; font-family: 'Segoe UI';}
 .Login .LoginLeft .Form table .ForgotButton:hover{transition: 0.25s ease;color: #ffffff;}
 .Login .LoginLeft .Form table .LoginButton{font-size: 21px;font-weight: normal;color: #ffffff;background: #D17C0D;padding: 6px 30px;border-radius: 10px;line-height: 20px;margin-left: 120px; font-family: 'Segoe UI';}
@@ -74,11 +79,17 @@ header .HeaderRight .Profile span{margin: 0;font-size: 21px;line-height: 28px;le
 .Login .LoginBottom ul li:first-child{margin-left: 0;}
 
 
-header .HeaderRight .Profile img{transform: scale(1.0);transition: 0.25s ease;}
+header .HeaderRight .Profile img{transform: scale(1.0);transition: 0.25s ease;height: 163px;
+    width: 163px;}
 header .HeaderRight .Profile:hover img{transform: scale(1.1);transition: 0.25s ease;}
-
-
-
+.Login .LoginLeft .Form table .LoginButton{outline: none!important;
+    border: none!important;
+    box-shadow: none!important;
+}
+/*
+header .HeaderRight .Profile .ProfileTitle{word-break: break-all}
+header .HeaderRight .Profile span{word-break: break-all;}
+*/
 /*ForgotPassword page Css*/
 
 
@@ -96,7 +107,11 @@ header .HeaderRight .Profile:hover img{transform: scale(1.1);transition: 0.25s e
     margin-bottom: 20px;
     width: 50%;
     height: auto;}
-.ForgotRight .Btn:focus{outline: none;}
+.ForgotRight .Btn:focus{outline: none;box-shadow: none;}
+.ForgotRight .Btn:active{transition: 0.25s ease!important;
+    background: transparent!important;
+    border: 1px solid #fff!important;
+    color: #fff!important;outline: none!important;box-shadow: none!important}
 .ForgotRight .Btn:hover{transition: 0.25s ease;background:transparent;border: 1px solid #fff;color: #fff; }
 .ForgotRight .Btn{padding: 5px 15px;background: #D17C0D;border: 1px solid #D17C0D;font-size: 14px;line-height: 22px;letter-spacing: 2px;border-radius: 50px;color: #fff;}
 .ForgotRight {padding-left: 80px!important;padding: 70px 0px;}
@@ -113,3 +128,7 @@ header .HeaderRight .Profile:hover img{transform: scale(1.1);transition: 0.25s e
 
 .control-label{display: none;}
 .Btn:focus{box-shadow: none;outline: none;}
+.ForgotRight form input{margin-bottom: 5px!important;}
+
+header .HeaderRight .Representative .row{display: flex;align-items: flex-start;justify-content: center;flex-direction: column}
+
