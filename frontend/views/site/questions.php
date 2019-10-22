@@ -3,6 +3,7 @@ use common\components\Common;
 use common\models\Answers;
 use common\models\Comments;
 use common\models\QuestionReported;
+use common\models\Shares;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 if (!empty($modelsQuestions)) {
