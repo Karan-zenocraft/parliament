@@ -143,73 +143,7 @@ Breadcrumbs::widget([
                     </div>
 
 
-                        <div id="menu1" class="tab-pane fade">
-                           <!---------new-content-start----------------->
 
-                            <div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between">
-
-                                <nav class="Nav2 Nav5">
-                                    <ul class="d-flex align-items-center justify-content-start nav">
-                                        <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                                       <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
-
-                                    </ul>
-
-                                </nav>
-                                <div class="SearchMps SearchAnswredMps">
-                                    <input type="text" placeholder="Search UnAnswered Questions" class="SearchMp AnswredQ"><i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                            <div class="QuestionAnswer">
-<!-- QUESTIONS AND ANSWER SECTION START-->
-<!--
-                            <div class="QuestionAnswerTitle Public">
-                            <h3>PUBLIC Questions</h3>
-                            </div>
--->
-                            <input type='hidden' id='pageQuestion' value='0'>
-                            <input type='hidden' id='questions_url' value="<?php echo Yii::getAlias("@web") . '/site/load-more-questions'; ?>">
-                            <input type='hidden' id='filterQuestion2' value=''>
-                            <div id='unanswered_questions'>
-                            </div>
-                            <br><center><button class="load_more" id="loadmoreDataunanswered" onclick="QuestionAnswer()" >Load More</button></center>
-                            </div>
-
-                            <!---------new-content-start----------------->
-
-
-                        </div>
-                        <div id="menu2" class="tab-pane fade">
-
-                            <div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between">
-
-                                <nav class="Nav2 Nav5">
-                                    <ul class="d-flex align-items-center justify-content-start nav">
-                                        <li class="FilterActive"><a>Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                                        <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
-
-                                    </ul>
-
-                                </nav>
-                                <div class="SearchMps SearchAnswredMps">
-                                    <input type="text" placeholder="Search Answered Questions" class="SearchMp SearchAnswredQ"><i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                            <div class="QuestionAnswer">
-<!-- QUESTIONS AND ANSWER SECTION START-->
-<!--
-                            <div class="QuestionAnswerTitle Public">
-                              <h3>PUBLIC Questions</h3>
-                            </div>
--->
-                           <!--  <input type='hidden' id='pageQuestion' value='0'>
-                            <input type='hidden' id='filterQuestion' value=''>
-                            <input type="hidden" id='filterQuestion2' value=''> -->
-                            <div id='answered_questions'>
-                            </div>
-                             <br><center><button class="load_more" id="loadmoreDataanswered" onclick="QuestionAnswer()" >Load More</button></center>
-                            </div>
-                        </div>
 
                         <div id="menu3" class="tab-pane fade">
 

@@ -186,6 +186,10 @@ function QuestionAnswer()
 {
   var nextpage = $("#pageQuestion").val();
   var filter = $("#filterQuestion").val();
+  if((filter == "Homefeed") || (filter == "myQue") || (filter == "myLouder") || (filter == "mpNotAns")) {
+
+      $("#filterQuestion2").val("");
+  }
   var filter2 = $("#filterQuestion2").val();
   var search = $("#filterSearch").val();
   var user_id = $('#user_id').val();
@@ -203,7 +207,6 @@ function QuestionAnswer()
             user_id:user_id
            },
      success: function (response) {
-      $("#filterQuestion2").val("");
       if(filter == "Answered" ||  filter =='Unanswered'){
         $(".hideHome").hide();
         $(".showHome").show();
@@ -218,9 +221,11 @@ function QuestionAnswer()
         else{
           $('#ajaxQuestion').append(response.data);
         }
-       if(response.count <= 0)
+       if(response.count == 0)
        {
           $('#loadmoreData').hide();
+       }else{
+        $('#loadmoreData').show();
        }
      }
   });

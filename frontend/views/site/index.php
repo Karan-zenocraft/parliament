@@ -104,7 +104,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 <nav class="Nav2 Nav5 showHome">
   <ul class="d-flex align-items-center justify-content-start nav showHome">
     <li class="FilterActive"><a onclick="filterQuestion2('recent')">Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-    <li><a onclick="filterQuestion2('louddest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
+    <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
   </ul>
 </nav>
 <!--    <div class="SearchMps SearchAnswredMps">
@@ -118,6 +118,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 <input type='hidden' id='pageQuestion' value='0'>
 <input type='hidden' id='filterQuestion' value=''>
+<input type='hidden' id='filterQuestion2' value=''>
 <input type='hidden' id='sort' value='asc'>
 <input type='hidden' id='sortby' value=''>
 <input type='hidden' id='page' value='1'>

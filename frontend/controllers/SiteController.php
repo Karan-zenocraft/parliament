@@ -400,7 +400,7 @@ class SiteController extends FrontCoreController
                 // ]);
 
             } else {
-                $retData .= "No Data Found";
+                $retData .= "No records found";
             }
             return json_encode($retData);
         }
@@ -510,8 +510,7 @@ class SiteController extends FrontCoreController
             $questionsQuery = $questionsQuery->andWhere("questions.is_delete != '1'");
             //->groupBy("id")
             if ($flagCond2 == 'loudest') {
-
-                $questionsQuery = $questionsQuery->select(["*", "(LENGTH(louder_by) - LENGTH(REPLACE(louder_by, ',','')) + 1) AS louder_count"]);
+                $questionsQuery = $questionsQuery->select(["*", "questions.id", "(LENGTH(louder_by) - LENGTH(REPLACE(louder_by, ',','')) + 1) AS louder_count"]);
                 $questionsQuery = $questionsQuery->orderBy(["louder_count" => SORT_DESC]);
             } else {
                 $questionsQuery->orderBy(["questions.id" => SORT_DESC]);
@@ -521,6 +520,7 @@ class SiteController extends FrontCoreController
                 ->offset($page)
                 ->limit(5)
                 ->all();
+            //p($models);
             if (!empty($models)) {
                 $pageDataAjax = $this->renderPartial('questions', array(
                     'modelsQuestions' => $models,
