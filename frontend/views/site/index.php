@@ -66,7 +66,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         $rowCount = 1;
         foreach ($models as $key => $value) {
             ?>
-                  <div class="RowBox d-flex align-items-center justify-content-start col-md-4 p-0">
+                  <div class="RowBox d-flex align-items-center justify-content-start col-md-4 p-0 col-sm-4">
                     <?php $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";?>
                     <div class="DimmerBox" id="<?php echo "mp_" . $value['id'] ?>"><img src="<?php echo $user_image; ?>" alt="" class="rounded-circle SliderImage"></div>
                    <div class="RowTitle">

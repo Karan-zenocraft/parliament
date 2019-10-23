@@ -4,7 +4,7 @@
     $rowCount = 1;
     foreach ($models as $key => $value) {
         ?>
-        <div class="RowBox d-flex align-items-center justify-content-start col-md-4 p-0">
+        <div class="RowBox d-flex align-items-center justify-content-start col-md-4 p-0 col-sm-4">
           <div class="DimmerBox" id="<?php echo "mp_" . $value['id'] ?>"><img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $value['photo'] ?>" alt="" class="img-fluid SliderImage"></div>
             <a href="#"><div class="RowTitle">
             <p><?php echo $value['user_name']; ?></p>
