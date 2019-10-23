@@ -1083,7 +1083,7 @@ header{padding-top: 50px;}
     .Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-right{right: 5px!important;height: 20px!important;
     width: 15px!important;}
     .Main .MainCenter .CitizenPage {padding-left: 15px!important;padding-right: 15px!important;}
-    .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockImg img {height: 66px!important;width: 66px!important;line-height: 11px;}
+    .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockImg img {height: 55px!important;width: 55px!important;line-height: 11px;}
     .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption p{margin-bottom: 0px;font-size: 8px;line-height: 12px;}
     .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption h2{font-size: 12px!important;line-height: 18px!important;}
     
@@ -1676,6 +1676,6 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
      .Main .MainLeft .MainLeftInner .ListOfQuestions ul li:before{font-size: 12px;}
     .Main .MainLeft .MainLeftInner .ListOfQuestions ul{margin-bottom: 20px;}
     .Main .MainLeft .ProfileLeft .User img{height: 80px;width: 80px;}
-    .Main .MainLeft .OnlySm{display: block;}
+    .Main .MainLeft .OnlySm{display: none;;}
    
 }

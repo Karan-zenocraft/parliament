@@ -140,7 +140,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainRight nav ul li{list-style-type: none;margin-bottom: 30px;padding-bottom: 10px;border-bottom: 1px solid #707070;}
 .Main .MainRight nav ul li a{font-size: 20px;line-height: 22px;font-weight: bold;color: #D17C0D;}
 .Main .MainRight nav ul li:hover a{color: #333;transition: 0.25s ease;}
-.Main .MainCenter .FilterBar{padding: 10px 15px;background: #000;color: #fff;}
+.Main .MainCenter .FilterBar{padding: 10px 15px;background: #000;color: #fff;display: flex;}
 .Main .MainCenter .FilterBar .Nav2 ul li{margin: 0px 40px;}
 .Main .MainCenter .FilterBar .Nav2 ul{border: none;}
 .Main .MainCenter .FilterBar .Nav2 ul li a{font-size: 16px;color: #fff;line-height: 18px;font-weight: bold;font-family: 'Segoe UI'; }
@@ -748,7 +748,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -55px;}
 
 .UsersImg .Absolute Img, .UsersImg .One{border-radius: 50%}
 .carousel-caption .Row1 .RowBox:nth-child(3){justify-content: flex-end!important}
-.carousel-caption .Row1 .RowBox .SliderImage{min-height: 100px;min-width: 100px;}
+/*.carousel-caption .Row1 .RowBox .SliderImage{min-height: 100px;min-width: 100px;}*/
 
 header .HeaderBottomCenter .UlNotification {background: #FFFFFF;}
 

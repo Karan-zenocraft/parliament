@@ -37,7 +37,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
     </div>
     <?php ActiveForm::end();?>
   </div>
-  <div class="hideHome FilterBar d-flex align-items-end justify-content-between ">
+  <div class="hideHome FilterBar  align-items-end justify-content-between ">
     <span class="hideHome">Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
     <nav class="Nav2 hideHome">
       <ul class="d-flex align-items-center justify-content-start nav">
@@ -100,7 +100,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 </div>
 <?php }?>
-<div class="FilterBar SearchAnswredBar d-flex align-items-end justify-content-between showHome" style="display:none !important ">
+<div class="FilterBar SearchAnswredBar  align-items-end justify-content-between showHome" style="display:none !important ">
 <nav class="Nav2 Nav5 showHome">
   <ul class="d-flex align-items-center justify-content-start nav showHome">
     <li class="FilterActive"><a onclick="filterQuestion2('recent')">Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
