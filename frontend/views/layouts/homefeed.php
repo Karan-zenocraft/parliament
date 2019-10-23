@@ -56,7 +56,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                     </div>
                     <div class="Icons col-md-12 col-lg-3 p-lg-0 d-flex justify-content-end align-items-center">
 
-                        <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden"></a>
+                        <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden"></a>
                         <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;"></a>
                         <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
                             <?php $notifications = Notifications::find()->where(['user_id' => Yii::$app->user->id, 'mark_read' => 0])->asArray()->all();?>
@@ -84,7 +84,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                     <div class="Nav3" >
                         <div class="d-flex align-items-center justify-content-between flex-wrap"><span>Notification</span> <a href="javascript:void(0);" onclick="clear_notification(<?php echo Yii::$app->user->id; ?>)"><span>Mark All as Unread</span></a></div>
 
-                        <ul class="example-1  scrollbar-dusty-grass square thin dynamic_notification" style="list-style-type: none;padding: 0;margin-bottom: 0px;max-height: 220px;overflow-y: scroll;overflow-x: auto;">
+                        <ul class="example-1  scrollbar-dusty-grass square thin dynamic_notification" style="list-style-type: none;padding: 0;margin-bottom: 0px;max-height: 220px;overflow-y: scroll;overflow-x: auto;width:100%;background:#D5D5D5">
 <?php if (!empty($notifications)) {
     foreach ($notifications as $key => $notification) {
         echo "<li><a href=''> " . $notification['notification'] . " </a></li>";
