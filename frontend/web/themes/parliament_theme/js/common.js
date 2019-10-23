@@ -482,7 +482,7 @@ var obj = {
             description: 'test'
           };
 function callback(response){
-  alert(response.post_id);
+  console.log(response);
   return false;
  
          $.ajax({
