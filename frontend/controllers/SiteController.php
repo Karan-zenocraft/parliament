@@ -781,6 +781,7 @@ class SiteController extends FrontCoreController
     {
         if (!empty($_POST)) {
             $question = Shares::find()->where(['question_id' => $_POST['question_id'], 'user_agent_id' => Yii::$app->user->id]);
+            p($question);
             if (empty($question)) {
                 $retData = array("msg" => "success");
             } else {
