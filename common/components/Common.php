@@ -1912,7 +1912,7 @@ class Common
             ]);
         }
         if ($flag == 2) {
-            return Html::a('<i class="icon-folder-open icon-white"></i>', $url, [
+            return Html::a('<i class="icon-comment icon-white"></i>', $url, [
                 'title' => Yii::t('yii', $title),
                 'class' => 'btn btn-primary btn-small',
                 //'target' => '_blanck'

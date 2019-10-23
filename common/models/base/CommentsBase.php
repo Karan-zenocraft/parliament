@@ -56,7 +56,7 @@ class CommentsBase extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'question_id' => Yii::t('app', 'Question ID'),
             'comment_text' => Yii::t('app', 'Comment Text'),
-            'user_agent_id' => Yii::t('app', 'User Agent ID'),
+            'user_agent_id' => Yii::t('app', 'Commented By'),
             'status' => Yii::t('app', 'Status'),
             'is_delete' => Yii::t('app', 'Is Delete'),
             'created_at' => Yii::t('app', 'Created At'),

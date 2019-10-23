@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'header' => 'Actions',
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{delete}{manage_answers}',
+            'template' => '{delete}{manage_answers}{manage_comments}',
             'buttons' => [
                 /* 'update' => function ($url, $model) {
                 $flag = 1;
@@ -104,6 +104,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     $title = "View Answers";
                     $flag = 1;
                     $url = Yii::$app->urlManager->createUrl(['answers/index', 'qid' => $model->id]);
+                    return Common::template_view_answers_button($url, $model, $title, $flag);
+                },
+                'manage_comments' => function ($url, $model) {
+                    $title = "View Comments";
+                    $flag = 2;
+                    $url = Yii::$app->urlManager->createUrl(['comments/index', 'qid' => $model->id]);
                     return Common::template_view_answers_button($url, $model, $title, $flag);
                 },
 
