@@ -495,9 +495,11 @@ function callback(response){
      success: function (data) {
       if(data.msg == "success"){
          location.reload();
-      }else{
-         alert("There is some problem to updatating the profile")
+      }else if(data.msg == "error"){
+         alert("You have already share this question");
          location.reload();
+      }else{
+        alert("There might be a problem to while sharing on facebook.");
       }
      }
   });
