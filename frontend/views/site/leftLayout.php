@@ -108,7 +108,7 @@ $exclude_first = array_shift($unanswered_by);
 	</div>
 	<?php } else {?>
 	<div class="LongTime">
-		<p>Ask Questions,get your voice heard.</p>
+		<p>Ask Questions , Get your voice heard.</p>
 	</div>
 	<?php }}?>
 	<div class="ListOfQuestions">

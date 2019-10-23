@@ -345,7 +345,7 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
     <div class="AskFollowUpAnswerBox" >
       <?php $model_answer = new Answers();?>
 <?php $form2 = ActiveForm::begin(['id' => 'answers-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true/*, 'validationUrl' => Url::toRoute('site/index')*/]);?>
- <?=$form2->field($model_answer, 'answer_text')->textArea(['maxlength' => true, "class" => "AskQuestion model_answer" . $question['id'] . " ?>", "onkeyup" => "countCharanswer(this)", "id" => $question['id'], "data-val" => $question['id']])->label(false);?>
+ <?=$form2->field($model_answer, 'answer_text')->textArea(['maxlength' => true, "class" => "AskQuestion model_answer" . $question['id'], "onkeyup" => "countCharanswer(this)", "id" => $question['id'], "data-val" => $question['id']])->label(false);?>
 
      <!--  <textarea id="getAnswer<?php echo $question['id']; ?>" maxlength="540"> </textarea> -->
     </div>
