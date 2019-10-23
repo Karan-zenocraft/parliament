@@ -485,11 +485,8 @@ function callback(response){
 
   if(response == null){
     console.log('was not shared');
-    return false;
   }else{
-    console.log('shared');
-    return false;
-         $.ajax({
+       $.ajax({
      url: "site/facebook-share",
      type: 'post',
      dataType: 'json',
