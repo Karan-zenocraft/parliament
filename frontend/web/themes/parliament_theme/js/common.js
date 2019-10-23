@@ -1038,7 +1038,6 @@ $(document).ready(function(){
     $(document).on('click', '.Loud', function () {
     $(this).attr('disabled', true);
     var id = $(this).attr('id');
-    alert(id);
     if(id == "Load2"){
       var question_id = $(this).attr('data-question');
        if($("#Load2").hasClass('LoadBG')){
