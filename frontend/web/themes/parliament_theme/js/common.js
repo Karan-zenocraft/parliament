@@ -483,7 +483,7 @@ var obj = {
           };
 function callback(response){
 
-  if(response === null){
+  if(response == null){
     console.log('was not shared');
     return false;
   }else{
