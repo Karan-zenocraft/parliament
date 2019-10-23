@@ -1036,7 +1036,9 @@ $(".OnhoverGroup").hover(function() {
 $(document).ready(function(){
   //$(".Loud").click(function(){
     $(document).on('click', '.Loud', function () {
+    $(this).attr('disabled', true);
     var id = $(this).attr('id');
+    alert(id);
     if(id == "Load2"){
       var question_id = $(this).attr('data-question');
        if($("#Load2").hasClass('LoadBG')){
@@ -1106,6 +1108,8 @@ $(document).ready(function(){
           sendNotification(title,userid);
         }
       }
+    $('#'+id).attr('disabled', false);
+
      }
   });
     }
