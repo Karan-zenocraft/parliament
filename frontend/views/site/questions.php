@@ -99,7 +99,10 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
           <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
           <div class="Menu1 menu_report" id="<?php echo 'menu' . $question['id']; ?>">
             <ul class="d-flex align-items-center justify-content-center flex-column">
+              <?php $model = QuestionReported::find()->where(['question_id' => $question['id'], "user_id" => Yii::$app->user->id])->one();
+        if (empty($model)) {?>
               <li class="active1" data-toggle="modal" data-target="#myModal<?php echo $question['id'] ?>"><a>Report</a></li>
+            <?php }?>
               <?php if (($user->role_id == Yii::$app->params['userroles']['user_agent']) && ($question['user_agent_id'] == Yii::$app->user->id)) {?>
               <li><a id="<?php echo $question['id']; ?>" onclick="retract_question(id)">Retract</a></li>
             <?php }?>

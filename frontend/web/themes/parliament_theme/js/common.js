@@ -29,9 +29,16 @@ function reportQuestion(id) {
                question_id:id,
            },
      success: function (data) {
-      alert("question reported successfully.")
-      $("#myModal"+id).css("display","none");
-      location.reload();
+      if(data == "success"){
+        alert("question reported successfully.")
+        $("#myModal"+id).css("display","none");
+        location.reload();     
+      }else if(data=="reported"){
+        alert("You have already reported this question");
+        location.reload();     
+      }else{
+        alert("something went wrong");
+      }
      }
   });
 }

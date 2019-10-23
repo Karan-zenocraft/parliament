@@ -609,11 +609,16 @@ class SiteController extends FrontCoreController
         $model_report = new QuestionReported();
         if (Yii::$app->request->post()) {
             $postData = Yii::$app->request->post();
-            $model_report->question_id = $postData['question_id'];
-            $model_report->report_comment = $postData['report_comment'];
-            $model_report->user_id = Yii::$app->user->id;
-            $model_report->save(false);
-            return json_encode("success");
+            $model = QuestionReported::find()->where(['question_id' => $postData['question_id'], "user_id" => Yii::$app->user->id])->one();
+            if (empty($model)) {
+                $model_report->question_id = $postData['question_id'];
+                $model_report->report_comment = $postData['report_comment'];
+                $model_report->user_id = Yii::$app->user->id;
+                $model_report->save(false);
+                return json_encode("success");
+            } else {
+                return json_encode("reported");
+            }
         } else {
             return json_encode("Bad request");
         }
