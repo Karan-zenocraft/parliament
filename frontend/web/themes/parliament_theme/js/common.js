@@ -389,6 +389,7 @@ function submitAnswer(question_id)
          $("#AnswerQuestionBox"+question_id).removeClass('GiveAnswerBox');
          $('#answersList'+question_id).prepend(data.data);
          $('#more2'+question_id).css('display:inline');
+         $('.model_answer'+question_id).val("");
          var title = data.user_name + " has answered on your question ";
            var userid = data.ask_user_id;
            sendNotification(title,userid);

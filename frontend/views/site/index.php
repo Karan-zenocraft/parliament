@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 <div id="home" class="tab-pane active show Flex">
   <?php
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
-if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
+if (($user->role_id == Yii::$app->params['userroles']['user_agent']) && empty($_REQUEST['user_id'])) {
     ?>
   <?php// p($errors, 0);?>
   <div class="Ask hideHome">
