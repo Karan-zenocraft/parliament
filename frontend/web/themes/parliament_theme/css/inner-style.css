@@ -757,3 +757,6 @@ header .HeaderBottomCenter .UlNotification span:last-child{font-weight: bold;}
 header .HeaderBottomCenter .UlNotification{top: 105%;}
 header .HeaderBottomCenter .UlNotification .flex-wrap a{line-height: 0!important;}
 .carousel-caption .Row1 .RowBox .RowTitle p span{line-height: 14px;}
+
+.Main .EditProfileMain {min-height: unset!important;}
+.Main .EditProfileMain .Nav1 ul{display: none!important}

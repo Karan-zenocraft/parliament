@@ -122,7 +122,19 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                     </nav>
 
                     <a href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
-                    <div class="MainLeftInner EditProfileMain">
+                    <div class="MainLeftInner EditProfileMain MainCenter">
+                        
+                        
+                        <nav class="Nav1">
+
+                        <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
+                            <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
+                            <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+                            <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                            <li><a href="#menu3" data-toggle="tab" id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
+                        </ul>
+                    </nav>
+                        
 
 <?php $user_id = !empty($_REQUEST['user_id']) ? $_REQUEST['user_id'] : Yii::$app->user->id;
 $user = Common::get_name_by_id($user_id, "Users");

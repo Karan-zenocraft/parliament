@@ -55,8 +55,8 @@ if (!empty($modelsQuestions)) {
           <?php } else {
                 ?>
             <a href="#"><span class="MP"><?php echo $first_mp;
-                ?></span></a>
-              and&nbsp;<a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
+                ?>and</span></a>
+              <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
           <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
 
