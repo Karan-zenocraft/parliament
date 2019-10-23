@@ -96,7 +96,7 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
         </div> -->
         <div class="ViewMoreIcon">
           <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/arrow-bottom.png" ?>" alt="" class="img-fluid ArrowBottom one" id="<?php echo $question['id']; ?>">
-          <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true"></i>
+          <i class="fa fa-angle-down OnlySm ArrowBottom one" aria-hidden="true" id="<?php echo $question['id']; ?>"></i>
           <div class="Menu1 menu_report" id="<?php echo 'menu' . $question['id']; ?>">
             <ul class="d-flex align-items-center justify-content-center flex-column">
               <?php $model = QuestionReported::find()->where(['question_id' => $question['id'], "user_id" => Yii::$app->user->id])->one();

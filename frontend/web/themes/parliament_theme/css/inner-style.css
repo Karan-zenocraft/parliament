@@ -444,7 +444,7 @@ header .HeaderBottomCenter .UlNotification{background: #C6C6C6;margin: 0;padding
    header .HeaderBottomCenter .UlNotification li a{ line-height: 28px;font-size: 17px!important;color: #525256;
     font-family: 'Segoe UI';
     font-weight: 400;
-    padding-right: 30px!important;}
+    padding-right: 0px!important;}
     header .HeaderBottomCenter .UlNotification{display: none;transition: 0.25s ease;align-items: flex-start;justify-content: flex-start;flex-direction: column;width: 22%;box-shadow: 0px 0px 25px 25px #00000066;}
     header .HeaderBottomCenter .UlNotification li a:hover{text-decoration: none;transition: 0.25s ease;color: #000!important}
     header .HeaderBottomCenter .UlNotification li{color: #000;}
@@ -501,7 +501,7 @@ header .HeaderBottomCenter .UlSetting li:last-child{margin-bottom: 0px;}
 .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Followed{background: #D17C0D;border-color: #D17C0D;}
 .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow{font-size: 9px;line-height: 12px;padding: 5px 7px 2px 7px;border: 2px solid transparent;
 border-radius: 30px;text-transform: uppercase;margin-top: 2px;margin-left: -2px;font-weight: normal;}
-.Main .MainCenter .CitizenPage .Row1 .ProfileBlock{width: 199px;align-items: flex-start;display: flex;}
+.Main .MainCenter .CitizenPage .Row1 .ProfileBlock{width: 199px;align-items: flex-start;display: flex;max-width: 33.33%;}
 .Main .MainCenter .CitizenPage .Row1{margin-bottom: 20px;}
 .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow{cursor: pointer;}
 .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption .Follow span:last-child{margin-left: 12px;position: relative}
@@ -760,3 +760,4 @@ header .HeaderBottomCenter .UlNotification .flex-wrap a{line-height: 0!important
 
 .Main .EditProfileMain {min-height: unset!important;}
 .Main .EditProfileMain .Nav1 ul{display: none!important}
+.carousel-caption .Row1 .RowBox{max-width: 33.33%;}

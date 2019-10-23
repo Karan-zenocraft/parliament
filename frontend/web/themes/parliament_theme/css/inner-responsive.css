@@ -1,7 +1,10 @@
 /*Searchmobilemenu*/
 
 @media (min-width: 320px) and (max-width: 576px){
-    header .HeaderBottomCenter .SearchInput{margin-left: 35%!important;}  
+    header .HeaderBottomCenter .SearchInput{margin-left: 35%!important;} 
+    
+    
+    .carousel-caption .Row1 .RowBox{max-width: 33%;}
    }
 /*Searchmobilemenu end*/
 
@@ -1363,7 +1366,7 @@ header{padding-top: 50px;}
     background: #ffffff;
     padding: 2px 5px 2px 5px;
     margin-bottom: 3px;}
-    header .HeaderBottomCenter .UlNotification li:first-child{background: #D17C0D;color: #fff!important;} 
+/*    header .HeaderBottomCenter .UlNotification li:first-child{background: #D17C0D;color: #fff!important;} */
    header .HeaderBottomCenter .UlNotification li a{ line-height: 9px;font-size: 10px!important;
     font-family: 'Segoe UI';
     font-weight: 400;
@@ -1669,7 +1672,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
 
 
 
-    header .HeaderBottomCenter .UlNotification div{width: 100%}
+    header .HeaderBottomCenter .UlNotification div{width: 100%;background: #D17C0D;}
     header .HeaderBottomCenter .UlNotification span{font-size: 14px;padding: 3px 8px;color: #fff}
     header .HeaderBottomCenter .UlNotification{background: #D17C0D;}
 
