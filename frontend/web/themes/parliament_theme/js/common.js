@@ -482,6 +482,8 @@ var obj = {
             description: 'test'
           };
 function callback(response){
+  alert(response.post_id);
+  return false;
  
          $.ajax({
      url: "site/facebook-share",
