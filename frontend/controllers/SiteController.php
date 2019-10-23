@@ -761,13 +761,18 @@ class SiteController extends FrontCoreController
     public function actionFacebookShare()
     {
         if (!empty($_POST)) {
-            $model = new Shares();
-            $model->question_id = $_POST['question_id'];
-            $model->user_agent_id = Yii::$app->user->id;
-            $model->save(false);
-            $retData = array("msg" => "success");
+            $question = Shares::find()->where(['question_id' => $_POST['question_id'], 'user_agent_id' => Yii::$app->user->id]);
+            if (empty($question)) {
+                $model = new Shares();
+                $model->question_id = $_POST['question_id'];
+                $model->user_agent_id = Yii::$app->user->id;
+                $model->save(false);
+                $retData = array("msg" => "success");
+            } else {
+                $retData = array("msg" => "error");
+            }
         } else {
-            $retData = array("msg" => "error");
+            $retData = array("msg" => "error_fail");
         }
         return json_encode($retData);
     }
