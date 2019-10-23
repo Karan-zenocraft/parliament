@@ -761,7 +761,7 @@ class SiteController extends FrontCoreController
     public function actionFacebookShare()
     {
         if (!empty($_POST)) {
-            $question = Shares::find()->where(['question_id' => $_POST['question_id'], 'user_agent_id' => Yii::$app->user->id]);
+            $question = Shares::find()->where(['question_id' => $_POST['question_id'], 'user_agent_id' => Yii::$app->user->id])->one();
             if (empty($question)) {
                 $model = new Shares();
                 $model->question_id = $_POST['question_id'];
@@ -780,8 +780,7 @@ class SiteController extends FrontCoreController
     public function actionCheckIfShared()
     {
         if (!empty($_POST)) {
-            $question = Shares::find()->where(['question_id' => $_POST['question_id'], 'user_agent_id' => Yii::$app->user->id]);
-            p($question);
+            $question = Shares::find()->where(['question_id' => $_POST['question_id'], 'user_agent_id' => Yii::$app->user->id])->one();
             if (empty($question)) {
                 $retData = array("msg" => "success");
             } else {
