@@ -482,9 +482,13 @@ var obj = {
             description: 'test'
           };
 function callback(response){
-  console.log(response);
-  return false;
- 
+
+  if(response === null){
+    console.log('was not shared');
+    return false;
+  }else{
+    console.log('was not shared');
+    return false;
          $.ajax({
      url: "site/facebook-share",
      type: 'post',
@@ -502,7 +506,9 @@ function callback(response){
         alert("There might be a problem to while sharing on facebook.");
       }
      }
-  });
+  });   
+  }
+ 
      
 }
 FB.ui(obj, callback);
