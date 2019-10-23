@@ -387,6 +387,10 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .carousel-caption .Row1 .RowBox:nth-child(3){justify-content: flex-end!important}
     .carousel-caption .Row1 .RowBox .SliderImage{min-height: 60px;min-width: 60px;}
 
+
+
+    header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 14px;line-height: 20px;}
+
 }
 
 
@@ -716,6 +720,12 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     
     .carousel-caption .Row1 .RowBox .SliderImage{min-height: 55px!important;min-width: 55px!important;}
 
+
+
+
+header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 12px;line-height: 18px;}
+    header .HeaderBottomCenter .Icons .fa-bell:after{bottom: -25px;}
+
 }
 
 
@@ -880,6 +890,9 @@ header{padding-top: 50px;}
     /*10-20-2019*/
     
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 350px!important;}
+    
+    header .HeaderBottomCenter .UlNotification span{font-size: 12px!important;padding: 2px 8px!important; padding: 0px 5px!important;}
+   
 }
 
 
@@ -958,6 +971,8 @@ header{padding-top: 50px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 35px!important;width: 35px!important;}
     
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 20px!important}
+    
+    header .HeaderBottomCenter .UlNotification span{font-size: 12px!important;padding: 0px 5px!important;}
 }
 
 
@@ -1068,7 +1083,7 @@ header{padding-top: 50px;}
     .Main .MainCenter .CitizenPage .SliderArrowCitizen .arrows-right{right: 5px!important;height: 20px!important;
     width: 15px!important;}
     .Main .MainCenter .CitizenPage {padding-left: 15px!important;padding-right: 15px!important;}
-    .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockImg img {height: 66px!important;width: 66px!important;}
+    .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockImg img {height: 66px!important;width: 66px!important;line-height: 11px;}
     .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption p{margin-bottom: 0px;font-size: 8px;line-height: 12px;}
     .Main .MainCenter .CitizenPage .Row1 .ProfileBlock .Block1 .BlockCaption h2{font-size: 12px!important;line-height: 18px!important;}
     
@@ -1174,6 +1189,7 @@ header{padding-top: 50px;}
 /*    10-22-19*/
     
     .carousel-caption .Row1 .RowBox .SliderImage{min-height: 45px!important;min-width: 45px!important;}
+    header .HeaderBottomCenter .UlNotification span{font-size: 12px!important;padding: 0px 5px!important;}
 
 }
 
@@ -1632,6 +1648,13 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Title, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{line-height: 20px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .Title{line-height: 20px;}
+
+
+
+
+    header .HeaderBottomCenter .UlNotification div{width: 100%}
+    header .HeaderBottomCenter .UlNotification span{font-size: 14px;padding: 3px 8px;color: #fff}
+    header .HeaderBottomCenter .UlNotification{background: #D17C0D;}
 
 }
   
