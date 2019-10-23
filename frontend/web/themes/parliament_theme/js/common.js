@@ -460,7 +460,21 @@ message: "test question"
 });
 }*/
 function facebook_share(question_id){
- postToFeed(question_id);
+      $.ajax({
+     url: "site/check-if-shared",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               question_id: question_id, 
+           },
+     success: function (data) {
+      if(data.msg == "success"){
+          postToFeed(question_id);
+     }else{
+        alert("You have already shared this question.");
+      }
+     }
+  });  
 }
 
   window.fbAsyncInit = function(){
@@ -495,9 +509,6 @@ function callback(response){
            },
      success: function (data) {
       if(data.msg == "success"){
-         location.reload();
-      }else if(data.msg == "error"){
-         alert("You have already share this question");
          location.reload();
       }else{
         alert("There might be a problem to while sharing on facebook.");

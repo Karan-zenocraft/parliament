@@ -777,4 +777,17 @@ class SiteController extends FrontCoreController
         return json_encode($retData);
     }
 
+    public function actionCheckIfShared()
+    {
+        if (!empty($_POST)) {
+            $question = Shares::find()->where(['question_id' => $_POST['question_id'], 'user_agent_id' => Yii::$app->user->id]);
+            if (empty($question)) {
+                $retData = array("msg" => "success");
+            } else {
+                $retData = array("msg" => "error");
+            }
+        }
+        return json_encode($retData);
+    }
+
 }
