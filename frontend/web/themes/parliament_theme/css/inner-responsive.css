@@ -1364,7 +1364,7 @@ header{padding-top: 50px;}
     z-index: 999;top: 58px;left: 0px;right: 0;margin: auto;display: block!important;transition: 0.25s ease;}
     header .HeaderBottomCenter .UlNotification li{width: 100%;cursor: pointer;
     background: #ffffff;
-    padding: 2px 5px 2px 5px;
+    padding: 7px 7px 7px 7px;
     margin-bottom: 3px;}
 /*    header .HeaderBottomCenter .UlNotification li:first-child{background: #D17C0D;color: #fff!important;} */
    header .HeaderBottomCenter .UlNotification li a{ line-height: 9px;font-size: 10px!important;
@@ -1377,7 +1377,7 @@ header{padding-top: 50px;}
     header .HeaderBottomCenter .UlNotification li:last-child{margin-bottom: 0px; background: #C3C0C0}
     header .HeaderBottomCenter .UlNotification li:first-child span:first-child{font-weight: 400;font-family: 'Segoe UI';font-size: 10px;color: #ffffff;}
     header .HeaderBottomCenter .UlNotification li:first-child span:last-child{font-size: 10px;font-family: 'Segoe UI';font-weight: 600;cursor: pointer;color: #ffffff;}
-    header .HeaderBottomCenter .UlNotification li:nth-child(2){background: #C3C0C0 }
+/*    header .HeaderBottomCenter .UlNotification li:nth-child(2){background: #C3C0C0 }*/
     header .HeaderBottomCenter .Nav3{display: none;transition: 0.25s ease;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1{left: -100px;top: 15px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li{padding: 3px 65px 3px 8px;}
@@ -1523,7 +1523,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     
 /*    Searchmobilemenu*/
     header .HeaderBottomCenter .UlSearch{display: block!important;}
-    header .HeaderBottomCenter .Search{display: none;position: absolute;left: 0%;top: 49px;z-index: 9999;width: 100%!important;background: #000;padding: 10px 0px}
+    header .HeaderBottomCenter .Search{display: none;position: absolute;left: 0%;top: 48px;z-index: 9999;width: 100%!important;background: #000;padding: 11px 0px}
     header .HeaderBottomCenter .SearchInput{display: block;height: 30px;width: 195px;border: 2px solid #41545D;outline: none
     ;font-size: 12px;margin-left: 56%;}
     header .HeaderBottomCenter .Search .fa-search{display: none;}
