@@ -196,6 +196,11 @@ function QuestionAnswer()
   }else{
       $(".hideHome").hide();
   }
+  if((filter == "Homefeed") || (filter == "Answered") || (filter == "Unanswered")) {
+    $(".Public").show();
+  }else{
+    $(".Public").hide();
+  }
   var filter2 = $("#filterQuestion2").val();
   var search = $("#filterSearch").val();
   var user_id = $('#user_id').val();

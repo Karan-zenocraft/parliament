@@ -533,7 +533,7 @@ class SiteController extends FrontCoreController
                     'modelsQuestions' => $models,
                 ));
             } else {
-                $pageDataAjax = "No more records found.";
+                $pageDataAjax = "<span class='no_record'>No more records found.</span>";
             }
         } else {
             $pageDataAjax = "Bad Request, Please try again.";
