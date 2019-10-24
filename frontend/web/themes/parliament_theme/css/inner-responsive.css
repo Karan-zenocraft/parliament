@@ -297,8 +297,8 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .carousel-caption .Row1 .RowBox .RowTitle{margin-left: 5px;}
     .carousel-caption .Row1 .RowBox .RowTitle p span{font-size: 10px;}
     
-    .carousel-caption .Row1 .RowBox:first-child{justify-content: flex-start!important;}
-.carousel-caption .Row1 .RowBox:nth-child(2){justify-content: center!important}
+/*    .carousel-caption .Row1 .RowBox:first-child{justify-content: flex-start!important;} slider-slider*/
+/*.carousel-caption .Row1 .RowBox:nth-child(2){justify-content: center!important}   slider-slider*/
 /*.carousel-caption .Row1 .RowBox:last-child{justify-content: flex-end!important;}*/
     .select2-selection--multiple{padding-right: 15px;margin-right: 15px!important;max-width: 100%;min-width: 300px;}
     
@@ -387,7 +387,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 /*    10-22-19*/
     
     .carousel-caption .Row1 .RowBox .RowTitle p span br{display: block}
-    .carousel-caption .Row1 .RowBox:nth-child(3){justify-content: flex-end!important}
+/*    .carousel-caption .Row1 .RowBox:nth-child(3){justify-content: flex-end!important}   slider-slider */ 
     .carousel-caption .Row1 .RowBox .SliderImage{min-height: 60px;min-width: 60px;}
 
 
@@ -1675,6 +1675,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     header .HeaderBottomCenter .UlNotification div{width: 100%;background: #D17C0D;}
     header .HeaderBottomCenter .UlNotification span{font-size: 14px;padding: 3px 8px;color: #fff}
     header .HeaderBottomCenter .UlNotification{background: #D17C0D;}
+    .Nav6 ul{display: none!important;}
 
 }
   
