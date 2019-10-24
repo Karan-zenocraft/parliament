@@ -38,7 +38,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
                 return $model->role_id == Yii::$app->params['userroles']['MP'];
             }, 'whenClient' => "function (attribute, value) {
                 return $('#users-role_id').val() == '" . Yii::$app->params['userroles']['MP'] . "';
-            }"],
+            }", ],
             // ['age', 'is3NumbersOnly'],
             ['email', 'validateEmail'],
             [['photo'], 'image', 'extensions' => 'jpg, jpeg, gif, png'],
