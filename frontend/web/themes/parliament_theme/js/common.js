@@ -443,6 +443,7 @@ function editProfile(user_id)
 {
   var education = $.trim($('.education_profile').val());
   var work = $.trim($('.work_profile').val());
+  if((education != "") && (work != "")){
    $.ajax({
      url: "site/edit-profile",
      type: 'post',
@@ -461,6 +462,9 @@ function editProfile(user_id)
       }
      }
   });
+ }else{
+  return false;
+ }
 }
 /*function facebook_share(title, desc, url, image){
 FB.ui(
