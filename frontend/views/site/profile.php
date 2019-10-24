@@ -48,8 +48,10 @@ $user = Common::get_name_by_id($user_id, "Users");
         <li><span class="Title">Joined </span> <span class="TitleBold"><?php echo date("M Y", strtotime($user['created_at'])); ?></span> </li>
         <li><span class="TitleBold"> <?php echo Yii::$app->params['gender'][$user['gender']]; ?></span></li>
         <li> <span class="TitleBold"> 1988</span> </li>
+        <?php if ($user['role_id'] == Yii::$app->params['userroles']['user_agent']) {?>
         <li><span class="Title"> Remaining Number of Questions
           Allowed for the Week: </span> <span class="TitleBold">  <?php echo Common::get_remaining_questions_per_week($user_id); ?> out of 10</span> </li>
+        <?php }?>
         </ul>
       </nav>
     </div>
