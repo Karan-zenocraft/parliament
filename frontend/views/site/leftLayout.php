@@ -1,6 +1,7 @@
 <?php
 use common\components\Common;
 use common\models\Questions;
+use common\models\Shares;
 
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
 $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
@@ -99,7 +100,8 @@ $exclude_first = array_shift($unanswered_by);
 					<div class="Share">
 						<a href="#">
 							<i class="fa fa-share-alt" aria-hidden="true"></i>
-							<span>24</span>
+							<?php $share_count = Shares::find()->where(['question_id' => $question['id']])->count();?>
+							<span><?php echo $share_count; ?></span>
 						</a>
 					</div>
 				</div>

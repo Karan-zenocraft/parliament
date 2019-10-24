@@ -35,12 +35,9 @@ if (!empty($modelsQuestions)) {
             <span><?php echo Common::time_elapsed_string($question['created_at']); ?></span>
           </div>
         </div>
-          <?php $mps = $question['mp_id'];
-        //  p($mps, 0);
-        $answered_mp = !empty($question['answers']) ? array_column($question['answers'], 'mp_id') : [];
-        // p($answered_mp, 0);
-        $unanswered_by = array_diff(explode(",", $mps), $answered_mp);
-        //  p($unanswered_by, 0);
+          <?php $mps = $question->mp_id;
+        $answered_mp = (!empty($question['answers']) && (count($question['answers']) > 0)) ? array_column($question['answers'], 'mp_id') : [];
+        $unanswered_by = array_diff(explode(",", $mps), array_unique($answered_mp));
         $first_mp = Common::getMpNames(current($unanswered_by));
         $count = count($unanswered_by);
         $mpArr = Common::getMpNames(implode(",", $unanswered_by));
@@ -54,7 +51,7 @@ if (!empty($modelsQuestions)) {
                 ?></span></a>
           <?php } else {
                 ?>
-            <a href="#"><span class="MP"><?php echo $first_mp;
+            <a href="#"><span class="MP"><?php echo $first_mp . " ";
                 ?>and</span></a>
               <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id);" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>

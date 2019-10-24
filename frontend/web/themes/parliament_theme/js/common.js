@@ -186,9 +186,15 @@ function QuestionAnswer()
 {
   var nextpage = $("#pageQuestion").val();
   var filter = $("#filterQuestion").val();
-  if((filter == "Homefeed") || (filter == "myQue") || (filter == "myLouder") || (filter == "mpNotAns")) {
+  if((filter == "myQue") || (filter == "myLouder") || (filter == "mpNotAns")) {
 
-      $("#filterQuestion2").val("");
+      //$("#filterQuestion2").val("");
+      $(".BGList a").removeClass("active show");
+  }
+    if((filter == "Homefeed") || (filter == "")){
+      $(".hideHome").show();
+  }else{
+      $(".hideHome").hide();
   }
   var filter2 = $("#filterQuestion2").val();
   var search = $("#filterSearch").val();
@@ -207,14 +213,6 @@ function QuestionAnswer()
             user_id:user_id
            },
      success: function (response) {
-      if(filter == "Answered" ||  filter =='Unanswered'){
-        $(".hideHome").hide();
-        $(".showHome").show();
-      }else{
-        $(".hideHome").show();
-        $(".showHome").hide();
-      }
-
        if(nextpage=='1'){
           $('#ajaxQuestion').html(response.data);
         }

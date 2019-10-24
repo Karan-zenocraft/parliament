@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 <div id="home" class="tab-pane active show Flex">
   <?php
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
-if (($user->role_id == Yii::$app->params['userroles']['user_agent']) && empty($_REQUEST['user_id'])) {
+if (($user->role_id == Yii::$app->params['userroles']['user_agent'])) {
     ?>
   <?php// p($errors, 0);?>
   <div class="Ask hideHome">
@@ -100,9 +100,9 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 </div>
 <?php }?>
-<div class="FilterBar SearchAnswredBar  align-items-end justify-content-between showHome" style="display:none !important ">
-<nav class="Nav2 Nav5 showHome">
-  <ul class="d-flex align-items-center justify-content-start nav showHome">
+<div class="FilterBar SearchAnswredBar  align-items-end justify-content-between">
+<nav class="Nav2 Nav5 ">
+  <ul class="d-flex align-items-center justify-content-start nav">
     <li class="FilterActive"><a onclick="filterQuestion2('recent')">Recent </a><i class="fa fa-clock-o" aria-hidden="true"></i></li>
     <li><a onclick="filterQuestion2('loudest')">Loudest </a><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
   </ul>
@@ -113,11 +113,15 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 </div>
 <div class="QuestionAnswer">
 <!-- QUESTIONS AND ANSWER SECTION START-->
-<div class="QuestionAnswerTitle Public hideHome">
+<div class="QuestionAnswerTitle Public">
   <h3>PUBLIC Questions</h3>
 </div>
 <input type='hidden' id='pageQuestion' value='0'>
+<?php if (!empty($_REQUEST['user_id'])) {?>
+<input type='hidden' id='filterQuestion' value='profile'>
+  <?php } else {?>
 <input type='hidden' id='filterQuestion' value=''>
+  <?php }?>
 <input type='hidden' id='filterQuestion2' value=''>
 <input type='hidden' id='sort' value='asc'>
 <input type='hidden' id='sortby' value=''>

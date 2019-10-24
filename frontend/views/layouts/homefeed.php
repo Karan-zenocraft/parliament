@@ -72,10 +72,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                             <li class="BGList"><a href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id; ?>">Edit profile</a></li>
                             <li><a href="site/logout">Log out</a></li>
                     </ul>
-
 <!--end new html-->
-
-
                         <i class="fa fa-bars OnlySm"></i>
                     </div>
 
@@ -125,7 +122,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                     <nav class="Nav1">
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
+                            <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="<?php echo empty($_REQUEST['user_id']) ? 'active show' : '' ?>">Home Feed</a></li>
                             <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
                             <li><a href="#home" data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
                             <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
