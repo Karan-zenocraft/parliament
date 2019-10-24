@@ -410,12 +410,21 @@ class SiteController extends FrontCoreController
         $question_id = $_POST['question_id'];
         if (!empty($_POST['event'])) {
             $question = Questions::find()->where(['id' => $question_id, 'status' => Yii::$app->params['user_status_value']['active']])->one();
-            //  $data = array();
+
             if ($_POST['event'] == "like") {
-                $question->louder_by = (empty($question->louder_by) || ($question->louder_by == "")) ? Yii::$app->user->id : $question->louder_by . "," . Yii::$app->user->id;
+                if (!empty($question->louder_by)) {
+                    $checkArray = explode(',', $question->louder_by);
+                    if (!in_array(Yii::$app->user->id, $checkArray)) {
+                        array_push($checkArray, Yii::$app->user->id);
+                        $question->louder_by = implode(',', $checkArray);
+                    }
+                } else {
+                    $question->louder_by = Yii::$app->user->id;
+                }
                 $question->save(false);
                 $louderCount = (empty($question->louder_by) || ($question->louder_by == "")) ? "1" : count(explode(",", $question->louder_by));
                 $event = "like";
+
             } else {
                 $louder_by = explode(",", $question->louder_by);
                 if (in_array(Yii::$app->user->id, $louder_by)) {

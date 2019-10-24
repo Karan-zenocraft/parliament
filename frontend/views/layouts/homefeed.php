@@ -122,7 +122,12 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                     <nav class="Nav1">
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="<?php echo empty($_REQUEST['user_id']) ? 'active show' : '' ?>">Home Feed</a></li>
+                            <?php if (!empty($_REQUEST['user_id'])) {?>
+                            <li class="BGList"><a href="<?php echo Yii::getAlias('@web'); ?>" onclick="filterQuestion('Homefeed')" class="show">Home Feed</a></li>
+                        <?php } else {?>
+                            <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">Home Feed</a></li>
+                        <?php }?>
+
                             <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
                             <li><a href="#home" data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
                             <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>

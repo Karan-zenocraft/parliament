@@ -433,11 +433,13 @@ function show_comments(id){
 }
 
 function show_mp_list(id){
-  $(".OnhoverGroup").hover(function() {
+ 
       $("#OnhoverMP"+id).show();
-}).mouseleave(function() {
+}
+function hide_mp_list(id){
+ 
       $("#OnhoverMP"+id).hide();
-});
+
 }
 function editProfile(user_id)
 {
@@ -1035,14 +1037,6 @@ $(document).on('click', '.one', function () {
         });
 
 
-
-/*$(document).ready(function(){
-$(".OnhoverGroup").hover(function() {
-      $(".OnhoverMP").show();
-}).mouseleave(function() {
-      $(".OnhoverMP").hide();
-});
-});*/
 
 
 
