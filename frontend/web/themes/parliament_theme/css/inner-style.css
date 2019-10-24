@@ -769,3 +769,12 @@ header .HeaderBottomCenter .UlNotification .flex-wrap a{line-height: 0!important
 header .HeaderBottomCenter .UlNotification .flex-wrap{border-bottom: 3px solid #D5D5D5;}
 
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a img{border: 2px solid #FFF;}
+.no_record{text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #000;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: 'Segoe UI';
+    display: block;
+    margin: auto;}
