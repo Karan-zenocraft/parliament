@@ -220,7 +220,7 @@ padding-right: 15px;margin-bottom: 10px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row3 .AnswerQuestion a{font-size: 10px;
     line-height: 18px;font-weight: bold;font-family: 'Segoe UI';color: #10303F;text-transform: uppercase;}
 
-.carousel-caption{position: unset!important;color: #000!important;padding-top: 55px!important;padding-bottom: 0px!important}
+.carousel-caption{position: unset!important;color: #000!important;padding-top: 55px!important;padding-bottom: 0px!important;min-height: 200px;}
 .carousel-inner{background: #10303F}
 .carousel-caption .Row1{padding: 0px 60px;padding-bottom: 55px;}
 .carousel-caption .Row1:last-child{padding-bottom: 55px;}
@@ -582,7 +582,7 @@ border-radius: 30px;text-transform: uppercase;margin-top: 2px;margin-left: -2px;
 .carousel-caption .Row1 .RowBox .SliderImage{height: 100px;width: 100px;}
 /*
 .carousel-caption .Row1 .RowBox:first-child{justify-content: flex-start!important;}
-.carousel-caption .Row1 .RowBox:nth-child(2){justify-content: center!important}
+-child(2){justify-content: center!important}
 slider slider
 */
 /*.carousel-caption .Row1 .RowBox:last-child{justify-content: flex-end!important;}*/
@@ -767,3 +767,5 @@ header .HeaderBottomCenter .UlNotification .flex-wrap a{line-height: 0!important
 .carousel-caption .Row1 .RowBox{max-width: 33.33%;}
 
 header .HeaderBottomCenter .UlNotification .flex-wrap{border-bottom: 3px solid #D5D5D5;}
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a img{border: 2px solid #FFF;}
