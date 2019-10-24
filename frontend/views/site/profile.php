@@ -23,8 +23,8 @@ use yii\widgets\ActiveForm;
                             <li><a href="#menu3" data-toggle="tab" id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
                         </ul>
                     </nav>
-    
-    
+
+
   <?php $user_id = !empty($_REQUEST['user_id']) ? $_REQUEST['user_id'] : Yii::$app->user->id;
 $user = Common::get_name_by_id($user_id, "Users");
 ?>
@@ -89,8 +89,8 @@ $user = Common::get_name_by_id($user_id, "Users");
           </form> -->
           <?php $model = Users::findOne(Yii::$app->user->id);?>
         <?php $form = ActiveForm::begin(['id' => 'profile-form', 'enableAjaxValidation' => true, 'enableClientValidation' => true/*, 'validationUrl' => Url::toRoute('site/index')*/]);?>
- <?=$form->field($model, 'education')->textArea(["class" => "form-control col-md-8 education_profile", 'value' => $model->education, "required" => true]);?>
- <?=$form->field($model, 'work')->textArea(["class" => "form-control col-md-8 work_profile", 'value' => $model->work, "required" => true]);?>
+ <?=$form->field($model, 'education')->textArea(["class" => "form-control col-md-8 education_profile", 'value' => $model->education]);?>
+ <?=$form->field($model, 'work')->textArea(["class" => "form-control col-md-8 work_profile", 'value' => $model->work]);?>
 
     <div class="form-group SubmitReport d-flex align-items-center justify-content-end">
       <?=Html::submitButton('Save', ['class' => 'btn btn-success SubmitReportBtn d-flex order-1', "onclick" => "editProfile(" . $_REQUEST['user_id'] . ")"])?>
