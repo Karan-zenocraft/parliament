@@ -195,18 +195,18 @@ if (!empty($question['answers'])) {?>
 
       <div class="Row3">
       <div class="Social d-flex flex-wrap align-items-center justify-content-between">
-        <?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
-            ?>
+        <?php // if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
+        ?>
         <div class="Loud" id="Load<?php echo $question['id']; ?>" data-myval="<?php echo $question['id']; ?>">
           <?php $louder_by = $question['louder_by'];
-            ?>
+        ?>
           <a class="<?php echo (!empty($question['louder_by']) && in_array(Yii::$app->user->id, explode(",", $question['louder_by']))) ? 'MadeLouderBG' : '' ?>">
             <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
             <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
             <span class="Numbers numbers<?php echo $question['id']; ?>" id="numbers<?php echo $question['id']; ?>"><?php echo (empty($question['louder_by']) || ($question['louder_by'] == "")) ? "0" : count(explode(",", $question['louder_by'])); ?></span>
           </a>
         </div>
-        <?php } else if (in_array($user->id, explode(",", $question['mp_id']))) {?>
+        <?php if (in_array($user->id, explode(",", $question['mp_id']))) {?>
         <div class="AnswerQuestion" id="<?php echo $question['id']; ?>" onclick="answer_toggle(id)">
           <a class="AnswerToggle">
             Answer Question
