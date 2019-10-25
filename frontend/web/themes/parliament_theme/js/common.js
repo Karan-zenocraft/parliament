@@ -384,7 +384,9 @@ function answer_toggle(id){
 // HASHTAG
 $(function(){
   var hashtag = window.location.hash.substr(1);
+  alert(hashtag);
   var hash = window.location.hash;
+  alert(hash);
   if(hash=='#citizen')
   {
     AjaxCallSortCitizen();
