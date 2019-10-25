@@ -11,7 +11,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 // FontAwesomeAsset::register($this);
 ?>
-<div id="home" class="tab-pane active show Flex">
+<div id="homepage" class="tab-pane active show Flex"></div>
+<div id="home" >
   <?php
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
 if (($user->role_id == Yii::$app->params['userroles']['user_agent'])) {
@@ -130,5 +131,6 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
 <div id='ajaxQuestion'>
 </div>
 <br><center><button class="load_more" id="loadmoreData" onclick="QuestionAnswer()" >Load More</button></center>
+
     <!---------new-content-end----------------->
   </div>

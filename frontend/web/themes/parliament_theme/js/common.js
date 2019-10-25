@@ -160,6 +160,8 @@ function AjaxCallSort(dataValue)
 function AjaxCallSortCitizen(dataValue)
 {
     $("#citizensList").show();
+    $("#citizen").show();
+    $("#home").hide();
     var sortdir = sortByCitizen();
     var search = $('#search_citizen').val();
     $("#page_citizen").val(1);
@@ -235,15 +237,18 @@ function QuestionAnswer()
 }
 function filterQuestion(flag)
 {
+  $("#citizensList").hide();
+  $("#citizen").hide();
+  $("#home").show();
   $("#filterQuestion").val(flag);
   $("#pageQuestion").val('0');
-  QuestionAnswer()
+  QuestionAnswer();
 }
 function filterQuestion2(flag)
 {
   $("#filterQuestion2").val(flag);
   $("#pageQuestion").val('0');
-  QuestionAnswer()
+  QuestionAnswer();
 }
 function filterSearch(e)
 {
@@ -376,6 +381,31 @@ function answer_toggle(id){
     $("#AnswerQuestionBox"+id).toggleClass("GiveAnswerBox");
 }
 
+// HASHTAG
+$(function(){
+  var hashtag = window.location.hash.substr(1);
+  var hash = window.location.hash;
+  if(hash=='#citizen')
+  {
+    AjaxCallSortCitizen();
+  }
+  else if(hash=='#Homefeed' || hash=='#Unanswered' || hash=='#Answered')
+  {
+    filterQuestion(hashtag);
+  }
+  else
+  {
+    QuestionAnswer();
+  }
+  hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+  $('.nav-tabs a').click(function (e) {
+    $(this).tab('show');
+    var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+    window.location.hash = this.hash;
+    $('html,body').scrollTop(scrollmem);
+  });
+});
 function submitAnswer(question_id)
 {
   var answer = $.trim($(".model_answer"+question_id).val());
@@ -664,7 +694,7 @@ function clear_notification(user_id){
   });
 }
 $(document).ready(function() {
-                QuestionAnswer();
+                
                 getNotification();
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {

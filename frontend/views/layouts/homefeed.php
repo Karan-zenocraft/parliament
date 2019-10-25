@@ -122,15 +122,32 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                     <nav class="Nav1">
 
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
-                            <?php if (!empty($_REQUEST['user_id'])) {?>
-                            <li class="BGList"><a href="<?php echo Yii::getAlias('@web'); ?>" onclick="filterQuestion('Homefeed')" class="show">Home Feed</a></li>
+
+                        <?php if (!empty($_REQUEST['user_id'])) {?>
+                            <li class="BGList"><a href="<?php echo Yii::getAlias('@web'); ?>#Homefeed" onclick="filterQuestion('Homefeed')" class="show">Home Feed</a></li>
                         <?php } else {?>
-                            <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">Home Feed</a></li>
+                            <li class="BGList"><a href="#Homefeed" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">Home Feed</a></li>
                         <?php }?>
 
-                            <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
-                            <li><a href="#home" data-toggle="tab"  onclick="filterQuestion('Answered')" class="show">Answered</a></li>
-                            <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
+                        <?php if (!empty($_REQUEST['user_id'])) {?>
+                            <li><a href="<?php echo Yii::getAlias('@web'); ?>#Unanswered" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+                        <?php } else {?>
+                            <li><a href="#Unanswered" onclick="filterQuestion('Unanswered')" data-toggle="tab" class="show">Unanswered</a></li>
+                        <?php }?>
+
+                         <?php if (!empty($_REQUEST['user_id'])) {?>
+                            <li><a href="<?php echo Yii::getAlias('@web'); ?>#Answered" onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                        <?php } else {?>
+                            <li><a href="#Answered" onclick="filterQuestion('Answered')" data-toggle="tab" class="show">Answered</a></li>
+                        <?php }?>
+
+                        <?php if (!empty($_REQUEST['user_id'])) {?>
+                            <li><a href="<?php echo Yii::getAlias('@web'); ?>#citizen"  onclick="AjaxCallSortCitizen()" class="show">citizen</a></li>
+                        <?php } else {?>
+                            <li><a href="#citizen" onclick="AjaxCallSortCitizen()"  data-toggle="tab" class="show">Citizens</a></li>
+                        <?php }?>
+
+
                         </ul>
                     </nav>
 
@@ -147,7 +164,7 @@ Breadcrumbs::widget([
 
 
 
-                        <div id="menu3" class="tab-pane fade">
+                        <div id="citizen" class="tab-pane fade">
 
 
                           <div class="FilterBar CitizenBar d-flex align-items-end justify-content-between">
