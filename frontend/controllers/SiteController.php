@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use common\components\Common;
 use common\models\Answers;
 use common\models\Comments;
+use common\models\EmailFormat;
 use common\models\LoginForm;
 use common\models\Notifications;
 use common\models\QuestionHide;
@@ -106,7 +107,29 @@ class SiteController extends FrontCoreController
             $postData = Yii::$app->request->post();
             $model->user_agent_id = Yii::$app->user->id;
             $model->mp_id = implode(",", $postData['Questions']['mp_id']);
-            $model->save();
+            if ($model->save()) {
+                foreach ($postData['Questions']['mp_id'] as $key => $mp) {
+                    $mp_user = Common::get_name_by_id($mp, "Users");
+                    if (!empty($mp_user)) {
+                        //p($mp_user['email']);
+                        $mp_email = $mp_user['email'];
+                        $mp_username = $mp_user['user_name'];
+                        $question = $model->question;
+                        $user_agent_name = $model->userAgent->user_name;
+                        $user_agent_email = $model->userAgent->email;
+                        $emailformatemodel = EmailFormat::findOne(["title" => 'ask_question', "status" => '1']);
+                        if ($emailformatemodel) {
+
+                            //create template file
+                            $AreplaceString = array('{mp_username}' => $mp_username, '{question}' => $question, '{user_agent_name}' => $user_agent_name);
+                            $body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
+
+                            //send email for new generated password
+                            Common::sendMailToUser($mp_email, $user_agent_email, $emailformatemodel->subject, $body);
+                        }
+                    }
+                }
+            };
             return $this->redirect(['site/index']);
             //return ActiveForm::validate($model);
         } else {
