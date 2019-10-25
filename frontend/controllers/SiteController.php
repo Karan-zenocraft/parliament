@@ -627,6 +627,7 @@ class SiteController extends FrontCoreController
                         # code...
                     }
                 }
+                //p($question_model->comments);
             }
             $answer_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
             $ask_user = Questions::findOne($postData['question_id']);

@@ -22,7 +22,7 @@ if (!empty($modelsQuestions)) {
     <li><a href="#">Feven Siraj</a></li>
   </ul> -->
 
-  <div class="QuestionAnswerBox" style="border-color:<?php echo !empty($question['answers']) ? '#085820' : '#580816' ?> !important">
+  <div class="QuestionAnswerBox" id="QuestionAnswerBox<?php echo $question['id'] ?>" style="border-color:<?php echo !empty($question['answers']) ? '#085820' : '#580816' ?> !important">
     <div class="Row1">
       <div class="d-flex flex-wrap align-items-center justify-content-between Row1Inner">
         <div class="UserProfile d-flex flex-wrap align-items-center justify-content-start">
