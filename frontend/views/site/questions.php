@@ -87,20 +87,20 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
   </ul>
         </div>
       <?php } else {
+            $answered_mp_arr = array_unique($answered_mp);
             $count_answer = count(array_unique($answered_mp));
             ?>
               <div class="UnansweredBy d-flex flex-wrap align-items-center">
           <a href="#"><span class="Title">Answered for</span></a>
           <?php if ($count_answer == 1) {
-                $first_mp_answered_id = array_shift($answered_mp);?>
+                $first_mp_answered_id = current($answered_mp);?>
           <a href="#"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id);
                 ?></span></a>
-          <a href="#" class="UsersImg"><img class="One" src="<?php echo !empty($first_ansmp_name['photo']) ? $first_ansmp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt=" " class="img-fluid">
           <?php } else {
                 ?>
             <a href="#"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id) . " ";
                 ?>and</span></a>
-              <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
+              <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count_answer - 1); ?> others</span></a>
             <?php }
             $first_ansmp_name = Common::get_name_by_id($first_mp_answered_id, "Users");
             $first_ansmp_image = !empty($first_ansmp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_ansmp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
@@ -111,17 +111,15 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
             ?>
             <div class="Absolute">
             <?php $i = 1;
-            foreach (array_unique($answered_mp) as $key => $ans_mp) {
+            foreach ($answered_mp_arr as $key => $ans_mp) {
                 $ans_mp_name = Common::get_name_by_id($ans_mp, "Users");
                 //$ans_mp_image = $ans_mp_name['photo'];
                 $ans_mp_image = !empty($ans_mp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $ans_mp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
                 ?>
-            <img class="Img<?php echo $i; ?>" src="<?php echo $ans_mp_image; ?>" alt="" class="img-fluid">
+            <img class="Img<?php echo $i; ?>" src="<?php echo $ans_mp_image; ?>" alt="" class="img-fluid rounded-circle" width="24px" height="24px">
             <?php $i++;
             }?>
             </div>
-
-
           </a>
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question['id']; ?>">
           <?php
