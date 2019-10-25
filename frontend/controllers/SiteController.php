@@ -569,16 +569,26 @@ class SiteController extends FrontCoreController
             $answer_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
             $ask_user = Questions::findOne($postData['question_id']);
             $userName = Common::get_user_name(Yii::$app->user->id);
-
+            $query = Questions::find()->select(["questions.*", "questions.id"])->with('answers')->where(['questions.id' => $postData['question_id']]);
+            $query = $query->joinWith(['answers' => function ($query) {
+                return $query->andWhere("answers.id is not null");
+            }]);
+            //$query->groupBy(['answers.question_id']);
+            $question = $query->all();
+            $answered_mp = !empty($question[0]['answers']) ? array_column($question[0]['answers'], 'mp_id') : [];
             $pageDataAjax = $this->renderPartial('answersList', array(
                 'answer_user' => $answer_user,
                 'user_name' => $userName,
                 'answer' => $postData['answer'],
             ));
+            $pageDataAjax1 = $this->renderPartial('answered_by', array(
+                'answered_mp' => $answered_mp,
+                'question' => $question,
+            ));
         } else {
             $pageDataAjax = "Bad request";
         }
-        $retArray = array('data' => $pageDataAjax, 'user_name' => $userName, 'ask_user_id' => $ask_user->user_agent_id);
+        $retArray = array('data' => $pageDataAjax, 'data2' => $pageDataAjax1, 'user_name' => $userName, 'ask_user_id' => $ask_user->user_agent_id);
         $model_notification = new Notifications();
         $model_notification->user_id = $ask_user->user_agent_id;
         $model_notification->notification = $userName . " answered your question ";

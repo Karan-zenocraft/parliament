@@ -419,8 +419,10 @@ function submitAnswer(question_id)
                question_id:question_id,
            },
      success: function (data) {
+      console.log(data);
          $("#AnswerQuestionBox"+question_id).removeClass('GiveAnswerBox');
          $('#answersList'+question_id).prepend(data.data);
+          $('#answered_by'+question_id).html(data.data2);
          $('#more2'+question_id).css('display:inline');
          $('.model_answer'+question_id).val("");
          var title = data.user_name + " has answered on your question ";

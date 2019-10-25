@@ -112,7 +112,8 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-12 cus-md-3 MainLeft">
-                <?php if (empty($_REQUEST['user_id'])) {?>
+                <?php //p($_REQUEST);
+if (empty($_REQUEST['user_id'])) {?>
                     <?php echo HelloWidget::widget(); ?>
                 <?php } else {?>
                     <?php echo ProfilePage::widget(); ?>

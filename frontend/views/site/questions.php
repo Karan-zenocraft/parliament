@@ -43,7 +43,7 @@ if (!empty($modelsQuestions)) {
         $mpArr = Common::getMpNames(implode(",", $unanswered_by));
         if (empty($question['answers'])) {
             ?>
-        <div class="UnansweredBy d-flex flex-wrap align-items-center">
+        <div class="UnansweredBy d-flex flex-wrap align-items-center" id="answered_by<?php echo $question['id']; ?>">
           <a href="#"><span class="Title">Unanswered for</span></a>
           <?php if ($count == 1) {
                 ?>
@@ -87,13 +87,16 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
   </ul>
         </div>
       <?php } else {
-            $answered_mp_arr = array_unique($answered_mp);
+            ?>
+         <?php
+$answered_mp_arr = array_unique($answered_mp);
             $count_answer = count(array_unique($answered_mp));
             ?>
-              <div class="UnansweredBy d-flex flex-wrap align-items-center">
-          <a href="#"><span class="Title">Answered for</span></a>
+              <div class="UnansweredBy d-flex flex-wrap align-items-center" id="answered_by<?php echo $question['id']; ?>">
+          <a href="#"><span class="Title">Answered by</span></a>
+                <?php $first_mp_answered_id = current($answered_mp);?>
           <?php if ($count_answer == 1) {
-                $first_mp_answered_id = current($answered_mp);?>
+                ?>
           <a href="#"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id);
                 ?></span></a>
           <?php } else {
