@@ -587,8 +587,47 @@ class SiteController extends FrontCoreController
             $model_answer->question_id = $postData['question_id'];
             $model_answer->answer_text = $postData['answer'];
             $model_answer->mp_id = Yii::$app->user->id;
-            $model_answer->save(false);
 
+            if ($model_answer->save(false)) {
+                //p($mp_user['email']);
+                $mp_name = Common::get_user_name($model_answer->mp_id);
+                $question_model = Questions::find()->where(["id" => $postData['question_id']])->one();
+                $question = $question_model->question;
+                $user_agent_name = $question_model->userAgent->user_name;
+                $user_agent_email = $question_model->userAgent->email;
+                $user_email = $model_answer->mp->email;
+                $answer = $model_answer->answer_text;
+                $emailformatemodel = EmailFormat::findOne(["title" => 'answer_question', "status" => '1']);
+                if ($emailformatemodel) {
+
+                    //create template file
+                    $AreplaceString = array('{user_agent_name}' => $user_agent_name, '{question}' => $question, '{mp_name}' => $mp_name, '{answer}' => $answer);
+                    $body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
+
+                    //send email for new generated password
+                    Common::sendMailToUser($user_agent_email, $user_email, $emailformatemodel->subject, $body);
+                }
+                $question_louder_by = $question_model->louder_by;
+                if (!empty($question_louder_by)) {
+                    $louder_by_arr = explode(",", $question_louder_by);
+                    foreach ($louder_by_arr as $key => $user_louder) {
+                        $user_louder_detail = Common::get_name_by_id($user_louder, "Users");
+                        $user_name = $user_louder_detail['user_name'];
+                        $user_louder_email = $user_louder_detail['email'];
+                        $emailformatemodel2 = EmailFormat::findOne(["title" => 'my_louder_answer', "status" => '1']);
+                        if ($emailformatemodel2) {
+
+                            //create template file
+                            $AreplaceString2 = array('{user_name}' => $user_name, '{question}' => $question, '{mp_name}' => $mp_name, '{answer}' => $answer);
+                            $body = Common::MailTemplate($AreplaceString2, $emailformatemodel2->body);
+
+                            //send email for new generated password
+                            Common::sendMailToUser($user_louder_email, $user_email, $emailformatemodel2->subject, $body);
+                        }
+                        # code...
+                    }
+                }
+            }
             $answer_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
             $ask_user = Questions::findOne($postData['question_id']);
             $userName = Common::get_user_name(Yii::$app->user->id);
@@ -628,7 +667,26 @@ class SiteController extends FrontCoreController
             $model_comment->question_id = $postData['question_id'];
             $model_comment->comment_text = $postData['comment'];
             $model_comment->user_agent_id = Yii::$app->user->id;
-            $model_comment->save(false);
+            if ($model_comment->save(false)) {
+                //p($mp_user['email']);
+                $user_name = Common::get_user_name($model_comment->user_agent_id);
+                $question_model = Questions::find()->where(["id" => $postData['question_id']])->one();
+                $question = $question_model->question;
+                $user_agent_name = $question_model->userAgent->user_name;
+                $user_agent_email = $question_model->userAgent->email;
+                $user_email = $model_comment->userAgent->email;
+                $comment = $model_comment->comment_text;
+                $emailformatemodel = EmailFormat::findOne(["title" => 'comment_question', "status" => '1']);
+                if ($emailformatemodel) {
+
+                    //create template file
+                    $AreplaceString = array('{user_agent_name}' => $user_agent_name, '{question}' => $question, '{user_name}' => $user_name, '{comment}' => $comment);
+                    $body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
+
+                    //send email for new generated password
+                    Common::sendMailToUser($user_agent_email, $user_email, $emailformatemodel->subject, $body);
+                }
+            }
 
             $comment_user = Common::get_name_by_id(Yii::$app->user->id, "Users");
             $ask_user = Questions::findOne($postData['question_id']);
