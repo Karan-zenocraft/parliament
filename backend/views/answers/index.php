@@ -81,6 +81,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Question'];
                 },*/
                 'delete' => function ($url, $model) {
                     $flag = 1;
+                    $url = Yii::$app->urlManager->createurl(['answers/delete', 'id' => $model->id, 'qid' => $model->question_id]);
                     $confirmmessage = "Are you sure you want to delete this answer?";
                     return Common::template_delete_button($url, $model, $confirmmessage, $flag);
                 },

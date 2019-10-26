@@ -3,6 +3,8 @@
 namespace common\models\base;
 
 use common\models\QuestionReportedQuery;
+use common\models\Questions;
+use common\models\Users;
 use Yii;
 
 /**
@@ -45,9 +47,9 @@ class QuestionReportedBase extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'question_id' => Yii::t('app', 'Question ID'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'report_comment' => Yii::t('app', 'Report Comment'),
+            'question_id' => Yii::t('app', 'Question'),
+            'user_id' => Yii::t('app', 'Reported By'),
+            'report_comment' => Yii::t('app', 'Report Text'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
@@ -61,4 +63,13 @@ class QuestionReportedBase extends \yii\db\ActiveRecord
     {
         return new QuestionReportedQuery(get_called_class());
     }
+    public function getUser()
+    {
+        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+    }
+    public function getQuestion()
+    {
+        return $this->hasOne(Questions::className(), ['id' => 'question_id']);
+    }
+
 }

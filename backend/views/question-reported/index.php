@@ -3,75 +3,82 @@
 use common\components\Common;
 use yii\grid\GridView;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\AnswersSearch */
+/* @var $searchModel common\models\QuestionReportedSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Comments';
-$this->params['breadcrumbs'][] = ['label' => 'Manage Questions', 'url' => ['questions/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Manage Comments', 'url' => ['comments/index', 'qid' => $_GET['qid']]];
-$this->params['breadcrumbs'][] = ['label' => 'Question'];
+$this->title = 'Question Reported';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="comments-index email-format-index">
+<div class="question-reported-index email-format-index">
 <div class="email-format-index">
     <div class="navbar navbar-inner block-header">
         <div class="muted pull-left">Search Here</div>
     </div>
         <div class="block-content collapse in">
-        <div class="users-form span12">
+        <div class="question-reported-form span12">
 
      <?=Html::a(Yii::t('app', '<i class="icon-filter icon-white"></i> Filter'), "javascript:void(0);", ['class' => 'btn btn-primary open_search']);?>
-     <?php if (!empty($_REQUEST['CommentsSearch']) || (!empty($_GET['temp']) && $_GET['temp'] == "clear")) {?>
-        <div class="commentss-search common_search">
+     <?php if (!empty($_REQUEST['QuestionsSearch']) || (!empty($_GET['temp']) && $_GET['temp'] == "clear")) {?>
+        <div class="question-reporteds-serach common_search">
          <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         </div>
 <?php } else {?>
-    <div class="comments-search common_search">
+    <div class="question-reported-serach common_search">
          <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         </div>
     <?php }?>
 </div>
 </div>
 </div>
-<div class="navbar navbar-inner block-header">
-        <div class="muted pull-left">
-            <?php echo Html::encode($this->title) . ' - ' . $snQuestion ?>
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left"><?=Html::encode($this->title)?></div>
+        <div class="pull-right">
+            <?=Html::a(Yii::t('app', '<i class="icon-refresh"></i> Reset'), Yii::$app->urlManager->createUrl(['question-reported/index']), ['class' => 'btn btn-primary'])?>
         </div>
-       <!--  <div class="pull-right">
-            <?php //Html::a(Yii::t('app', '<i class="icon-plus"></i> Add Layout'), Yii::$app->urlManager->createUrl(['restaurant-layout/create', 'rid' => ( $_GET['rid'] > 0 ) ? $_GET['rid'] : 0]), ['class' => 'btn btn-success colorbox_popup','onclick' => 'javascript:openColorBox(420,400);']) ?>
-        </div> -->
     </div>
-    <div class="block-content">
-    <?php Pjax::begin();?>
+      <div class="block-content">
+        <div class="goodtable">
+    <?php// Pjax::begin();?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?=GridView::widget([
     'dataProvider' => $dataProvider,
-    'filterModel' => null,
     'layout' => "<div class='table-scrollable'>{items}</div>\n<div class='margin-top-10'>{summary}</div>\n<div class='dataTables_paginate paging_bootstrap pagination'>{pager}</div>",
     'columns' => [
-        //['class' => 'yii\grid\SerialColumn'],
+        ['class' => 'yii\grid\SerialColumn'],
 
-        //'id',
-        //'question_id',
-        'comment_text',
+        //  'id',
         [
-            'attribute' => 'user_agent_id',
+            'attribute' => 'question_id',
             //  'filterOptions' => ["style" => "width:13%;"],
             /*  'value' => function ($data) {
             return $data->restaurant->name;
             },*/
             'format' => 'raw',
             'value' => function ($data) {
-                $ssText = !empty($data->user_agent_id) ? Common::get_user_name($data->user_agent_id) : "-";
+                $ssText = !empty($data->question) ? $data->question->question : "";
                 //   $url = Yii::$app->urlManager->createUrl(['reservations/view', 'id' => $data->id]);
                 return $ssText;
             },
         ],
-        //'status',
-        //'is_delete',
-        //'created_at',
+
+        [
+            'attribute' => 'user_id',
+            //  'filterOptions' => ["style" => "width:13%;"],
+            /*  'value' => function ($data) {
+            return $data->restaurant->name;
+            },*/
+            'format' => 'raw',
+            'value' => function ($data) {
+                $ssText = !empty($data->user) ? $data->user->user_name : "";
+                //   $url = Yii::$app->urlManager->createUrl(['reservations/view', 'id' => $data->id]);
+                return $ssText;
+            },
+        ],
+        'report_comment:ntext',
+        //  'created_at',
         //'updated_at',
 
         [
@@ -83,8 +90,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Question'];
             'buttons' => [
                 'delete' => function ($url, $model) {
                     $flag = 1;
-                    $url = Yii::$app->urlManager->createurl(['comments/delete', 'id' => $model->id, 'qid' => $model->question_id]);
-                    $confirmmessage = "Are you sure you want to delete this comment?";
+                    //  $url = Yii::$app->urlManager->createurl(['question-reported/delete', 'id' => $model->id, 'qid' => $model->question_id]);
+                    $confirmmessage = "Are you sure you want to delete this question?";
                     return Common::template_delete_button($url, $model, $confirmmessage, $flag);
                 },
 
@@ -92,14 +99,17 @@ $this->params['breadcrumbs'][] = ['label' => 'Question'];
         ],
     ],
 ]);?>
-   </div>
+
+    <?php// Pjax::end();?>
+
+</div>
 </div>
 </div>
 <script type="text/javascript">
 $( document ).ready(function() {
-    $('.comments-search').hide();
+    $('.question-reported-serach').hide();
         $('.open_search').click(function(){
-            $('.comments-search').toggle();
+            $('.question-reported-serach').toggle();
         });
     });
 

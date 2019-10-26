@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="navbar navbar-inner block-header">
         <div class="muted pull-left"><?=Html::encode($this->title)?></div>
         <div class="pull-right">
-             <?php echo Html::a(Yii::t('app', '<i class="icon-plus"></i> Add representative'), ['create'], ['class' => 'btn btn-success']) ?>
+             <?php //echo Html::a(Yii::t('app', '<i class="icon-plus"></i> Add representative'), ['create'], ['class' => 'btn btn-success']) ?>
             <?=Html::a(Yii::t('app', '<i class="icon-refresh"></i> Reset'), Yii::$app->urlManager->createUrl(['representatives/index']), ['class' => 'btn btn-primary'])?>
         </div>
     </div>

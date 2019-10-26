@@ -36,7 +36,7 @@ class AnswersController extends AdminCoreController
      */
     public function actionIndex()
     {
-        $snQuestionId = ($_GET['qid'] > 0) ? $_GET['qid'] : 0;
+        $snQuestionId = ($_REQUEST['qid'] > 0) ? $_REQUEST['qid'] : 0;
         $searchModel = new AnswersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $snQuestion = Common::get_name_by_id($_GET['qid'], $flag = "Questions");
@@ -106,11 +106,11 @@ class AnswersController extends AdminCoreController
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $qid)
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index', ["qid" => $_GET['qid']]]);
+        return $this->redirect(['answers/index', 'qid' => $qid]);
     }
 
     /**

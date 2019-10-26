@@ -1,23 +1,22 @@
 <?php
-
 namespace backend\controllers;
 
-use common\components\Common;
-use common\models\Comments;
-use common\models\CommentsSearch;
+use backend\components\AdminCoreController;
+use common\models\QuestionReported;
+use common\models\QuestionReportedSearch;
+use common\models\Questions;
 use Yii;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
- * CommentsController implements the CRUD actions for Comments model.
+ * QuestionReportedController implements the CRUD actions for QuestionReported model.
  */
-class CommentsController extends Controller
+class QuestionReportedController extends AdminCoreController
 {
     /**
      * {@inheritdoc}
      */
-    /*public function behaviors()
+    /*  public function behaviors()
     {
     return [
     'verbs' => [
@@ -27,29 +26,25 @@ class CommentsController extends Controller
     ],
     ],
     ];
-    }
-     */
+    }*/
+
     /**
-     * Lists all Comments models.
+     * Lists all QuestionReported models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $snQuestionId = ($_REQUEST['qid'] > 0) ? $_REQUEST['qid'] : 0;
-        $searchModel = new CommentsSearch();
+        $searchModel = new QuestionReportedSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $snQuestion = Common::get_name_by_id($_GET['qid'], $flag = "Questions");
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'snQuestion' => $snQuestion,
-
         ]);
     }
 
     /**
-     * Displays a single Comments model.
+     * Displays a single QuestionReported model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -62,13 +57,13 @@ class CommentsController extends Controller
     }
 
     /**
-     * Creates a new Comments model.
+     * Creates a new QuestionReported model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Comments();
+        $model = new QuestionReported();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -80,7 +75,7 @@ class CommentsController extends Controller
     }
 
     /**
-     * Updates an existing Comments model.
+     * Updates an existing QuestionReported model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -100,29 +95,37 @@ class CommentsController extends Controller
     }
 
     /**
-     * Deletes an existing Comments model.
+     * Deletes an existing QuestionReported model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $qid)
+    public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $question_id = $model->question_id;
+        if ($model->delete()) {
+            $modelQuestion = Questions::find()->where(['id' => $question_id])->one();
+            if (!empty($modelQuestion)) {
+                $modelQuestion->is_delete = 1;
+                $modelQuestion->save(false);
+                return $this->redirect(['index']);
+            }
+        }
 
-        return $this->redirect(['comments/index', 'qid' => $qid]);
     }
 
     /**
-     * Finds the Comments model based on its primary key value.
+     * Finds the QuestionReported model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Comments the loaded model
+     * @return QuestionReported the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Comments::findOne($id)) !== null) {
+        if (($model = QuestionReported::findOne($id)) !== null) {
             return $model;
         }
 

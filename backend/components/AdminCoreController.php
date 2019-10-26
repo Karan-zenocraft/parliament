@@ -22,7 +22,6 @@ class AdminCoreController extends Controller
     {
 
         $ssControllerName = Yii::$app->controller->id . "Controller";
-
         $amAccessRules = array(
             'access' => [
                 'class' => AccessControl::className(),
