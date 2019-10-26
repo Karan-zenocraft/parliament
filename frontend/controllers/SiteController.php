@@ -32,6 +32,7 @@ use yii\web\Response;
  */
 class SiteController extends FrontCoreController
 {
+
     public function beforeAction($action)
     {
         $this->enableCsrfValidation = false;
@@ -107,7 +108,9 @@ class SiteController extends FrontCoreController
             $postData = Yii::$app->request->post();
             $model->user_agent_id = Yii::$app->user->id;
             $model->mp_id = implode(",", $postData['Questions']['mp_id']);
+
             if ($model->save()) {
+                $user_agent_name = $model->userAgent->user_name;
                 foreach ($postData['Questions']['mp_id'] as $key => $mp) {
                     $mp_user = Common::get_name_by_id($mp, "Users");
                     if (!empty($mp_user)) {
@@ -115,7 +118,6 @@ class SiteController extends FrontCoreController
                         $mp_email = $mp_user['email'];
                         $mp_username = $mp_user['user_name'];
                         $question = $model->question;
-                        $user_agent_name = $model->userAgent->user_name;
                         $user_agent_email = $model->userAgent->email;
                         $emailformatemodel = EmailFormat::findOne(["title" => 'ask_question', "status" => '1']);
                         if ($emailformatemodel) {
@@ -129,6 +131,8 @@ class SiteController extends FrontCoreController
                         }
                     }
                 }
+                $title = $user_agent_name . " has asked you a Question.";
+                $this->actionPubnub($title, $model->mp_id);
             };
             return $this->redirect(['site/index']);
             //return ActiveForm::validate($model);
@@ -166,6 +170,56 @@ class SiteController extends FrontCoreController
         ]);
     }
 
+    public function actionPubnub($title, $userid)
+    {
+
+        //  var usersN=message.message.userid;
+        // var title =message.message.title;
+        // if(usersN.includes("loginid"))
+        // {
+
+        echo '
+        <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
+        <script>
+            pubnub = new PubNub({
+            publishKey: "pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a",
+            subscribeKey: "sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20",
+        });
+
+                pubnub.addListener({
+        status: function(statusEvent) {
+            if (statusEvent.category === "PNConnectedCategory") {
+                var publishConfig = {
+            channel : "rutusha",
+            message: {
+                title: "' . $title . '",
+                description: "hello world!",
+                userid: "' . $userid . '",
+                flag:true,
+                site:"ask.zenocraft.com"
+            }
+        }
+        pubnub.publish(publishConfig, function(status, response) {
+            console.log(status, response);
+            window.location.href="site/index";
+        })
+            }
+        },
+        message: function(msg) {
+            console.log(msg.message.title);
+            console.log(msg.message.description);
+        },
+        presence: function(presenceEvent) {
+            // handle presence
+        }
+    })
+    console.log("Subscribing..");
+    pubnub.subscribe({
+        channels: ["rutusha"]
+    });
+
+        </script>';
+    }
     /**
      * Logs in a user.
      *

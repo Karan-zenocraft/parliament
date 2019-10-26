@@ -418,6 +418,10 @@ function submitAnswer(question_id)
                answer: answer, 
                question_id:question_id,
            },
+            beforeSend: function() {
+        // setting a timeout
+        $('#overlay').fadeIn();
+    },
      success: function (data) {
          $("#AnswerQuestionBox"+question_id).removeClass('GiveAnswerBox');
          $('#answersList'+question_id).prepend(data.data);
@@ -428,7 +432,30 @@ function submitAnswer(question_id)
          var title = data.user_name + " has answered on your question ";
            var userid = data.ask_user_id;
            sendNotification(title,userid);
-     }
+     },
+      complete: function() {
+        $('#overlay').fadeOut();
+    },
+  }); 
+}
+function submitQuestion ()
+{
+  var questionArea =  $.trim($('#questionArea').val());
+  var mpIds = $("#questions-mp_id").val();
+  
+  if(questionArea==''){alert('Question can not be blank'); return false;}
+   $.ajax({
+     url: "site/save-question",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               question: questionArea, 
+               mp_id:mpIds,
+           },
+     success: function (data) {
+        
+          //sendNotification(title,userid);
+        }
   });
 }
 function submitComment(question_id)
@@ -444,6 +471,10 @@ function submitComment(question_id)
                comment: comment, 
                question_id:question_id,
            },
+            beforeSend: function() {
+        $('#overlay').fadeIn();
+    },
+
      success: function (data) {
          $('#commentArray'+question_id).prepend(data.data);
          $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
@@ -455,7 +486,10 @@ function submitComment(question_id)
           sendNotification(title,userid);
         }
 
-     }
+     },
+      complete: function() {
+        $('#overlay').fadeOut();
+    },
   });
 }
 function show_comments(id){
@@ -646,11 +680,14 @@ var login_user_id = $('#login_user_id').val();
 
  pubnub.addListener({
                 message: function(message) {
-                    if(message.message.userid == login_user_id){
+                   var usersN=message.message.userid;
+        // var title =message.message.title;
+         //if(usersN.includes(login_user_id))
+                    if(usersN == login_user_id){
                          var count = $('.badge-secondary').text();
                          count++;
                          $('.badge-secondary').text(count);
-                         $(".dynamic_notification").append('<li><a href="#">'+message.message.title+'</li>');
+                         $(".dynamic_notification").prepend('<li><a href="#">'+message.message.title+'</li>');
                     }
                         if (!("Notification" in window)) {
                             console.log("This browser does not support desktop notification");
@@ -696,7 +733,11 @@ function clear_notification(user_id){
   });
 }
 $(document).ready(function() {
-                
+                  pubnub = new PubNub({
+            publishKey: 'pub-c-e371713b-ce3a-41c9-89e1-ac0d397c8e9a',
+            subscribeKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+            secretKey: 'sub-c-9a5383e4-f424-11e9-bdee-36080f78eb20',
+    });
                 getNotification();
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 100) {
@@ -1448,7 +1489,6 @@ $(document).ready(function(){
     
     
 });
-
 
 
 
