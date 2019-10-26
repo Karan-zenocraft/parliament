@@ -4,6 +4,7 @@ use common\models\Notifications;
 use frontend\assets\ParliamentAsset;
 use frontend\components\HelloWidget;
 use frontend\components\ProfilePage;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
 $this->registerCssFile('@web/themes/parliament_theme/css/inner-style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
@@ -12,6 +13,7 @@ ParliamentAsset::register($this);
 $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 //CommonAppAsset::register( $this );
 ?>
+<?php //echo Url::base('');die(); ?>
 <?php $this->beginPage()?>
 <!DOCTYPE html>
 <html>
@@ -125,25 +127,25 @@ if (empty($_REQUEST['user_id'])) {?>
                         <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
 
                         <?php if (!empty($_REQUEST['user_id'])) {?>
-                            <li class="BGList"><a href="<?php echo Yii::getAlias('@web'); ?>#Homefeed" onclick="filterQuestion('Homefeed')" class="show">Home Feed</a></li>
+                            <li class="BGList"><a href="<?php echo Url::base(''); ?>#Homefeed" onclick="filterQuestion('Homefeed')" class="show">Home Feed</a></li>
                         <?php } else {?>
                             <li class="BGList"><a href="#Homefeed" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">Home Feed</a></li>
                         <?php }?>
 
                         <?php if (!empty($_REQUEST['user_id'])) {?>
-                            <li><a href="<?php echo Yii::getAlias('@web'); ?>#Unanswered" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
+                            <li><a href="<?php echo Url::base(''); ?>#Unanswered" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
                         <?php } else {?>
                             <li><a href="#Unanswered" onclick="filterQuestion('Unanswered')" data-toggle="tab" class="show">Unanswered</a></li>
                         <?php }?>
 
                          <?php if (!empty($_REQUEST['user_id'])) {?>
-                            <li><a href="<?php echo Yii::getAlias('@web'); ?>#Answered" onclick="filterQuestion('Answered')" class="show">Answered</a></li>
+                            <li><a href="<?php echo Url::base(''); ?>#Answered" onclick="filterQuestion('Answered')" class="show">Answered</a></li>
                         <?php } else {?>
                             <li><a href="#Answered" onclick="filterQuestion('Answered')" data-toggle="tab" class="show">Answered</a></li>
                         <?php }?>
 
                         <?php if (!empty($_REQUEST['user_id'])) {?>
-                            <li><a href="<?php echo Yii::getAlias('@web'); ?>#citizen"  onclick="AjaxCallSortCitizen()" class="show">citizen</a></li>
+                            <li><a href="<?php echo Url::base(''); ?>#citizen"  onclick="AjaxCallSortCitizen()" class="show">citizen</a></li>
                         <?php } else {?>
                             <li><a href="#citizen" onclick="AjaxCallSortCitizen()"  data-toggle="tab" class="show">Citizens</a></li>
                         <?php }?>
