@@ -443,22 +443,31 @@ function submitQuestion(e)
  e.preventDefault();
   var mpIds = $("#questions-mp_id").val();
   var flag = 1;
-   if(mpIds.length  == 0){
-    alert("Please select atleast one MP");
+   if(mpIds.length == 0){
+    $('.mp_error').text("Please select atleast one MP");
     var flag = 0;
    // $('.field-questions-mp_id').addClass('has-error');
-  }
-  if(mpIds.length > 5){
-    alert("You can select maximum 5 mps");
+  }else if(mpIds.length > 5){
+     $('.mp_error').text("");
+    $('.mp_error').text("You can select maximum 5 mps");
     var flag = 0;
+  }else{
+     $('.mp_error').text("");
+    var flag = 1;
   }
   var questionArea =  $('#questions-question').val();
   if(questionArea  == ''){
-    alert("Question can not be blank");
+    $('.question_error').text("Question can not be blank");
     var flag = 0;
    // $('.field-questions-question').addClass('has-error');
+  }else{
+    $('.question_error').text("");
+    var flag = 1;
   }
   if(flag == 1){
+    $('.question_error').text("");
+    $('.mp_error').text("");
+
      $.ajax({
        url: "site/save-question",
        type: 'post',
@@ -473,7 +482,8 @@ function submitQuestion(e)
     },
        success: function (data) {
         if(data == "error"){
-          alert("You can not ask question as question limit reaches of this week");
+          $('.question_error').text("You can not ask question as question limit reaches of this week");
+          var flag = 0;
           return false;
         }
         if(data.user_agent_name != ""){

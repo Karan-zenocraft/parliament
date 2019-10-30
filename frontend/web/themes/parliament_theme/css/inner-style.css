@@ -608,7 +608,7 @@ slider slider
     border-radius: 50px;
     color: #fff;border: none}
 .UnansweredBy{position: relative;margin: 0 auto!important;}
-.UsersImg{display: flex;align-items: center;justify-content: center;position: relative;}
+.UsersImg{display: inline-block;align-items: center;justify-content: center;position: relative;}
 .UsersImg .One{position: relative;}
 .UsersImg img{height: 43px;width: 43px;}
 .UsersImg .Absolute .Img1{position: absolute;right: 45px}
@@ -635,7 +635,7 @@ slider slider
 
 
 
-.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP{position: relative;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP{position: relative;width: 100%}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP{transition: all 0.25s ease 0s;
     position: absolute;
     left: -25px;
@@ -714,7 +714,7 @@ header .HeaderBottomCenter .Search{margin-right: auto;}
 .Ask .help-block{width: 33%;display: block;margin-left: auto;}
 /*header .HeaderBottomCenter .Icons .IconBoxs{margin-right: auto;margin-left: 65px;}*/
 header .HeaderBottomCenter .People{height: 162px!important;width: 162px!important;z-index: 99;}
-.OnhoverGroup{cursor: pointer;}
+.OnhoverGroup{cursor: pointer;display: inline-block;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: unset;padding-left: 8px;padding-right: 40px;padding-top: 3px;padding-bottom: 3px;line-height: inherit;
     margin-top: 25px;left: unset;right: 0;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 10px;}
@@ -826,3 +826,4 @@ list-style-type: none;}
 .OnhoverMP li a {font-size: 7px;color: #fff;line-height: 14px;
     font-family: 'Segoe UI';}
 .UnansweredBy {max-width: 165px;}
+.MPProfileName a{line-height: 0;}

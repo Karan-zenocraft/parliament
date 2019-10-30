@@ -35,7 +35,9 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
             'maximumInputLength' => 10,
         ],
     ])->label(false); ?>
+    <span class="mp_error" style="color:red;padding-left: 20px"></span>
     <?=$form->field($model, 'question')->textArea(['maxlength' => true, "class" => "AskQuestion", "placeholder" => "Ask your Question. Get involved", "onkeyup" => "countChar(this)"])->label(false);?>
+    <span class="question_error" style="color:red;padding-left: 20px"></span>
     <div class="form-group d-flex align-items-center justify-content-end">
       <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton d-flex order-1', "onclick" => 'submitQuestion(event)'])?>
       <div id="charNum" class="d-flex order-0" style="float: right;">0/540</div>

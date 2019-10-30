@@ -54,11 +54,9 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                 ?>and</span></a>
               <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list(id)" onmouseover="show_mp_list(id)" id="left"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
-          </div>
           <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
-
-<?php $exclude_first = array_shift($unanswered_by);?>
             <div class="Absolute">
+<?php $exclude_first = array_shift($unanswered_by);?>
             <?php $i = 1;
             foreach ($unanswered_by as $key => $unanswer_mp) {
                 $user_mp = Common::get_name_by_id($unanswer_mp, "Users");
@@ -69,6 +67,8 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
             <?php $i++;
             }?>
             </div>
+          </div>
+
 
 
           </a>
@@ -112,10 +112,10 @@ $answered_mp_arr = array_unique($answered_mp);
 <?php $exclude_first_answer = array_shift($answered_mp);
             //p(array_unique($answered_mp), 0);
             ?>
-                  <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
+
             <div class="Absolute">
             <?php $i = 1;
-            foreach ($answered_mp_arr as $key => $ans_mp) {
+            foreach ($answered_mp as $key => $ans_mp) {
                 $ans_mp_name = Common::get_name_by_id($ans_mp, "Users");
                 //$ans_mp_image = $ans_mp_name['photo'];
                 $ans_mp_image = !empty($ans_mp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $ans_mp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
