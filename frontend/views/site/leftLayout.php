@@ -112,6 +112,7 @@ $answered_mp_arr = array_unique($answered_mp);
 <?php $exclude_first_answer = array_shift($answered_mp);
             //p(array_unique($answered_mp), 0);
             ?>
+                  <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
             <div class="Absolute">
             <?php $i = 1;
             foreach ($answered_mp_arr as $key => $ans_mp) {

@@ -45,7 +45,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
   <div class="hideHome FilterBar  align-items-end justify-content-between ">
     <span class="hideHome">Filter: <i class="fa fa-angle-down OnlySm" aria-hidden="true"></i> </span>
     <nav class="Nav2 hideHome">
-      <ul class="d-flex align-items-center justify-content-start nav">
+      <ul class="align-items-center justify-content-start nav">
         <li class="FilterActive"><a onClick="AjaxCallSort('engagement')">Engagement </a></li>
         <li><a onClick="AjaxCallSort('city')" >Current City</a></li>
         <li><a onClick="AjaxCallSort('sex')">Sex</a></li>

@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 <div class="MainLeftInner EditProfileMain MainCenter">
     <nav class="Nav1">
 
-                        <ul class="d-flex align-items-center justify-content-between nav nav-tabs">
+                        <ul class="d-flex align-items-center justify-content-between nav nav-tabs Extra">
                             <li class="BGList"><a href="#home" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active show">Home Feed</a></li>
                             <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Unanswered')" class="show">Unanswered</a></li>
                             <li><a href="#home" data-toggle="tab" onclick="filterQuestion('Answered')" class="show">Answered</a></li>
@@ -102,3 +102,15 @@ $user = Common::get_name_by_id($user_id, "Users");
       </div>
     </div>
   </div>
+
+
+
+<script>
+//$(document).ready(function(){
+//$('.Icons .fa-bars').click(function() {
+//              $(".MainCenter .Nav1 .Extra").css("display","block");
+//                $(".MainCenter .Nav1 UlHome").css("display","none!important");
+//
+//    });
+//    });
+</script>

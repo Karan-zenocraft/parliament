@@ -395,6 +395,21 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 
     header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 14px;line-height: 20px;}
 
+
+
+
+
+.UnansweredBy a .Title{
+    font-size: 8px;
+    line-height: 12px;
+    }
+    .UnansweredBy a{line-height: 0px;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a{line-height: inherit;}
+.UnansweredBy a .MP, .UnansweredBy a  .MPName {
+    font-size: 8px;
+    line-height: 12px;
+    }
+
 }
 
 
@@ -729,6 +744,20 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 
 header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 12px;line-height: 18px;}
     header .HeaderBottomCenter .Icons .fa-bell:after{bottom: -25px;}
+
+
+
+
+
+.UnansweredBy a .Title{
+    font-size: 7px;
+    line-height: 11px;
+    }
+    .UnansweredBy a{line-height: 0px;}
+.UnansweredBy a .MP, .UnansweredBy a  .MPName {
+    font-size: 7px;
+    line-height: 11px;
+    }
 
 }
 
@@ -1461,7 +1490,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .Main .MainCenter .FilterBar .Nav5 li i{font-size: 10px!important;margin-left: 0px!important;}
     .Main .MainCenter .FilterBar .SearchMps .SearchAnswredQ{width: 200px;font-size: 11px}
     .Main .MainCenter .FilterBar .SearchAnswredMps .fa-search{font-size: 12px;top: 0px;right: 0!important;padding: 8px}
-    .Main  .MainCenter .Nav2 ul{top: 50px;}
+    .Main  .MainCenter .Nav2 ul{top: 50px;display: none}
     .Main .MainCenter .CitizenBar .Nav2 .Nav6Ul{display: none!important;}
     .Main .MainCenter .CitizenBar .Nav2 .UlFilterCitizen{display: block!important;}
     .Main .MainCenter .CitizenBar span:nth-child(3){margin-left: auto;margin-right: 10px;}
@@ -1678,6 +1707,16 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     header .HeaderBottomCenter .UlNotification{background: #D17C0D;}
     .Nav6 ul{display: none!important;}
 
+
+
+
+
+#home{display: flex;
+    flex-direction: column;}
+    .Main .MainCenter .Ask{order: 3}
+    .Main .MainCenter .FilterBar{order: 1;}
+    #home .tab-content.hideHome{order: 2;}
+    .Main .MainCenter .SearchAnswredBar  {order: 3;}
 }
   
 @media only screen and (max-width: 767px){

@@ -608,7 +608,7 @@ slider slider
     border-radius: 50px;
     color: #fff;border: none}
 .UnansweredBy{position: relative;margin: 0 auto!important;}
-.UsersImg{display: flex;align-items: center;justify-content: center;}
+.UsersImg{display: flex;align-items: center;justify-content: center;position: relative;}
 .UsersImg .One{position: relative;}
 .UsersImg img{height: 43px;width: 43px;}
 .UsersImg .Absolute .Img1{position: absolute;right: 45px}
@@ -715,10 +715,10 @@ header .HeaderBottomCenter .Search{margin-right: auto;}
 /*header .HeaderBottomCenter .Icons .IconBoxs{margin-right: auto;margin-left: 65px;}*/
 header .HeaderBottomCenter .People{height: 162px!important;width: 162px!important;z-index: 99;}
 .OnhoverGroup{cursor: pointer;}
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: unset;padding-left: 8px;padding-right: 40px;padding-top: 3px;padding-bottom: 3px;
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: unset;padding-left: 8px;padding-right: 40px;padding-top: 3px;padding-bottom: 3px;line-height: inherit;
     margin-top: 25px;left: unset;right: 0;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 10px;}
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li{line-height: 0;}
+/*.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li{line-height: 0;}*/
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{margin-right: 5px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .MP{margin-right: 5px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p{font-size: 18px;}
@@ -789,3 +789,40 @@ header .HeaderBottomCenter .UlNotification .flex-wrap{border-bottom: 3px solid #
     width: 100%;
     height: 100%;
 }
+
+
+.UnansweredBy a .Title{color: #10303F;
+    font-size: 10px;
+    line-height: 11px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    margin-bottom: 0px;margin-right: 2px;}
+
+.UnansweredBy a .MP, .UnansweredBy a  .MPName {color: #0D5D83;
+    font-size: 10px;
+    line-height: 13px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    margin-bottom: 0px;
+    text-align: left;margin-left: 2px;}
+.UnansweredBy .MPName{margin-right: 2px;}
+
+
+.OnhoverMP{width: unset;
+    padding-left: 8px;
+    padding-right: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: 30px;
+    line-height: 0;
+    left: unset;
+    right: 30px;
+transition: 0.25s ease;
+    position: absolute;
+    margin-bottom: 0px;
+background: #10303F;
+list-style-type: none;}
+
+.OnhoverMP li a {font-size: 7px;color: #fff;line-height: 14px;
+    font-family: 'Segoe UI';}
+.UnansweredBy {max-width: 165px;}
