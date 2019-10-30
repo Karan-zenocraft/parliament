@@ -30,6 +30,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
         return [
             [['role_id', 'status', 'age'], 'integer'],
             [['role_id', 'email', 'password', 'user_name', 'city', 'status', 'gender', 'age', 'education', 'name', 'work'], 'required'],
+            [['role_id', 'email', 'user_name', 'city', 'status', 'gender', 'age', 'education', 'name', 'work'], 'filter', 'filter' => 'trim'],
             [['created_at', 'updated_at', 'name', 'age'], 'safe'],
             [['email'], 'email'],
             [['user_name'], 'validateUserName'],
@@ -38,7 +39,12 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
                 return $model->role_id == Yii::$app->params['userroles']['MP'];
             }, 'whenClient' => "function (attribute, value) {
                 return $('#users-role_id').val() == '" . Yii::$app->params['userroles']['MP'] . "';
-            }", ],
+            }"],
+            [['years_hopr', 'standing_commitee'], 'filter', 'filter' => 'trim', 'when' => function ($model) {
+                return $model->role_id == Yii::$app->params['userroles']['MP'];
+            }, 'whenClient' => "function (attribute, value) {
+                return $('#users-role_id').val() == '" . Yii::$app->params['userroles']['MP'] . "';
+            }"],
             // ['age', 'is3NumbersOnly'],
             ['email', 'validateEmail'],
             [['photo'], 'image', 'extensions' => 'jpg, jpeg, gif, png'],
@@ -49,7 +55,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
 
     public function validateEmail()
     {
-        $ASvalidateemail = Users::find()->where('user_name = "' . $this->user_name . '" and id != "' . $this->id . '"')->all();
+        $ASvalidateemail = Users::find()->where('user_name = "' . $this->user_name . '"')->all();
         if (!empty($ASvalidateemail)) {
             $this->addError('user_name', 'This user name is already in use.');
             return true;

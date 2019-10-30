@@ -26,7 +26,9 @@
             echo '</div><div class="Row1 d-flex align-items-center justify-content-start p-0">';
         }
         $rowCount++;
-    }}?>
+    }} else {
+    echo "<span style='color:#9DAAB0'>No more record found</span>";
+}?>
 
 
                             <div class="SliderArrowCitizen">

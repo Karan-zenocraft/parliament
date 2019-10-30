@@ -30,6 +30,7 @@ class RepresentativesBase extends \yii\db\ActiveRecord
     {
         return [
             [['user_name', 'standing_commitee'], 'required'],
+            [['user_name', 'standing_commitee'], 'filter', 'filter' => 'trim'],
             [['user_name', 'standing_commitee'], 'string', 'max' => 255],
             [['photo'], 'image', 'extensions' => 'jpg, jpeg, gif, png'],
         ];
