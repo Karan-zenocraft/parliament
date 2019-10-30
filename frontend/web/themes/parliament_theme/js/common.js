@@ -512,12 +512,12 @@ function submitComment(question_id)
          $("#AnswerQuestionBox"+question_id).removeClass("GiveAnswerBox");
          $('.AddComment').val('');
          $('#comments'+question_id).text(++comment_count);
+         $('#comment_count_left'+question_id).text(comment_count);
            var title = data.user_name + " has commented on your question ";
            var userid = data.ask_user_id;
             if(data.comment_user_id != userid ){
           sendNotification(title,userid);
         }
-
      },
       complete: function() {
         $('#overlay').fadeOut();

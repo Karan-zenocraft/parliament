@@ -534,7 +534,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
             $flagSearch = !empty($_POST['search']) ? $_POST['search'] : "";
 
             $questionsQuery = Questions::find()
-                ->select(["questions.*", "questions.id", "(LENGTH(louder_by) - LENGTH(REPLACE(louder_by, ',','')) + 1) AS louder_count"])
+                ->select(["questions.*", "questions.id", "IF(louder_by,LENGTH(louder_by) - LENGTH(REPLACE(louder_by, ',','')) + 1,0) AS louder_count"])
                 ->with(['userAgent', 'answers' => function ($q) {
                     return $q->orderBy(["answers.id" => SORT_DESC]);
                 }, 'comments' => function ($q) {

@@ -47,15 +47,15 @@ if (!empty($modelsQuestions)) {
           <a href="#"><span class="Title">Unanswered for</span></a>
           <?php if ($count == 1) {
                 ?>
-          <a href="#"><span class="MP"><?php echo $first_mp;
+          <a href="javascript:void(0);"><span class="MP"><?php echo $first_mp;
                 ?></span></a>
           <?php } else {
                 ?>
-            <a href="#"><span class="MP"><?php echo $first_mp . " ";
+            <a href="javascript:void(0);"><span class="MP"><?php echo $first_mp . " ";
                 ?>and</span></a>
               <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
-          <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
+          <a href="javascript:void(0);" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
 
 <?php $exclude_first = array_shift($unanswered_by);?>
             <div class="Absolute">
@@ -75,7 +75,7 @@ if (!empty($modelsQuestions)) {
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question['id']; ?>">
           <?php
 foreach ($unanswered_by as $key => $unanswer_mp) {
-                echo "<li><a href='#'>" . Common::getMpNames($unanswer_mp) . "</a></li>";
+                echo "<li><a href='javascript:void(0);'>" . Common::getMpNames($unanswer_mp) . "</a></li>";
             }
             ?>
     <!-- <li><a href="#">Abebe Mengistu</a></li>
@@ -101,7 +101,7 @@ $answered_mp_arr = array_unique($answered_mp);
                 ?></span></a>
           <?php } else {
                 ?>
-            <a href="#"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id) . " ";
+            <a href="javascript:void(0);"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id) . " ";
                 ?>and</span></a>
               <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count_answer - 1); ?> others</span></a>
             <?php }
@@ -127,7 +127,7 @@ $answered_mp_arr = array_unique($answered_mp);
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question['id']; ?>">
           <?php
 foreach (array_unique($answered_mp) as $key => $answered_mp) {
-                echo "<li><a href='#'>" . Common::getMpNames($answered_mp) . "</a></li>";
+                echo "<li><a href='javascript:void(0);'>" . Common::getMpNames($answered_mp) . "</a></li>";
             }
             ?>
     <!-- <li><a href="#">Abebe Mengistu</a></li>

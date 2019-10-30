@@ -163,7 +163,7 @@ foreach (array_unique($answered_mp) as $key => $answered_mp) {
 						<a href="#">
 							<i class="fa fa-commenting-o" aria-hidden="true"></i>
 							<?php $comment_count = !empty($question['comments']) ? count($question['comments']) : 0;?>
-							<span><?php echo $comment_count; ?></span>
+							<span id="comment_count_left<?php echo $question['id'] ?>"><?php echo $comment_count; ?></span>
 						</a>
 					</div>
 					<div class="Share">
