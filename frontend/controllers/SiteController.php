@@ -103,49 +103,49 @@ class SiteController extends FrontCoreController
         $models = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            $postData = Yii::$app->request->post();
-            $model->user_agent_id = Yii::$app->user->id;
-            $model->mp_id = implode(",", $postData['Questions']['mp_id']);
+/*        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+Yii::$app->response->format = Response::FORMAT_JSON;
+$postData = Yii::$app->request->post();
+$model->user_agent_id = Yii::$app->user->id;
+$model->mp_id = implode(",", $postData['Questions']['mp_id']);
 
-            if ($model->save()) {
-                $user_agent_name = $model->userAgent->user_name;
-                foreach ($postData['Questions']['mp_id'] as $key => $mp) {
-                    $mp_user = Common::get_name_by_id($mp, "Users");
-                    if (!empty($mp_user)) {
-                        //p($mp_user['email']);
-                        $mp_email = $mp_user['email'];
-                        $mp_username = $mp_user['user_name'];
-                        $question = $model->question;
-                        $user_agent_email = $model->userAgent->email;
-                        $emailformatemodel = EmailFormat::findOne(["title" => 'ask_question', "status" => '1']);
-                        if ($emailformatemodel) {
+if ($model->save()) {
+$user_agent_name = $model->userAgent->user_name;
+foreach ($postData['Questions']['mp_id'] as $key => $mp) {
+$mp_user = Common::get_name_by_id($mp, "Users");
+if (!empty($mp_user)) {
+//p($mp_user['email']);
+$mp_email = $mp_user['email'];
+$mp_username = $mp_user['user_name'];
+$question = $model->question;
+$user_agent_email = $model->userAgent->email;
+$emailformatemodel = EmailFormat::findOne(["title" => 'ask_question', "status" => '1']);
+if ($emailformatemodel) {
 
-                            //create template file
-                            $AreplaceString = array('{mp_username}' => $mp_username, '{question}' => $question, '{user_agent_name}' => $user_agent_name);
-                            $body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
+//create template file
+$AreplaceString = array('{mp_username}' => $mp_username, '{question}' => $question, '{user_agent_name}' => $user_agent_name);
+$body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
 
-                            //send email for new generated password
-                            Common::sendMailToUser($mp_email, $user_agent_email, $emailformatemodel->subject, $body);
-                        }
-                    }
-                }
-                $title = $user_agent_name . " has asked you a Question.";
-                $this->actionPubnub($title, $model->mp_id);
-            };
-            return $this->redirect(['site/index']);
-            //return ActiveForm::validate($model);
-        } else {
-            $errors = $model->errors;
-            if (!empty($errors) && !empty($errors['question'][0])) {
-                Yii::$app->session->setFlash('message', $errors['question'][0]); // its dislplays error msg on
-            }
-            if (!empty($errors) && !empty($errors['mp_id'][0])) {
-                Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays error msg on
-            }
+//send email for new generated password
+Common::sendMailToUser($mp_email, $user_agent_email, $emailformatemodel->subject, $body);
+}
+}
+}
+$title = $user_agent_name . " has asked you a Question.";
+$this->actionPubnub($title, $model->mp_id);
+};
+return $this->redirect(['site/index']);
+//return ActiveForm::validate($model);
+} else {
+$errors = $model->errors;
+if (!empty($errors) && !empty($errors['question'][0])) {
+Yii::$app->session->setFlash('message', $errors['question'][0]); // its dislplays error msg on
+}
+if (!empty($errors) && !empty($errors['mp_id'][0])) {
+Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays error msg on
+}
 
-        }
+}*/
 
         //$questions = Questions::find()->with('mp', 'userAgent')->asArray()->all();
         $questionsQuery = Questions::find()->with('userAgent')->where(["status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0])->orderBy(["id" => SORT_DESC]);
@@ -162,7 +162,7 @@ class SiteController extends FrontCoreController
             'mp' => $mpArr,
             'models' => $models,
             'pagination' => $pagination,
-            'errors' => $errors,
+            //'errors' => $errors,
             'total_pages' => $total_pages,
             'modelsQuestions' => $modelsQuestions,
             'paginationQuestion' => $paginationQuestion,
@@ -955,6 +955,56 @@ class SiteController extends FrontCoreController
             }
         }
         return json_encode($retData);
+    }
+
+    public function actionSaveQuestion()
+    {
+        $model = new Questions();
+        if (!empty(Yii::$app->request->post())) {
+            $postData = Yii::$app->request->post();
+            $monday = Common::getLastMondaySaturday("monday");
+            $saturday = Common::getLastMondaySaturday("saturday");
+            $query = Questions::find()->where(['user_agent_id' => Yii::$app->user->id, "status" => Yii::$app->params['user_status_value']['active'], "is_delete" => 0]);
+            $query->andWhere(['between', 'created_at', $monday, $saturday]);
+            $questionCount = $query->count();
+            if ($questionCount == 10) {
+                return json_encode("error");
+            } else {
+                $model->user_agent_id = Yii::$app->user->id;
+                $model->mp_id = implode(",", $postData['mp_id']);
+                $model->question = $postData['question'];
+                if ($model->save()) {
+                    $user_agent_name = $model->userAgent->user_name;
+                    foreach ($postData['mp_id'] as $key => $mp) {
+                        $mp_user = Common::get_name_by_id($mp, "Users");
+                        if (!empty($mp_user)) {
+                            //p($mp_user['email']);
+                            $mp_email = $mp_user['email'];
+                            $mp_username = $mp_user['user_name'];
+                            $question = $model->question;
+                            $user_agent_email = $model->userAgent->email;
+                            $emailformatemodel = EmailFormat::findOne(["title" => 'ask_question', "status" => '1']);
+                            if ($emailformatemodel) {
+
+                                //create template file
+                                $AreplaceString = array('{mp_username}' => $mp_username, '{question}' => $question, '{user_agent_name}' => $user_agent_name);
+                                $body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
+
+                                //send email for new generated password
+                                Common::sendMailToUser($mp_email, $user_agent_email, $emailformatemodel->subject, $body);
+                            }
+                        }
+                        $model_notification = new Notifications();
+                        $model_notification->user_id = $mp;
+                        $model_notification->notification = $user_agent_name . " has asked you a question ";
+                        $model_notification->save(false);
+                    }
+                    $data = ["user_agent_name" => $user_agent_name];
+                    return json_encode($data);
+                };
+            }
+            //return ActiveForm::validate($model);
+        }
     }
 
 }

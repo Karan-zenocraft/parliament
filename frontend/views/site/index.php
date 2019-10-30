@@ -6,6 +6,7 @@
 <?php
 // use kartik\icons\FontAwesomeAsset;
 use common\components\Common;
+use common\models\Questions;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -17,9 +18,12 @@ use yii\widgets\ActiveForm;
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
 if (($user->role_id == Yii::$app->params['userroles']['user_agent'])) {
     ?>
-  <?php// p($errors, 0);?>
+  <?php
+//$mpArr = ArrayHelper::map(Users::find()->where(['role_id' => Yii::$app->params['userroles']['MP']])->orderBy('user_name')->asArray()->all(), 'id', 'user_name');
+    $model = new Questions();
+    ?>
   <div class="Ask hideHome">
-    <?php $form = ActiveForm::begin(['id' => 'question-form']);?>
+    <?php $form = ActiveForm::begin(['id' => 'question-form' /*, 'action' => 'javascript:'*/]);?>
     <?php
 echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
         'data' => $mp,
@@ -33,7 +37,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
     ])->label(false); ?>
     <?=$form->field($model, 'question')->textArea(['maxlength' => true, "class" => "AskQuestion", "placeholder" => "Ask your Question. Get involved", "onkeyup" => "countChar(this)"])->label(false);?>
     <div class="form-group d-flex align-items-center justify-content-end">
-      <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton d-flex order-1'])?>
+      <?=Html::submitButton('ASK', ['class' => 'btn btn-success AskButton d-flex order-1', "onclick" => 'submitQuestion(event)'])?>
       <div id="charNum" class="d-flex order-0" style="float: right;">0/540</div>
     </div>
     <?php ActiveForm::end();?>

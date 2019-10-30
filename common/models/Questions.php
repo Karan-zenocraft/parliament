@@ -20,13 +20,13 @@ class Questions extends \common\models\base\QuestionsBase
     public function rules()
     {
         return [
-            [['question'], 'required'],
-            [['mp_id'], 'required', "message" => "Please select atleast one MP"],
-            [['user_agent_id', 'status', 'is_delete'], 'integer'],
-            [['created_at', 'updated_at', 'mp_id', 'louder_by'], 'safe'],
-            [['question'], 'string', 'max' => 540],
-            [['question'], "validateCount"],
-            [['mp_id'], "validateMpCount"],
+/*            [['question'], 'required'],
+[['mp_id'], 'required', "message" => "Please select atleast one MP"],
+[['user_agent_id', 'status', 'is_delete'], 'integer'],
+[['created_at', 'updated_at', 'mp_id', 'louder_by'], 'safe'],
+[['question'], 'string', 'max' => 540],
+[['question'], "validateCount"],
+[['mp_id'], "validateMpCount"],*/
 
             //  [['mp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['mp_id' => 'id']],
             //[['user_agent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_agent_id' => 'id']],

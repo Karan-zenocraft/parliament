@@ -438,25 +438,57 @@ function submitAnswer(question_id)
     },
   }); 
 }
-function submitQuestion ()
+function submitQuestion(e)
 {
-  var questionArea =  $.trim($('#questionArea').val());
+ e.preventDefault();
   var mpIds = $("#questions-mp_id").val();
-  
-  if(questionArea==''){alert('Question can not be blank'); return false;}
-   $.ajax({
-     url: "site/save-question",
-     type: 'post',
-     dataType: 'json',
-     data: {
-               question: questionArea, 
-               mp_id:mpIds,
-           },
-     success: function (data) {
-        
-          //sendNotification(title,userid);
+  var flag = 1;
+   if(mpIds.length  == 0){
+    alert("Please select atleast one MP");
+    var flag = 0;
+   // $('.field-questions-mp_id').addClass('has-error');
+  }
+  if(mpIds.length > 5){
+    alert("You can select maximum 5 mps");
+    var flag = 0;
+  }
+  var questionArea =  $('#questions-question').val();
+  if(questionArea  == ''){
+    alert("Question can not be blank");
+    var flag = 0;
+   // $('.field-questions-question').addClass('has-error');
+  }
+  if(flag == 1){
+     $.ajax({
+       url: "site/save-question",
+       type: 'post',
+       dataType: 'json',
+       data: {
+                 question: questionArea, 
+                 mp_id:mpIds,
+             },
+               beforeSend: function() {
+        // setting a timeout
+        $('#overlay').fadeIn();
+    },
+       success: function (data) {
+        if(data == "error"){
+          alert("You can not ask question as question limit reaches of this week");
+          return false;
         }
-  });
+        if(data.user_agent_name != ""){
+          var title = data.user_agent_name+" has asked you a question";
+          mpIds.forEach(function(mp_id){
+            sendNotification(title,mp_id);
+          });
+         location.reload();
+        }
+          },   complete: function() {
+        $('#overlay').fadeOut();
+    },
+    });
+
+  }
 }
 function submitComment(question_id)
 {
@@ -499,12 +531,20 @@ function show_comments(id){
 }
 
 function show_mp_list(id){
- 
       $("#OnhoverMP"+id).show();
 }
 function hide_mp_list(id){
  
       $("#OnhoverMP"+id).hide();
+
+}
+function show_mp_list_left(){
+    alert(133);
+      $("#OnhoverMPleft").show();
+}
+function hide_mp_list_left(){
+ 
+      $("#OnhoverMPleft").hide();
 
 }
 function editProfile(user_id)
