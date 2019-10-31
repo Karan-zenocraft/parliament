@@ -65,7 +65,7 @@ if (!empty($modelsQuestions)) {
                 $user_mp_image = $user_mp['photo'];
                 $user_mp_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user_mp['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
                 ?>
-            <img class="Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="img-fluid">
+            <img class="rounded-circle Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="img-fluid">
             <?php $i++;
             }?>
             </div>
@@ -119,7 +119,7 @@ $answered_mp_arr = array_unique($answered_mp);
                 //$ans_mp_image = $ans_mp_name['photo'];
                 $ans_mp_image = !empty($ans_mp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $ans_mp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
                 ?>
-            <img class="Img<?php echo $i; ?>" src="<?php echo $ans_mp_image; ?>" alt="" class="img-fluid rounded-circle" width="24px" height="24px">
+            <img class="rounded-circle Img<?php echo $i; ?>" src="<?php echo $ans_mp_image; ?>" alt="" class="img-fluid rounded-circle" width="24px" height="24px">
             <?php $i++;
             }?>
             </div>

@@ -27,9 +27,21 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
     <link rel="icon" href="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" type="image/png" sizes="64x64">
     <meta name="theme-color" content="#000" />
     <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
-<div id="overlay" style="display: none;"></div>
+<div id="overlay" style="display: none;">
+  <div class="load__container">
+      <div class="load__animation d-flex align-items-center justify-content-center">
+      <lottie-player
+  src="https://assets2.lottiefiles.com/datafiles/slaclXQr9VF4vv1/data.json"  background="transparent"  speed="1"  style="width: 60px; height: 60px;"  loop autoplay >
+</lottie-player>
+      </div>
+
+
+      <div class="load__mask"></div>
+    </div>
+</div>
 <body class="example-1  scrollbar-dusty-grass square thin">
 <?php $this->beginBody()?>
     <a href="#" id="scroll" style="display: none;z-index: 99999;">

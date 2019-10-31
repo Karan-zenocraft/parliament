@@ -1,3 +1,9 @@
+<style>
+@media (min-width: 320px) and (max-width: 991px){
+   .Main .MainLeft{order: 1;}
+   .Main .MainCenter{order: 0;}
+   }
+</style>
 <?php
 use common\components\Common;
 use common\models\Users;
