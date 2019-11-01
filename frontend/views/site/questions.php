@@ -49,13 +49,15 @@ if (!empty($modelsQuestions)) {
                 ?>
           <a href="javascript:void(0);"><span class="MP"><?php echo $first_mp;
                 ?></span></a>
+                <?php $first_mp_detail = Common::get_name_by_id(current($unanswered_by), "Users");?>
+               <?php $first_mp_image = !empty($first_mp_detail['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_mp_detail['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
+          <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_mp_detail['photo']) ? $first_mp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">
           <?php } else {
                 ?>
             <a href="javascript:void(0);"><span class="MP"><?php echo $first_mp . " ";
                 ?>and</span></a>
               <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
-          <a href="javascript:void(0);" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
 
 <?php $exclude_first = array_shift($unanswered_by);?>
             <div class="Absolute">
@@ -65,7 +67,7 @@ if (!empty($modelsQuestions)) {
                 $user_mp_image = $user_mp['photo'];
                 $user_mp_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user_mp['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
                 ?>
-            <img class="rounded-circle Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="img-fluid">
+            <img class="rounded-circle Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="img-fluid" width="24px" height="24px">
             <?php $i++;
             }?>
             </div>
