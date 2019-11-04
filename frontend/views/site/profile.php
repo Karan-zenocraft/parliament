@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
     <li><a href="#menu3"  data-toggle="tab"  id="citizen" onclick="AjaxCallSortCitizen()" class="show">Citizens</a></li>
   </ul>
 </nav>
-<a href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
+<a href="<?php echo Yii::getAlias('@web') ?>#Homefeed"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
 <div class="MainLeftInner EditProfileMain MainCenter">
     <nav class="Nav1">
 
