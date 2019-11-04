@@ -33,7 +33,7 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
             [['role_id', 'email', 'user_name', 'city', 'status', 'gender', 'age', 'education', 'name', 'work'], 'filter', 'filter' => 'trim'],
             [['created_at', 'updated_at', 'name', 'age'], 'safe'],
             [['email'], 'email'],
-            [['user_name'], 'validateUserName'],
+            ['user_name', 'validateUserName'],
             [['years_hopr'], "number"],
             [['years_hopr', 'standing_commitee'], 'required', 'when' => function ($model) {
                 return $model->role_id == Yii::$app->params['userroles']['MP'];
@@ -55,17 +55,17 @@ class Users extends \common\models\base\UsersBase implements IdentityInterface
 
     public function validateEmail()
     {
-        $ASvalidateemail = Users::find()->where('user_name = "' . $this->user_name . '"')->all();
+        $ASvalidateemail = Users::find()->where('email = "' . $this->email . '" and id != "' . $this->id . '"')->all();
         if (!empty($ASvalidateemail)) {
-            $this->addError('user_name', 'This user name is already in use.');
+            $this->addError('email', 'This email is already registered.');
             return true;
         }
     }
     public function validateUserName()
     {
-        $ASvalidateemail = Users::find()->where('email = "' . $this->email . '" and id != "' . $this->id . '"')->all();
-        if (!empty($ASvalidateemail)) {
-            $this->addError('email', 'This email address already registered.');
+        $validateName = Users::find()->where('user_name = "' . $this->user_name . '" and id != "' . $this->id . '"')->all();
+        if (!empty($validateName)) {
+            $this->addError('user_name', 'This user name is already registered.');
             return true;
         }
     }

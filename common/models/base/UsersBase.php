@@ -46,19 +46,19 @@ class UsersBase extends \yii\db\ActiveRecord
             [['role_id', 'email', 'first_name', 'last_name', 'status'], 'required', 'on' => 'update'],
             [['created_at', 'updated_at'], 'safe'],
             [['email'], 'email'],
-            ['email', 'validateEmail'],
+            // ['email', 'validateEmail'],
             [['email', 'password', 'first_name', 'last_name'], 'string', 'max' => 255],
         ];
     }
 
-    public function validateEmail()
+    /*public function validateEmail()
     {
-        $ASvalidateemail = Users::find()->where('email = "' . $this->email . '" and id != "' . $this->id . '"')->all();
-        if (!empty($ASvalidateemail)) {
-            $this->addError('email', 'This email address already registered.');
-            return true;
-        }
+    $ASvalidateemail = Users::find()->where('email = "' . $this->email . '" and id != "' . $this->id . '"')->all();
+    if (!empty($ASvalidateemail)) {
+    $this->addError('email', 'This email address already registered.');
+    return true;
     }
+    }*/
 
     /**
      *
