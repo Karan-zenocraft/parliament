@@ -40,7 +40,7 @@ class CommentsSearch extends Comments
      */
     public function search($params)
     {
-        $query = Comments::find()->where(['question_id' => $_GET['qid']]);
+        $query = Comments::find()->leftJoin('questions', 'questions.id=comments.question_id')->where(['question_id' => $_GET['qid'], "questions.is_delete" => 0]);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

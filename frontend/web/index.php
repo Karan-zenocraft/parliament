@@ -15,5 +15,5 @@ $config = yii\helpers\ArrayHelper::merge(
     require (__DIR__ . '/../../components/helper.php')
 
 );
-
+require __DIR__ . '/../../common/config/aliases.php';
 (new yii\web\Application($config))->run();

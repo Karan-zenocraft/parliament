@@ -1032,5 +1032,36 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
             return $this->render('change_password', compact('model'));
         }
     }
+    public function actionUpdateProfilePic()
+    {
+        $model = Users::findOne(Yii::$app->user->id);
+        if ($model) {
+            $old_image = $model->photo;
+            if (!empty($_FILES)) {
+                //  p($_FILES['file']['name']);
+                $file = pathinfo($_FILES['file']['name']);
+                $file_name = $file['filename'] . "_" . uniqid() . "." . $file['extension'];
+                $file_filter = str_replace(" ", "", $file_name);
+                if (!empty($old_image) && file_exists(Yii::getAlias('@root') . '/frontend/web/uploads/' . $old_image)) {
+                    unlink(Yii::getAlias('@root') . '/frontend/web/uploads/' . $old_image);
+                }
+                // $file->saveAs(Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_filter, false);
+                move_uploaded_file($_FILES['file']['tmp_name'], Yii::getAlias('@root') . '/frontend/web/uploads/' . $file_filter);
+                $model->photo = $file_filter;
+            } else {
+                $model->photo = $old_image;
+            }
+            if ($model->save(false)) {
+                $data = "success";
+                return json_encode($data);
+            } else {
+                $data = "error";
+                return json_encode($data);
+            }
+        } else {
+            $data = "error";
+            return json_encode($data);
+        }
+    }
 
 }

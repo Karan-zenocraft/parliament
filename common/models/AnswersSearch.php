@@ -40,7 +40,8 @@ class AnswersSearch extends Answers
      */
     public function search($params)
     {
-        $query = Answers::find()->where(['question_id' => $_GET['qid']]);
+        $query = Answers::find()->leftJoin('questions', 'questions.id=answers.question_id')
+            ->where(["questions.is_delete" => 0, "answers.question_id" => $_GET['qid']]);
 
         // add conditions that should always apply here
 

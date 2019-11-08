@@ -42,10 +42,10 @@ $user = Common::get_name_by_id($user_id, "Users");
 <?php }?>
     <div class="User">
       <div class="ProfileIcon">
-        <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle ">
+        <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle " id="profile_photo">
         <label>
           <i class="fa fa-edit"></i>
-         <input id="inputFile" type="file" name="myImage" accept="image/*" class="EditProfileInput" />
+         <input type="file" id="inputFile" name="inputFile" accept="image/*" class="EditProfileInput" />
             </label>
         </div>
       <p><?php echo $user['name']; ?></p>

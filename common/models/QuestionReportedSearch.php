@@ -40,7 +40,8 @@ class QuestionReportedSearch extends QuestionReported
      */
     public function search($params)
     {
-        $query = QuestionReported::find();
+        $query = QuestionReported::find()->leftJoin('questions', 'questions.id=question_reported.question_id')
+            ->where(["questions.is_delete" => 0]);
 
         // add conditions that should always apply here
 

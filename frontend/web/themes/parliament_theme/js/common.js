@@ -1548,7 +1548,36 @@ $(document).ready(function(){
 
 
 $("#inputFile").change(function () {
+  var validate = validateImage('inputFile');
+    if(validate == true){
         readURL(this);
+         var file_data = $('#inputFile').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        $.ajax({
+            url: "site/update-profile-pic",
+            type: "POST",
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData:false,
+             beforeSend: function() {
+              $('#overlay').fadeIn();
+             },
+             success: function(data){
+              if(data == '"success"'){
+                alert("Profile picture changed successfully");
+                location.reload();
+              }else{
+                   alert("something went wrong please try again later");
+                location.reload();
+               /*alert(data);*/
+              }
+            }, complete: function() {
+              $('#overlay').fadeOut();
+            },
+        });
+      }
     });
 
 
@@ -1599,3 +1628,38 @@ var login_user_id = $('#login_user_id').val();
                 });*/
 
            // });
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#profile_photo').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+function validateImage(id){
+    var isValidFile = false;
+   // var image = document.getElementById(id);
+    var image = $('#'+id).prop('files')[0];
+    var allowedExtension = ["jpg","jpeg","gif","png","bmp"];
+
+    var srcChunks = image.name.split( '.' );
+    var fileExtension = srcChunks[ srcChunks.length - 1 ].toLowerCase();
+
+
+    for(var index in allowedExtension) {
+        if(fileExtension === allowedExtension[index]) {
+            isValidFile = true; 
+            break;
+        }
+    }
+
+    if(!isValidFile) {
+        alert('You can not upload file of this extension.Allowed Extensions are : *.' + allowedExtension.join(', *.'));
+    }
+
+    return isValidFile;
+}
