@@ -1547,8 +1547,9 @@ $(document).ready(function(){
 
 
 
-
-
+$("#inputFile").change(function () {
+        readURL(this);
+    });
 
 
 

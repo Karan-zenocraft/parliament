@@ -142,7 +142,12 @@ $user = Common::get_name_by_id($user_id, "Users");
                         <div class="ProfileLeft">
                         <div class="EditProfiles"><a href="#" class="EditProfileBtn">EDIt</a></div>
                             <div class="User">
-                                <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle">
+                                <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle EditProfileIcon">
+                                <input name="submit" id="submitme" type="image" 
+    src="/graphics/creative/landing_pages/popup/ibd_signmeupbtn.gif" 
+    alt="Sign Me Up!" 
+    onclick="SignMeUp();"
+    tabindex="8"  />
                                 <p><?php echo $user['name']; ?></p>
                                 <h3><?php echo $user['user_name']; ?></h3>
                                 <p class="Title">Coder</p>

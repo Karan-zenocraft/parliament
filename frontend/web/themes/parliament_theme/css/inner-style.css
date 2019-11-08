@@ -856,3 +856,10 @@ list-style-type: none;}
 }
 .load__container img{max-height: 100px;}
 #overlay{z-index: 9999;}
+
+
+.Main .MainLeft .ProfileLeft .User .ProfileIcon{position: relative;max-width: 213px;
+    margin: auto;}
+.Main .MainLeft .ProfileLeft .User .ProfileIcon .EditProfileInput{position: absolute;top:0;right: 0;display: none}
+.Main .MainLeft .ProfileLeft .User .ProfileIcon label .fa-edit{position: absolute;top: 12px;right: 0;font-size: 24px;color: #fff;}
+
