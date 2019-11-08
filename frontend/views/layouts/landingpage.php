@@ -40,9 +40,6 @@ ParliamentAsset::register($this);
                 <div class="col-md-12 col-xl-5 HeaderLeft">
                     <a href="#"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" alt="" class="img-fluid Logo"></a>
 
-
-
-
                 </div>
                 <div class="col-md-12 col-xl-7 HeaderRight">
                     <h1>Ask YOUR representatives direct questions</h1>
@@ -69,35 +66,6 @@ if ($i == 2) {
             echo "</div><div class='row col-md-6 col-xl-6 p-0'>";
         }
         $i++;}}?>
-
-
-                       <!--      <div class="Profile d-flex flex-wrap align-items-center justify-content-start">
-                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/3.png" ?>" alt="" class="img-fluid">
-                                <div class="ProfileTitle">
-                                    <p> Bitew Tasew</p>
-                                    <p><span>Agriculture & Pastoralism <br> Standing Committee</span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="Profile d-flex flex-wrap align-items-center justify-content-start">
-                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/2.png" ?>" alt="" class="img-fluid">
-                                <div class="ProfileTitle">
-                                    <p>Cally Feeney</p>
-                                    <p><span>Foreign Relations & Peace <br> Standing Committee</span></p>
-                                </div>
-                            </div>
-
-
-                            <div class="Profile d-flex flex-wrap align-items-center justify-content-start">
-                                <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/4.png" ?>" alt="" class="img-fluid">
-                                <div class="ProfileTitle">
-                                    <p>Hailu Kassa</p>
-                                    <p><span>Foreign Relations & Peace <br> Standing Committee</span></p>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
 
 

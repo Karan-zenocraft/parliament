@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\components\Common;
 use common\models\Answers;
+use common\models\ChangePasswordForm;
 use common\models\Comments;
 use common\models\EmailFormat;
 use common\models\LoginForm;
@@ -1004,6 +1005,31 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                 };
             }
             //return ActiveForm::validate($model);
+        }
+    }
+
+    public function actionChangePassword()
+    {
+        $this->layout = "forgot_password";
+        $model = new ChangePasswordForm();
+
+        //ajax validation code start
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = 'json';
+            return \yii\widgets\ActiveForm::validate($model);
+        }
+        // set data into model and validate model
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // Get user details
+            $usermodel = Users::findOne(Yii::$app->user->id);
+            //set password
+            $usermodel->password = md5($model->newPassword);
+            //save password
+            $usermodel->save(false);
+
+            return $this->goHome();
+        } else {
+            return $this->render('change_password', compact('model'));
         }
     }
 

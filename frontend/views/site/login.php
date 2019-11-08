@@ -25,6 +25,7 @@ use yii\helpers\Html;?>
                             </tr>
                             <tr>
                                 <td><a href="<?php echo Yii::$app->urlManager->createUrl(['site/request-password-reset']); ?>" class="ForgotButton">Forgotten Password?</a></td>
+
                                 <td><div class="form-group">
                     <?=Html::submitButton('Login', ['class' => 'btn btn-primary LoginButton', 'name' => 'login-button'])?>
                 </div></td>
