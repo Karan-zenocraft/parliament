@@ -16,7 +16,7 @@ use common\components\Common;
                                                     <a href="#"><img src="<?php echo $user_image; ?>" alt="" class="img-fluid rounded-circle" width="47px" height="47px"></a>
                                                     <div class="UserTitle">
                                                         <a href="#">
-                                                            <p><?php echo $model->userAgent->user_name; ?></p>
+                                                            <p><?php echo $model->userAgent->name; ?></p>
                                                         </a>
                                                         <span><?php echo Common::time_elapsed_string($model->created_at); ?></span>
                                                     </div>

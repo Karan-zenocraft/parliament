@@ -31,7 +31,7 @@ if (!empty($modelsQuestions)) {
         $user_image = !empty($question['userAgent']['photo']) ? Yii::getAlias('@web') . "/uploads/" . $question['userAgent']['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
           <a href=" #"><img src="<?php echo $user_image; ?>" alt="" class="rounded-circle" width="47px" height="47px"></a>
           <div class="UserTitle">
-            <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $question['userAgent']['id']; ?>"><p><?php echo $question['userAgent']['user_name'] ?></p></a>
+            <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $question['userAgent']['id']; ?>"><p><?php echo $question['userAgent']['name'] ?></p></a>
             <span><?php echo Common::time_elapsed_string($question['created_at']); ?></span>
           </div>
         </div>
@@ -224,7 +224,7 @@ if (!empty($question['answers'])) {?>
                             <div class="Row1 AnsweredBy">
                                 <div class="UnansweredBy d-flex flex-wrap align-items-center justify-content-end">
                                   <?php $mp = Common::get_name_by_id($answer['mp_id'], "Users");?>
-                                   <a href="#"><span class="Title">Answered by</span></a><a href="#"><span class="MP"><?php echo $mp->user_name; ?></span></a>
+                                   <a href="#"><span class="Title">Answered by</span></a><a href="#"><span class="MP"><?php echo $mp->name; ?></span></a>
 <?php $mp_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $mp->photo : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
 
                                    <a href="#"><img src="<?php echo $mp_user_image; ?>" alt="" class="rounded-circle" style="width:41px;height:41px;"></a>
@@ -387,7 +387,7 @@ $comment_user = Common::get_name_by_id($comment['user_agent_id'], "Users");
       <?php $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
       <img src="<?php echo $user_image; ?>" alt="" class="rounded-circle AnswerImage">
       <div class="UserTitle">
-        <a href="#"><p><?php echo $user['user_name'] ?></p></a>
+        <a href="#"><p><?php echo $user['name'] ?></p></a>
       </div>
     </div>
     <div class="AskFollowUpTitle">

@@ -49,7 +49,7 @@ $user = Common::get_name_by_id($user_id, "Users");
             </label> -->
         </div>
       <p><?php echo $user['name']; ?></p>
-      <h3><?php echo $user['user_name']; ?></h3>
+      <h3><?php echo $user['name']; ?></h3>
       <p class="Title">Coder</p>
     </div>
     <nav class="EditProfile">

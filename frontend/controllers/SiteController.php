@@ -83,14 +83,14 @@ class SiteController extends FrontCoreController
         ->where(['role_id' => Yii::$app->params['userroles']['MP'], "status" => Yii::$app->params['user_status_value']['active']])
         ->asArray()
         ->all();*/
-        $mpArr = ArrayHelper::map(Users::find()->where(['role_id' => Yii::$app->params['userroles']['MP']])->orderBy('user_name')->asArray()->all(), 'id', 'user_name');
+        $mpArr = ArrayHelper::map(Users::find()->where(['role_id' => Yii::$app->params['userroles']['MP']])->orderBy('name')->asArray()->all(), 'id', 'name');
         //p($mpArr);
         $query = Users::find()
             ->joinWith(['answers', 'comments', 'shares'])
             ->select(['users.*', 'COUNT(answers.id) AS answer_count', 'COUNT(comments.id) AS comment_count', 'COUNT(shares.id) AS share_count'])
             ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
         if (!empty($requestData['search'])) {
-            $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
+            $query = $query->where("users.name LIKE '%" . $requestData['search'] . "%'");
         }
 
         $query = $query->groupBy(['users.id'])
@@ -412,7 +412,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
 
             $requestData = Yii::$app->request->post();
             $dir = (!empty($requestData['sortdir']) && $requestData['sortdir'] == 'asc') ? SORT_ASC : SORT_DESC;
-            $orderBy = ['user_name' => SORT_ASC];
+            $orderBy = ['name' => SORT_ASC];
 
             if (!empty($requestData['sortby'])) {
                 if ($requestData['sortby'] == 'age') {
@@ -442,7 +442,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                     ->where(['users.role_id' => Yii::$app->params['userroles']['MP'], "users.status" => Yii::$app->params['user_status_value']['active']]);
 
                 if (!empty($requestData['search'])) {
-                    $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
+                    $query = $query->where("users.name LIKE '%" . $requestData['search'] . "%'");
                 }
                 $query = $query->orderBy($orderBy);
             }
@@ -457,7 +457,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                 foreach ($models as $key => $value) {
                     $retData .= "<div class='RowBox d-flex align-items-center justify-content-start col-md-4 p-0'><div class='DimmerBox' id=" . "mp_" . $value['id'] . ">";
                     $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";
-                    $retData .= "<img src=" . $user_image . " class='img-fluid rounded-circle  SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['user_name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
+                    $retData .= "<img src=" . $user_image . " class='img-fluid rounded-circle  SliderImage'></div><a href='#'><div class='RowTitle'><p>" . $value['name'] . "</p><p><span>" . $value['standing_commitee'] . "<br>Standing Committee</span></p></div></a></div>";
                     $rowCount++;
                     if ($rowCount % $numOfCols == 0) {
                         $retData .= "</div><div class='Row1 col-md-12 d-flex align-items-center justify-content-start'>";
@@ -648,7 +648,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                 $mp_name = Common::get_user_name($model_answer->mp_id);
                 $question_model = Questions::find()->where(["id" => $postData['question_id']])->one();
                 $question = $question_model->question;
-                $user_agent_name = $question_model->userAgent->user_name;
+                $user_agent_name = $question_model->userAgent->name;
                 $user_agent_email = $question_model->userAgent->email;
                 $user_email = $model_answer->mp->email;
                 $answer = $model_answer->answer_text;
@@ -667,7 +667,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                     $louder_by_arr = explode(",", $question_louder_by);
                     foreach ($louder_by_arr as $key => $user_louder) {
                         $user_louder_detail = Common::get_name_by_id($user_louder, "Users");
-                        $user_name = $user_louder_detail['user_name'];
+                        $user_name = $user_louder_detail['name'];
                         $user_louder_email = $user_louder_detail['email'];
                         $emailformatemodel2 = EmailFormat::findOne(["title" => 'my_louder_answer', "status" => '1']);
                         if ($emailformatemodel2) {
@@ -728,7 +728,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                 $user_name = Common::get_user_name($model_comment->user_agent_id);
                 $question_model = Questions::find()->where(["id" => $postData['question_id']])->one();
                 $question = $question_model->question;
-                $user_agent_name = $question_model->userAgent->user_name;
+                $user_agent_name = $question_model->userAgent->name;
                 $user_agent_email = $question_model->userAgent->email;
                 $user_email = $model_comment->userAgent->email;
                 $comment = $model_comment->comment_text;
@@ -833,7 +833,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
         if (!empty($_POST['page'])) {
             $requestData = Yii::$app->request->post();
             $dir = (!empty($requestData['sortdir']) && $requestData['sortdir'] == 'asc') ? SORT_ASC : SORT_DESC;
-            $orderBy = ['user_name' => SORT_ASC];
+            $orderBy = ['name' => SORT_ASC];
 
             if (!empty($requestData['sortby'])) {
                 if ($requestData['sortby'] == 'age') {
@@ -859,7 +859,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
 
             }
             if (!empty($requestData['search'])) {
-                $query = $query->where("users.user_name LIKE '%" . $requestData['search'] . "%'");
+                $query = $query->where("users.name LIKE '%" . $requestData['search'] . "%'");
             }
             $query = $query->orderBy($orderBy);
             //  p($query);
@@ -975,13 +975,13 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                 $model->mp_id = implode(",", $postData['mp_id']);
                 $model->question = $postData['question'];
                 if ($model->save()) {
-                    $user_agent_name = $model->userAgent->user_name;
+                    $user_agent_name = $model->userAgent->name;
                     foreach ($postData['mp_id'] as $key => $mp) {
                         $mp_user = Common::get_name_by_id($mp, "Users");
                         if (!empty($mp_user)) {
                             //p($mp_user['email']);
                             $mp_email = $mp_user['email'];
-                            $mp_username = $mp_user['user_name'];
+                            $mp_username = $mp_user['name'];
                             $question = $model->question;
                             $user_agent_email = $model->userAgent->email;
                             $emailformatemodel = EmailFormat::findOne(["title" => 'ask_question', "status" => '1']);

@@ -15,7 +15,7 @@
 
                             </div>
                             <div class="BlockCaption">
-                                <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $value['id']; ?>"><h2><?php echo $value['user_name']; ?></h2></a>
+                                <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $value['id']; ?>"><h2><?php echo $value['name']; ?></h2></a>
                                 <p><?php echo $value['city']; ?></p>
                                 <p><?php echo $value['education']; ?></p>
                                 <!-- <a class="Follow Followed"><span>Follow</span><span>300</span> </a> -->

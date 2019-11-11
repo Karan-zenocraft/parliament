@@ -77,7 +77,7 @@ echo $form->field($model, 'mp_id')->widget(Select2::classname(), [
                     <?php $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/slide1.png";?>
                     <div class="DimmerBox" id="<?php echo "mp_" . $value['id'] ?>"><img src="<?php echo $user_image; ?>" alt="" class="rounded-circle SliderImage"></div>
                    <div class="RowTitle">
-                      <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $value['id']; ?>"> <p><?php echo $value['user_name']; ?></p>
+                      <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $value['id']; ?>"> <p><?php echo $value['name']; ?></p>
                   </a>
                       <p><span><?php echo $value['standing_commitee']; ?><br>
                       Standing Committee</span></p>

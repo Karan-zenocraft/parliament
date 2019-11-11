@@ -63,7 +63,7 @@ class PasswordResetRequestForm extends Model
         if ($emailformatemodel) {
 
             //create template file
-            $AreplaceString = array('{resetLink}' => $resetLink, '{username}' => $user->user_name);
+            $AreplaceString = array('{resetLink}' => $resetLink, '{username}' => $user->name);
             $body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
 
             //send email for new generated password
