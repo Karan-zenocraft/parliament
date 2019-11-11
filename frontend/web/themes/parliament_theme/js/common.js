@@ -444,25 +444,21 @@ function submitQuestion(e)
   var mpIds = $("#questions-mp_id").val();
   var flag = 1;
    if(mpIds.length == 0){
+    alert("0")
     $('.mp_error').text("Please select atleast one MP");
     var flag = 0;
    // $('.field-questions-mp_id').addClass('has-error');
   }else if(mpIds.length > 5){
+    alert("max 5");
      $('.mp_error').text("");
     $('.mp_error').text("You can select maximum 5 mps");
     var flag = 0;
-  }else{
-     $('.mp_error').text("");
-    var flag = 1;
   }
   var questionArea =  $('#questions-question').val();
   if(questionArea  == ''){
     $('.question_error').text("Question can not be blank");
     var flag = 0;
    // $('.field-questions-question').addClass('has-error');
-  }else{
-    $('.question_error').text("");
-    var flag = 1;
   }
   if(flag == 1){
     $('.question_error').text("");
