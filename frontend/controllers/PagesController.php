@@ -44,7 +44,7 @@ class PagesController extends Controller
      */
     public function actionIndex($action)
     {
-        $this->layout = "view_question";
+        $this->layout = "static_page";
         if (!empty($action)) {
             $pages = Pages::find()->where(['custom_url' => $action])->one();
             if (!empty($pages)) {

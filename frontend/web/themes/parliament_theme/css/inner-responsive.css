@@ -410,6 +410,18 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     line-height: 12px;
     }
 
+
+
+
+.QuestionAnswerBox .Aarray {
+    max-height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+    transition: 0.3s all;
+}
+    
+    
+    .GiveAnswer .Qarray{max-height: 200px;}
 }
 
 
@@ -758,6 +770,18 @@ header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 12px
     font-size: 7px;
     line-height: 11px;
     }
+    
+    
+    .QuestionAnswerBox .Aarray {
+    max-height: 250px;
+    overflow: scroll;
+    overflow-x: hidden;
+    transition: 0.3s all;
+}
+    
+    
+    .GiveAnswer .Qarray{max-height: 200px;}
+}
 
 }
 
@@ -1717,6 +1741,20 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .Main .MainCenter .FilterBar{order: 1;}
     #home .tab-content.hideHome{order: 2;}
     .Main .MainCenter .SearchAnswredBar  {order: 3;}
+
+
+
+.QuestionAnswerBox .Aarray {
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    transition: 0.3s all;
+}
+    
+    
+    .GiveAnswer .Qarray{max-height: 150px;}
+}
+
 }
   
 @media only screen and (max-width: 767px){
