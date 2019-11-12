@@ -12,8 +12,10 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 <html>
 <?php $this->head();?>
 <style>
-
-.Main .MainCenter{min-height: 400px;border: 0px solid #707070;padding-bottom: 0px!important;padding-top: 0px!important;display: flex;align-items: center;justify-content: center;}
+footer{background: #10313E;padding: 40px 0;}
+    footer a:hover{transition: 0.4s all;color: #fff;}
+footer a {margin-top: 10px;font-size: 14px;line-height: 18px;color: #fff;font-family: 'Segoe UI';font-weight: normal;outline: none;text-transform: uppercase;letter-spacing: 1px;}
+.Main .MainCenter{min-height: 410px;border: 0px solid #707070;padding-bottom: 0px!important;padding-top: 0px!important;display: flex;align-items: center;justify-content: center;}
 body{background-image: linear-gradient(#10313E, #020000);}
     .Main .MainCenter p{font-size: 16px;margin-bottom: 15px;line-height: 22px;color: #000;font-family: 'Segoe UI';}
 </style>
@@ -79,7 +81,20 @@ Breadcrumbs::widget([
         </div>
     </section>
 
-
+<footer>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12 d-flex align-items-center justify-content-center">
+<a href="#">All rights reserved © BRIDGE for Participation 2019</a>
+    
+</div>    
+    
+</div>    
+    
+</div>    
+    
+    
+</footer>
 
 
     <?php $this->endBody();?>
