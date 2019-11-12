@@ -87,9 +87,9 @@ Yii::setAlias('restaurant_layout_delete_message', 'Layout has been deleted succe
 //END:  Restaurant layout message
 
 //START: Restaurant table message
-Yii::setAlias('restaurant_table_add_message', 'Table has been added successfully !');
-Yii::setAlias('restaurant_table_update_message', 'Table has been updated successfully !');
-Yii::setAlias('restaurant_table_delete_message', 'Table has been deleted successfully !');
+Yii::setAlias('create_page_message', 'Page has been added successfully !');
+Yii::setAlias('update_page_message', 'Page has been updated successfully !');
+Yii::setAlias('delete_page_message', 'Page has been deleted successfully !');
 //END:  Restaurant table message
 
 //START: Admin users

@@ -95,7 +95,7 @@ class UsersController extends AdminCoreController
                 $url = "<strong>URL :</strong><a href=$frontEndBaseUrl>" . $frontEndBaseUrl . "</a>";
 
                 //create template file
-                $AreplaceString = array('{password}' => Yii::$app->request->post('Users')['password'], '{username}' => $model->user_name, '{email}' => $model->email, '{loginurl}' => $url);
+                $AreplaceString = array('{password}' => Yii::$app->request->post('Users')['password'], '{username}' => $model->name, '{email}' => $model->email, '{loginurl}' => $url);
 
                 $body = Common::MailTemplate($AreplaceString, $emailformatemodel->body);
                 //send email for new generated password
