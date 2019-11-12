@@ -14,7 +14,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 <style>
 footer{background: #10313E;padding: 40px 0;}
     footer a:hover{transition: 0.4s all;color: #fff;}
-footer a {margin-top: 10px;font-size: 14px;line-height: 18px;color: #fff;font-family: 'Segoe UI';font-weight: normal;outline: none;text-transform: uppercase;letter-spacing: 1px;}
+footer a {margin-top: 10px;font-size: 14px;line-height: 18px;color: #fff;font-family: 'Segoe UI';font-weight: 300;outline: none;text-transform: uppercase;letter-spacing: 1px;}
 .Main .MainCenter{min-height: 410px;border: 0px solid #707070;padding-bottom: 0px!important;padding-top: 0px!important;display: flex;align-items: center;justify-content: center;}
 body{background-image: linear-gradient(#10313E, #020000);}
     .Main .MainCenter p{font-size: 16px;margin-bottom: 15px;line-height: 22px;color: #000;font-family: 'Segoe UI';}
