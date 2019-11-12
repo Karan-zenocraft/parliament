@@ -73,12 +73,12 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
 
                         <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden"></a>
                         <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;"></a>
-                        
-                        
+
+
                         <a href="#Homefeed" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">
                         <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
-                        </a>    
-                        
+                        </a>
+
                         <?php $notifications = Notifications::find()->where(['user_id' => Yii::$app->user->id, 'mark_read' => 0])->orderBy(['id' => SORT_DESC])->asArray()->all();?>
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary"><?php echo !empty($notifications) ? count($notifications) : 0 ?></span>
                         </i>
@@ -323,10 +323,10 @@ Breadcrumbs::widget([
                     <nav>
                         <input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo Yii::$app->user->id ?>">
                         <ul class="d=flex align-items-center justify-content=center flex-direction-column">
-                            <li><a href="https://b4p.et/community-guidelines/">Community Guidelines </a></li>
-                            <li><a href="https://b4p.et/announcements/">Announcements</a></li>
-                            <li><a href="https://b4p.et/terms-of-use/">Terms of Use</a></li>
-                            <li><a href="https://b4p.et/about-bridge">About Bridge</a></li>
+                            <li><a href="<?php echo Yii::getAlias('@web') ?>/pages/community-guidelines">Community Guidelines </a></li>
+                            <li><a href="<?php echo Yii::getAlias('@web') ?>/pages/annoucements">Announcements</a></li>
+                            <li><a href="<?php echo Yii::getAlias('@web') ?>/pages/terms-of-use">Terms of Use</a></li>
+                            <li><a href="<?php echo Yii::getAlias('@web') ?>/pages/about-bridge">About Bridge</a></li>
                         </ul>
                     </nav>
 

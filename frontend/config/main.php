@@ -73,7 +73,7 @@ return [
                 'login' => 'site/login',
                 'home' => 'site/index',
                 'profile/<user_id>' => 'site/profile',
-                'profile/<action>' => 'pages/index',
+                'pages/<action>' => 'pages/index',
             ],
         ],
     ],

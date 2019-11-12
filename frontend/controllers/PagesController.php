@@ -48,15 +48,16 @@ class PagesController extends Controller
         if (!empty($action)) {
             $pages = Pages::find()->where(['custom_url' => $action])->one();
             if (!empty($pages)) {
+                Yii::$app->view->params['page_title'] = $pages->page_title;
+                Yii::$app->view->params['meta_title'] = $pages->meta_title;
+                Yii::$app->view->params['meta_keyword'] = $pages->meta_keyword;
+                Yii::$app->view->params['meta_description'] = $pages->meta_description;
                 return $this->renderContent($pages->page_content);
+            } else {
+                throw new NotFoundHttpException('The requested page does not exist.');
             }
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+
     }
 
     /**

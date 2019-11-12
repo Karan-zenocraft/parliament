@@ -16,14 +16,14 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 .Main .MainCenter{min-height: 400px;border: 0px solid #707070;padding-bottom: 0px!important;padding-top: 0px!important;display: flex;align-items: center;justify-content: center;}
 body{background-image: linear-gradient(#10313E, #020000);}
     .Main .MainCenter p{font-size: 16px;margin-bottom: 15px;line-height: 22px;color: #000;font-family: 'Segoe UI';}
-</style>    
-    
+</style>
+
 
 <head>
-    <title>Asked Question</title>
+    <title><?php echo !empty($this->params['page_title']) ? $this->params['page_title'] : "B4Pet" ?></title>
     <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="<?php echo !empty($this->params['meta_description']) ? $this->params['meta_description'] : "" ?>">
+    <meta name="keywords" content="<?php echo !empty($this->params['meta_keyword']) ? $this->params['meta_keyword'] : "" ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" type="image/png" sizes="64x64">
     <meta name="theme-color" content="#000" />
@@ -59,7 +59,7 @@ body{background-image: linear-gradient(#10313E, #020000);}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 cus-md-3 MainLeft">
-                    <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo">
+                   <a style="" href="<?php echo Yii::getAlias('@web') ?>"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
                 </div>
                 <div class="col-md-12 col-lg-6 cus-md-6 MainCenter" style="padding-bottom: 300px;background: #E4E4E4">
 
@@ -79,9 +79,9 @@ Breadcrumbs::widget([
         </div>
     </section>
 
-    
-    
-    
+
+
+
     <?php $this->endBody();?>
       <?php $this->endPage()?>
 </body>
