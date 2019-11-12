@@ -796,9 +796,25 @@ header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 12px
     
     
     .GiveAnswer .Qarray{max-height: 200px;}
+
+
+.MPProfileName .UsersImg{position: relative;}
+.MPProfileName .UsersImg .Absolute{width: 100%}
+.MPProfileName .UsersImg .Absolute .Img1 {
+    right: 55px;
 }
+.MPProfileName .UsersImg .Absolute .Img2 {
+    right: 65px;
+}
+.MPProfileName .UsersImg .Absolute .Img3 {
+    right: 80px;
+}
+.MPProfileName .UsersImg .One{position: relative!important;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{position: relative;}
 
 }
+
+
 
 
 
