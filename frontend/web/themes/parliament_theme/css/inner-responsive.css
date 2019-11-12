@@ -180,7 +180,7 @@ border-radius: 50%!important;}
     .carousel-caption .Row1 .RowBox .RowTitle p{font-size: 14px;line-height: 24px;}
     .carousel-caption .Row1 .RowBox .RowTitle p span br{display: none}
     .carousel-control-next-icon, .carousel-control-prev-icon{width: 20%!important;height: 7%!important;right: 0px;left: 71px;margin: 0% 0%;}
-    .carousel-caption .Row1 .RowBox .Dimmer:before{height: 55px;width: 55px;margin: auto;right: 0;}
+    .carousel-caption .Row1 .RowBox .Dimmer:before{height: 60px;width: 60px;margin: auto;right: 0;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerTitle h3{font-size: 14px;padding: 5px 0px;line-height: 21px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile .UserTitle{margin-left: 5px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile .UserTitle p{font-size: 14px;line-height: 22px;}
@@ -422,6 +422,21 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     
     
     .GiveAnswer .Qarray{max-height: 200px;}
+
+
+.MPProfileName .UsersImg{position: relative;}
+.MPProfileName .UsersImg .Absolute{width: 100%}
+.MPProfileName .UsersImg .Absolute .Img1 {
+    right: 55px;
+}
+.MPProfileName .UsersImg .Absolute .Img2 {
+    right: 65px;
+}
+.MPProfileName .UsersImg .Absolute .Img3 {
+    right: 80px;
+}
+.MPProfileName .UsersImg .One{position: relative!important;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{position: relative;}
 }
 
 
