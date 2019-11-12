@@ -56,10 +56,11 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden">
                         <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="img-fluid People">
+                      
                         <i class="fa fa-rss-square ActiveIcon OnlySm "></i>
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
 
-
+                            
 
 
                             </i>

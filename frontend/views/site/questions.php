@@ -215,7 +215,7 @@ $model_report = new QuestionReported();
 <?php
 if (!empty($question['answers'])) {?>
 
-<div class="AnsweredByBox" id="more2<?php echo $question['id']; ?>">
+<div class="Aarray example-1  scrollbar-dusty-grass square thin AnsweredByBox" id="more2<?php echo $question['id']; ?>">
 <div id="answersList<?php echo $question['id']; ?>">
        <?php foreach ($question['answers'] as $key => $answer) {?>
 
@@ -355,7 +355,7 @@ $current_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads
 
 
                                 </div>
-                                <div id="commentArray<?php echo $question['id']; ?>">
+                                <div class="Qarray example-1  scrollbar-dusty-grass square thin" id="commentArray<?php echo $question['id']; ?>">
                                 <?php if (!empty($question['comments'])) {
             $comment_count = count($question['comments']);
             foreach ($question['comments'] as $key => $comment) {

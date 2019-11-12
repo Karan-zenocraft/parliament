@@ -862,4 +862,14 @@ list-style-type: none;}
     margin: auto;}
 .Main .MainLeft .ProfileLeft .User .ProfileIcon .EditProfileInput{position: absolute;top:0;right: 0;display: none}
 .Main .MainLeft .ProfileLeft .User .ProfileIcon label .fa-edit{position: absolute;top: 12px;right: 0;font-size: 24px;color: #fff;}
+.GiveAnswer .Qarray{max-height: 250px;
+    overflow: scroll;overflow-x: hidden;transition: 0.3s all;}
+.GiveAnswer .Qarray::-webkit-scrollbar {
+    width: 3px!important;height: 10px!important;
+}
 
+.QuestionAnswerBox .Aarray{max-height: 400px;overflow: scroll;overflow-x: hidden;transition: 0.3s all;}
+
+.QuestionAnswerBox .Aarray::-webkit-scrollbar {
+    width: 3px!important;height: 10px!important;
+}
