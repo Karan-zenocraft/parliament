@@ -1299,7 +1299,7 @@ header{padding-top: 50px;}
 }
 
 @media (min-width: 320px) and (max-width: 991px){
-    
+    .Main .MainCenter{min-height: unset!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px!important;}
     header{padding-top: 15px;}
     header .HeaderTop {margin-bottom: 15px;}
