@@ -844,7 +844,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                     $orderBy = ["users.city" => $dir];
                 }
             }
-            $page = ($requestData['page'] - 1) * 4;
+            $page = ($requestData['page'] - 1) * 12;
             // $page = 4;
             if (empty($requestData['sortby']) && empty($requestData['search'])) {
                 $orderBy = ['answer_count' => SORT_DESC, 'comment_count' => SORT_DESC, 'share_count' => SORT_DESC];
@@ -870,7 +870,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
             //p($pagination);
 
             $models = $query->offset($page)
-                ->limit(4)
+                ->limit(12)
                 ->all();
             $pageDataAjax = $this->renderPartial('citizens', [
                 'models' => $models, 'pagination' => $pagination,
