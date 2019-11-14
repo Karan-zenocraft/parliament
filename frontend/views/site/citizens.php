@@ -9,7 +9,7 @@
                             <div class="ProfileBlock col-md-4 p-0">
                             <div class="Block1 d-flex align-items-center justify-content-center">
                             <div class="BlockImg">
-                                <?php $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png;"?>
+                                <?php $user_image = !empty($value['photo']) ? Yii::getAlias('@web') . "/uploads/" . $value['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png"?>
                                 <img src="<?php echo $user_image; ?>" alt="" class="rounded-circle">
 
 

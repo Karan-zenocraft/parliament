@@ -44,7 +44,7 @@ $user = Common::get_name_by_id($user_id, "Users");
 <?php }?>
     <div class="User">
       <div class="ProfileIcon">
-        <img src="<?php echo Yii::getAlias('@web') . "/uploads/" . $user['photo'] ?>" alt="" class="rounded-circle " id="profile_photo">
+        <img src="<?php echo !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="rounded-circle " id="profile_photo">
       <!--   <label>
           <i class="fa fa-edit"></i>
          <input type="file" id="inputFile" name="inputFile" accept="image/*" class="EditProfileInput" />
