@@ -74,10 +74,15 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                         <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo-sm.png" ?>" alt="" class="img-fluid OnlySm XsHidden"></a>
                         <a style="z-index:99;" href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id ?>"><img src="<?php echo $user_image ?>" alt="" class="People rounded-circle" style="height: 108px;width: 108px;"></a>
 
-
-                        <a href="#Homefeed" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">
+                         <?php if (!empty($_REQUEST['user_id'])) {?>
+                        <a href="<?php echo Url::base(''); ?>#Homefeed" onclick="filterQuestion('Homefeed')" class="show">
                         <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
                         </a>
+                        <?php } else {?>
+                           <a href="#Homefeed" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">
+                        <i class="fa fa-rss-square ActiveIcon OnlySm"></i>
+                        </a>
+                        <?php }?>
 
                         <?php $notifications = Notifications::find()->where(['user_id' => Yii::$app->user->id, 'mark_read' => 0])->orderBy(['id' => SORT_DESC])->asArray()->all();?>
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary"><?php echo !empty($notifications) ? count($notifications) : 0 ?></span>
