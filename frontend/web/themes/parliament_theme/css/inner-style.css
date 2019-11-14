@@ -609,6 +609,8 @@ slider slider
     color: #fff;border: none}
 .UnansweredBy{position: relative;margin: 0 auto!important;}
 .UsersImg{display: inline-block;align-items: center;justify-content: center;position: relative;}
+
+
 .UsersImg .One{position: relative;}
 .UsersImg img{height: 43px;width: 43px;}
 .UsersImg .Absolute .Img1{position: absolute;right: 45px}
@@ -873,3 +875,5 @@ list-style-type: none;}
 .QuestionAnswerBox .Aarray::-webkit-scrollbar {
     width: 3px!important;height: 10px!important;
 }
+
+
