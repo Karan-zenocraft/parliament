@@ -257,6 +257,11 @@ function filterSearch(e)
   QuestionAnswer()
 }
 }
+function filterSearchClick(e)
+{
+  $("#pageQuestion").val('0');
+  QuestionAnswer();
+}
 function AjaxCallSearch(e)
 {
    if (e.keyCode == 13) {
@@ -281,6 +286,29 @@ function AjaxCallSearch(e)
      }
   });
   }
+}
+function AjaxCallSearchClick(e)
+{
+    var sortdir = $("#sort").val();
+    var sortby = $("#sortby").val();
+    var page = $("#page").val();
+    var search = $('#searchMP').val();
+     //console.log(search+"-"+sortby+"-"+sortdir);
+
+    $.ajax({
+     url: "site/current-city",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: sortby, 
+               sortdir:sortdir,
+               search: search, 
+               page: page
+           },
+     success: function (data) {
+         $('#list_mp').html(data);
+     }
+  });
 }
 function AjaxCallSearchCitizen(e)
 {

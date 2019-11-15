@@ -66,7 +66,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
                     </div>
                     <div class="col-md-12 col-lg-6 p-0">
                        <div class="Search">
-                        <input type="text" placeholder="Search for Questions here" class="SearchInput" id="filterSearch" onkeypress="filterSearch(event)"><i class="fa fa-search"></i>
+                        <input type="text" placeholder="Search for Questions here" class="SearchInput" id="filterSearch" onkeypress="filterSearch(event)"><i class="fa fa-search" onclick="filterSearchClick(event)"></i>
                            </div>
                     </div>
                     <div class="Icons col-md-12 col-lg-3 p-lg-0 d-flex justify-content-end align-items-center">
