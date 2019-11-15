@@ -335,6 +335,30 @@ return false;*/
   });
   }
 }
+function AjaxCallSearchCitizenClick(e)
+{
+   
+    var sortdir = $("#sort_citizen").val();
+    var sortby = $("#sortby_citizen").val();
+    var page = $("#page_citizen").val();
+    var search = $('#search_citizen').val();
+/*console.log(search+"-"+sortby+"-"+sortdir);
+return false;*/
+    $.ajax({
+     url: "site/get-citizen-list",
+     type: 'post',
+     dataType: 'json',
+     data: {
+               sortby: sortby, 
+               sortdir:sortdir,
+               search: search, 
+               page: page
+           },
+     success: function (response) {
+      $('#citizensList').html(response.data);
+     }
+  });
+}
 function getPage(flag)
 {
   if(flag=='next'){

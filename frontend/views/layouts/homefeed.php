@@ -210,7 +210,7 @@ Breadcrumbs::widget([
                                 </nav>
                               <span>Show Citizens You follow</span>
                                 <div class="SearchMps SearchCitizen">
-                                    <input type="text" placeholder="Search Citizen" class="SearchMp Citizen" id="search_citizen" onkeypress="AjaxCallSearchCitizen(event)"><i class="fa fa-search"></i>
+                                    <input type="text" placeholder="Search Citizen" class="SearchMp Citizen" id="search_citizen" onkeypress="AjaxCallSearchCitizen(event)"><i class="fa fa-search" onclick="AjaxCallSearchCitizenClick(event)"></i>
                                 </div>
                             </div>
                             </div>
