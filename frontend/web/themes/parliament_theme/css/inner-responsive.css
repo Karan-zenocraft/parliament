@@ -1638,7 +1638,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .Main .MainCenter .Ask .AskButton{font-size: 12px;line-height: 18px;padding: 3px 35px;}
     .Ask #charNum{color: #fff!important;}
     .Main .MainCenter .Ask .AskButton{margin-top: 0px;}
-    .Ask .form-group:last-child{margin-top: 10px;}
+    .Ask .form-group:last-child{margin-top: 10px;order: 4;}
     .load_more{background: #D17C0D;
     font-size: 12px;
     line-height: 18px;
