@@ -607,7 +607,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
                 //$questionsQuery = $questionsQuery->select(["*", "questions.id", "(LENGTH(louder_by) - LENGTH(REPLACE(louder_by, ',','')) + 1) AS louder_count"]);
                 $questionsQuery = $questionsQuery->orderBy(["louder_count" => SORT_DESC]);
             } else {
-                $questionsQuery->orderBy(["louder_count" => SORT_DESC, 'questions.id' => SORT_DESC]);
+                $questionsQuery->orderBy(['questions.id' => SORT_DESC, "louder_count" => SORT_DESC]);
             }
 
             $models = $questionsQuery
