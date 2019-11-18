@@ -1,6 +1,8 @@
 <?php
 use frontend\assets\ParliamentAsset;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
+
 $this->registerCssFile('@web/themes/parliament_theme/css/style.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 $this->registerCssFile('@web/themes/parliament_theme/css/responsive.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ParliamentAsset::register($this);
@@ -33,7 +35,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
             <div class="row">
                 <div class="LoginBottom col-md-12 d-flex align-items-center justify-content-end">
                     <ul class="d-flex align-items-center justify-content-start flex-wrap">
-                        <li><a href="<?php echo Yii::getAlias('@web') ?>">Home</a></li>
+                        <li><a href="<?php echo Url::base(''); ?>">Home</a></li>
 
 
                     </ul>
@@ -50,7 +52,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 col-xl-5 HeaderLeft">
-                    <a href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" alt="" class="img-fluid Logo"></a>
+                    <a href="<?php echo Url::base(''); ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Logo1.png" ?>" alt="" class="img-fluid Logo"></a>
 
 
 
