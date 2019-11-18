@@ -563,12 +563,24 @@ border-radius: 30px;text-transform: uppercase;margin-top: 2px;margin-left: -2px;
 .Main .MainLeft .ProfileLeft .EditProfile ul li{margin-bottom: 15px;padding-left: 25px;position: relative;}
 .Main .MainLeft .ProfileLeft .EditProfile ul li:after{position: absolute;top: 0;bottom: 0;margin: auto;left: 0;font: normal normal normal 14px/1 FontAwesome;color: #9FACB2;font-size: 15px;display: flex;align-items: center;}
 .Main .MainLeft .ProfileLeft .EditProfile ul li:first-child:after{content: "\f041";}
-.Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(2):after{content: "\f19d";}
+.Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(2):after{
+/*    content: "\f19d";    */
+content: '';background: url(../image/Icon-map.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 13px;
+
+}
 .Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(3):after{content: "\f0b1";}
 .Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(4):after{content: "\f017";}
 .Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(5):after{content: "\f182";}
 .Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(6):after{content: "\f1fd";}
-.Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(7):after{content: "\f1fd";}
+.Main .MainLeft .ProfileLeft .EditProfile ul li:nth-child(7):after{content: '';background: url(../image/reminder-icon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 13px;}
 .Main .MainLeft{padding-bottom: 0!important;}
 .Main .MainLeft .OnlySm{display: none;}
 .MainEditProfile .EditProfileMain{position: relative}
