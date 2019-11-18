@@ -15,9 +15,16 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
 footer{background: #10313E;padding: 40px 0;}
     footer a:hover{transition: 0.4s all;color: #fff;}
 footer a {margin-top: 10px;font-size: 14px;line-height: 18px;color: #fff;font-family: 'Segoe UI';font-weight: 300;outline: none;text-transform: uppercase;letter-spacing: 1px;}
-.Main .MainCenter{min-height: 410px;border: 0px solid #707070;padding-bottom: 0px!important;padding-top: 0px!important;display: flex;align-items: center;justify-content: center;}
+.Main .MainCenter{min-height: 410px;border: 0px solid #707070;padding-bottom: 0px!important;padding-top: 0px!important;display: flex;align-items: center;justify-content: center;padding: 0px 15px;}
 body{background-image: linear-gradient(#10313E, #020000);}
     .Main .MainCenter p{font-size: 16px;margin-bottom: 15px;line-height: 22px;color: #000;font-family: 'Segoe UI';}
+    
+    @media (max-width: 991px) and (min-width: 320px){
+        
+        .Main .MainCenter p{font-size: 14px;}
+        footer{padding: 15px 0;}
+        footer a{margin-top: 0px;font-size: 12px;line-height: 24px;}
+    }
 </style>
 
 
@@ -63,7 +70,7 @@ body{background-image: linear-gradient(#10313E, #020000);}
                 <div class="col-md-3 cus-md-3 MainLeft">
                    <a style="" href="<?php echo Yii::getAlias('@web') ?>"> <img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
                 </div>
-                <div class="col-md-12 col-lg-6 cus-md-6 MainCenter" style="padding-bottom: 300px;background: #E4E4E4">
+                <div class="col-md-12 col-lg-6 cus-md-6 MainCenter" style="padding-bottom: 300px;background: #E4E4E4;min-height:500px!important;">
 
 
                     <div class="tab-content clearfix">
@@ -84,7 +91,7 @@ Breadcrumbs::widget([
 <footer>
 <div class="container-fluid">
 <div class="row">
-<div class="col-md-12 d-flex align-items-center justify-content-center">
+<div class="col-md-12 d-flex align-items-center justify-content-center text-center">
 <a href="#">All rights reserved © BRIDGE for Participation 2019</a>
     
 </div>    

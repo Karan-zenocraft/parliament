@@ -472,8 +472,8 @@ img, i{cursor: pointer!important}
 .Nav4{display: none}
 header .HeaderBottomCenter .UlSetting{background: #C6C6C6;margin: 0;padding: 0;list-style: none;color: #fff;font-size: 17px;position: absolute;
     z-index: 999;right: 10px;display: block!important;transition: 0.25s ease;} 
-header .HeaderBottomCenter .UlSetting li{width: 100%;cursor: pointer;background: #ffffff;padding: 5px 5px 5px 5px;margin-bottom: 3px;}
-header .HeaderBottomCenter .UlSetting li a{ line-height: 28px;font-size: 17px;color: #525256;font-family: 'Segoe UI';font-weight: 400;padding-right: 30px!important;}
+header .HeaderBottomCenter .UlSetting li{width: 100%;cursor: pointer;background: #ffffff;padding: 0;margin-bottom: 3px;}
+header .HeaderBottomCenter .UlSetting li a{ line-height: 28px;font-size: 17px;color: #525256;font-family: 'Segoe UI';font-weight: 400;padding-right: 30px!important;display: block;padding: 8px 6px;}
 header .HeaderBottomCenter .UlSetting{transition: 0.25s ease;display: flex!important;align-items: flex-start;justify-content: flex-start;flex-direction: column;width: 22%;box-shadow: 0px 0px 25px 25px #00000066;}
 header .HeaderBottomCenter .UlSetting li a:hover{text-decoration: none;transition: 0.25s ease;color: #000!important}
 header .HeaderBottomCenter .Icons .fa-cog{position: relative;}
@@ -876,8 +876,25 @@ list-style-type: none;}
 
 .Main .MainLeft .ProfileLeft .User .ProfileIcon{position: relative;max-width: 213px;
     margin: auto;}
+.Main .MainLeft .ProfileLeft .User .ProfileIcon label{height: 40px;
+    width: 40px;
+    position: absolute;
+    background: #D17C0D;
+    right: 0;
+    bottom: 35px;
+    border-radius: 50%;
+    margin-bottom: 0;}
+
 .Main .MainLeft .ProfileLeft .User .ProfileIcon .EditProfileInput{position: absolute;top:0;right: 0;display: none}
-.Main .MainLeft .ProfileLeft .User .ProfileIcon label .fa-edit{position: absolute;top: 12px;right: 0;font-size: 24px;color: #fff;}
+.Main .MainLeft .ProfileLeft .User .ProfileIcon label .fa-edit{position: absolute;display: flex;align-items: center;justify-content: center;
+    font-size: 17px!important;
+    top: 0;
+    right: 0;
+    font-size: 24px;
+    color: #fff;
+    bottom: 0;
+    margin: auto;
+    left: 0;}
 .GiveAnswer .Qarray{max-height: 250px;
     overflow: scroll;overflow-x: hidden;transition: 0.3s all;}
 .GiveAnswer .Qarray::-webkit-scrollbar {

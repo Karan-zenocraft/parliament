@@ -246,7 +246,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .ActiveArrow:after{bottom: -30px!important;}
     
     header .HeaderBottomCenter .UlSetting li a{font-size: 12px;line-height: 18px;}
-    header .HeaderBottomCenter .UlSetting li{padding: 3px 5px 3px 5px;}
+/*    header .HeaderBottomCenter .UlSetting li{padding: 6px 5px 6px 5px;}*/
     header .HeaderBottomCenter .UlSetting{top: 100%;}
     .Main .MainCenter .FilterBar .SearchMps .SearchAnswredQ{width: 250px}
      .Main .MainCenter .FilterBar .Nav5 ul li{margin: 0px 15px;}
@@ -278,8 +278,10 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 .Main .MainLeft .ProfileLeft .User p{font-size:10px; line-height:16px; }
 .Main .MainLeft .ProfileLeft .EditProfile ul li{margin-bottom: 5px;padding-left: 20px;}
 .Main .MainLeft .ProfileLeft .User img{width: 150px;height: 150px;}
-.Main .MainLeft .ProfileLeft .User{margin-bottom: 20px;}
     
+.Main .MainLeft .ProfileLeft .User{margin-bottom: 20px;}
+    .Main .MainLeft .ProfileLeft .User .ProfileIcon label{height: 35px;
+    width: 36px;right: 20px;} 
 
     
     /*ModalCss*/
@@ -587,7 +589,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     
     header .HeaderBottomCenter .UlSetting li a{font-size: 10px;line-height: 16px;}
     header .HeaderBottomCenter .UlSetting{top: 100%;width: 22%;}
-    header .HeaderBottomCenter .UlSetting li{padding: 3px 5px 3px 3px;}
+    header .HeaderBottomCenter .UlSetting li{padding: 0;}
     header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -28px;right: 0;left: -11px;}
     .Main .MainCenter .Nav1 ul{top: 3px!important;}
     .Main .MainCenter .FilterBar .SearchMps .SearchAnswredQ{width: 200px!important}
@@ -625,6 +627,10 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .Main .MainLeft .ProfileLeft .EditProfile, .Main .MainLeft .EditProfileMain .ListOfQuestions{padding-left: 0px;}
     .Main .MainLeft .ProfileLeft .EditProfile ul{margin-bottom: 20px;}
     .Main .MainLeft .MainLeftInner .ListOfQuestions ul li a{font-size: 10px;}
+    .Main .MainLeft .ProfileLeft .User .ProfileIcon label{height: 25px;
+    width: 26px;
+    right: 45px;bottom: 25px;} 
+    .Main .MainLeft .ProfileLeft .User .ProfileIcon label .fa-edit{font-size: 12px!important;}
      
 /*ModalCss*/
 
@@ -1523,7 +1529,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     z-index: 999;left: 0px;right: 0;display: block!important;transition: 0.25s ease;margin-left: auto;margin-right: 5%;top: 50px;}
     header .HeaderBottomCenter .UlSetting li{width: 100%;cursor: pointer;
     background: #ffffff;
-   padding:8px 7px 9px 7px;
+   padding:0;
     margin-bottom: 3px;}
    
     header .HeaderBottomCenter .UlSetting li a{ line-height: 9px;font-size: 11px;color: #000;display: block;
@@ -1784,6 +1790,15 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     
     
     .GiveAnswer .Qarray{max-height: 150px;}
+
+
+
+    .Main .MainLeft .ProfileLeft .User .ProfileIcon label{height: 30px;
+    width: 30px;right: 10px;
+    bottom: 20px; }
+    .Main .MainLeft .ProfileLeft .User .ProfileIcon{max-width: 135px;}
+    .Main .MainLeft .ProfileLeft .User .ProfileIcon label .fa-edit{font-size: 15px!important;}
+
 }
 
 }
