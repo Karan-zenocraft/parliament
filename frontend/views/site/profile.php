@@ -50,15 +50,24 @@ $user = Common::get_name_by_id($user_id, "Users");
          <input type="file" id="inputFile" name="inputFile" accept="image/*" class="EditProfileInput" />
             </label> -->
         </div>
-      <p><?php echo $user['name']; ?></p>
+      <p><?php echo $user['user_name']; ?></p>
       <h3><?php echo $user['name']; ?></h3>
-      <p class="Title">Coder</p>
+        <?php if ($user->role_id == Yii::$app->params['userroles']['MP']) {?>
+      <p class="Title"><?php echo $user['standing_commitee']; ?></p>
+    <?php } else {?>
+      <p class="Title"><?php echo $user['education']; ?></p>
+    <?php }?>
     </div>
     <nav class="EditProfile">
       <ul>
         <li><span class="Title">From </span> <span class="TitleBold"> <?php echo $user['city']; ?></span> </li>
+        <?php if ($user->role_id == Yii::$app->params['userroles']['MP']) {?>
+         <li><span class="Title">Years in HOPR</span> <span class="TitleBold"> <?php echo $user['years_hopr']; ?></span> </li>
+       <?php }?>
         <li><span class="Title">Education </span> <span class="TitleBold"><?php echo $user['education']; ?></span> </li>
+         <?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {?>
         <li><span class="Title">Work </span> <span class="TitleBold"><?php echo !empty($user['education']) ? $user['work'] : "-"; ?></span> </li>
+         <?php }?>
         <li><span class="Title">Joined </span> <span class="TitleBold"><?php echo date("M Y", strtotime($user['created_at'])); ?></span> </li>
         <li><span class="TitleBold"> <?php echo Yii::$app->params['gender'][$user['gender']]; ?></span></li>
         <li> <span class="TitleBold"><?php echo "Age " . $user['age'] . " Years"; ?></span> </li>
