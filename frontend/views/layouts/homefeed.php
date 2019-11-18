@@ -95,7 +95,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
 
                         <ul class="Nav4">
                             <li class="BGList"><a href="<?php echo Yii::getAlias('@web') . "?user_id=" . Yii::$app->user->id; ?>">Edit profile</a></li>
-                            <!--  <li><a href="<?php //echo Yii::$app->urlManager->createUrl(['site/change-password']); ?>">Change Password</a></li> -->
+                            <li><a href="<?php echo Yii::$app->urlManager->createUrl(['site/change-password']); ?>">Change Password</a></li>
                             <li><a href="site/logout">Log out</a></li>
                     </ul>
 <!--end new html-->
