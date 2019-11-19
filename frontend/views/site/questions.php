@@ -38,6 +38,7 @@ if (!empty($modelsQuestions)) {
           <?php $mps = $question->mp_id;
         $answered_mp = (!empty($question['answers']) && (count($question['answers']) > 0)) ? array_column($question['answers'], 'mp_id') : [];
         $unanswered_by = array_diff(explode(",", $mps), array_unique($answered_mp));
+        $first_mp_id = current($unanswered_by);
         $first_mp = Common::getMpNames(current($unanswered_by));
         $count = count($unanswered_by);
         $mpArr = Common::getMpNames(implode(",", $unanswered_by));
@@ -47,16 +48,17 @@ if (!empty($modelsQuestions)) {
           <a href="#"><span class="Title">Unanswered for</span></a>
           <?php if ($count == 1) {
                 ?>
-          <a href="javascript:void(0);"><span class="MP"><?php echo $first_mp;
+          <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $first_mp_id; ?>"><span class="MP"><?php echo $first_mp;
                 ?></span></a>
                 <?php $first_mp_detail = Common::get_name_by_id(current($unanswered_by), "Users");?>
                <?php $first_mp_image = !empty($first_mp_detail['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_mp_detail['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
           <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_mp_detail['photo']) ? $first_mp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">
           <?php } else {
                 ?>
-            <a href="javascript:void(0);"><span class="MP"><?php echo $first_mp . " ";
+            <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $first_mp_id; ?>"><span class="MP"><?php echo $first_mp . " ";
                 ?>and</span></a>
-              <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
+             <!--  <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a> -->
+              <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count - 1); ?> others</span></a>
             <?php }?>
 
 <?php $exclude_first = array_shift($unanswered_by);?>
@@ -77,7 +79,8 @@ if (!empty($modelsQuestions)) {
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question['id']; ?>">
           <?php
 foreach ($unanswered_by as $key => $unanswer_mp) {
-                echo "<li><a href='javascript:void(0);'>" . Common::getMpNames($unanswer_mp) . "</a></li>";
+                // p($unanswer_mp, 0);
+                echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $unanswer_mp . ">" . Common::get_user_name($unanswer_mp) . "</a></li>";
             }
             ?>
     <!-- <li><a href="#">Abebe Mengistu</a></li>
@@ -99,13 +102,13 @@ $answered_mp_arr = array_unique($answered_mp);
                 <?php $first_mp_answered_id = current($answered_mp);?>
           <?php if ($count_answer == 1) {
                 ?>
-          <a href="#"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id);
+          <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $first_mp_answered_id; ?>"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id);
                 ?></span></a>
           <?php } else {
                 ?>
-            <a href="javascript:void(0);"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id) . " ";
+            <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $first_mp_answered_id; ?>"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id) . " ";
                 ?>and</span></a>
-              <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question['id'] ?>');" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count_answer - 1); ?> others</span></a>
+              <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list('<?php echo $question['id'] ?>');" id="<?php echo $question['id'] ?>"> <?php echo " " . ($count_answer - 1); ?> others</span></a>
             <?php }
             $first_ansmp_name = Common::get_name_by_id($first_mp_answered_id, "Users");
             $first_ansmp_image = !empty($first_ansmp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_ansmp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
@@ -129,7 +132,7 @@ $answered_mp_arr = array_unique($answered_mp);
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question['id']; ?>">
           <?php
 foreach (array_unique($answered_mp) as $key => $answered_mp) {
-                echo "<li><a href='javascript:void(0);'>" . Common::getMpNames($answered_mp) . "</a></li>";
+                echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $answered_mp . ">" . Common::get_user_name($answered_mp) . "</a></li>";
             }
             ?>
     <!-- <li><a href="#">Abebe Mengistu</a></li>
@@ -224,7 +227,7 @@ if (!empty($question['answers'])) {?>
                             <div class="Row1 AnsweredBy">
                                 <div class="UnansweredBy d-flex flex-wrap align-items-center justify-content-end">
                                   <?php $mp = Common::get_name_by_id($answer['mp_id'], "Users");?>
-                                   <a href="#"><span class="Title">Answered by</span></a><a href="#"><span class="MP"><?php echo $mp->name; ?></span></a>
+                                   <a href="#"><span class="Title">Answered by</span></a><a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $mp->id; ?>"><span class="MP"><?php echo $mp->name; ?></span></a>
 <?php $mp_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $mp->photo : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
 
                                    <a href="#"><img src="<?php echo $mp_user_image; ?>" alt="" class="rounded-circle" style="width:41px;height:41px;"></a>

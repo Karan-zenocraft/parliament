@@ -587,15 +587,18 @@ function show_comments(id){
 }
 
 function show_mp_list(id){
+      $('.OnhoverMP').css('display','none');
       $("#OnhoverMP"+id).show();
+
 }
 function hide_mp_list(id){
  
       $("#OnhoverMP"+id).hide();
+      $("#OnhoverMP").hide();
+
 
 }
 function show_mp_list_left(){
-    alert(133);
       $("#OnhoverMPleft").show();
 }
 function hide_mp_list_left(){

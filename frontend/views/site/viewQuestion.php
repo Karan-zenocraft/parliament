@@ -59,7 +59,7 @@ if (!empty($model->answers)) {?>
                             <div class="Row1 AnsweredBy">
                                 <div class="UnansweredBy d-flex flex-wrap align-items-center justify-content-end">
                                   <?php $mp = Common::get_name_by_id($answer['mp_id'], "Users");?>
-                                   <a href="#"><span class="Title">Answered by</span></a><a href="#"><span class="MP"><?php echo $mp->user_name; ?></span></a>
+                                   <a href="#"><span class="Title">Answered by</span></a><a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $answer['mp_id']; ?>"><span class="MP"><?php echo $mp->user_name; ?></span></a>
 <?php $mp_user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $mp->photo : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
 
                                    <a href="#"><img src="<?php echo $mp_user_image; ?>" alt="" class="rounded-circle" style="width:41px;height:41px;"></a>

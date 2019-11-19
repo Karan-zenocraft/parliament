@@ -9,13 +9,13 @@ $count_answer = count(array_unique($answered_mp));
     <?php $first_mp_answered_id = current($answered_mp);?>
           <?php if ($count_answer == 1) {
     ?>
-          <a href="#"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id);
+          <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $first_mp_answered_id; ?>"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id);
     ?></span></a>
           <?php } else {
     ?>
-            <a href="#"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id) . " ";
+            <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $first_mp_answered_id; ?>"><span class="MP"><?php echo Common::get_user_name($first_mp_answered_id) . " ";
     ?>and</span></a>
-              <a><span class="MPName OnhoverGroup" onmouseleave="hide_mp_list('<?php echo $question[0]['id'] ?>');" onmouseover="show_mp_list('<?php echo $question[0]['id'] ?>');" id="<?php echo $question[0]['id'] ?>"> <?php echo " " . ($count_answer - 1); ?> others</span></a>
+              <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list('<?php echo $question[0]['id'] ?>');" id="<?php echo $question[0]['id'] ?>"> <?php echo " " . ($count_answer - 1); ?> others</span></a>
             <?php }
 $first_ansmp_name = Common::get_name_by_id($first_mp_answered_id, "Users");
 $first_ansmp_image = !empty($first_ansmp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_ansmp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
@@ -39,7 +39,7 @@ foreach ($answered_mp_arr as $key => $ans_mp) {
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question[0]['id']; ?>">
           <?php
 foreach (array_unique($answered_mp) as $key => $answered_mp) {
-    echo "<li><a href='#'>" . Common::getMpNames($answered_mp) . "</a></li>";
+    echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $answered_mp . ">" . Common::get_user_name($answered_mp) . "</a></li>";
 }
 ?>
   </ul>
