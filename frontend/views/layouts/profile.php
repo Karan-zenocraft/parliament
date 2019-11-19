@@ -125,7 +125,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         </ul>
                     </nav>
 
-                    <a href="<?php echo Url::base(''); ?>#Homefeed"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
+                    <a href="#Homefeed"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
                     <div class="MainLeftInner EditProfileMain MainCenter">
 
 
