@@ -58,13 +58,13 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
             <a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $first_mp_id; ?>"><span class="MP"><?php echo $first_mp . " ";
                 ?>and</span></a>
               <span class="MPName OnhoverGroup" onmouseover="show_mp_list(id)" id="left"> <?php echo " " . ($count - 1); ?> others
-                  
+
                   <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMPleft" style="display: none;">
           <?php
 foreach ($unanswered_by as $key => $unanswer_mp) {
-                echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $unanswer_mp . ">" . Common::get_user_name($unanswer_mp) . "</a></li>";
-            }
-            ?>
+                    echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $unanswer_mp . ">" . Common::get_user_name($unanswer_mp) . "</a></li>";
+                }
+                ?>
     <!-- <li><a href="#">Abebe Mengistu</a></li>
     <li><a href="#">Taye Hailu</a></li>
     <li><a href="#">Kebede Taye</a></li>
@@ -72,9 +72,9 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
     <li><a href="#">Chala Banti</a></li>
     <li><a href="#">Feven Siraj</a></li> -->
   </ul>
-                  
-                  
-                  
+
+
+
                   </span>
                 <?php $first_mp_detail = Common::get_name_by_id($first_mp_id, "Users");?>
                <?php $first_mp_image = !empty($first_mp_detail['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_mp_detail['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
@@ -98,7 +98,7 @@ foreach ($unanswered_by as $key => $unanswer_mp) {
 
 
           </a>
-          
+
         </div>
       <?php } else {
             ?>
@@ -124,9 +124,9 @@ $answered_mp_arr = array_unique($answered_mp);
                   <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMPleft" style="display: none;">
           <?php
 foreach (array_unique($answ_mp) as $key => $answered_mp) {
-                echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $answered_mp . ">" . Common::get_user_name($answered_mp) . "</a></li>";
-            }
-            ?>
+                    echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $answered_mp . ">" . Common::get_user_name($answered_mp) . "</a></li>";
+                }
+                ?>
     <!-- <li><a href="#">Abebe Mengistu</a></li>
     <li><a href="#">Taye Hailu</a></li>
     <li><a href="#">Kebede Taye</a></li>
@@ -134,7 +134,7 @@ foreach (array_unique($answ_mp) as $key => $answered_mp) {
     <li><a href="#">Chala Banti</a></li>
     <li><a href="#">Feven Siraj</a></li> -->
   </ul>
-                  
+
                   </span></a>
               <?php $first_ansmp_name = Common::get_name_by_id($first_mp_answered_id, "Users");
                 $first_ansmp_image = !empty($first_ansmp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_ansmp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
@@ -160,7 +160,7 @@ $answ_mp = array_unique($answered_mp);
             }?>
             </div>
           </a>
-          
+
         </div>
       <?php }?>
 			</div>
