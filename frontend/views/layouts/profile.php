@@ -59,11 +59,11 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                       <a href="#Homefeed" onclick="filterQuestion('Homefeed')" data-toggle="tab" class="active">
                         <i class="fa fa-rss-square ActiveIcon OnlySm "></i>
                           </a>
-                          
-                          
+
+
                         <span class="badge-Box"><i class="fa fa-bell"><span class="badge badge-secondary">1</span>
 
-                            
+
 
 
                             </i>
@@ -125,7 +125,7 @@ $this->registerCssFile('@web/themes/parliament_theme/css/w3.css', ['depends' => 
                         </ul>
                     </nav>
 
-                    <a href="<?php echo Yii::getAlias('@web') ?>#Homefeed"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
+                    <a href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
                     <div class="MainLeftInner EditProfileMain MainCenter">
 
 
