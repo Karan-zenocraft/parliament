@@ -25,12 +25,14 @@ $count_answer = count(array_unique($answered_mp));
             <?php }
 ?>
 
-<?php $exclude_first_answer = array_shift($answered_mp);
+<?php
+$answ_mp = array_unique($answered_mp);
+$exclude_first_answer = array_shift($answ_mp);
 //p(array_unique($answered_mp), 0);
 ?>
             <div class="Absolute">
             <?php $i = 1;
-foreach ($answered_mp as $key => $ans_mp) {
+foreach ($answ_mp as $key => $ans_mp) {
     $ans_mp_name = Common::get_name_by_id($ans_mp, "Users");
     //$ans_mp_image = $ans_mp_name['photo'];
     $ans_mp_image = !empty($ans_mp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $ans_mp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
@@ -42,7 +44,7 @@ foreach ($answered_mp as $key => $ans_mp) {
           </a>
           <ul class="align-items-start justify-content-start flex-column OnhoverMP" id="OnhoverMP<?php echo $question[0]['id']; ?>">
           <?php
-foreach (array_unique($answered_mp) as $key => $answered_mp) {
+foreach ($answ_mp as $key => $answered_mp) {
     echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $answered_mp . ">" . Common::get_user_name($answered_mp) . "</a></li>";
 }
 ?>

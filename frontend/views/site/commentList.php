@@ -4,7 +4,7 @@
 $commented_user_image = !empty($comment_user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $comment_user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/commented.png;"?>
 		<div class="CommentedProfile"> <img src="<?php echo $commented_user_image ?>" alt="" class="rounded-circle"></div>
 		<div class="Commented">
-			<p class="CommentedUser"><?php echo $user_name; ?></p>
+			<a href="<?php echo Yii::getAlias('@web') . "?user_id=" . $comment_user['id']; ?>"><p class="CommentedUser"><?php echo $user_name; ?></p></a>
 			<p class="CommentedCaption"><?php echo $comment; ?></p>
 		<!-- 	<div class="Social d-flex align-items-center justify-content-start">
 				<div class="Like"><i class="fa fa-thumbs-up"></i><span class="First">Like</span><span>100</span></div>
