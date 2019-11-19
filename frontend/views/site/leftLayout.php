@@ -59,7 +59,7 @@ $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $us
               <a><span class="MPName OnhoverGroup" onmouseover="show_mp_list(id)" id="left"> <?php echo " " . ($count - 1); ?> others</span></a>
                 <?php $first_mp_detail = Common::get_name_by_id($first_mp_id, "Users");?>
                <?php $first_mp_image = !empty($first_mp_detail['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_mp_detail['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
-                <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_mp_detail['photo']) ? $first_mp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">
+<!--                <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_mp_detail['photo']) ? $first_mp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">-->
             <?php }?>
           <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
             <div class="Absolute">
