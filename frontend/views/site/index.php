@@ -1,8 +1,8 @@
-<meta property="og:url" content="http://ask.zenocraft.com" />
+<meta property="og:url" content="http://b4p.et" />
 <meta property="og:type" content="website" />
 <meta property="og:title"  content=" Notice of Passing" />
 <meta property="og:description"   content="Notice of Passing " />
-<meta property="og:image" content="http://ask.zenocraft.com/uploads/IMG-20180804-WA0001_5dab09cb6270f.jpg" />
+<meta property="og:image" content="http://b4p.et/uploads/IMG-20180804-WA0001_5dab09cb6270f.jpg" />
 <?php
 // use kartik\icons\FontAwesomeAsset;
 use common\components\Common;
