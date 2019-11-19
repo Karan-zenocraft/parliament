@@ -2,11 +2,12 @@
 use common\components\Common;
 use common\models\Questions;
 use common\models\Shares;
+use yii\helpers\Url;
 
 $user = Common::get_name_by_id(Yii::$app->user->id, "Users");
 $user_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people-sm.png;"?>
 
-<a href="<?php echo Yii::getAlias('@web') ?>"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
+<a href="<?php echo Url::base(''); ?>#Homefeed"><img src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/Inner-Logo.png" ?>" alt="" class="img-fluid Inner-Logo"></a>
 <div class="MainLeftInner">
 	<?php if ($user->role_id == Yii::$app->params['userroles']['user_agent']) {
     ?>
