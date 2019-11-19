@@ -45,10 +45,12 @@ $user = Common::get_name_by_id($user_id, "Users");
     <div class="User">
       <div class="ProfileIcon">
         <img src="<?php echo !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/people.png" ?>" alt="" class="rounded-circle " id="profile_photo">
+        <?php if (!empty($_REQUEST) && !empty($_REQUEST['user_id']) && ($_REQUEST['user_id'] == Yii::$app->user->id)) {?>
         <label>
           <i class="fa fa-edit"></i>
          <input type="file" id="inputFile" name="inputFile" accept="image/*" class="EditProfileInput" />
             </label>
+            <?php }?>
         </div>
       <p><?php echo $user['user_name']; ?></p>
       <h3><?php echo $user['name']; ?></h3>
