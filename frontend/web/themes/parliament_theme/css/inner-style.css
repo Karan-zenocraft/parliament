@@ -666,7 +666,9 @@ slider slider
     list-style-type: none;
     padding: 3px 10px;
     color: rgb(255, 255, 255);
-    display: block;top: 7px;}
+    display: block;top: 7px;
+    z-index: 99;
+}
 
 .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child{color: #10303F;
     font-size: 10px;
@@ -735,10 +737,10 @@ header .HeaderBottomCenter .Search{margin-right: auto;}
 header .HeaderBottomCenter .People{height: 162px!important;width: 162px!important;z-index: 99;}
 .OnhoverGroup{cursor: pointer;display: inline-block;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{padding-left: 8px;padding-right: 40px;padding-top: 3px;padding-bottom: 3px;line-height: 16px;z-index: 999;
-    margin-top: 0px;left: unset;right: 0;}
+    margin-top: 0px;left: 0;right: 0;margin: auto}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 10px;}
 /*.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li{line-height: 0;}*/
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{margin-right: 5px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{margin-right: 5px;position: relative;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy .MP{margin-right: 5px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p{font-size: 18px;}
 header .HeaderBottomCenter .Icons{padding-right: 50px!important}
