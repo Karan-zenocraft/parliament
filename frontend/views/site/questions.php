@@ -77,7 +77,7 @@ $exclude_first = array_shift($unanswered_by);
   </ul>
 
                   </span>
-               <?php $first_mp_detail = Common::get_name_by_id(current($unanswered_by), "Users");?>
+               <?php $first_mp_detail = Common::get_name_by_id($first_mp_id, "Users");?>
                <?php $first_mp_image = !empty($first_mp_detail['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_mp_detail['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
           <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_mp_detail['photo']) ? $first_mp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">
             <?php }?>
