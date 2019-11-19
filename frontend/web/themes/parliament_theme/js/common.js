@@ -594,8 +594,6 @@ function show_mp_list(id){
 function hide_mp_list(id){
  
       $("#OnhoverMP"+id).hide();
-      $("#OnhoverMP").hide();
-
 
 }
 function show_mp_list_left(){
@@ -1712,3 +1710,14 @@ function validateImage(id){
 
     return isValidFile;
 }
+
+$('body').mouseover(function(e) {
+   var class_name = $(e.target).attr('class').split(' ')[0];
+   var id = e.target.id;
+   console.log(class_name);
+   if((class_name == "MPName") || (class_name == "align-items-start") || (class_name == "UnansweredBy") || (class_name == "d-flex") || (class_name == "rounded-circle") || (class_name == 'Absolute')){
+      $('.OnhoverMP').css('display','show');
+   }else{
+      $('.OnhoverMP').css('display','none');
+   }
+})
