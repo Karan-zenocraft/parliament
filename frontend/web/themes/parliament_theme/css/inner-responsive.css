@@ -315,8 +315,8 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 .UsersImg .Absolute .Img1{right: 47px}
 .UsersImg .Absolute .Img2{right: 30px}
 .UsersImg .Absolute .Img3{right: 13px}
-.UsersImg .Absolute .Img4{right: 13px}
-.UsersImg .Absolute .Img5{right: 13px}
+.UsersImg .Absolute .Img4{right: -5px}
+.UsersImg .Absolute .Img5{display: none;}
 .UsersImg .Absolute .Img6{display: none;}
     
     
@@ -371,7 +371,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     
     /*    10-20-19*/
     /*    10-20-19*/
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 340px;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 320px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px}
     
     
@@ -439,8 +439,8 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 .MPProfileName .UsersImg .Absolute .Img3 {
     right: 66px;
 }
-.MPProfileName .UsersImg .Absolute .Img6 {
-    display: none;
+.MPProfileName .UsersImg .Absolute .Img4 {
+    right: 66px;
 }
     
 .MPProfileName .UsersImg .One{position: relative!important;}
@@ -461,7 +461,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 @media (min-width: 1025px) and (max-width: 1259px) {
 /*10-20-2019*/
     
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 300px!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 280px!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-bottom: 15px!important;margin-top: 15px!important;}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredByComments{margin-bottom: 0px!important}*/
  .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{margin-left: unset!important;margin-right: unset!important;max-width: 100%!important;justify-content: flex-end!important;}
@@ -726,7 +726,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .UsersImg .Absolute .Img1{right: 51px;}
     .UsersImg .Absolute .Img2{right: 38px;}
     .UsersImg .Absolute .Img3{right: 23px;}
-    .UsersImg .Absolute .Img6{display: none}
+    .UsersImg .Absolute .Img4{right: 9px;}
     .UsersImg .Absolute .Img5{display: none}
     .UsersImg .Absolute .Img6{display: none}
     textarea.form-control::placeholder{font-size: 12px;}
@@ -926,7 +926,7 @@ header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 12px
     
      /*10-20-2019*/
     
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 300px!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 240px!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px;}
     
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{margin-left: unset!important;margin-right: unset!important;max-width: 100%!important;justify-content: flex-end!important;}
@@ -1008,7 +1008,7 @@ header{padding-top: 50px;}
 
 @media (min-width: 768px) and (max-width: 991px) {
 /*10-20-19*/
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 47px!important;width: 47px!important;}
+/*.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 47px!important;width: 47px!important;}*/
 
 
 
@@ -1035,7 +1035,7 @@ header{padding-top: 50px;}
     .UsersImg .Absolute .Img1{right: 48px;}
     .UsersImg .Absolute .Img2{right: 30px;}
     .UsersImg .Absolute .Img3{right: 12px;}
-    .UsersImg .Absolute .Img6{display: none}
+    .UsersImg .Absolute .Img4{right: 12px;}
     .UsersImg .Absolute .Img5{display: none}
     .UsersImg .Absolute .Img6{display: none}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 130px!important}*/
@@ -1086,9 +1086,9 @@ header{padding-top: 50px;}
     
      /*10-20-2019*/
     
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 250px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 235px;}
 .select2-container--krajee-bs4 .select2-selection--multiple{max-width: 400px!important;min-width: 400px!important;}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 35px!important;width: 35px!important;}
+/*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 35px!important;width: 35px!important;}*/
     
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 20px!important}
     
@@ -1140,7 +1140,7 @@ header{padding-top: 50px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments{padding: 0px 0px!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p{font-size: 10px!important;line-height: 18px!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments button{font-size: 10px!important;line-height: 14px!important;}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{align-items: flex-start!important;max-width: 140px!important;
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{align-items: flex-start!important;max-width: 155px!important;
     justify-content: start!important;margin-top: 0px!important;margin-left: 15px!important;font-size: 9px;line-height: 14px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{padding-right: 0px!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon{margin-top: 0px!important;position: absolute!important;right: 0!important;top: -6px!important;}
@@ -1255,7 +1255,7 @@ header{padding-top: 50px;}
      .UsersImg .Absolute .Img1{right: 51px!important;}
     .UsersImg .Absolute .Img2{right: 39px!important;}
     .UsersImg .Absolute .Img3{right: 26px!important;}
-    .UsersImg .Absolute .Img6{display: none!important;}
+    .UsersImg .Absolute .Img4{right: 14px!important;}
     .UsersImg .Absolute .Img5{display: none!important;}
     .UsersImg .Absolute .Img6{display: none!important;}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 130px!important}*/
@@ -1307,7 +1307,7 @@ header{padding-top: 50px;}
     padding: 6px!important;}
     header .HeaderBottomCenter .Search{padding-top: 0px!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{margin-top: 35px!important}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 30px!important;width: 30px!important;}
+/*      .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 30px!important;width: 30px!important;}*/
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 10px!important;margin-bottom: 10px!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy .UnansweredBy{max-width: unset!important;
     width: 92%;}
@@ -1690,7 +1690,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .UsersImg .Absolute .Img1{right: 48px;}
     .UsersImg .Absolute .Img2{right: 30px;}
     .UsersImg .Absolute .Img3{right: 12px;}
-    .UsersImg .Absolute .Img6{display: none}
+    .UsersImg .Absolute .Img4{right: -5px;}
     .UsersImg .Absolute .Img5{display: none}
     .UsersImg .Absolute .Img6{display: none}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 130px!important}*/

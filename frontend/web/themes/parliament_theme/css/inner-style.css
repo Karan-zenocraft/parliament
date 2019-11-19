@@ -630,7 +630,7 @@ slider slider
 .UsersImg .Absolute .Img1{right: 32px;position: absolute}
 .UsersImg .Absolute .Img2{right: 3px;position: absolute}
 .UsersImg .Absolute .Img3{right: -23px;position: absolute;}
-.UsersImg .Absolute .Img6{display: none}
+.UsersImg .Absolute .Img4{right: -50px;position: absolute;}
 .UsersImg .Absolute .Img5{display: none}
 .UsersImg .Absolute .Img6{display: none}
 .UsersImg .Absolute {position: absolute;right: -64px;top: 0;}
