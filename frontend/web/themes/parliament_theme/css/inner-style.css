@@ -671,7 +671,7 @@ slider slider
     list-style-type: none;
     padding: 3px 10px;
     color: rgb(255, 255, 255);
-    display: block;top: 7px;
+    display: block;top: 5px;
     z-index: 99;
 }
 
