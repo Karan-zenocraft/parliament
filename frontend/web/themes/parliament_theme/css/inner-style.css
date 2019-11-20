@@ -163,7 +163,7 @@ padding-right: 15px;margin-bottom: 10px;}
 
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .Top .OnhoverGroup{position: relative}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{display: none;transition: 0.25s ease;transition: 0.25s ease;
-    position: absolute;left: 0;right: 36%;margin: auto;padding: 0;background: #10303F;width: 170px;list-style-type: none;padding: 12px;margin-top: -5px;}
+    position: absolute;left: 0;right: 36%;margin: auto;padding: 0;background: #10303F;width: 170px;list-style-type: none;padding: 12px;margin-top: 5px!important;}
 
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{color: #fff;font-size: 14px;line-height: 20px;font-family: 'Segoe UI';}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPOnhover{position: relative;}
@@ -600,7 +600,7 @@ content: '';background: url(../image/Icon-map.png);
 slider slider
 */
 /*.carousel-caption .Row1 .RowBox:last-child{justify-content: flex-end!important;}*/
-.Main .MainLeft .LastQuestion .LastQuestionBox .Row1  img{height: 24px;width: 24px;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1  .UserImage{height: 24px!important;width: 24px!important;}
 .Ask .form-group{margin-bottom: 0px;}
 .Ask  form{margin-bottom: 0px;}
 .Ask #charNum{margin-right: 10px;font-size: 10px;line-height: 16px;font-weight: 400;font-family: 'Segoe UI';}
@@ -624,13 +624,14 @@ slider slider
 .UnansweredBy{position: relative;margin: 0 auto!important;}
 .UsersImg{display: inline-block;align-items: center;justify-content: center;position: relative;}
 
-
+.UsersImg .AbsoluteLeft img{height: 16px!important;width: 16px!important;}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{height: 16px;width: 16px;}
 .UsersImg .One{position: relative;}
 .UsersImg img{height: 43px;width: 43px;}
 .UsersImg .Absolute .Img1{right: 32px;position: absolute}
 .UsersImg .Absolute .Img2{right: 3px;position: absolute}
 .UsersImg .Absolute .Img3{right: -23px;position: absolute;}
-.UsersImg .Absolute .Img4{right: -50px;position: absolute;}
+.UsersImg .Absolute .Img4{right: -50px;position: absolute!important;}
 .UsersImg .Absolute .Img5{display: none}
 .UsersImg .Absolute .Img6{display: none}
 .UsersImg .Absolute {position: absolute;right: -64px;top: 0;}
@@ -653,14 +654,18 @@ slider slider
 /*10-16-19*/
 
 
+.UsersImg .AbsoluteLeft{right: -46px;}
+.UsersImg .AbsoluteLeft .Img2{right: 17px;}
+.UsersImg .AbsoluteLeft .Img3{right: 3px;}
+.UsersImg .AbsoluteLeft .Img4{right: -10px;}
 
-.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP{position: relative;width: 100%}
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP{position: relative;width: 100%;max-width: 220px;line-height: 0;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP{transition: all 0.25s ease 0s;
     position: absolute;
     left: -25px;
     box-shadow: 0px 0px 10px 5px #00000066;
     right: 0px;
-    margin: 30px auto auto;
+    margin: 20px auto auto;
     background: rgb(16, 48, 63);
     width: 125px;
     list-style-type: none;
@@ -672,7 +677,7 @@ slider slider
 
 .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child{color: #10303F;
     font-size: 10px;
-    line-height: 11px;
+    line-height: 18px;
     font-weight: bold;
     font-family: 'Segoe UI';
     margin-bottom: 0px;
@@ -687,7 +692,7 @@ slider slider
     font-weight: bold;font-family: 'Segoe UI';
     margin-bottom: 0px;
     color: #10303F;
-    line-height: 11px;}
+    line-height: 18px;}
 .Main .MainLeft .LastQuestion .LastQuestionBox p span{font-size: 7px;}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .User{min-width: 50%}
 .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li a{font-size: 10px;}
@@ -912,4 +917,8 @@ list-style-type: none;}
     width: 3px!important;height: 10px!important;
 }
 
+/*
 .Main .EditProfileMain .Nav1 .Extra{display: none!important}
+.MPProfileName .UsersImg .One{height: 16px!important;width: 16px!important;border: 1px solid #fff}
+    .UsersImg .AbsoluteLeft .Img1, .UsersImg .AbsoluteLeft .Img2, .UsersImg .AbsoluteLeft .Img3, .UsersImg .AbsoluteLeft .Img4{height: 16px!important;border: 1px solid #fff;
+    width: 16px!important;}*/

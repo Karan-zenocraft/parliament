@@ -326,8 +326,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child, .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 8px;line-height: 12px;}
     
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{height: 20px;width: 20px;}
-    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;display: flex;
-    flex-direction: column;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;}
     
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li a{font-size: 8px;line-height: 12px;}
     
@@ -428,8 +427,32 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     .GiveAnswer .Qarray{max-height: 200px;}
 
 
-.MPProfileName .UsersImg{position: relative;}
+.MPProfileName .UsersImg{position: relative;right: 2px;}
+    .MPProfileName .UsersImg .One{height: 12px!important;width: 12px!important;}
+    .UsersImg .AbsoluteLeft .Img1, .UsersImg .AbsoluteLeft .Img2, .UsersImg .AbsoluteLeft .Img3, .UsersImg .AbsoluteLeft .Img4{height: 12px!important;
+    width: 12px!important;}
 .MPProfileName .UsersImg .Absolute{width: 100%}
+    .UsersImg .AbsoluteLeft{    right: -58px;}
+    
+    
+    .UsersImg .AbsoluteLeft{display: flex;}
+    
+    .MPProfileName .UsersImg .AbsoluteLeft .Img1 {
+    right: 48px;
+}
+.MPProfileName .UsersImg .AbsoluteLeft .Img2 {
+    right: 50px;
+}
+.MPProfileName .UsersImg .AbsoluteLeft .Img3 {
+    right: 53px;
+}
+.MPProfileName .UsersImg .AbsoluteLeft .Img4 {
+    right: 56px;
+}
+    
+    
+    
+/*
 .MPProfileName .UsersImg .Absolute .Img1 {
     right: 48px;
 }
@@ -442,9 +465,13 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 .MPProfileName .UsersImg .Absolute .Img4 {
     right: 66px;
 }
+*/
     
 .MPProfileName .UsersImg .One{position: relative!important;}
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{position: relative;}
+
+
+    .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP{max-width: 180px;}
 }
 
 
@@ -461,7 +488,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
 @media (min-width: 1025px) and (max-width: 1259px) {
 /*10-20-2019*/
     
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 280px!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 255px!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-bottom: 15px!important;margin-top: 15px!important;}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredByComments{margin-bottom: 0px!important}*/
  .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy{margin-left: unset!important;margin-right: unset!important;max-width: 100%!important;justify-content: flex-end!important;}
@@ -682,11 +709,10 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     /*    10-16-19*/
     
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .User{min-width: 50%}
-    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child, .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 7px;line-height: 10px;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child, .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 7px;line-height: 12px;}
     
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{height: 15px;width: 15px;}
-    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;display: flex;
-    flex-direction: column;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;}
     
      .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li a{font-size: 8px;line-height: 12px;}
     
@@ -699,11 +725,50 @@ header .HeaderBottomCenter .Icons .fa-cog:after{left: -9px!important}
     /*    10-16-19*/
     
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .User{min-width: 50%}
-    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child, .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 7px;line-height: 10px;}
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:first-child, .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(2), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(4), .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName span:nth-child(3){font-size: 7px;line-height: 12px;}
     
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{height: 15px;width: 15px;}
-    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;display: flex;
-    flex-direction: column;}
+    .MPProfileName .UsersImg .One {
+    height: 12px!important;
+    width: 12px!important;
+}
+    
+    .UsersImg .AbsoluteLeft .Img1, .UsersImg .AbsoluteLeft .Img2, .UsersImg .AbsoluteLeft .Img3, .UsersImg .AbsoluteLeft .Img4 {
+    height: 12px!important;
+    width: 12px!important;
+}
+    .UsersImg .AbsoluteLeft {
+    display: flex;
+}
+    
+    .MPProfileName .UsersImg .AbsoluteLeft .Img1 {
+    right: 48px!important;
+}
+    
+    .MPProfileName .UsersImg .AbsoluteLeft .Img2 {
+    right: 50px!important;
+}
+    
+    .MPProfileName .UsersImg .AbsoluteLeft .Img3 {
+    right: 53px!important;
+}
+
+    MPProfileName .UsersImg .AbsoluteLeft .Img4 {
+    right: 56px!important;
+}
+    
+    .UsersImg .Absolute {
+    position: absolute;
+    right: -65px;
+    top: 0;
+}
+   .UsersImg .AbsoluteLeft {
+    position: absolute;
+    right: -59px;
+    top: 0;
+} 
+    
+    .Main .MainLeft .LastQuestion .LastQuestionBox .MP .MPProfileName{margin-right: 4px;}
     
      .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP .OnhoverMP li a{font-size: 8px;line-height: 12px;}
     
@@ -832,13 +897,22 @@ header .HeaderBottomCenter .UlNotification span{padding: 3px 6px;font-size: 12px
 .MPProfileName .UsersImg .One{position: relative!important;}
     .Main .MainLeft .LastQuestion .LastQuestionBox .Row1 img{position: relative;}
 
+
+
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{left: -85px;}
+
 }
 
 
 
-
-
-
+@media (min-width: 992px) and (max-width: 1102px) {
+.Main .MainLeft .LastQuestion .LastQuestionBox .Row1 .MP {
+ 
+ 
+    max-width: 82px;
+ 
+}
+}
 @media (min-width: 992px) and (max-width: 1024px) {
     
     header .HeaderTop h1{font-size: 11px;}
@@ -1016,6 +1090,9 @@ header{padding-top: 50px;}
     width: 92%;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a{text-align: center;}
 
+
+
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{left: -70px;}
 }
 
 
@@ -1086,7 +1163,7 @@ header{padding-top: 50px;}
     
      /*10-20-2019*/
     
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 235px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 230px;}
 .select2-container--krajee-bs4 .select2-selection--multiple{max-width: 400px!important;min-width: 400px!important;}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 35px!important;width: 35px!important;}*/
     
@@ -1098,6 +1175,10 @@ header{padding-top: 50px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy .UnansweredBy{max-width: unset!important;
     width: 92%;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a{text-align: center;}
+
+
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{left: -70px;}
+
 }
 
 
@@ -1157,8 +1238,8 @@ header{padding-top: 50px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li a{font-size: 11px!important;;line-height: 22px!important;;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li{padding: 2px 65px 2px 8px!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1{left: -100px!important;top: 10px!important;}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: 150px!important;padding: 7px!important;z-index: 999!important;right: 10%;margin-top: -4px!important;}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 10px!important;line-height: 14px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: 130px!important;padding: 5px!important;z-index: 999!important;right: 10%;margin-top: -4px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 9px!important;line-height: 16px!important;}
     .Main .MainCenter .Nav2 ul{top: 46px!important}
     .Main .MainCenter .Nav1 ul li a, .Main .MainCenter .Nav2 ul li a{font-size: 10px!important}
     .Main .MainCenter .Nav1 ul{top: 11px!important}
@@ -1306,7 +1387,7 @@ header{padding-top: 50px;}
     width: 160px!important;
     padding: 6px!important;}
     header .HeaderBottomCenter .Search{padding-top: 0px!important}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{margin-top: 35px!important}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{margin-top: 5px!important}
 /*      .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 30px!important;width: 30px!important;}*/
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 10px!important;margin-bottom: 10px!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy .UnansweredBy{max-width: unset!important;
@@ -1429,7 +1510,7 @@ header{padding-top: 50px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon{margin-top: 0px!important;position: absolute!important;right: 0!important;top: -1px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile .UserTitle p{font-size: 12px;line-height: 18px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile .UserTitle{margin-left: 7px;}
-    .UsersImg img {height: 24px;width: 24px;}
+    .UsersImg img {height: 20px;width: 20px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UserProfile .UserTitle span{font-size: 10px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .Comments p{font-size: 14px;line-height: 18px;color: #707070}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2{margin-bottom: 15px;}
@@ -1687,9 +1768,9 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{margin-bottom: 25px}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2{margin-bottom: 25px}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{min-height: 30px;align-items: flex-start!important}
-    .UsersImg .Absolute .Img1{right: 48px;}
-    .UsersImg .Absolute .Img2{right: 30px;}
-    .UsersImg .Absolute .Img3{right: 12px;}
+    .UsersImg .Absolute .Img1{right: 49px;}
+    .UsersImg .Absolute .Img2{right: 34px;}
+    .UsersImg .Absolute .Img3{right: 19px;}
     .UsersImg .Absolute .Img4{right: -5px;}
     .UsersImg .Absolute .Img5{display: none}
     .UsersImg .Absolute .Img6{display: none}
