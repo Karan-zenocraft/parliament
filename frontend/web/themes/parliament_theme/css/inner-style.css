@@ -742,7 +742,7 @@ header .HeaderBottomCenter .Search{margin-right: auto;}
 header .HeaderBottomCenter .People{height: 162px!important;width: 162px!important;z-index: 99;}
 .OnhoverGroup{cursor: pointer;display: inline-block;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{padding-left: 8px;padding-right: 40px;padding-top: 3px;padding-bottom: 3px;line-height: 16px;z-index: 999;
-    margin-top: 0px;left: 0;right: 0;margin: auto}
+    margin-top: 0px;left: -75px;right: 0;margin: auto}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 10px;}
 /*.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li{line-height: 0;}*/
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .MPName{margin-right: 5px;position: relative;}

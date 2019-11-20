@@ -1163,7 +1163,7 @@ header{padding-top: 50px;}
     
      /*10-20-2019*/
     
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 230px;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 220px;}
 .select2-container--krajee-bs4 .select2-selection--multiple{max-width: 400px!important;min-width: 400px!important;}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 35px!important;width: 35px!important;}*/
     
@@ -1238,7 +1238,7 @@ header{padding-top: 50px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li a{font-size: 11px!important;;line-height: 22px!important;;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1 ul li{padding: 2px 65px 2px 8px!important;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .ViewMoreIcon .Menu1{left: -100px!important;top: 10px!important;}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: 130px!important;padding: 5px!important;z-index: 999!important;right: 10%;margin-top: -4px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{width: 130px!important;padding: 5px!important;z-index: 999!important;right: 10%;margin-top: 0px!important;left: -75px;}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP li a{font-size: 9px!important;line-height: 16px!important;}
     .Main .MainCenter .Nav2 ul{top: 46px!important}
     .Main .MainCenter .Nav1 ul li a, .Main .MainCenter .Nav2 ul li a{font-size: 10px!important}
@@ -1387,7 +1387,7 @@ header{padding-top: 50px;}
     width: 160px!important;
     padding: 6px!important;}
     header .HeaderBottomCenter .Search{padding-top: 0px!important}
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{margin-top: 5px!important}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .OnhoverMP{margin-top: 0px!important}
 /*      .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy a:last-child img{height: 30px!important;width: 30px!important;}*/
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy{margin-top: 10px!important;margin-bottom: 10px!important}
     .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy .UnansweredBy{max-width: unset!important;
@@ -1771,7 +1771,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .UsersImg .Absolute .Img1{right: 49px;}
     .UsersImg .Absolute .Img2{right: 34px;}
     .UsersImg .Absolute .Img3{right: 19px;}
-    .UsersImg .Absolute .Img4{right: -5px;}
+    .UsersImg .Absolute .Img4{right: 4px;}
     .UsersImg .Absolute .Img5{display: none}
     .UsersImg .Absolute .Img6{display: none}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 130px!important}*/
