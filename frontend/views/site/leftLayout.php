@@ -79,20 +79,19 @@ $exclude_first = array_shift($unanswered_by);
                   </span>
                 <?php $first_mp_detail = Common::get_name_by_id($first_mp_id, "Users");?>
                <?php $first_mp_image = !empty($first_mp_detail['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_mp_detail['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
-<!--                <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_mp_detail['photo']) ? $first_mp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">-->
-            <?php }?>
-          <a href="#" class="UsersImg"><img class="One" src="<?php echo Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" class="img-fluid">
+          <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_mp_detail['photo']) ? $first_mp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">
             <div class="Absolute">
             <?php $i = 1;
-            foreach ($unanswered_by as $key => $unanswer_mp) {
-                $user_mp = Common::get_name_by_id($unanswer_mp, "Users");
-                $user_mp_image = $user_mp['photo'];
-                $user_mp_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user_mp['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
-                ?>
+                foreach ($unanswered_by as $key => $unanswer_mp) {
+                    $user_mp = Common::get_name_by_id($unanswer_mp, "Users");
+                    $user_mp_image = $user_mp['photo'];
+                    $user_mp_image = !empty($user['photo']) ? Yii::getAlias('@web') . "/uploads/" . $user_mp['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
+                    ?>
             <img class="Img<?php echo $i; ?>" src="<?php echo $user_mp_image; ?>" alt="" class="img-fluid">
             <?php $i++;
-            }?>
+                }?>
             </div>
+            <?php }?>
           </div>
 
 
@@ -128,38 +127,31 @@ $exclude_first = array_shift($answered_mp_arr);
                     echo "<li><a href=" . Yii::getAlias('@web') . "?user_id=" . $answered_mp . ">" . Common::get_user_name($answered_mp) . "</a></li>";
                 }
                 ?>
-    <!-- <li><a href="#">Abebe Mengistu</a></li>
-    <li><a href="#">Taye Hailu</a></li>
-    <li><a href="#">Kebede Taye</a></li>
-    <li><a href="#">Mulu Saya</a></li>
-    <li><a href="#">Chala Banti</a></li>
-    <li><a href="#">Feven Siraj</a></li> -->
   </ul>
 
                   </span></a>
               <?php $first_ansmp_name = Common::get_name_by_id($first_mp_answered_id, "Users");
                 $first_ansmp_image = !empty($first_ansmp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $first_ansmp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"?>
                  <a href="javascript:void(0);" class="UsersImg"><img class="One img-fluid rounded-circle" src="<?php echo !empty($first_ansmp_name['photo']) ? $first_ansmp_image : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png" ?>" alt="" width="24px" height="24px">
-            <?php }
-            ?>
 
 <?php
 /*$answ_mp = array_unique($answered_mp);
-            $exclude_first_answer = array_shift($answ_mp);*/
-            //p(array_unique($answered_mp), 0);
-            ?>
+                $exclude_first_answer = array_shift($answ_mp);*/
+                //p(array_unique($answered_mp), 0);
+                ?>
 
             <div class="Absolute">
             <?php $i = 1;
-            foreach ($answered_mp_arr as $key => $ans_mp) {
-                $ans_mp_name = Common::get_name_by_id($ans_mp, "Users");
-                //$ans_mp_image = $ans_mp_name['photo'];
-                $ans_mp_image = !empty($ans_mp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $ans_mp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
-                ?>
+                foreach ($answered_mp_arr as $key => $ans_mp) {
+                    $ans_mp_name = Common::get_name_by_id($ans_mp, "Users");
+                    //$ans_mp_image = $ans_mp_name['photo'];
+                    $ans_mp_image = !empty($ans_mp_name['photo']) ? Yii::getAlias('@web') . "/uploads/" . $ans_mp_name['photo'] : Yii::getAlias('@web') . "/themes/parliament_theme/image/user.png;"
+                    ?>
             <img class="Img<?php echo $i; ?>" src="<?php echo $ans_mp_image; ?>" alt="" class="img-fluid rounded-circle" width="24px" height="24px">
             <?php $i++;
-            }?>
+                }?>
             </div>
+            <?php }?>
           </a>
 
         </div>
