@@ -85,7 +85,7 @@ if (!empty($model->answers)) {?>
                                             <div class="Social d-flex flex-wrap align-items-center justify-content-between">
                                                 <div class="Loud">
                                                     <a>
-                                                        <span class="MadeLouder">MADE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
+                                                        <span class="MadeLouder">MAKE LOUDER <i class="fa fa-wifi" aria-hidden="true"></i> </span>
                                                         <i class="fa fa-wifi OnlySm" aria-hidden="true"></i>
                                                         <span class="Numbers"><?php echo (empty($model->louder_by) || ($model->louder_by == "")) ? "0" : count(explode(",", $model->louder_by)); ?></span>
                                                     </a>
