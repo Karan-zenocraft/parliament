@@ -764,7 +764,7 @@ header .HeaderBottomCenter .Icons .fa-cog:after{bottom: -55px;}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .AnsweredBy .UnansweredBy{align-items: center!important}
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1{padding-right: 0px;}
 
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 600px;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 530px;}
 
 .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1, .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row2 .AnsweredByBox .AnsweredBy .UnansweredBy {align-items: center!important;}
 

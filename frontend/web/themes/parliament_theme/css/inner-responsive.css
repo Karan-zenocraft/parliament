@@ -14,7 +14,7 @@
 @media (min-width: 1500px) and (max-width: 1749px) {
 
 /*    20-10-19*/
-    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 500px!important;}
+    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 390px!important;}
     
 }
 
@@ -1073,7 +1073,7 @@ header{padding-top: 50px;}
     
     /*10-20-2019*/
     
-.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 350px!important;}
+.Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 290px!important;}
     
     header .HeaderBottomCenter .UlNotification span{font-size: 12px!important;padding: 2px 8px!important; padding: 0px 5px!important;}
    
@@ -1771,7 +1771,7 @@ header .HeaderBottomCenter .UlNotification li:first-child span:first-child{color
     .UsersImg .Absolute .Img1{right: 49px;}
     .UsersImg .Absolute .Img2{right: 34px;}
     .UsersImg .Absolute .Img3{right: 19px;}
-    .UsersImg .Absolute .Img4{right: 4px;}
+    .UsersImg .Absolute .Img4{right: 3px;}
     .UsersImg .Absolute .Img5{display: none}
     .UsersImg .Absolute .Img6{display: none}
 /*    .Main .MainCenter .tab-content .QuestionAnswer .QuestionAnswerMainBox .QuestionAnswerBox .Row1 .UnansweredBy{max-width: 130px!important}*/
