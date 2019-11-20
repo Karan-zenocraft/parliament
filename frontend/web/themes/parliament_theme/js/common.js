@@ -1720,7 +1720,6 @@ $('body').mouseover(function(e) {
    var id = e.target.id;
    if(class_name != ""){
     var class_name = class_name.split(' ')[0];
-    console.log(class_name);
    if((class_name == "MPName") || (class_name == "align-items-start") || (class_name == "UnansweredBy") || (class_name == "d-flex") || (class_name == "rounded-circle") || (class_name == 'Absolute')){
       $('.OnhoverMP').css('display','show');
    }else{
