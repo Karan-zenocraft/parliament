@@ -705,6 +705,7 @@ Yii::$app->session->setFlash('message', $errors['mp_id'][0]); // its dislplays e
             ));
         } else {
             $pageDataAjax = "Bad request";
+            $pageDataAjax1 = "";
         }
         $retArray = array('data' => $pageDataAjax, 'data2' => $pageDataAjax1, 'user_name' => $userName, 'ask_user_id' => $ask_user->user_agent_id);
         $model_notification = new Notifications();

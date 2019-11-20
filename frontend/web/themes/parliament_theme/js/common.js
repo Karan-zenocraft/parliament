@@ -475,6 +475,9 @@ function submitAnswer(question_id)
         $('#overlay').fadeIn();
     },
      success: function (data) {
+      if(data.data =="error"){
+        alert("something went wrong");
+      }else{
          $("#AnswerQuestionBox"+question_id).removeClass('GiveAnswerBox');
          $('#answersList'+question_id).prepend(data.data);
           $('#answered_by'+question_id).html(data.data2);
@@ -484,6 +487,7 @@ function submitAnswer(question_id)
          var title = data.user_name + " has answered on your question ";
            var userid = data.ask_user_id;
            sendNotification(title,userid);
+      }
      },
       complete: function() {
         $('#overlay').fadeOut();
